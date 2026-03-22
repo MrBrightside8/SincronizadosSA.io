@@ -109,7 +109,55 @@
     background-color: transparent;
     border: 2px solid #6c7ae0;
    }
+
+.secciones {
+    padding: 60px 80px;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.seccion h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.info-productos {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: #555;
+}
+
+.secciones {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+   
+.seccion {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.seccion img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.seccion h2 {
+    margin-bottom: 10px;
+}
+
+.seccion p {
+    color: #555;
+}
+
 </style>
+   
 <head>
    
    
@@ -162,6 +210,38 @@
          <p> Proyecto que busca implementar una solución de automatización para tres líneas de producción de una planta de fabricación y distribución de bebidas</p>
       </div>
    </section>
+   
+   <section class="Productos">
+      <h1>Productos</h1>
+      <p class="info-productos">
+         Las líneas de producción de la planta manejan tres tipos de bebidas, las cuales son:
+      </p>
+      <div class="secciones">
+      
+         <div class="seccion">
+            <h2> Producto 1</h2>
+            <img src="" alt="">
+            <p>Descripción del producto 1</p>
+            
+         </div>
+         
+         <div class="seccion">
+            <h2>Producto 2</h2>
+            <img src="" alt="">
+            <p>Descripción producto 2</p>
+         </div>
+         
+         <div class="seccion">
+            <h2>Producto 3</h2>
+            <img src="" alt="">
+            <p>Descripción producto 3</p>
+            
+         </div>
+         
+      </div>
+      
+   </section>
+      
    
 </body>
 </html>
