@@ -57,7 +57,7 @@
 
     .bottom-line {
         height: 3px;
-        background-color: #D1B6B6;
+        background-color: #F5D7D7;
     }
    
    .descripcion {
@@ -65,7 +65,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 200px 80px;
-    background-color: #D1B6B6;
+    background-color: #F5D7D7;
    }
 
 .descripcion-img img {
@@ -102,7 +102,7 @@
 .secciones {
     padding: 60px 80px;
     text-align: center;
-    background-color: #D1B6B6;
+    background-color: #F5D7D7;
 }
 
 .productos h1 {
