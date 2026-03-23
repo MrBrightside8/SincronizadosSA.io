@@ -1,1 +1,149 @@
+  body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+   
+   .titulo {
+        font-size: 30px;
+        font-weight: bold;
+        margin-right: 40px;
+    }
+    .navbar {
+        background-color: #781428;
+        color: white;
+        display: flex;
+        align-items: center;
+        padding: 0 30px;
+        height: 100px;
+    }
 
+   .menu {
+        display: flex;
+        gap: 40px;
+    }
+
+   .menu a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        position: relative;
+    }
+
+    .menu a:hover {
+        color: #00bcd4;
+    }
+
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #D1B6B6;
+        top: 100%;
+        left: 0;
+        min-width: 150px;
+        border-radius: 5px;
+    }
+
+    .dropdown-content a {
+        display: block;
+        padding: 10px;
+    }
+   .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .bottom-line {
+        height: 3px;
+        background-color: #ccc;
+    }
+   
+   .descripcion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200px 80px;
+    background-color: #f5f5f5;
+   }
+
+.descripcion-img img {
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+   }
+
+.descripcion-texto {
+    max-width: 600px;
+   }
+
+.descripcion-texto h1 {
+    font-size: 40px;
+    color: #781428;
+    margin: 0;
+   }
+
+.descripcion-texto p {
+    font-size: 18px;
+    color: #555;
+   }
+   
+.primary {
+    background-color: #2bbcd3;
+    color: white;
+   }
+
+.secondary {
+    background-color: transparent;
+    border: 2px solid #6c7ae0;
+   }
+
+.secciones {
+    padding: 60px 80px;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.productos h1 {
+   font-size: 40px;
+   margin-bottom: 10px;
+   text-align: center;
+   color: #781428;
+}
+
+.info-productos {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: #555;
+}
+
+.secciones {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+   
+.seccion {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.seccion img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+
+.seccion h2 {
+   color: #781428;
+   margin-bottom: 10px;
+}
+
+.seccion p {
+    color: #555;
+}
