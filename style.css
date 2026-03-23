@@ -40,7 +40,7 @@
     .dropdown-content {
         display: none;
         position: absolute;
-        background-color: #D1B6B6;
+        background-color: #781428;
         top: 100%;
         left: 0;
         min-width: 150px;
@@ -57,7 +57,7 @@
 
     .bottom-line {
         height: 3px;
-        background-color: #ccc;
+        background-color: #D1B6B6;
     }
    
    .descripcion {
@@ -65,7 +65,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 200px 80px;
-    background-color: #f5f5f5;
+    background-color: #D1B6B6;
    }
 
 .descripcion-img img {
@@ -102,7 +102,7 @@
 .secciones {
     padding: 60px 80px;
     text-align: center;
-    background-color: #f5f5f5;
+    background-color: #D1B6B6;
 }
 
 .productos h1 {
