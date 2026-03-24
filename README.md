@@ -139,19 +139,3 @@ El desarrollo del proyecto se organizó con base en el EDT y en el calendario ac
 El cronograma y diagrama de Gantt del repositorio representan la evolución del proyecto desde la planeación hasta la entrega final.
 
 
-## Entregables del repositorio
-
-Este repositorio reúne los principales productos del proyecto, entre ellos:
-
-- EDT del proyecto  
-- EDT del proceso productivo  
-- cronograma y diagrama de Gantt  
-- análisis del proceso y layout  
-- arquitectura de automatización  
-- diseño de la celda robotizada  
-- modelado en Factory I/O  
-- lógica de control en Ladder  
-- propuesta de sistema SCADA  
-- evaluación económica  
-- informe 
-- material de presentación  
