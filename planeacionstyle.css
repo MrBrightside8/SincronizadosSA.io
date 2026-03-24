@@ -47,3 +47,38 @@
     color: #781428; /* vino */
     margin-bottom: 10px;
 }
+.trazabilidad {
+    padding: 60px 80px;
+    background-color: #f5f5f5;
+}
+
+.anexos-plan {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.anexo-plan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 120px;
+    background: white;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #781428;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.anexo-plan h1 {
+    font-size: 20px;
+    text-align: center;
+}
+
+.anexo-plan:hover {
+    transform: translateY(-5px);
+    background-color: #781428;
+    color: white;
+}
