@@ -42,6 +42,13 @@
     background-color: #f5f5f5;
 }
 
+.vsm h1 {
+    font-size: 50px;
+    color: #781428; /* vino */
+    margin-bottom: 10px;
+}
+
+
 .vsm img {
     width: 95%; 
     max-width: 1200px; 
@@ -55,6 +62,13 @@
     padding: 40px;
     background-color: #f5f5f5;
 }
+
+.layout h1 {
+    font-size: 50px;
+    color: #781428; /* vino */
+    margin-bottom: 10px;
+}
+
 
 .layout img {
     width: 95%; 
