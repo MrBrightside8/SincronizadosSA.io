@@ -38,3 +38,11 @@
     margin-bottom: 8px;
     color: #555;
 }
+
+@media (max-width: 768px) {
+    .contenido-edt {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+}
