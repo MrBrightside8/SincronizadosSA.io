@@ -3,7 +3,7 @@
 
 ## Descripción general
 
-Este repositorio documenta el desarrollo de un proyecto integrador de **Automatización de Procesos de Manufactura**, enfocado en la propuesta de mejoramiento de una planta física de producción de bebidas tipo Coca-Cola mediante herramientas de automatización, simulación, control industrial y evaluación económica.
+Este repositorio documenta el desarrollo de un proyecto integrador para la asignatura **Automatización de Procesos de Manufactura**, enfocado en la propuesta de mejoramiento de una planta física de producción de bebidas tipo Coca-Cola mediante herramientas de automatización, simulación, control industrial y evaluación económica.
 
 El proyecto no se limita a describir el proceso productivo, sino que plantea una **solución de automatización estructurada sobre el papel**, con sustento técnico, simulación digital, arquitectura de control, propuesta de celda robotizada, sistema SCADA y análisis económico de viabilidad.
 
