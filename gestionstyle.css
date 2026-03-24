@@ -32,4 +32,33 @@
     transform: translateY(-5px);
     background-color: #781428;
     color: white;
+    
+}
+
+.vsm {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f5f5f5;
+}
+
+.vsm img {
+    width: 95%; 
+    max-width: 1200px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+}
+
+.layout {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f5f5f5;
+}
+
+.layout img {
+    width: 95%; 
+    max-width: 1200px; 
+    border-radius: 15px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
 }
