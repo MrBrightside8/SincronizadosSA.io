@@ -1,3 +1,15 @@
+.edt {
+    padding: 60px 80px;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+
+.edt h1 {
+    font-size: 50px;
+    color: #781428; /* vino */
+    margin-bottom: 10px;
+}
+
 .contenido-edt {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
