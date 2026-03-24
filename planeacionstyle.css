@@ -12,31 +12,31 @@
 
 .contenido-edt {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     justify-content: center;
 }
 
 .item {
     background: white;
-    padding: 20px;
-    width: 220px;
-    border-radius: 12px;
+    padding: 10px;
+    width: 180px;
+    border-radius: 6px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     text-align: left;
 }
 
 .item h2 {
     color: #781428;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .item ul {
-    padding-left: 18px;
+    padding-left: 10px;
 }
 
 .item li {
-    font-size:15px;
-    margin-bottom: 6px;
+    font-size:5px;
+    margin-bottom: 3px;
     color: #555;
 }
 
