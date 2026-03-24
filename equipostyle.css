@@ -10,9 +10,9 @@
 }
 
 .linea {
-    width: 200px;
+    width: 600px;
     height: 3px;
-    background-color: #2b6cb0;
+    background-color: #781428;
     margin: 10px auto 40px;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .integrante {
-    background: white;
+    background-color:F5D7D7 ;
     padding: 30px;
     width: 300px;
     border-radius: 15px;
@@ -35,5 +35,4 @@
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #2b6cb0;
 }
