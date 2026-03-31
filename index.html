@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sincronizados | Consultoría industrial</title>
+  <meta name="description" content="Sitio del proyecto Sincronizados, una propuesta de consultoría industrial orientada a la automatización de líneas de producción de bebidas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-sincronizados.svg" alt="Logo de Sincronizados" class="brand-logo" />
+        <div class="brand-copy">
+          <span class="brand-name">Sincronizados</span>
+          <span class="brand-tag">Consultoría industrial</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="is-current">Inicio</a>
+
+        <div class="nav-dropdown">
+          <a href="#modulos">Módulos</a>
+          <div class="dropdown-menu">
+            <a href="planeacion.html">Planeación</a>
+            <a href="gestion-evaluacion-produccion.html">Gestión y evaluación de producción</a>
+            <a href="plc-scada.html">PLC y SCADA</a>
+            <a href="tecnologias-aplicadas.html">Tecnologías aplicadas</a>
+            <a href="celdas-roboticas.html">Celdas robóticas</a>
+            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+          </div>
+        </div>
+
+        <a href="equipo.html">Equipo</a>
+
+        <div class="nav-dropdown">
+          <a href="#reflexiones">Reflexiones</a>
+          <div class="dropdown-menu">
+            <a href="reflexion-gestion.html">Reflexión de gestión</a>
+            <a href="reflexiones-individuales.html">Reflexiones individuales</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="#anexos">Anexos</a>
+          <div class="dropdown-menu">
+            <a href="anexos/Portada.html">Portada</a>
+            <a href="anexos/Supuestos.html">Supuestos</a>
+            <a href="anexos/Trazabilidad_Proceso.html">Trazabilidad del proceso</a>
+          </div>
+        </div>
+
+        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">APM 2025-S1</p>
+          <h1>Sincronizados</h1>
+          <p class="hero-company">Firma de consultoría industrial</p>
+          <p class="lead">
+            Propuesta de consultoría orientada al diseño de una solución de automatización para tres líneas de producción
+            de una planta de bebidas, integrando control, supervisión y coordinación operativa para mejorar la continuidad,
+            la trazabilidad y el desempeño del proceso.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#modulos">Ver módulos</a>
+            <a class="button button-secondary" href="equipo.html">Equipo</a>
+            <a class="button button-secondary" href="anexos/Portada.html">Anexos</a>
+            <a class="button button-ghost" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
+          </div>
+
+          <ul class="hero-metrics" aria-label="Aspectos clave del proyecto">
+            <li>
+              <strong>3</strong>
+              <span>Líneas integradas</span>
+            </li>
+            <li>
+              <strong>PLC</strong>
+              <span>Control del proceso</span>
+            </li>
+            <li>
+              <strong>SCADA</strong>
+              <span>Supervisión operativa</span>
+            </li>
+          </ul>
+        </div>
+
+        <aside class="hero-panel" aria-label="Identidad visual del proyecto">
+          <div class="hero-panel-inner">
+            <img src="assets/logo-sincronizados.svg" alt="Emblema de Sincronizados" class="hero-logo" />
+            <p class="panel-kicker">Sincronizados</p>
+            <h2>Coordinamos procesos. Elevamos operación.</h2>
+            <p>
+              Consultoría industrial para integrar control, supervisión y continuidad operativa en sistemas de producción.
+            </p>
+
+            <div class="feature-pills">
+              <span>Integración</span>
+              <span>Control</span>
+              <span>Supervisión</span>
+              <span>Desempeño</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section intro-strip" id="presentacion">
+      <div class="container intro-strip-grid">
+        <div>
+          <p class="section-kicker">Presentación</p>
+          <h2>Una propuesta con imagen más técnica y más sólida</h2>
+        </div>
+        <p>
+          El sitio se reorganiza alrededor de una identidad más limpia y corporativa, pensada para comunicar una propuesta de
+          consultoría industrial con mejor jerarquía visual, acceso claro a los módulos y vínculos directos a la documentación
+          complementaria del proyecto.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="modulos">
+      <div class="container">
+        <p class="section-kicker">Módulos</p>
+        <div class="section-heading">
+          <h2>Estructura del sitio</h2>
+          <p>Acceso directo a cada componente principal del proyecto.</p>
+        </div>
+
+        <div class="card-grid">
+          <a class="info-card" href="planeacion.html">
+            <span class="card-tag">01</span>
+            <h3>Planeación</h3>
+            <p>Alcance, cronograma, EDT, riesgos y organización general del proyecto.</p>
+          </a>
+
+          <a class="info-card" href="gestion-evaluacion-produccion.html">
+            <span class="card-tag">02</span>
+            <h3>Gestión y evaluación de producción</h3>
+            <p>Análisis del proceso, evaluación de desempeño y criterios de operación.</p>
+          </a>
+
+          <a class="info-card" href="plc-scada.html">
+            <span class="card-tag">03</span>
+            <h3>PLC y SCADA</h3>
+            <p>Control, supervisión, señales y monitoreo del sistema automatizado.</p>
+          </a>
+
+          <a class="info-card" href="tecnologias-aplicadas.html">
+            <span class="card-tag">04</span>
+            <h3>Tecnologías aplicadas</h3>
+            <p>Herramientas, plataformas y recursos técnicos utilizados en la solución.</p>
+          </a>
+
+          <a class="info-card" href="celdas-roboticas.html">
+            <span class="card-tag">05</span>
+            <h3>Celdas robóticas</h3>
+            <p>Integración de estaciones, automatización física y flujo productivo.</p>
+          </a>
+
+          <a class="info-card" href="trabajo-colaborativo.html">
+            <span class="card-tag">06</span>
+            <h3>Trabajo colaborativo</h3>
+            <p>Organización del equipo, coordinación y trazabilidad del trabajo conjunto.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="equipo">
+      <div class="container split-highlight">
+        <div class="highlight-copy">
+          <p class="section-kicker">Equipo</p>
+          <h2>Trabajo articulado, documentación clara y seguimiento técnico</h2>
+          <p>
+            La propuesta reúne componentes de planeación, automatización, integración y análisis, con una estructura de trabajo
+            colaborativo que permite documentar decisiones, distribuir responsabilidades y sostener la trazabilidad del proyecto.
+          </p>
+          <a class="text-link" href="equipo.html">Ver equipo completo</a>
+        </div>
+
+        <div class="highlight-card">
+          <span class="mini-badge">Equipo</span>
+          <p>Consulta los integrantes, sus roles y la participación de cada miembro dentro del desarrollo del proyecto.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reflexiones">
+      <div class="container">
+        <p class="section-kicker">Reflexiones</p>
+        <div class="section-heading">
+          <h2>Aprendizajes y lectura crítica del proceso</h2>
+          <p>Acceso a los apartados de cierre, evaluación del trabajo y balance del proyecto.</p>
+        </div>
+
+        <div class="reflection-list">
+          <a class="reflection-card" href="reflexion-gestion.html">
+            <h3>Reflexión de gestión</h3>
+            <p>Balance del proceso, decisiones de planificación y evaluación del desarrollo del proyecto.</p>
+          </a>
+
+          <a class="reflection-card" href="reflexiones-individuales.html">
+            <h3>Reflexiones individuales</h3>
+            <p>Aprendizajes, aportes y análisis personal de los integrantes del equipo.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="anexos">
+      <div class="container">
+        <p class="section-kicker">Anexos</p>
+        <div class="section-heading">
+          <h2>Documentación complementaria</h2>
+          <p>Acceso directo al material adicional de soporte del proyecto.</p>
+        </div>
+
+        <div class="card-grid annex-grid">
+          <a class="info-card" href="anexos/Portada.html">
+            <span class="card-tag">A1</span>
+            <h3>Portada</h3>
+            <p>Presentación formal y visual del proyecto.</p>
+          </a>
+
+          <a class="info-card" href="anexos/Supuestos.html">
+            <span class="card-tag">A2</span>
+            <h3>Supuestos</h3>
+            <p>Criterios base y consideraciones de la propuesta.</p>
+          </a>
+
+          <a class="info-card" href="anexos/Trazabilidad_Proceso.html">
+            <span class="card-tag">A3</span>
+            <h3>Trazabilidad del proceso</h3>
+            <p>Seguimiento del flujo, decisiones y lógica del sistema.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <p class="footer-title">Sincronizados</p>
+        <p>Proyecto académico de consultoría y automatización industrial.</p>
+      </div>
+      <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Ver repositorio</a>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('is-open');
+    });
+  </script>
+</body>
+</html>
