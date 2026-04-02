@@ -1,112 +1,273 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <title>Gestion y evaluación de la producción automatizada</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="gestionstyle.css">
-    
-    </head>
-    
-    <body>
-        
-        <header class=header>
-        <nav class="navbar">
-          <div class="titulo">Sincronizados S.A.</div>
-          <div class="menu">
-            <a href="index.html">Inicio</a>
-            
-            <div class="dropdown">
-              <a href="#">Módulos ▾</a>
-              <div class="dropdown-content">
-                <a href="#">Introducción a la Automatización de manufactura</a>
-                <a href="gestion-evaluacion-produccion.html">Gestión y evaluación de la producción automatizada</a>
-                <a href="planeacion.html">Planeación y Evaluación del proyecto</a>
-                <a href="celdas-roboticas.html"> Celdas de manufactura robotizadas</a>
-                <a href="tecnologias-aplicadas.html">Tecnologías modernas aplicadas a la manufactura</a>
-                <a href="trabajo-colaborativo.html">Automatización discreta: PLC y SCADA</a>           
-              </div>
-                
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestión y Evaluación de Producción | Sincronizados</title>
+  <meta name="description" content="Análisis del proceso productivo, indicadores de desempeño, VSM, Layout y evaluación financiera de la propuesta de automatización." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="gestionstyle.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       HEADER / NAV  (idéntico al index)
+  ═══════════════════════════════════════════════ -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-sincronizados.svg" alt="Logo de Sincronizados" class="brand-logo" />
+        <div class="brand-copy">
+          <span class="brand-name">Sincronizados</span>
+          <span class="brand-tag">Consultoría industrial</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Inicio</a>
+        <div class="nav-dropdown">
+          <a href="#">Módulos</a>
+          <div class="dropdown-menu">
+            <a href="planeacion.html">Planeación</a>
+            <a href="gestion-evaluacion-produccion.html" class="is-current">Gestión y evaluación de producción</a>
+            <a href="plc-scada.html">PLC y SCADA</a>
+            <a href="tecnologias-aplicadas.html">Tecnologías aplicadas</a>
+            <a href="celdas-roboticas.html">Celdas robóticas</a>
+            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+          </div>
+        </div>
+        <a href="equipo.html">Equipo</a>
+        <div class="nav-dropdown">
+          <a href="#">Reflexiones</a>
+          <div class="dropdown-menu">
+            <a href="reflexion-gestion.html">Reflexión de gestión</a>
+            <a href="reflexiones-individuales.html">Reflexiones individuales</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a href="#">Anexos</a>
+          <div class="dropdown-menu">
+            <a href="anexos/Portada.html">Portada</a>
+            <a href="anexos/Supuestos.html">Supuestos</a>
+            <a href="anexos/Trazabilidad_Proceso.html">Trazabilidad del proceso</a>
+          </div>
+        </div>
+        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════
+         HERO DE PÁGINA
+    ═══════════════════════════════════════════════ -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Módulo 02</p>
+        <h1>Gestión y evaluación<br>de la producción</h1>
+        <p class="lead">
+          Análisis del proceso productivo, indicadores de desempeño por línea, mapeo de flujo de valor
+          y evaluación financiera de la propuesta de automatización.
+        </p>
+        <div class="page-hero-tags">
+          <span>Indicadores</span>
+          <span>VSM</span>
+          <span>Layout</span>
+          <span>Finanzas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         INDICADORES DE PRODUCCIÓN
+    ═══════════════════════════════════════════════ -->
+    <section class="section" id="indicadores">
+      <div class="container">
+        <p class="section-kicker">Desempeño operativo</p>
+        <div class="section-heading">
+          <h2>Indicadores de producción</h2>
+          <p>Accede al análisis detallado de cada línea de producción evaluada.</p>
+        </div>
+
+        <div class="card-grid">
+          <a class="info-card" href="anexos/Monster.html">
+            <span class="card-tag">L6</span>
+            <h3>Indicadores Monster</h3>
+            <p>Análisis de desempeño de la línea de producción de latas Monster Energy.</p>
+          </a>
+          <a class="info-card" href="anexos/CocacolaRetornable.html">
+            <span class="card-tag">L1·L2</span>
+            <h3>Coca-Cola Retornable 1.5 L</h3>
+            <p>Indicadores de la línea de botella retornable: eficiencia, tiempos y calidad.</p>
+          </a>
+          <a class="info-card" href="anexos/CocacolaPlastica.html">
+            <span class="card-tag">L5</span>
+            <h3>Coca-Cola No Retornable 2.5 L</h3>
+            <p>Análisis de la línea de botella plástica no retornable y su comportamiento operativo.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         VSM
+    ═══════════════════════════════════════════════ -->
+    <section class="section section-alt" id="vsm">
+      <div class="container">
+        <p class="section-kicker">Flujo de valor</p>
+        <div class="section-heading">
+          <h2>Value Stream Mapping</h2>
+          <p>Representación del flujo de materiales e información a lo largo del proceso productivo.</p>
+        </div>
+        <div class="diagram-frame">
+          <img src="images/VSM.png" alt="Value Stream Map de la planta de producción de bebidas" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         LAYOUT
+    ═══════════════════════════════════════════════ -->
+    <section class="section" id="layout">
+      <div class="container">
+        <p class="section-kicker">Distribución en planta</p>
+        <div class="section-heading">
+          <h2>Layout de líneas FEMSA Coca-Cola</h2>
+          <p>Disposición física de las líneas de producción y el flujo de materiales en planta.</p>
+        </div>
+        <div class="diagram-frame">
+          <img src="images/Layout_lineas_Femsa_CocaCola.drawio.png" alt="Layout de las líneas de producción FEMSA Coca-Cola" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         LÍNEAS DE PRODUCCIÓN
+    ═══════════════════════════════════════════════ -->
+    <section class="section section-alt" id="lineas">
+      <div class="container">
+        <p class="section-kicker">Líneas analizadas</p>
+        <div class="section-heading">
+          <h2>Proceso por línea</h2>
+          <p>Diagramas y descripción del flujo productivo de cada línea incluida en la propuesta.</p>
+        </div>
+
+        <div class="lineas-grid">
+          <div class="linea-card">
+            <div class="linea-label">Línea 1</div>
+            <h3>Botella retornable de vidrio — 237 ml</h3>
+            <p>Línea con proceso de lavado y reutilización de envase. Velocidad nominal de 52 000 botellas/hora.</p>
+            <div class="diagram-frame diagram-frame--compact">
+              <img src="images/linea1.jpg" alt="Diagrama de proceso Línea 1" />
             </div>
-    
-          <a href="equipo.html">Equipo</a>
-          <div class="dropdown">
-             <a href="#">Reflexiones ▾</a>
-             <div class="dropdown-content">
-                <a href="reflexion-gestion.html">Gestión del proyecto</a>
-                <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
-                <a href="reflexiones-individuales">Reflexiones individuales</a>
           </div>
-             
-             
+
+          <div class="linea-card">
+            <div class="linea-label">Línea 2</div>
+            <h3>Botella retornable de vidrio — 350 ml</h3>
+            <p>Mayor velocidad nominal del conjunto retornable, con 60 000 botellas/hora de capacidad.</p>
+            <div class="diagram-frame diagram-frame--compact">
+              <img src="images/linea2.jpg" alt="Diagrama de proceso Línea 2" />
+            </div>
           </div>
-        
-        </nav>
-         <div class="bottom-line"></div>
-       </header>
-      
-<section class="indicadores">
-    <div class="anexos-indicadores">
-      <a href="anexos/Monster.html" class="anexo-indicador">
-        <h1>Indicadores Monster</h1>
-      </a>
-      <a href="anexos/CocacolaRetornable.html" class="anexo-indicador">
-        <h1>Indicadores coca cola retornable 1.5 L</h1>
-      </a>
-      <a href="anexos/CocacolaPlastica.html" class="anexo-indicador">
-        <h1>Indicadores coca cola no retornable 2.5 L</h1>
-      </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         EVALUACIÓN FINANCIERA
+    ═══════════════════════════════════════════════ -->
+    <section class="section" id="finanzas">
+      <div class="container">
+        <p class="section-kicker">Viabilidad económica</p>
+        <div class="section-heading">
+          <h2>Evaluación financiera</h2>
+          <p>Costos, supuestos, flujo de caja e indicadores de retorno de la propuesta de automatización.</p>
+        </div>
+
+        <div class="card-grid">
+          <a class="info-card" href="anexos/Portada.html">
+            <span class="card-tag">F1</span>
+            <h3>Resumen ejecutivo</h3>
+            <p>Visión general de la evaluación financiera y sus conclusiones principales.</p>
+          </a>
+          <a class="info-card" href="anexos/Supuestos.html">
+            <span class="card-tag">F2</span>
+            <h3>Supuestos</h3>
+            <p>Criterios base, tasas, horizontes de evaluación y premisas del modelo financiero.</p>
+          </a>
+          <a class="info-card" href="anexos/CAPEX.html">
+            <span class="card-tag">F3</span>
+            <h3>CAPEX</h3>
+            <p>Inversión en equipos, instalación e integración del sistema automatizado.</p>
+          </a>
+          <a class="info-card" href="anexos/OPEX_Beneficios.html">
+            <span class="card-tag">F4</span>
+            <h3>OPEX y Beneficios</h3>
+            <p>Costos operativos proyectados y beneficios cuantificados de la automatización.</p>
+          </a>
+          <a class="info-card" href="anexos/Flujo_de_Caja.html">
+            <span class="card-tag">F5</span>
+            <h3>Flujo de caja</h3>
+            <p>Proyección del flujo neto de caja durante el horizonte de evaluación del proyecto.</p>
+          </a>
+          <a class="info-card" href="anexos/Indicadores.html">
+            <span class="card-tag">F6</span>
+            <h3>Indicadores financieros</h3>
+            <p>VPN, TIR y período de retorno de la inversión para la propuesta presentada.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         NAVEGACIÓN ENTRE MÓDULOS
+    ═══════════════════════════════════════════════ -->
+    <section class="section section-soft">
+      <div class="container module-nav">
+        <a class="module-nav-item module-nav-prev" href="planeacion.html">
+          <span class="module-nav-label">Módulo anterior</span>
+          <span class="module-nav-title">← Planeación</span>
+        </a>
+        <a class="module-nav-item module-nav-next" href="plc-scada.html">
+          <span class="module-nav-label">Siguiente módulo</span>
+          <span class="module-nav-title">PLC y SCADA →</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div>
+        <p class="footer-title">Sincronizados</p>
+        <p>Proyecto académico de consultoría y automatización industrial.</p>
+      </div>
+      <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Ver repositorio</a>
     </div>
-  </section>
-      
-<section class="vsm">
-  <h1>VSM</h1>
-  <img src="images/VSM.png" alt="vsm">
-</section>
+  </footer>
 
-<section class="layout">
-  <h1>Layout</h1>
-  <img src="images/Layout_lineas_Femsa_CocaCola.drawio.png" alt="layout">
-</section>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('is-open');
+    });
+  </script>
 
-<section class="linea1">
-  <h1>Línea 1</h1>
-  <img src="images/linea1.jpg" alt="linea1">
-</section>
-
-<section class="linea2">
-  <h1>Línea 2</h1>
-  <img src="images/linea2.jpg" alt="linea2">
-</section>
-
-<section class="finanzas">
-    <div class="anexos-finanzas">
-      
-      <a href="anexos/Portada.html" class="anexo-finanzas">
-        <h1>Resumen</h1>
-      </a>
-      <a href="anexos/Supuestos.html" class="anexo-finanzas">
-        <h1>Supuestos</h1>
-      </a>
-      <a href="anexos/CAPEX.html" class="anexo-finanzas">
-        <h1>CAPEX</h1>
-      </a>
-
-    <a href="anexos/OPEX_Beneficios.html" class="anexo-finanzas">
-        <h1>OPEX Beneficios</h1>
-      </a>
-      <a href="anexos/Flujo_de_Caja.html" class="anexo-finanzas">
-        <h1>Flujo de caja</h1>
-      </a>
-      <a href="anexos/Indicadores.html" class="anexo-finanzas">
-        <h1>Indicadores</h1>
-      </a>
-      
-    </div>
-  
-  </section>
-      
-    
-  </body>
-  
+</body>
 </html>
