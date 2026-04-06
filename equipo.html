@@ -1,94 +1,248 @@
 <!DOCTYPE html>
 <html lang="es">
-    
-    <head>
-        <meta charset="UTF-8">
-        <title>Equipo</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="equipostyle.css">
-    
-    </head>
-    
-    <body>
-        
-        <header class=header>
-        <nav class="navbar">
-          <div class="titulo">Sincronizados S.A.</div>
-          <div class="menu">
-            <a href="index.html">Inicio</a>
-            
-            <div class="dropdown">
-              <a href="#">Módulos ▾</a>
-              <div class="dropdown-content">
-                <a href="#">Introducción a la Automatización de manufactura</a>
-                <a href="gestion-evaluacion-produccion.html">Gestión y evaluación de la producción automatizada</a>
-                <a href="planeacion.html">Planeación y Evaluación del proyecto</a>
-                <a href="celdas-roboticas.html"> Celdas de manufactura robotizadas</a>
-                <a href="tecnologias-aplicadas.html">Tecnologías modernas aplicadas a la manufactura</a>
-                <a href="trabajo-colaborativo.html">Automatización discreta: PLC y SCADA</a>           
-              </div>
-                
-            </div>
-    
-          <a href="equipo.html">Equipo</a>
-          <div class="dropdown">
-             <a href="#">Reflexiones ▾</a>
-             <div class="dropdown-content">
-                <a href="reflexion-gestion.html">Gestión del proyecto</a>
-                <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
-                <a href="reflexiones-individuales">Reflexiones individuales</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipo | Sincronizados</title>
+  <meta
+    name="description"
+    content="Equipo de trabajo del proyecto Sincronizados, consultoría industrial orientada a soluciones de automatización."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .team-page-hero {
+      background: linear-gradient(135deg, var(--bg-deep), var(--heading-dark));
+      color: white;
+      padding: 7.5rem 0 4rem;
+    }
+
+    .team-page-hero .section-kicker {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .team-page-hero h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 0.95;
+      color: white;
+    }
+
+    .team-page-hero .lead {
+      max-width: 780px;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .team-section {
+      padding: 4.5rem 0 5rem;
+      background: var(--bg);
+    }
+
+    .team-section .section-heading {
+      margin-bottom: 2rem;
+    }
+
+    .team-members-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .member-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow);
+      padding: 1.6rem;
+      text-align: center;
+      min-height: 100%;
+    }
+
+    .member-photo,
+    .member-placeholder {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 1.2rem;
+      border-radius: 50%;
+      display: block;
+      object-fit: cover;
+      border: 4px solid var(--surface-2);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+      background: linear-gradient(135deg, var(--surface-2), var(--surface));
+    }
+
+    .member-placeholder {
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--heading-dark);
+    }
+
+    .member-card h2 {
+      margin: 0 0 0.7rem;
+      font-size: 1.45rem;
+      line-height: 1.18;
+      color: var(--heading-dark);
+    }
+
+    .member-role {
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.55;
+      font-size: 0.98rem;
+    }
+
+    @media (max-width: 1100px) {
+      .team-members-grid {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .team-members-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .member-photo,
+      .member-placeholder {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-sincronizados.svg" alt="Logo de Sincronizados" class="brand-logo" />
+        <span>Sincronizados</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+
+        <div class="nav-dropdown">
+          <a href="index.html#modulos">Módulos</a>
+          <div class="dropdown-menu">
+            <a href="#">Introducción a la automatización de manufactura</a>
+            <a href="gestion-evaluacion-produccion.html">Gestión y evaluación de la producción automatizada</a>
+            <a href="planeacion.html">Planeación y evaluación del proyecto</a>
+            <a href="celdas-roboticas.html">Celdas de manufactura robotizadas</a>
+            <a href="tecnologias-aplicadas.html">Tecnologías modernas aplicadas a la manufactura</a>
+            <a href="plc-scada.html">Automatización discreta: PLC y SCADA</a>
           </div>
-             
-             
-          </div>
-        
-        </nav>
-         <div class="bottom-line"></div>
-       </header>
-        
-    <section class="equipo">
-
-        <h1>Equipo de trabajo</h1>
-        <div class="linea"></div>
-
-        <div class="integrantes">
-
-            <div class="integrante">
-                <img src="images/equipoimg/brayan.jpg" alt="">
-                <h2>Brayan Yesid Santos Guevara</h2>
-                <p></p>
-            </div>
-
-            <div class="integrante">
-                <img src="images/equipoimg/jorge.jpg" alt="">
-                <h2>Jorge Emilio Melo Guevara</h2>
-                <p></p>
-            </div>
-
-            <div class="integrante">
-                <img src="#" alt="">
-                <h2>Edgar Esteban Erazo Lagos</h2>
-                <p></p>
-            </div>
-            <div class="integrante">
-                <img src="images/equipoimg/santiago.png" alt="">
-                <h2>Santiago Mariño Cortés</h2>
-                <p></p>
-            </div>
-            <div class="integrante">
-                <img src="images/equipoimg/juandavid.jpg" alt="">
-                <h2>Juan David Medina Perez</h2>
-                <p></p>
-            </div>
-
-            <div class="integrante">
-                <img src="images/equipoimg/carlos.jpg" alt="">
-                <h2>Carlos Quintero Quintero Castillo</h2>
-            </div>
         </div>
 
+        <a href="equipo.html">Equipo</a>
+
+        <div class="nav-dropdown">
+          <a href="index.html#reflexiones">Reflexiones</a>
+          <div class="dropdown-menu">
+            <a href="reflexion-gestion.html">Gestión del proyecto</a>
+            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+            <a href="reflexiones-individuales.html">Reflexiones individuales</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="index.html#anexos">Anexos</a>
+          <div class="dropdown-menu">
+            <a href="anexos/Portada.html">Portada</a>
+            <a href="anexos/Supuestos.html">Supuestos</a>
+            <a href="anexos/Trazabilidad_Proceso.html">Trazabilidad del proceso</a>
+          </div>
+        </div>
+
+        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">
+          Repositorio
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="team-page-hero">
+      <div class="container">
+        <p class="section-kicker">Equipo</p>
+        <h1>Equipo de trabajo</h1>
+        <p class="lead">
+          Grupo responsable del desarrollo conceptual, técnico y documental del proyecto Sincronizados,
+          una propuesta de consultoría industrial orientada a la automatización y coordinación de procesos.
+        </p>
+      </div>
     </section>
-        
-    
-    </body>
+
+    <section class="team-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Integrantes</h2>
+          <p>Personas que sostienen la propuesta, la estructuración técnica y la presentación del proyecto.</p>
+        </div>
+
+        <div class="team-members-grid">
+          <article class="member-card">
+            <img src="images/equipoimg/brayan.jpg" alt="Brayan Yesid Santos Guevara" class="member-photo">
+            <h2>Brayan Yesid Santos Guevara</h2>
+            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
+          </article>
+
+          <article class="member-card">
+            <img src="images/equipoimg/jorge.jpg" alt="Jorge Emilio Melo Guevara" class="member-photo">
+            <h2>Jorge Emilio Melo Guevara</h2>
+            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
+          </article>
+
+          <article class="member-card">
+            <div class="member-placeholder">EE</div>
+            <h2>Edgar Esteban Erazo Lagos</h2>
+            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
+          </article>
+
+          <article class="member-card">
+            <img src="images/equipoimg/santiago.png" alt="Santiago Mariño Cortés" class="member-photo">
+            <h2>Santiago Mariño Cortés</h2>
+            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
+          </article>
+
+          <article class="member-card">
+            <img src="images/equipoimg/juandavid.jpg" alt="Juan David Medina Perez" class="member-photo">
+            <h2>Juan David Medina Perez</h2>
+            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
+          </article>
+
+          <article class="member-card">
+            <img src="images/equipoimg/carlos.jpg" alt="Carlos Quintero Quintero Castillo" class="member-photo">
+            <h2>Carlos Quintero Quintero Castillo</h2>
+            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      navLinks.classList.toggle('is-open');
+    });
+  </script>
+</body>
 </html>
