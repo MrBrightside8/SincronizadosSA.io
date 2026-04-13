@@ -27,7 +27,6 @@
   --cta-bg: #3E5260;
   --cta-hover: #4A6170;
 
-  /* Se mantiene por compatibilidad, pero el panel ya no se apoya en esta caja */
   --panel-bg: rgba(106, 132, 145, 0.26);
 
   --border: rgba(225, 232, 236, 0.18);
@@ -148,7 +147,7 @@ img {
   position: relative;
 }
 
-/* El texto del menú no va morado */
+/* El texto del menú no va en violeta */
 .nav-links > a:hover,
 .nav-dropdown > a:hover,
 .nav-links > a.is-current {
@@ -299,12 +298,19 @@ img {
   align-items: start;
 }
 
+/* Devuelve cuerpo al bloque izquierdo */
 .hero-copy {
   max-width: 650px;
-  padding-top: 0.7rem;
+  padding: 1rem 1.15rem 1.15rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(225, 232, 236, 0.12);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* El violeta no va aquí porque se pierde */
+/* En oscuro no usar silver violet en texto */
 .eyebrow,
 .hero-copy .section-kicker,
 .hero-copy .mini-label,
@@ -440,7 +446,7 @@ img {
   justify-content: flex-end;
 }
 
-/* Panel derecho limpio: sin borde, sin caja */
+/* Panel derecho limpio */
 .hero-panel-inner {
   width: min(100%, 470px);
   padding: 0.2rem 0 0;
@@ -450,6 +456,9 @@ img {
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .hero-logo {
@@ -460,21 +469,22 @@ img {
   box-shadow: none;
   background: transparent;
   filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.10));
+  align-self: center;
 }
 
 .panel-kicker {
   display: none;
 }
 
-/* Slogan más pequeño, alineado, respirando mejor */
+/* Slogan más pequeño y mejor organizado */
 .hero-panel h2,
 .hero-panel-inner h2 {
-  margin: 0.15rem 0 0.5rem;
+  margin: 0.2rem 0 0.45rem;
   color: #F4F7F8;
-  font-size: clamp(1rem, 1.4vw, 1.22rem);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
   line-height: 1.34;
   letter-spacing: -0.01em;
-  max-width: 18ch;
+  max-width: 20ch;
   text-align: left;
   text-transform: none;
 }
@@ -486,15 +496,15 @@ img {
   font-size: 0.87rem;
   line-height: 1.5;
   color: rgba(244, 247, 248, 0.70);
-  max-width: 30ch;
+  max-width: 31ch;
 }
 
 .feature-pills {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 0.7rem;
-  margin-top: 1.1rem;
+  margin-top: 1rem;
 }
 
 .feature-pills span {
@@ -522,6 +532,7 @@ img {
   background: linear-gradient(180deg, transparent 0%, rgba(244, 247, 248, 0.06) 100%);
 }
 
+/* Base oscura */
 .intro-strip,
 .section,
 .content-section,
@@ -536,11 +547,35 @@ img {
   background: linear-gradient(135deg, #47778E 0%, #4E8098 45%, #508484 100%);
 }
 
-/* Aclaración global: primera sección después del hero */
+/* Alternancia clara / oscura global */
 .hero + .section,
 .page-hero + .section,
 .team-page-hero + .section,
 .section-light {
+  background: linear-gradient(180deg, #DCE7EC 0%, #D2E0E6 100%);
+}
+
+.hero + .section + .section,
+.page-hero + .section + .section,
+.team-page-hero + .section + .section {
+  background: linear-gradient(135deg, #4E8098 0%, #7397A5 52%, #508484 100%);
+}
+
+.hero + .section + .section + .section,
+.page-hero + .section + .section + .section,
+.team-page-hero + .section + .section + .section {
+  background: linear-gradient(180deg, #DCE7EC 0%, #D2E0E6 100%);
+}
+
+.hero + .section + .section + .section + .section,
+.page-hero + .section + .section + .section + .section,
+.team-page-hero + .section + .section + .section + .section {
+  background: linear-gradient(135deg, #4E8098 0%, #7397A5 52%, #508484 100%);
+}
+
+.hero + .section + .section + .section + .section + .section,
+.page-hero + .section + .section + .section + .section + .section,
+.team-page-hero + .section + .section + .section + .section + .section {
   background: linear-gradient(180deg, #DCE7EC 0%, #D2E0E6 100%);
 }
 
@@ -556,13 +591,27 @@ img {
   align-items: start;
 }
 
+/* Kicker oscuro = claro; kicker claro = violeta */
 .section-kicker {
   margin: 0 0 0.9rem;
   font-size: 0.95rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: rgba(244, 247, 248, 0.72);
+}
+
+.hero + .section .section-kicker,
+.page-hero + .section .section-kicker,
+.team-page-hero + .section .section-kicker,
+.hero + .section + .section + .section .section-kicker,
+.page-hero + .section + .section + .section .section-kicker,
+.team-page-hero + .section + .section + .section .section-kicker,
+.hero + .section + .section + .section + .section + .section .section-kicker,
+.page-hero + .section + .section + .section + .section + .section .section-kicker,
+.team-page-hero + .section + .section + .section + .section + .section .section-kicker,
+.section-light .section-kicker {
+  color: #7D7894;
 }
 
 .intro-strip h2,
@@ -607,14 +656,7 @@ img {
   background: linear-gradient(135deg, #4E8098 0%, #508484 100%);
 }
 
-/* Tipografía oscura y legible en la sección clara */
-.hero + .section .section-kicker,
-.page-hero + .section .section-kicker,
-.team-page-hero + .section .section-kicker,
-.section-light .section-kicker {
-  color: #7D7894;
-}
-
+/* Tipografía en secciones claras */
 .hero + .section h1,
 .hero + .section h2,
 .hero + .section h3,
@@ -624,6 +666,24 @@ img {
 .team-page-hero + .section h1,
 .team-page-hero + .section h2,
 .team-page-hero + .section h3,
+.hero + .section + .section + .section h1,
+.hero + .section + .section + .section h2,
+.hero + .section + .section + .section h3,
+.page-hero + .section + .section + .section h1,
+.page-hero + .section + .section + .section h2,
+.page-hero + .section + .section + .section h3,
+.team-page-hero + .section + .section + .section h1,
+.team-page-hero + .section + .section + .section h2,
+.team-page-hero + .section + .section + .section h3,
+.hero + .section + .section + .section + .section + .section h1,
+.hero + .section + .section + .section + .section + .section h2,
+.hero + .section + .section + .section + .section + .section h3,
+.page-hero + .section + .section + .section + .section + .section h1,
+.page-hero + .section + .section + .section + .section + .section h2,
+.page-hero + .section + .section + .section + .section + .section h3,
+.team-page-hero + .section + .section + .section + .section + .section h1,
+.team-page-hero + .section + .section + .section + .section + .section h2,
+.team-page-hero + .section + .section + .section + .section + .section h3,
 .section-light h1,
 .section-light h2,
 .section-light h3,
@@ -635,6 +695,12 @@ img {
 .hero + .section p,
 .page-hero + .section p,
 .team-page-hero + .section p,
+.hero + .section + .section + .section p,
+.page-hero + .section + .section + .section p,
+.team-page-hero + .section + .section + .section p,
+.hero + .section + .section + .section + .section + .section p,
+.page-hero + .section + .section + .section + .section + .section p,
+.team-page-hero + .section + .section + .section + .section + .section p,
 .section-light p,
 .section-light .section-heading p,
 .section-light .highlight-copy p,
@@ -642,6 +708,46 @@ img {
 .section-light .info-card p,
 .section-light .reflection-card p {
   color: #4E6673;
+}
+
+/* Tipografía en secciones oscuras */
+.hero + .section + .section h1,
+.hero + .section + .section h2,
+.hero + .section + .section h3,
+.page-hero + .section + .section h1,
+.page-hero + .section + .section h2,
+.page-hero + .section + .section h3,
+.team-page-hero + .section + .section h1,
+.team-page-hero + .section + .section h2,
+.team-page-hero + .section + .section h3,
+.hero + .section + .section + .section + .section h1,
+.hero + .section + .section + .section + .section h2,
+.hero + .section + .section + .section + .section h3,
+.page-hero + .section + .section + .section + .section h1,
+.page-hero + .section + .section + .section + .section h2,
+.page-hero + .section + .section + .section + .section h3,
+.team-page-hero + .section + .section + .section + .section h1,
+.team-page-hero + .section + .section + .section + .section h2,
+.team-page-hero + .section + .section + .section + .section h3 {
+  color: #FFFFFF;
+}
+
+.hero + .section + .section p,
+.page-hero + .section + .section p,
+.team-page-hero + .section + .section p,
+.hero + .section + .section + .section + .section p,
+.page-hero + .section + .section + .section + .section p,
+.team-page-hero + .section + .section + .section + .section p {
+  color: rgba(244, 247, 248, 0.84);
+}
+
+.hero + .section + .section .section-kicker,
+.page-hero + .section + .section .section-kicker,
+.team-page-hero + .section + .section .section-kicker,
+.hero + .section + .section + .section + .section .section-kicker,
+.page-hero + .section + .section + .section + .section .section-kicker,
+.team-page-hero + .section + .section + .section + .section .section-kicker {
+  color: rgba(244, 247, 248, 0.72);
 }
 
 /* =========================
@@ -670,6 +776,7 @@ img {
   -webkit-backdrop-filter: blur(10px);
 }
 
+/* Tarjetas claras en secciones claras */
 .hero + .section .info-card,
 .hero + .section .reflection-card,
 .hero + .section .highlight-card,
@@ -691,6 +798,48 @@ img {
 .team-page-hero + .section .member-card,
 .team-page-hero + .section .planning-card,
 .team-page-hero + .section .annex-card,
+.hero + .section + .section + .section .info-card,
+.hero + .section + .section + .section .reflection-card,
+.hero + .section + .section + .section .highlight-card,
+.hero + .section + .section + .section .team-card,
+.hero + .section + .section + .section .member-card,
+.hero + .section + .section + .section .planning-card,
+.hero + .section + .section + .section .annex-card,
+.page-hero + .section + .section + .section .info-card,
+.page-hero + .section + .section + .section .reflection-card,
+.page-hero + .section + .section + .section .highlight-card,
+.page-hero + .section + .section + .section .team-card,
+.page-hero + .section + .section + .section .member-card,
+.page-hero + .section + .section + .section .planning-card,
+.page-hero + .section + .section + .section .annex-card,
+.team-page-hero + .section + .section + .section .info-card,
+.team-page-hero + .section + .section + .section .reflection-card,
+.team-page-hero + .section + .section + .section .highlight-card,
+.team-page-hero + .section + .section + .section .team-card,
+.team-page-hero + .section + .section + .section .member-card,
+.team-page-hero + .section + .section + .section .planning-card,
+.team-page-hero + .section + .section + .section .annex-card,
+.hero + .section + .section + .section + .section + .section .info-card,
+.hero + .section + .section + .section + .section + .section .reflection-card,
+.hero + .section + .section + .section + .section + .section .highlight-card,
+.hero + .section + .section + .section + .section + .section .team-card,
+.hero + .section + .section + .section + .section + .section .member-card,
+.hero + .section + .section + .section + .section + .section .planning-card,
+.hero + .section + .section + .section + .section + .section .annex-card,
+.page-hero + .section + .section + .section + .section + .section .info-card,
+.page-hero + .section + .section + .section + .section + .section .reflection-card,
+.page-hero + .section + .section + .section + .section + .section .highlight-card,
+.page-hero + .section + .section + .section + .section + .section .team-card,
+.page-hero + .section + .section + .section + .section + .section .member-card,
+.page-hero + .section + .section + .section + .section + .section .planning-card,
+.page-hero + .section + .section + .section + .section + .section .annex-card,
+.team-page-hero + .section + .section + .section + .section + .section .info-card,
+.team-page-hero + .section + .section + .section + .section + .section .reflection-card,
+.team-page-hero + .section + .section + .section + .section + .section .highlight-card,
+.team-page-hero + .section + .section + .section + .section + .section .team-card,
+.team-page-hero + .section + .section + .section + .section + .section .member-card,
+.team-page-hero + .section + .section + .section + .section + .section .planning-card,
+.team-page-hero + .section + .section + .section + .section + .section .annex-card,
 .section-light .info-card,
 .section-light .reflection-card,
 .section-light .highlight-card,
@@ -743,6 +892,7 @@ img {
   font-weight: 800;
 }
 
+/* En claras, etiquetas oscuras */
 .hero + .section .card-tag,
 .hero + .section .mini-badge,
 .hero + .section .annex-card .card-tag,
@@ -752,6 +902,24 @@ img {
 .team-page-hero + .section .card-tag,
 .team-page-hero + .section .mini-badge,
 .team-page-hero + .section .annex-card .card-tag,
+.hero + .section + .section + .section .card-tag,
+.hero + .section + .section + .section .mini-badge,
+.hero + .section + .section + .section .annex-card .card-tag,
+.page-hero + .section + .section + .section .card-tag,
+.page-hero + .section + .section + .section .mini-badge,
+.page-hero + .section + .section + .section .annex-card .card-tag,
+.team-page-hero + .section + .section + .section .card-tag,
+.team-page-hero + .section + .section + .section .mini-badge,
+.team-page-hero + .section + .section + .section .annex-card .card-tag,
+.hero + .section + .section + .section + .section + .section .card-tag,
+.hero + .section + .section + .section + .section + .section .mini-badge,
+.hero + .section + .section + .section + .section + .section .annex-card .card-tag,
+.page-hero + .section + .section + .section + .section + .section .card-tag,
+.page-hero + .section + .section + .section + .section + .section .mini-badge,
+.page-hero + .section + .section + .section + .section + .section .annex-card .card-tag,
+.team-page-hero + .section + .section + .section + .section + .section .card-tag,
+.team-page-hero + .section + .section + .section + .section + .section .mini-badge,
+.team-page-hero + .section + .section + .section + .section + .section .annex-card .card-tag,
 .section-light .card-tag,
 .section-light .mini-badge,
 .section-light .annex-card .card-tag {
@@ -771,6 +939,7 @@ img {
   letter-spacing: -0.04em;
 }
 
+/* Títulos oscuros en secciones claras */
 .hero + .section .info-card h3,
 .hero + .section .reflection-card h3,
 .hero + .section .highlight-card h3,
@@ -780,6 +949,24 @@ img {
 .team-page-hero + .section .info-card h3,
 .team-page-hero + .section .reflection-card h3,
 .team-page-hero + .section .highlight-card h3,
+.hero + .section + .section + .section .info-card h3,
+.hero + .section + .section + .section .reflection-card h3,
+.hero + .section + .section + .section .highlight-card h3,
+.page-hero + .section + .section + .section .info-card h3,
+.page-hero + .section + .section + .section .reflection-card h3,
+.page-hero + .section + .section + .section .highlight-card h3,
+.team-page-hero + .section + .section + .section .info-card h3,
+.team-page-hero + .section + .section + .section .reflection-card h3,
+.team-page-hero + .section + .section + .section .highlight-card h3,
+.hero + .section + .section + .section + .section + .section .info-card h3,
+.hero + .section + .section + .section + .section + .section .reflection-card h3,
+.hero + .section + .section + .section + .section + .section .highlight-card h3,
+.page-hero + .section + .section + .section + .section + .section .info-card h3,
+.page-hero + .section + .section + .section + .section + .section .reflection-card h3,
+.page-hero + .section + .section + .section + .section + .section .highlight-card h3,
+.team-page-hero + .section + .section + .section + .section + .section .info-card h3,
+.team-page-hero + .section + .section + .section + .section + .section .reflection-card h3,
+.team-page-hero + .section + .section + .section + .section + .section .highlight-card h3,
 .section-light .info-card h3,
 .section-light .reflection-card h3,
 .section-light .highlight-card h3,
@@ -801,6 +988,7 @@ img {
   color: rgba(244, 247, 248, 0.84);
 }
 
+/* Texto oscuro en claras */
 .hero + .section .info-card p,
 .hero + .section .reflection-card p,
 .hero + .section .highlight-card p,
@@ -810,6 +998,24 @@ img {
 .team-page-hero + .section .info-card p,
 .team-page-hero + .section .reflection-card p,
 .team-page-hero + .section .highlight-card p,
+.hero + .section + .section + .section .info-card p,
+.hero + .section + .section + .section .reflection-card p,
+.hero + .section + .section + .section .highlight-card p,
+.page-hero + .section + .section + .section .info-card p,
+.page-hero + .section + .section + .section .reflection-card p,
+.page-hero + .section + .section + .section .highlight-card p,
+.team-page-hero + .section + .section + .section .info-card p,
+.team-page-hero + .section + .section + .section .reflection-card p,
+.team-page-hero + .section + .section + .section .highlight-card p,
+.hero + .section + .section + .section + .section + .section .info-card p,
+.hero + .section + .section + .section + .section + .section .reflection-card p,
+.hero + .section + .section + .section + .section + .section .highlight-card p,
+.page-hero + .section + .section + .section + .section + .section .info-card p,
+.page-hero + .section + .section + .section + .section + .section .reflection-card p,
+.page-hero + .section + .section + .section + .section + .section .highlight-card p,
+.team-page-hero + .section + .section + .section + .section + .section .info-card p,
+.team-page-hero + .section + .section + .section + .section + .section .reflection-card p,
+.team-page-hero + .section + .section + .section + .section + .section .highlight-card p,
 .section-light .info-card p,
 .section-light .reflection-card p,
 .section-light .highlight-card p,
@@ -1103,6 +1309,10 @@ footer a {
     grid-template-columns: 1fr;
   }
 
+  .hero-copy {
+    padding: 0.95rem 1rem 1rem;
+  }
+
   .hero-panel-inner {
     padding: 0;
   }
@@ -1122,6 +1332,10 @@ footer a {
   .hero-panel-inner p {
     max-width: 100%;
     text-align: left;
+  }
+
+  .feature-pills {
+    justify-content: flex-start;
   }
 
   .footer-content,
