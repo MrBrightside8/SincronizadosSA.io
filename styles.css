@@ -2,42 +2,34 @@
   /* =========================
      PALETA DE COLORES FINAL
      ========================= */
-  /* Air Force Blue Real (Protagonista) */
   --air-force-blue: #5D8AA8;
   --air-force-light: #86A9BE; 
   
-  /* Pine Blue (Secundario / Contraste) */
   --pine-blue: #3E6F7E;
   --pine-dark: #24404C;
 
-  /* Asignación de roles de fondo */
   --bg: var(--air-force-blue);
   --bg-soft: #467189;
   --bg-deep: var(--pine-dark);
   --bg-struct: #314955;
 
-  /* Superficies y transparencias */
   --surface: rgba(255, 255, 255, 0.08);
   --surface-strong: rgba(255, 255, 255, 0.12);
   --surface-hover: rgba(255, 255, 255, 0.16);
 
-  /* Textos */
   --text: #F4F7F8;
   --text-muted: rgba(244, 247, 248, 0.80);
   --text-dark: #24404C;
   --text-dark-muted: #486974;
 
-  /* Acentos y Botones */
   --accent: #DAF0EE;
   --cta-bg: var(--pine-dark);
   --cta-hover: var(--pine-blue);
 
-  /* Elementos UI */
   --header-bg: rgba(36, 64, 76, 0.85);
   --panel-bg: rgba(36, 64, 76, 0.35);
   --border: rgba(255, 255, 255, 0.15);
 
-  /* Sombras y Radios */
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 18px 42px rgba(0, 0, 0, 0.18);
   --shadow-glow: 0 0 20px rgba(106, 153, 176, 0.3);
@@ -104,7 +96,6 @@ img {
   min-height: 82px;
 }
 
-/* BRAND / LOGO */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -126,7 +117,6 @@ img {
   transform: scale(1.05);
 }
 
-/* SOLUCIÓN: Tipografía de Consultoría Industrial */
 .brand-copy {
   display: flex;
   flex-direction: column;
@@ -144,13 +134,12 @@ img {
 .brand-tag {
   font-size: 0.7rem;
   font-weight: 500;
-  color: #94a3b8; /* Gris azulado para que no compita */
+  color: #94a3b8;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-top: 3px;
 }
 
-/* ENLACES DE NAVEGACIÓN */
 .nav-links {
   display: flex;
   align-items: center;
@@ -188,9 +177,6 @@ img {
   width: 100%;
 }
 
-/* =========================
-   MENÚ DESPLEGABLE (CORREGIDO Y LIMPIO)
-   ========================= */
 .nav-dropdown {
   position: relative;
   display: inline-block;
@@ -207,12 +193,10 @@ img {
   border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
   z-index: 1000;
-  
   opacity: 0;
   visibility: hidden;
   transform: translateY(15px);
   transition: all 0.3s ease;
-  
   display: flex;
   flex-direction: column;
 }
@@ -240,7 +224,6 @@ img {
   color: #FFF;
 }
 
-/* BOTÓN REPOSITORIO */
 .nav-button {
   display: inline-flex;
   align-items: center;
@@ -262,21 +245,16 @@ img {
   box-shadow: var(--shadow-glow);
 }
 
-/* SOLUCIÓN: Ocultar botón hamburguesa en PC y darle estilo en móvil */
-@media (min-width: 1081px) {
-  .menu-toggle {
-    display: none !important;
-  }
-}
 .menu-toggle {
+  display: none;
   background: none;
   border: none;
   cursor: pointer;
-  display: flex;
   flex-direction: column;
   gap: 5px;
   padding: 5px;
 }
+
 .menu-toggle span {
   display: block;
   width: 25px;
@@ -294,12 +272,11 @@ img {
   padding: 1.8rem 0 4rem;
 }
 
-/* SOLUCIÓN: Alineación equilibrada de columnas */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
-  align-items: start; /* Esto centra verticalmente ambas partes */
+  align-items: start;
 }
 
 .hero-copy {
@@ -340,7 +317,6 @@ img {
   color: var(--text-muted);
 }
 
-
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -370,6 +346,21 @@ img {
   background: var(--cta-hover);
   transform: translateY(-3px);
   box-shadow: var(--shadow-lg);
+}
+
+.button-secondary,
+.button-ghost {
+  background: var(--surface);
+  color: #FFF;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.button-secondary:hover,
+.button-ghost:hover {
+  background: var(--surface-hover);
+  transform: translateY(-3px);
 }
 
 .hero-metrics {
@@ -402,7 +393,7 @@ img {
 }
 
 /* =========================
-   PANEL DERECHO
+   PANEL DERECHO (HERO)
    ========================= */
 .hero-panel {
   display: flex;
@@ -436,7 +427,6 @@ img {
   transform: scale(1.05) translateY(-5px);
 }
 
-/* SOLUCIÓN: Ajuste del texto Sincronizados bajo el logo */
 .panel-kicker {
   font-size: 0.85rem;
   font-weight: 700;
@@ -490,11 +480,12 @@ img {
 }
 
 /* =========================
-   ALTERNANCIA DE SECCIONES (COLORES CLAROS Y OSCUROS)
+   ESTILOS GENERALES DE SECCIÓN (Y ALTERNANCIA)
    ========================= */
 
-/* 1. Fondo predeterminado (Oscuro) para las secciones pares (2, 4, 6, 8...) */
+/* 1. SECCIÓN OSCURA (PREDETERMINADA) */
 .section {
+  padding: 5rem 0; /* RECUPERA EL ESPACIADO ARRIBA Y ABAJO */
   background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
   color: var(--text);
 }
@@ -502,143 +493,14 @@ img {
 .section h2, 
 .section h3 {
   color: #FFF;
+  font-weight: 800; /* RECUPERA LA NEGRILLA */
 }
 
 .section p {
   color: var(--text-muted);
 }
 
-/* 2. Fondo Claro para las secciones impares (1, 3, 5, 7, 9...) de forma INFINITA */
-/* Cambiamos el blanco roto por un azul/gris acero suave, mucho más acorde a tu identidad */
-.section-light, 
-.section:nth-of-type(odd) {
-  background: linear-gradient(180deg, #83A6BA 0%, #6990A8 100%);
-  color: var(--pine-dark);
-}
-
-.section-light h2, 
-.section:nth-of-type(odd) h2, 
-.section-light h3, 
-.section:nth-of-type(odd) h3 {
-  color: var(--pine-dark);
-}
-
-.section-light p, 
-.section:nth-of-type(odd) p {
-  color: #314C5B; /* Un azul muy oscuro para que el texto se lea perfecto */
-}
-
-/* 3. Adaptación de las Tarjetas (Cards) en las secciones claras */
-.section-light .info-card, 
-.section-light .reflection-card, 
-.section:nth-of-type(odd) .info-card, 
-.section:nth-of-type(odd) .reflection-card {
-  background: rgba(255, 255, 255, 0.30); /* Un poco de transparencia para que se funda con el fondo */
-  border: 1px solid rgba(36, 64, 76, 0.15);
-  box-shadow: var(--shadow-sm);
-}
-
-.section-light .info-card h3, 
-.section-light .reflection-card h3,
-.section:nth-of-type(odd) .info-card h3, 
-.section:nth-of-type(odd) .reflection-card h3 {
-  color: var(--pine-dark);
-}
-
-.section-light .info-card p, 
-.section-light .reflection-card p,
-.section:nth-of-type(odd) .info-card p, 
-.section:nth-of-type(odd) .reflection-card p {
-  color: #314C5B;
-}
-
-.section-light .card-tag, 
-.section:nth-of-type(odd) .card-tag {
-  background: rgba(36, 64, 76, 0.12);
-  color: var(--pine-dark);
-  border: 1px solid rgba(36, 64, 76, 0.22);
-}
-/* =========================
-   FOOTER
-   ========================= */
-.site-footer {
-  background: var(--pine-dark);
-  padding: 2.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--text-muted);
-  text-align: center;
-}
-
-.site-footer p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-@media (max-width: 1080px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  
-  .hero-copy {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero-panel {
-    justify-content: center;
-    margin-top: 2rem;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .nav-links {
-    display: none; 
-  }
-  
-  .menu-toggle {
-    display: flex !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-metrics {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-logo {
-    width: min(100%, 260px);
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-}
-/* =========================================================
-   PARCHE DE CIERRE — completa lo que falta del CSS actual
-   ========================================================= */
-
-/* 1) El botón hamburguesa NO debe verse en escritorio */
-.menu-toggle {
-  display: none;
-}
-
-.menu-toggle span {
-  display: block;
-  width: 25px;
-  height: 2px;
-  background-color: #FFF;
-  border-radius: 2px;
-}
-
-/* 2) Layouts que faltan para secciones */
+/* Layouts internos de sección */
 .intro-strip-grid,
 .split-highlight {
   display: grid;
@@ -665,7 +527,27 @@ img {
   line-height: 1.65;
 }
 
-/* 3) Tarjetas: esto es lo que te está faltando y por eso se ve en texto plano */
+/* 2. SECCIÓN CLARA (AZUL ACERO) */
+.section.section-light {
+  background: linear-gradient(180deg, #83A6BA 0%, #6990A8 100%);
+  color: var(--pine-dark);
+}
+
+.section.section-light h2, 
+.section.section-light h3 {
+  color: var(--pine-dark);
+  font-weight: 800;
+}
+
+.section.section-light p {
+  color: #24404C;
+}
+
+/* =========================
+   TARJETAS Y COMPONENTES
+   ========================= */
+
+/* Estilos base de tarjetas (Para fondos oscuros) */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -723,45 +605,35 @@ img {
   line-height: 1.55;
 }
 
-/* 4) Cuando la sección es clara, las tarjetas también deben adaptarse */
-.section-light .info-card,
-.section-light .reflection-card,
-.hero + .section .info-card,
-.hero + .section .reflection-card,
-.hero + .section + .section + .section .info-card,
-.hero + .section + .section + .section .reflection-card {
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid rgba(36, 64, 76, 0.10);
+/* Adaptación de las tarjetas CUANDO están en una sección clara */
+.section.section-light .info-card, 
+.section.section-light .reflection-card,
+.section.section-light .highlight-card {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(36, 64, 76, 0.15);
   box-shadow: var(--shadow-sm);
 }
 
-.section-light .info-card h3,
-.section-light .reflection-card h3,
-.hero + .section .info-card h3,
-.hero + .section .reflection-card h3,
-.hero + .section + .section + .section .info-card h3,
-.hero + .section + .section + .section .reflection-card h3 {
+.section.section-light .info-card h3, 
+.section.section-light .reflection-card h3,
+.section.section-light .highlight-copy h2 {
   color: var(--pine-dark);
 }
 
-.section-light .info-card p,
-.section-light .reflection-card p,
-.hero + .section .info-card p,
-.hero + .section .reflection-card p,
-.hero + .section + .section + .section .info-card p,
-.hero + .section + .section + .section .reflection-card p {
-  color: var(--text-dark-muted);
+.section.section-light .info-card p, 
+.section.section-light .reflection-card p,
+.section.section-light .highlight-copy p {
+  color: #24404C;
 }
 
-.section-light .card-tag,
-.hero + .section .card-tag,
-.hero + .section + .section + .section .card-tag {
-  background: rgba(62, 111, 126, 0.10);
-  color: var(--pine-blue);
-  border: 1px solid rgba(62, 111, 126, 0.18);
+.section.section-light .card-tag,
+.section.section-light .mini-badge {
+  background: rgba(36, 64, 76, 0.12);
+  color: var(--pine-dark);
+  border: 1px solid rgba(36, 64, 76, 0.22);
 }
 
-/* 5) Highlight y reflexiones */
+/* Otros elementos de contenido */
 .highlight-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -816,23 +688,17 @@ img {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-/* 6) Botones secundarios del hero */
-.button-secondary,
-.button-ghost {
-  background: var(--surface);
-  color: #FFF;
-  border: 1px solid var(--border);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+/* =========================
+   FOOTER
+   ========================= */
+.site-footer {
+  background: var(--pine-dark);
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-muted);
+  text-align: center;
 }
 
-.button-secondary:hover,
-.button-ghost:hover {
-  background: var(--surface-hover);
-  transform: translateY(-3px);
-}
-
-/* 7) Footer cerrado */
 .footer-content {
   display: flex;
   align-items: center;
@@ -847,13 +713,17 @@ img {
   margin: 0 0 0.3rem 0;
 }
 
-/* 8) Responsive real */
+.site-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 1080px) {
   .menu-toggle {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px;
   }
 
   .hero-grid,
@@ -862,7 +732,7 @@ img {
     grid-template-columns: 1fr;
     text-align: center;
   }
-
+  
   .hero-copy {
     margin: 0 auto;
     display: flex;
@@ -880,9 +750,9 @@ img {
   }
 
   .nav-links {
-    display: none;
+    display: none; 
   }
-
+  
   .nav-links.is-open {
     display: flex;
     width: 100%;
@@ -900,13 +770,6 @@ img {
 }
 
 @media (max-width: 768px) {
-  .card-grid,
-  .hero-metrics,
-  .reflection-list,
-  .annex-grid {
-    grid-template-columns: 1fr;
-  }
-
   .hero {
     padding: 3rem 0;
   }
@@ -919,7 +782,91 @@ img {
     padding: 3.5rem 0;
   }
 
+  .hero-metrics,
+  .card-grid,
+  .reflection-list,
+  .annex-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-logo {
+    width: min(100%, 260px);
+  }
+
   .feature-pills {
     max-width: 100%;
   }
+}
+
+/* Compatibilidad con tu HTML actual */
+.section.intro-strip,
+.section.section-alt,
+.section.section-soft {
+  background: linear-gradient(180deg, #83A6BA 0%, #6990A8 100%);
+  color: var(--pine-dark);
+}
+
+.section.intro-strip h2,
+.section.intro-strip h3,
+.section.section-alt h2,
+.section.section-alt h3,
+.section.section-soft h2,
+.section.section-soft h3 {
+  color: var(--pine-dark);
+  font-weight: 800;
+}
+
+.section.intro-strip p,
+.section.section-alt p,
+.section.section-soft p {
+  color: #24404C;
+}
+
+.section.intro-strip .info-card,
+.section.intro-strip .reflection-card,
+.section.intro-strip .highlight-card,
+.section.section-alt .info-card,
+.section.section-alt .reflection-card,
+.section.section-alt .highlight-card,
+.section.section-soft .info-card,
+.section.section-soft .reflection-card,
+.section.section-soft .highlight-card {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(36, 64, 76, 0.15);
+  box-shadow: var(--shadow-sm);
+}
+
+.section.intro-strip .info-card h3,
+.section.intro-strip .reflection-card h3,
+.section.intro-strip .highlight-copy h2,
+.section.section-alt .info-card h3,
+.section.section-alt .reflection-card h3,
+.section.section-alt .highlight-copy h2,
+.section.section-soft .info-card h3,
+.section.section-soft .reflection-card h3,
+.section.section-soft .highlight-copy h2 {
+  color: var(--pine-dark);
+}
+
+.section.intro-strip .info-card p,
+.section.intro-strip .reflection-card p,
+.section.intro-strip .highlight-copy p,
+.section.section-alt .info-card p,
+.section.section-alt .reflection-card p,
+.section.section-alt .highlight-copy p,
+.section.section-soft .info-card p,
+.section.section-soft .reflection-card p,
+.section.section-soft .highlight-copy p {
+  color: #24404C;
+}
+
+.section.intro-strip .card-tag,
+.section.intro-strip .mini-badge,
+.section.section-alt .card-tag,
+.section.section-alt .mini-badge,
+.section.section-soft .card-tag,
+.section.section-soft .mini-badge {
+  background: rgba(36, 64, 76, 0.12);
+  color: var(--pine-dark);
+  border: 1px solid rgba(36, 64, 76, 0.22);
 }
