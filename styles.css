@@ -304,7 +304,9 @@ img {
 
 .hero-copy {
   max-width: 650px;
+  align-self: start;
   padding-top: 0;
+  margin-top: -0.35rem;
 }
 
 .eyebrow {
@@ -325,18 +327,19 @@ img {
 }
 
 .hero-company {
-  margin: 1rem 0 0;
+  margin: 0.7rem 0 0;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-muted);
 }
 
 .lead {
-  margin: 1.5rem 0 0;
+  margin: 1.1rem 0 0;
   font-size: clamp(1.05rem, 1.3vw, 1.15rem);
   line-height: 1.6;
   color: var(--text-muted);
 }
+
 
 .hero-actions {
   display: flex;
