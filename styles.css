@@ -597,3 +597,305 @@ img {
     font-size: 2.5rem;
   }
 }
+/* =========================================================
+   PARCHE DE CIERRE — completa lo que falta del CSS actual
+   ========================================================= */
+
+/* 1) El botón hamburguesa NO debe verse en escritorio */
+.menu-toggle {
+  display: none;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #FFF;
+  border-radius: 2px;
+}
+
+/* 2) Layouts que faltan para secciones */
+.intro-strip-grid,
+.split-highlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 2rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.section-heading p {
+  margin: 0.9rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* 3) Tarjetas: esto es lo que te está faltando y por eso se ve en texto plano */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.2rem;
+}
+
+.info-card,
+.reflection-card {
+  display: block;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.info-card:hover,
+.reflection-card:hover {
+  transform: translateY(-6px);
+  background: var(--surface-hover);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.info-card h3,
+.reflection-card h3 {
+  margin: 0 0 0.8rem 0;
+  font-size: 1.4rem;
+  line-height: 1.12;
+  color: #FFFFFF;
+}
+
+.info-card p,
+.reflection-card p {
+  margin: 0;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* 4) Cuando la sección es clara, las tarjetas también deben adaptarse */
+.section-light .info-card,
+.section-light .reflection-card,
+.hero + .section .info-card,
+.hero + .section .reflection-card,
+.hero + .section + .section + .section .info-card,
+.hero + .section + .section + .section .reflection-card {
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(36, 64, 76, 0.10);
+  box-shadow: var(--shadow-sm);
+}
+
+.section-light .info-card h3,
+.section-light .reflection-card h3,
+.hero + .section .info-card h3,
+.hero + .section .reflection-card h3,
+.hero + .section + .section + .section .info-card h3,
+.hero + .section + .section + .section .reflection-card h3 {
+  color: var(--pine-dark);
+}
+
+.section-light .info-card p,
+.section-light .reflection-card p,
+.hero + .section .info-card p,
+.hero + .section .reflection-card p,
+.hero + .section + .section + .section .info-card p,
+.hero + .section + .section + .section .reflection-card p {
+  color: var(--text-dark-muted);
+}
+
+.section-light .card-tag,
+.hero + .section .card-tag,
+.hero + .section + .section + .section .card-tag {
+  background: rgba(62, 111, 126, 0.10);
+  color: var(--pine-blue);
+  border: 1px solid rgba(62, 111, 126, 0.18);
+}
+
+/* 5) Highlight y reflexiones */
+.highlight-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mini-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  min-height: 34px;
+  padding: 0 0.85rem;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  color: #FFFFFF;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.highlight-copy h2 {
+  margin: 0;
+}
+
+.highlight-copy p {
+  margin: 1rem 0 0;
+  line-height: 1.65;
+}
+
+.text-link {
+  display: inline-flex;
+  margin-top: 1.3rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  opacity: 0.85;
+}
+
+.reflection-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.annex-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* 6) Botones secundarios del hero */
+.button-secondary,
+.button-ghost {
+  background: var(--surface);
+  color: #FFF;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.button-secondary:hover,
+.button-ghost:hover {
+  background: var(--surface-hover);
+  transform: translateY(-3px);
+}
+
+/* 7) Footer cerrado */
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.footer-title {
+  color: #FFF;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0 0 0.3rem 0;
+}
+
+/* 8) Responsive real */
+@media (max-width: 1080px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .hero-grid,
+  .intro-strip-grid,
+  .split-highlight {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-copy {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-panel {
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    padding-top: 1rem;
+  }
+
+  .nav-links > a,
+  .nav-dropdown > a,
+  .nav-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid,
+  .hero-metrics,
+  .reflection-list,
+  .annex-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 3rem 0;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .feature-pills {
+    max-width: 100%;
+  }
+}
