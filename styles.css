@@ -291,7 +291,7 @@ img {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 5rem 0 4.5rem;
+  padding: 1.8rem 0 4rem;
 }
 
 /* SOLUCIÓN: Alineación equilibrada de columnas */
@@ -299,11 +299,12 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
-  align-items: center; /* Esto centra verticalmente ambas partes */
+  align-items: start; /* Esto centra verticalmente ambas partes */
 }
 
 .hero-copy {
   max-width: 650px;
+  padding-top: 0;
 }
 
 .eyebrow {
