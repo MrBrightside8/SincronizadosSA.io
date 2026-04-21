@@ -559,3 +559,54 @@ img {
     font-size: 2.5rem;
   }
 }
+/* 1. El contenedor padre debe ser la referencia */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* 2. Ocultar el submenú y darle formato de bloque flotante */
+.nav-dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #2c4c5b; /* Ajusta este color al de tu header */
+  min-width: 250px;
+  padding: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  
+  /* Ocultamiento con transición suave */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.3s ease;
+  
+  /* Asegurar que los links caigan en lista */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 3. Mostrar el menú al pasar el mouse por el padre */
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 4. Formato de los enlaces dentro del submenú */
+.nav-dropdown .dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  white-space: normal; /* Evita que el texto largo rompa la caja */
+}
+
+/* Efecto hover en los enlaces internos */
+.nav-dropdown .dropdown-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
