@@ -461,6 +461,8 @@ img {
   line-height: 1.52;
   margin: 0 auto 1.6rem auto;
   max-width: 31ch;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .feature-pills {
