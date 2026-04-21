@@ -104,6 +104,7 @@ img {
   min-height: 82px;
 }
 
+/* BRAND / LOGO */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -125,9 +126,11 @@ img {
   transform: scale(1.05);
 }
 
+/* SOLUCIÓN: Tipografía de Consultoría Industrial */
 .brand-copy {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .brand-name {
@@ -135,15 +138,19 @@ img {
   font-weight: 800;
   color: #FFF;
   letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .brand-tag {
-  font-size: 0.75rem;
-  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #94a3b8; /* Gris azulado para que no compita */
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  margin-top: 3px;
 }
 
+/* ENLACES DE NAVEGACIÓN */
 .nav-links {
   display: flex;
   align-items: center;
@@ -154,7 +161,6 @@ img {
 }
 
 .nav-links > a,
-.nav-links > li > a,
 .nav-dropdown > a {
   text-decoration: none;
   color: #FFFFFF;
@@ -166,7 +172,6 @@ img {
 }
 
 .nav-links > a::after,
-.nav-links > li > a::after,
 .nav-dropdown > a::after {
   content: "";
   position: absolute;
@@ -179,65 +184,63 @@ img {
 }
 
 .nav-links > a:hover::after,
-.nav-links > li > a:hover::after,
 .nav-dropdown > a:hover::after {
   width: 100%;
 }
 
-/* Dropdown Oculto Estructuralmente (Para que no rompa la barra) */
+/* =========================
+   MENÚ DESPLEGABLE (CORREGIDO Y LIMPIO)
+   ========================= */
 .nav-dropdown {
   position: relative;
-  padding: 0.5rem 0;
+  display: inline-block;
 }
 
-.nav-dropdown ul,
-.nav-dropdown .dropdown-content,
-.nav-dropdown div {
+.nav-dropdown .dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--header-bg);
-  min-width: 240px;
-  padding: 1rem;
+  background-color: var(--pine-dark);
+  min-width: 250px;
+  padding: 10px 0;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
+  transform: translateY(15px);
   transition: all 0.3s ease;
+  
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  z-index: 50;
-  list-style: none;
-  margin: 0;
 }
 
-.nav-dropdown:hover ul,
-.nav-dropdown:hover .dropdown-content,
-.nav-dropdown:hover div {
+.nav-dropdown:hover .dropdown-menu {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
 
-.nav-dropdown ul a,
-.nav-dropdown .dropdown-content a,
-.nav-dropdown div a {
+.nav-dropdown .dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
   color: var(--text-muted);
+  text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
-  text-decoration: none;
-  display: block;
+  line-height: 1.4;
+  white-space: normal;
+  transition: all 0.2s ease;
 }
 
-.nav-dropdown ul a:hover,
-.nav-dropdown .dropdown-content a:hover,
-.nav-dropdown div a:hover {
+.nav-dropdown .dropdown-menu a:hover {
+  background-color: var(--surface-hover);
   color: #FFF;
 }
 
+/* BOTÓN REPOSITORIO */
 .nav-button {
   display: inline-flex;
   align-items: center;
@@ -259,6 +262,29 @@ img {
   box-shadow: var(--shadow-glow);
 }
 
+/* SOLUCIÓN: Ocultar botón hamburguesa en PC y darle estilo en móvil */
+@media (min-width: 1081px) {
+  .menu-toggle {
+    display: none !important;
+  }
+}
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+}
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #FFF;
+  border-radius: 2px;
+}
+
 /* =========================
    HERO SECTION
    ========================= */
@@ -268,11 +294,12 @@ img {
   padding: 5rem 0 4.5rem;
 }
 
+/* SOLUCIÓN: Alineación equilibrada de columnas */
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(340px, 0.8fr);
+  grid-template-columns: 1fr 1fr;
   gap: clamp(2rem, 4vw, 4rem);
-  align-items: center;
+  align-items: center; /* Esto centra verticalmente ambas partes */
 }
 
 .hero-copy {
@@ -291,7 +318,7 @@ img {
 .hero h1 {
   margin: 0;
   color: #FFF;
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(3rem, 5vw, 4.5rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
 }
@@ -305,7 +332,7 @@ img {
 
 .lead {
   margin: 1.5rem 0 0;
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-size: clamp(1.05rem, 1.3vw, 1.15rem);
   line-height: 1.6;
   color: var(--text-muted);
 }
@@ -395,14 +422,25 @@ img {
 }
 
 .hero-logo {
-  width: min(100%, 290px);
-  margin: 0 auto 1.8rem auto;
+  width: min(100%, 260px);
+  margin: 0 auto 1.5rem auto;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.25));
   transition: transform 0.5s ease;
 }
 
 .hero-panel-inner:hover .hero-logo {
   transform: scale(1.05) translateY(-5px);
+}
+
+/* SOLUCIÓN: Ajuste del texto Sincronizados bajo el logo */
+.panel-kicker {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 .hero-panel-inner h2 {
@@ -452,7 +490,6 @@ img {
   padding: 5rem 0;
 }
 
-/* Sección 2 y 4 (Claras) */
 .section-light,
 .hero + .section,
 .hero + .section + .section + .section {
@@ -460,7 +497,6 @@ img {
   color: var(--text-dark);
 }
 
-/* Sección 3 y 5 (Oscuras) */
 .hero + .section + .section {
   background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
 }
@@ -469,7 +505,6 @@ img {
   background: linear-gradient(135deg, var(--bg) 0%, var(--bg-soft) 40%, var(--bg-deep) 100%);
 }
 
-/* Ajuste de textos en Secciones Claras */
 .section-light h2,
 .hero + .section h2,
 .hero + .section + .section + .section h2 {
@@ -482,7 +517,6 @@ img {
   color: var(--text-dark-muted);
 }
 
-/* Ajuste de textos en Secciones Oscuras (Corregido) */
 .hero + .section + .section .section-kicker,
 .hero + .section + .section + .section + .section .section-kicker {
   color: rgba(244, 247, 248, 0.76);
@@ -544,6 +578,10 @@ img {
   .nav-links {
     display: none; 
   }
+  
+  .menu-toggle {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -558,55 +596,4 @@ img {
   .hero h1 {
     font-size: 2.5rem;
   }
-}
-/* 1. El contenedor padre debe ser la referencia */
-.nav-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* 2. Ocultar el submenú y darle formato de bloque flotante */
-.nav-dropdown .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #2c4c5b; /* Ajusta este color al de tu header */
-  min-width: 250px;
-  padding: 10px 0;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  
-  /* Ocultamiento con transición suave */
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(15px);
-  transition: all 0.3s ease;
-  
-  /* Asegurar que los links caigan en lista */
-  display: flex;
-  flex-direction: column;
-}
-
-/* 3. Mostrar el menú al pasar el mouse por el padre */
-.nav-dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* 4. Formato de los enlaces dentro del submenú */
-.nav-dropdown .dropdown-menu a {
-  display: block;
-  padding: 12px 20px;
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  white-space: normal; /* Evita que el texto largo rompa la caja */
-}
-
-/* Efecto hover en los enlaces internos */
-.nav-dropdown .dropdown-menu a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }
