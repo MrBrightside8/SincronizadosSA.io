@@ -18,19 +18,19 @@ body {
   justify-content: space-between;
   gap: 1rem;
   padding: 12px 20px;
-  background: #05101f;
-  border-bottom: 2px solid #1a6fd4;
+  background: #2C4650;
+  border-bottom: 2px solid #B98A45;
   font-family: 'IBM Plex Sans', Arial, sans-serif;
   font-size: 14px;
   margin-bottom: 20px;
 }
 .sheet-top a {
-  color: #3d8ef0;
+  color: #D9B475;
   text-decoration: none;
   font-weight: 600;
 }
-.sheet-top a:hover { color: #f0f5ff; }
-.sheet-top span { color: #7a92b3; font-size: 12.5px; letter-spacing: .4px; }
+.sheet-top a:hover { color: #ffffff; }
+.sheet-top span { color: #9fb3ba; font-size: 12.5px; letter-spacing: .4px; }
 
 /* Cuadrícula */
 .ritz .waffle {

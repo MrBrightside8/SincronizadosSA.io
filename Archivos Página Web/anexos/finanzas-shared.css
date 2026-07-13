@@ -627,3 +627,51 @@ a:hover { color: var(--white); }
   .fin-footer-nav { flex-direction: column; }
   .fin-fnav-item--next { text-align: left; margin-left: 0; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   ADAPTACIÓN AL TEMA CLARO DEL SITIO (paleta del logo:
+   teal + dorado sobre fondo claro). Redefine las variables y
+   los pocos valores fijos del tema oscuro original.
+═══════════════════════════════════════════════════════════ */
+:root {
+  --navy:       #FAFAF8;   /* fondo de página */
+  --navy-2:     #FFFFFF;   /* superficies */
+  --navy-3:     #FFFFFF;   /* tarjetas */
+  --navy-4:     #EDF2F3;   /* superficies suaves */
+  --blue:       #3F646F;   /* teal del logo (primario) */
+  --blue-lt:    #2C4650;   /* teal oscuro (énfasis/texto de acento) */
+  --blue-pale:  rgba(63,100,111,.10);
+  --blue-glow:  rgba(63,100,111,.18);
+  --green:      #3E7D53;
+  --green-pale: rgba(62,125,83,.10);
+  --red:        #A94452;
+  --red-pale:   rgba(169,68,82,.08);
+  --amber:      #B98A45;   /* dorado del logo */
+  --amber-pale: rgba(185,138,69,.12);
+  --white:      #26343B;   /* texto principal (sobre claro) */
+  --muted:      #5E7079;
+  --muted-2:    #8A99A1;
+  --border:     #E3E8E9;
+  --border-2:   #EEF1F2;
+}
+
+/* Valores fijos del tema oscuro que deben aclararse */
+.fin-header { background: rgba(250,250,248,.94); }
+.fin-hero {
+  background:
+    radial-gradient(ellipse 60% 80% at 80% -20%, rgba(63,100,111,.10) 0%, transparent 65%),
+    linear-gradient(180deg, #FFFFFF, var(--navy)) !important;
+}
+.fin-page-nav a:hover,
+.fin-page-nav a.current { background: rgba(63,100,111,.12); }
+.fin-table tbody tr:hover td { background: rgba(63,100,111,.05); }
+.fin-table .grand-total td { background: rgba(63,100,111,.10); }
+.kpi--green { border-color: rgba(62,125,83,.3); }
+.kpi--red   { border-color: rgba(169,68,82,.3); }
+.kpi--amber { border-color: rgba(185,138,69,.35); }
+.scroll-bar { box-shadow: none; }
+
+/* Sombra de tarjetas apta para fondo claro */
+.kpi, .info-card, .fin-section {
+  box-shadow: 0 1px 2px rgba(38,52,59,.05), 0 4px 14px rgba(38,52,59,.05);
+}
