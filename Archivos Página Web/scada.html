@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Celda de manufactura robotizada | Sincronizados</title>
-  <meta name="description" content="Justificación de la robotización, diseño de la celda de paletizado, simulación en RobotStudio y análisis de riesgos." />
+  <title>SCADA | Sincronizados</title>
+  <meta name="description" content="Interfaz HMI bajo ISA-101, supervisión y control con Ignition, comunicación OPC y validación integrada con el gemelo digital." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,10 +34,10 @@
             <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
             <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
             <a href="planeacion.html"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
-            <a href="celdas-roboticas.html" class="is-current"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
             <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
             <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
-            <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
+            <a href="scada.html" class="is-current"><span class="menu-num">07</span>SCADA</a>
           </div>
         </div>
 
@@ -61,14 +61,14 @@
   <main>
     <section class="module-hero">
       <div class="container">
-        <p class="module-num">Módulo 04 · APM 2026-1S</p>
-        <h1>Celda de manufactura robotizada</h1>
-        <p class="lead">Justificación, diseño técnico, simulación en RobotStudio y análisis de riesgos.</p>
+        <p class="module-num">Módulo 07 · APM 2026-1S</p>
+        <h1>SCADA</h1>
+        <p class="lead">HMI bajo ISA-101, supervisión con Ignition, comunicación OPC y validación integrada.</p>
         <div class="module-chips">
-          <span class="chip"><strong>RobotStudio</strong> · Simulación</span>
-          <span class="chip">Paletizado</span>
-          <span class="chip">Seguridad industrial</span>
-          <span class="chip">Análisis de riesgos</span>
+          <span class="chip"><strong>ISA-101</strong> · Diseño HMI</span>
+          <span class="chip"><strong>Ignition</strong> · Supervisión</span>
+          <span class="chip">OPC</span>
+          <span class="chip">Alarmas y tendencias</span>
         </div>
       </div>
     </section>
@@ -80,43 +80,39 @@
           <h2>Qué evidencia este módulo</h2>
         </div>
         <ul class="rubric-list">
-          <li>Justificación de la robotización de la etapa seleccionada.</li>
-          <li>Diseño técnico de la celda considerando flujo de materiales y seguridad.</li>
-          <li>Simulación funcional en RobotStudio.</li>
-          <li>Análisis de riesgos con medidas de mitigación.</li>
+          <li>Diseño de una interfaz HMI bajo estándares ISA-101.</li>
+          <li>Supervisión y control del proceso mediante SCADA (Ignition) con comunicación OPC.</li>
+          <li>Validación funcional integrada con el gemelo digital.</li>
         </ul>
       </div>
     </section>
 
-    <section class="section" id="justificacion">
+    <section class="section" id="scada-sistema">
       <div class="container">
-        <p class="section-kicker">Diseño</p>
+        <p class="section-kicker">Supervisión</p>
         <div class="section-heading">
-          <h2>Celda robótica de paletizado</h2>
-          <p>La etapa de paletizado de las líneas Coca-Cola y Monster se robotiza para eliminar manipulación
-             manual repetitiva, aumentar el flujo de salida y estandarizar la formación de pallets. La evaluación
-             económica de esta celda sustenta la inversión — ver
-             <a href="planeacion.html#economia">evaluación técnico-económica</a>.</p>
+          <h2>Supervisión y operación del proceso</h2>
+          <p>El sistema SCADA centraliza la operación: estados de línea, alarmas, tendencias y la interacción
+             del operador durante los cambios de producto, siguiendo los principios de diseño de ISA-101.</p>
         </div>
 
         <div class="card-grid">
           <article class="info-card">
-            <span class="card-tag">Justificación</span>
-            <h3>Por qué robotizar el paletizado</h3>
-            <p>Alta repetitividad, cargas ergonómicamente críticas y velocidad de línea creciente hacen del
-               paletizado el mejor candidato de robotización con retorno medible.</p>
+            <span class="card-tag">HMI</span>
+            <h3>Interfaz bajo ISA-101</h3>
+            <p>Jerarquía de pantallas, paleta de grises con color reservado para anomalías y navegación
+               consistente para el operador.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Flujo</span>
-            <h3>Flujo de materiales</h3>
-            <p>Entrada de paquetes desde el empaque termoencogido, formación de capa, paletizado por
-               patrón y salida a envolvedora de pallets.</p>
+            <span class="card-tag">Comunicación</span>
+            <h3>OPC hacia el controlador</h3>
+            <p>Ignition se conecta por OPC al Logix emulado: los mismos tags del control alimentan la supervisión.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Seguridad</span>
-            <h3>Seguridad de la celda</h3>
-            <p>Perimetraje con vallado, escáneres de área, paros de emergencia y modos de operación
-               segregados según ISO 10218.</p>
+            <span class="card-tag">Operación</span>
+            <h3>Alarmas y cambios de producto</h3>
+            <p>Gestión de alarmas, recetas por producto e indicadores simples de desempeño para decisión
+               basada en datos.</p>
           </article>
         </div>
 
@@ -125,15 +121,15 @@
             <span class="pc-icon">🛠</span>
             <div>
               <span class="pc-tag">En preparación</span>
-              <h3>Simulación en RobotStudio</h3>
+              <h3>Evidencias del sistema SCADA</h3>
             </div>
           </div>
-          <p>Evidencia de la simulación funcional de la celda de paletizado.</p>
+          <p>Material que demuestra el diseño y la validación de la supervisión.</p>
           <ul class="pending-list">
-            <li>Capturas de la estación RobotStudio (layout de la celda, robot y transportadores).</li>
-            <li>Video corto de la simulación ejecutando el ciclo de paletizado.</li>
-            <li>Diagrama del patrón de paletizado por producto (retornable / PET / lata).</li>
-            <li>Matriz de riesgos con medidas de mitigación (mecánicas, eléctricas, operativas).</li>
+            <li>Capturas de las pantallas HMI en Ignition (overview, línea, alarmas, tendencias).</li>
+            <li>Arquitectura de comunicación OPC (diagrama Ignition ↔ Logix Emulate).</li>
+            <li>Video de la validación integrada con el gemelo digital.</li>
+            <li>Pantalla de recetas / cambio de producto.</li>
           </ul>
         </div>
       </div>
@@ -146,21 +142,18 @@
           <h2>Video del módulo</h2>
           <p>Registro del entregable del módulo. El enlace se configura en <code>data/site-data.js</code> o desde el panel de administración.</p>
         </div>
-        <div class="video-slot" data-video="celdas"></div>
+        <div class="video-slot" data-video="scada"></div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
         <div class="module-nav">
-          <a href="planeacion.html">
+          <a href="controladores-industriales.html">
             <span class="mn-dir">← Módulo anterior</span>
-            <span class="mn-name">03 · Planeación y evaluación de proyectos</span>
+            <span class="mn-name">06 · Controladores industriales</span>
           </a>
-          <a href="digital-factory.html" class="mn-next">
-            <span class="mn-dir">Siguiente módulo →</span>
-            <span class="mn-name">05 · Digital Factory</span>
-          </a>
+          <span class="mn-empty"></span>
         </div>
       </div>
     </section>

@@ -223,6 +223,11 @@
      ===================================================================== */
   function renderDocs() {
     var docs = DEFAULTS.documentos || {};
+    // Contenedores modernos: <div data-docs="categoria">
+    document.querySelectorAll("[data-docs]").forEach(function (root) {
+      fillDocsInto(root, docs[root.getAttribute("data-docs")] || []);
+    });
+    // Compatibilidad con ids antiguos (categoria-app)
     ["planeacion", "proceso", "pid", "simulacion", "financiero"].forEach(function (cat) {
       fillDocs(cat + "-app", docs[cat] || []);
     });
@@ -237,7 +242,9 @@
   }
   function fillDocs(id, list) {
     var root = document.getElementById(id);
-    if (!root) return;
+    if (root) fillDocsInto(root, list);
+  }
+  function fillDocsInto(root, list) {
     root.innerHTML = "";
     list.forEach(function (d) {
       var a = el("a", "info-card doc-card");
@@ -248,7 +255,43 @@
       a.appendChild(el("span", "doc-open", "Abrir documento →"));
       root.appendChild(a);
     });
-    if (!list.length) root.appendChild(el("p", "empty-state", "Sin documentos."));
+    if (!list.length) root.appendChild(el("p", "empty-state", "Sin documentos por ahora."));
+  }
+
+  /* =====================================================================
+     RENDER: VIDEOS DE MÓDULO (YouTube)
+     ===================================================================== */
+  function youtubeId(url) {
+    if (!url) return null;
+    var m = String(url).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
+    return m ? m[1] : null;
+  }
+  function renderVideos() {
+    var data = Store.get();
+    var vids = data.videos || DEFAULTS.videos || {};
+    document.querySelectorAll("[data-video]").forEach(function (slot) {
+      var key = slot.getAttribute("data-video");
+      var url = vids[key] || "";
+      var id = youtubeId(url);
+      slot.innerHTML = "";
+      var frame = el("div", "video-frame");
+      if (id) {
+        var ifr = document.createElement("iframe");
+        ifr.src = "https://www.youtube.com/embed/" + id;
+        ifr.title = "Video del módulo";
+        ifr.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        ifr.allowFullscreen = true;
+        frame.appendChild(ifr);
+      } else {
+        var ph = el("div", "video-placeholder");
+        var inner = el("div");
+        inner.appendChild(el("div", "vp-icon", "🎬"));
+        inner.appendChild(el("p", null, "Video del módulo en preparación. Cuando esté en YouTube, añade el enlace desde el panel de administración (⚙ Admin → Videos de módulos) o en data/site-data.js."));
+        ph.appendChild(inner);
+        frame.appendChild(ph);
+      }
+      slot.appendChild(frame);
+    });
   }
 
   /* =====================================================================
@@ -439,6 +482,7 @@
       "Edita el contenido con los botones que aparecen en las tarjetas de Equipo y Reflexiones. Para publicar los cambios para todos, descarga los datos y súbelos al repositorio."));
 
     var grid = el("div", "admin-menu");
+    grid.appendChild(menuBtn("🎬 Videos de módulos", "Configura el enlace de YouTube de cada módulo.", editarVideos));
     grid.appendChild(menuBtn("⬇ Descargar datos", "Genera data/site-data.js con el contenido actual.", exportarDatos));
     grid.appendChild(menuBtn("⬆ Importar datos", "Carga un archivo site-data.js/.json.", importarDatos));
     grid.appendChild(menuBtn("🔑 Cambiar contraseña", "Obtén la línea claveHash para tu nueva contraseña.", cambiarClave));
@@ -461,6 +505,32 @@
     return b;
   }
 
+  function editarVideos() {
+    var m = modal("Videos de módulos");
+    m.body.appendChild(el("p", "modal-note",
+      "Pega el enlace de YouTube del video de cada módulo (ej. https://youtu.be/XXXXXXXXXXX). Deja vacío el que aún no exista. Recuerda publicar con 'Descargar datos'."));
+    var d = Store.get();
+    var vids = d.videos || clone(DEFAULTS.videos || {});
+    var inputs = {};
+    (DEFAULTS.modulos || []).forEach(function (mod) {
+      var inp = document.createElement("input");
+      inp.type = "url"; inp.placeholder = "https://youtu.be/…";
+      inp.value = vids[mod.id] || "";
+      inputs[mod.id] = inp;
+      m.body.appendChild(field(mod.nombre, inp));
+    });
+    var save = el("button", "button button-primary", "Guardar");
+    save.type = "button";
+    save.addEventListener("click", function () {
+      var dd = Store.get();
+      dd.videos = {};
+      Object.keys(inputs).forEach(function (k) { dd.videos[k] = inputs[k].value.trim(); });
+      Store.set(dd); m.overlay.remove(); renderVideos();
+    });
+    var foot = el("div", "modal-foot"); foot.appendChild(save);
+    m.body.appendChild(foot);
+  }
+
   function exportarDatos() {
     var d = Store.get();
     var full = {
@@ -468,6 +538,7 @@
       modulos: DEFAULTS.modulos,
       equipo: d.equipo,
       reflexiones: d.reflexiones,
+      videos: d.videos || DEFAULTS.videos || {},
       documentos: DEFAULTS.documentos
     };
     var header = "/* Sincronizados S.A. — Datos del sitio (generado desde el panel).\n" +
@@ -495,6 +566,7 @@
           if (obj.equipo) d.equipo = obj.equipo;
           if (obj.reflexiones) d.reflexiones = obj.reflexiones;
           if (obj.admin) d.admin = obj.admin;
+          if (obj.videos) d.videos = obj.videos;
           Store.set(d); refreshAll();
           alert("Datos importados en este navegador. Recuerda 'Descargar datos' y subirlos para publicarlos.");
         } catch (e) { alert("No se pudo leer el archivo: " + e.message); }
@@ -528,7 +600,7 @@
     document.body.classList.toggle("is-admin", isAdmin());
     var fab = document.querySelector(".admin-fab");
     if (fab) fab.textContent = isAdmin() ? "⚙ Admin ✓" : "⚙ Admin";
-    renderEquipo(); renderReflexiones(); renderDocs();
+    renderEquipo(); renderReflexiones(); renderDocs(); renderVideos();
   }
 
   /* ---------- menú móvil ---------- */
@@ -549,6 +621,7 @@
     renderEquipo();
     renderReflexiones();
     renderDocs();
+    renderVideos();
     buildAdminUI();
   });
 })();

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Celda de manufactura robotizada | Sincronizados</title>
-  <meta name="description" content="Justificación de la robotización, diseño de la celda de paletizado, simulación en RobotStudio y análisis de riesgos." />
+  <title>Controladores industriales | Sincronizados</title>
+  <meta name="description" content="Diseño del control secuencial en Grafcet, implementación en lógica Ladder y validación en Logix Emulate." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,9 +34,9 @@
             <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
             <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
             <a href="planeacion.html"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
-            <a href="celdas-roboticas.html" class="is-current"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
             <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
-            <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
+            <a href="controladores-industriales.html" class="is-current"><span class="menu-num">06</span>Controladores industriales</a>
             <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
           </div>
         </div>
@@ -61,14 +61,13 @@
   <main>
     <section class="module-hero">
       <div class="container">
-        <p class="module-num">Módulo 04 · APM 2026-1S</p>
-        <h1>Celda de manufactura robotizada</h1>
-        <p class="lead">Justificación, diseño técnico, simulación en RobotStudio y análisis de riesgos.</p>
+        <p class="module-num">Módulo 06 · APM 2026-1S</p>
+        <h1>Controladores industriales</h1>
+        <p class="lead">Control secuencial en Grafcet, implementación Ladder y validación en Logix Emulate.</p>
         <div class="module-chips">
-          <span class="chip"><strong>RobotStudio</strong> · Simulación</span>
-          <span class="chip">Paletizado</span>
-          <span class="chip">Seguridad industrial</span>
-          <span class="chip">Análisis de riesgos</span>
+          <span class="chip"><strong>Grafcet</strong> · Diseño secuencial</span>
+          <span class="chip"><strong>Ladder</strong> · Studio 5000</span>
+          <span class="chip">Logix Emulate</span>
         </div>
       </div>
     </section>
@@ -80,43 +79,38 @@
           <h2>Qué evidencia este módulo</h2>
         </div>
         <ul class="rubric-list">
-          <li>Justificación de la robotización de la etapa seleccionada.</li>
-          <li>Diseño técnico de la celda considerando flujo de materiales y seguridad.</li>
-          <li>Simulación funcional en RobotStudio.</li>
-          <li>Análisis de riesgos con medidas de mitigación.</li>
+          <li>Diseño del control secuencial (Grafcet).</li>
+          <li>Implementación en lógica Ladder en Logix Emulate.</li>
+          <li>Validación funcional del sistema en ejecución.</li>
         </ul>
       </div>
     </section>
 
-    <section class="section" id="justificacion">
+    <section class="section" id="control">
       <div class="container">
-        <p class="section-kicker">Diseño</p>
+        <p class="section-kicker">Control secuencial</p>
         <div class="section-heading">
-          <h2>Celda robótica de paletizado</h2>
-          <p>La etapa de paletizado de las líneas Coca-Cola y Monster se robotiza para eliminar manipulación
-             manual repetitiva, aumentar el flujo de salida y estandarizar la formación de pallets. La evaluación
-             económica de esta celda sustenta la inversión — ver
-             <a href="planeacion.html#economia">evaluación técnico-económica</a>.</p>
+          <h2>Del Grafcet al Ladder</h2>
+          <p>La secuencia lógica de operación de cada producto —qué hace el sistema, en qué orden y bajo qué
+             condiciones— se diseña en Grafcet y se implementa en Ladder sobre la plataforma Logix.</p>
         </div>
 
         <div class="card-grid">
           <article class="info-card">
-            <span class="card-tag">Justificación</span>
-            <h3>Por qué robotizar el paletizado</h3>
-            <p>Alta repetitividad, cargas ergonómicamente críticas y velocidad de línea creciente hacen del
-               paletizado el mejor candidato de robotización con retorno medible.</p>
+            <span class="card-tag">Diseño</span>
+            <h3>Grafcet del proceso</h3>
+            <p>Etapas, transiciones y receptividades del ciclo de producción, incluyendo cambios de producto
+               y condiciones de fallo.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Flujo</span>
-            <h3>Flujo de materiales</h3>
-            <p>Entrada de paquetes desde el empaque termoencogido, formación de capa, paletizado por
-               patrón y salida a envolvedora de pallets.</p>
+            <span class="card-tag">Implementación</span>
+            <h3>Lógica Ladder</h3>
+            <p>Traducción sistemática del Grafcet a Ladder en Studio 5000, con rutinas por estación.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Seguridad</span>
-            <h3>Seguridad de la celda</h3>
-            <p>Perimetraje con vallado, escáneres de área, paros de emergencia y modos de operación
-               segregados según ISO 10218.</p>
+            <span class="card-tag">Validación</span>
+            <h3>Ejecución en Logix Emulate</h3>
+            <p>Pruebas del programa en el controlador emulado, conectado al gemelo digital del módulo anterior.</p>
           </article>
         </div>
 
@@ -125,15 +119,15 @@
             <span class="pc-icon">🛠</span>
             <div>
               <span class="pc-tag">En preparación</span>
-              <h3>Simulación en RobotStudio</h3>
+              <h3>Evidencias de control industrial</h3>
             </div>
           </div>
-          <p>Evidencia de la simulación funcional de la celda de paletizado.</p>
+          <p>Documentación de la lógica de control diseñada e implementada.</p>
           <ul class="pending-list">
-            <li>Capturas de la estación RobotStudio (layout de la celda, robot y transportadores).</li>
-            <li>Video corto de la simulación ejecutando el ciclo de paletizado.</li>
-            <li>Diagrama del patrón de paletizado por producto (retornable / PET / lata).</li>
-            <li>Matriz de riesgos con medidas de mitigación (mecánicas, eléctricas, operativas).</li>
+            <li>Diagramas Grafcet (nivel 1 y nivel 2) exportados en PDF o imagen.</li>
+            <li>Capturas del código Ladder en Studio 5000 (rutinas principales).</li>
+            <li>Video corto de la validación en Logix Emulate.</li>
+            <li>Tabla de variables / tags del controlador.</li>
           </ul>
         </div>
       </div>
@@ -146,20 +140,20 @@
           <h2>Video del módulo</h2>
           <p>Registro del entregable del módulo. El enlace se configura en <code>data/site-data.js</code> o desde el panel de administración.</p>
         </div>
-        <div class="video-slot" data-video="celdas"></div>
+        <div class="video-slot" data-video="controladores"></div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
         <div class="module-nav">
-          <a href="planeacion.html">
+          <a href="digital-factory.html">
             <span class="mn-dir">← Módulo anterior</span>
-            <span class="mn-name">03 · Planeación y evaluación de proyectos</span>
-          </a>
-          <a href="digital-factory.html" class="mn-next">
-            <span class="mn-dir">Siguiente módulo →</span>
             <span class="mn-name">05 · Digital Factory</span>
+          </a>
+          <a href="scada.html" class="mn-next">
+            <span class="mn-dir">Siguiente módulo →</span>
+            <span class="mn-name">07 · SCADA</span>
           </a>
         </div>
       </div>

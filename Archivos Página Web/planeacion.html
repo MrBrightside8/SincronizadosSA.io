@@ -3,217 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planeación | Sincronizados</title>
-  <meta
-    name="description"
-    content="Planeación y evaluación del proyecto Sincronizados: EDT, proceso, anexos y estructura de trabajo."
-  />
-
+  <title>Planeación y evaluación de proyectos | Sincronizados</title>
+  <meta name="description" content="EDT, cronograma, análisis económico (CAPEX, OPEX, flujo de caja, VPN y TIR) y propuesta de valor del proyecto." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles.css">
-
-  <style>
-    .page-hero {
-      background: linear-gradient(135deg, var(--bg-deep), var(--heading-dark));
-      color: white;
-      padding: 7.5rem 0 4rem;
-    }
-
-    .page-hero .section-kicker {
-      color: rgba(255,255,255,0.72);
-    }
-
-    .page-hero h1 {
-      margin: 0 0 1rem;
-      font-size: clamp(2.7rem, 6vw, 5rem);
-      line-height: 0.95;
-      color: white;
-    }
-
-    .page-hero .lead {
-      max-width: 840px;
-      color: rgba(255,255,255,0.84);
-    }
-
-    .planning-section {
-      padding: 4.5rem 0 1rem;
-      background: var(--bg);
-    }
-
-    .planning-section.alt {
-      background: var(--surface-2);
-    }
-
-    .planning-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .planning-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow);
-      padding: 1.5rem;
-      min-height: 100%;
-    }
-
-    .planning-card h3 {
-      margin: 0 0 0.9rem;
-      color: var(--heading-dark);
-      font-size: 1.2rem;
-      line-height: 1.2;
-    }
-
-    .planning-card ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    .planning-card li + li {
-      margin-top: 0.35rem;
-    }
-
-    .annex-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(220px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .annex-card {
-      display: block;
-      text-decoration: none;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow);
-      padding: 1.5rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-      color: inherit;
-    }
-
-    .annex-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.10);
-    }
-
-    .annex-card .card-tag {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 56px;
-      height: 40px;
-      border-radius: 999px;
-      background: rgba(176, 123, 172, 0.18);
-      color: var(--heading-dark);
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-
-    .annex-card h3 {
-      margin: 0 0 0.75rem;
-      color: var(--heading-dark);
-      font-size: 1.18rem;
-      line-height: 1.2;
-    }
-
-    .annex-card p {
-      margin: 0;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    @media (max-width: 1100px) {
-      .planning-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .annex-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
   <header class="site-header">
     <nav class="nav container">
       <a class="brand" href="index.html">
         <img src="assets/logo-sincronizados.svg" alt="Logo de Sincronizados" class="brand-logo" />
-        <span>Sincronizados</span>
+        <div class="brand-copy">
+          <span class="brand-name">Sincronizados</span>
+          <span class="brand-tag">Consultoría industrial</span>
+        </div>
       </a>
 
-      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
       </button>
 
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="index.html">Inicio</a>
 
         <div class="nav-dropdown">
           <a href="index.html#modulos">Módulos</a>
           <div class="dropdown-menu">
-            <a href="#">Introducción a la automatización de manufactura</a>
-            <a href="gestion-evaluacion-produccion.html">Gestión y evaluación de la producción automatizada</a>
-            <a href="planeacion.html">Planeación y evaluación del proyecto</a>
-            <a href="celdas-roboticas.html">Celdas de manufactura robotizadas</a>
-            <a href="tecnologias-aplicadas.html">Tecnologías modernas aplicadas a la manufactura</a>
-            <a href="plc-scada.html">Automatización discreta: PLC y SCADA</a>
+            <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
+            <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
+            <a href="planeacion.html" class="is-current"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
+            <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
+            <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
+            <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
           </div>
         </div>
 
-        <a href="equipo.html">Equipo</a>
-
         <div class="nav-dropdown">
-          <a href="index.html#reflexiones">Reflexiones</a>
+          <a href="index.html#aprendizaje">Proceso de aprendizaje</a>
           <div class="dropdown-menu">
-            <a href="reflexion-gestion.html">Gestión del proyecto</a>
-            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+            <a href="reflexion-gestion.html">Reflexión — Gestión del proyecto</a>
+            <a href="trabajo-colaborativo.html">Reflexión — Trabajo colaborativo</a>
             <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           </div>
         </div>
 
-        <div class="nav-dropdown">
-          <a href="index.html#anexos">Anexos</a>
-          <div class="dropdown-menu">
-            <a href="anexos/Portada.html">Portada</a>
-            <a href="anexos/Supuestos.html">Supuestos</a>
-            <a href="anexos/Trazabilidad_Proceso.html">Trazabilidad del proceso</a>
-          </div>
-        </div>
+        <a href="equipo.html">Equipo</a>
+        <a href="index.html#documentos">Documentos</a>
 
-        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">
-          Repositorio
-        </a>
+        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="page-hero">
+    <section class="module-hero">
       <div class="container">
-        <p class="section-kicker">Planeación</p>
-        <h1>Planeación y evaluación del proyecto</h1>
-        <p class="lead">
-          Estructura de descomposición del trabajo, análisis del proceso productivo y anexos de soporte
-          para la organización, evaluación y trazabilidad del proyecto Sincronizados.
-        </p>
+        <p class="module-num">Módulo 03 · APM 2026-1S</p>
+        <h1>Planeación y evaluación de proyectos</h1>
+        <p class="lead">EDT, cronograma, análisis económico y propuesta de valor de la automatización.</p>
+        <div class="module-chips">
+          <span class="chip"><strong>EDT</strong> · Proyecto y proceso</span>
+          <span class="chip"><strong>Gantt</strong> · Cronograma</span>
+          <span class="chip"><strong>VPN · TIR</strong> · Evaluación</span>
+          <span class="chip">Propuesta de valor</span>
+        </div>
+        <div class="quicknav">
+          <a href="#edt-proyecto">EDT del proyecto</a>
+          <a href="#edt-proceso">EDT del proceso</a>
+          <a href="#cronograma">Cronograma</a>
+          <a href="#economia">Evaluación económica</a>
+        </div>
       </div>
     </section>
 
-    <section class="planning-section">
+    <section class="section section-alt">
       <div class="container">
+        <p class="section-kicker">Rúbrica del curso</p>
+        <div class="section-heading">
+          <h2>Qué evidencia este módulo</h2>
+        </div>
+        <ul class="rubric-list">
+          <li>Planeación estructurada: EDT y cronograma del proyecto.</li>
+          <li>Análisis económico: presupuesto, flujo de caja e indicadores financieros.</li>
+          <li>Propuesta de valor y oferta comercial que sustenta la viabilidad técnica y financiera.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="edt-proyecto">
+      <div class="container">
+        <p class="section-kicker">Estructura de trabajo</p>
         <div class="section-heading">
           <h2>EDT del proyecto</h2>
           <p>Desglose de los componentes técnicos, de gestión y de integración considerados en la planeación general.</p>
@@ -250,13 +132,9 @@
               <li>3.1 Modelado del proceso productivo.</li>
               <li>3.2 Simulación del flujo de producción.</li>
               <li>3.3 Análisis de tiempos de ciclo.</li>
-              <li>3.4 Cálculo de indicadores productivos.</li>
-              <li>Takt time.</li>
-              <li>OEE.</li>
-              <li>Lead time.</li>
+              <li>3.4 Cálculo de indicadores productivos (Takt time, OEE, Lead time).</li>
               <li>3.5 Comparación antes y después de automatizar.</li>
               <li>3.6 Estimación económica del proyecto e identificación de costos.</li>
-              <li>Diagrama de Gantt.</li>
             </ul>
           </article>
 
@@ -265,11 +143,7 @@
             <ul>
               <li>4.1 Análisis de automatización e identificación de arquitectura ISA-95.</li>
               <li>4.2 Definición de niveles de automatización según ISA-95.</li>
-              <li>Nivel campo: sensores y actuadores.</li>
-              <li>Nivel control: PLC.</li>
-              <li>Nivel supervisión: SCADA.</li>
-              <li>4.3 Selección de hardware.</li>
-              <li>PLC, sensores, variadores y robot.</li>
+              <li>4.3 Selección de hardware: PLC, sensores, variadores y robot.</li>
               <li>4.4 Diseño de red industrial.</li>
               <li>4.5 Diseño de instrumentación del proceso.</li>
             </ul>
@@ -287,7 +161,7 @@
           </article>
 
           <article class="planning-card">
-            <h3>6. Diseño digital Factory</h3>
+            <h3>6. Diseño Digital Factory</h3>
             <ul>
               <li>6.1 Modelado de la línea en Factory I/O.</li>
               <li>6.2 Configuración de sensores y actuadores virtuales.</li>
@@ -327,10 +201,7 @@
               <li>9.2 Estimación de costos de implementación.</li>
               <li>9.3 Presupuesto total del proyecto.</li>
               <li>9.4 Elaboración de flujo de caja.</li>
-              <li>9.5 Evaluación financiera.</li>
-              <li>VPN.</li>
-              <li>TIR.</li>
-              <li>Periodo de retorno.</li>
+              <li>9.5 Evaluación financiera: VPN, TIR y periodo de retorno.</li>
             </ul>
           </article>
 
@@ -348,8 +219,9 @@
       </div>
     </section>
 
-    <section class="planning-section alt">
+    <section class="section section-alt" id="edt-proceso">
       <div class="container">
+        <p class="section-kicker">Proceso productivo</p>
         <div class="section-heading">
           <h2>EDT del proceso</h2>
           <p>Desglose del flujo productivo considerado para la línea de bebidas y su automatización.</p>
@@ -364,9 +236,7 @@
               <li>1.3 Tratamiento de sulfitado.</li>
               <li>1.4 Tratamiento termoquímico del jarabe.</li>
               <li>1.5 Adición de concentrado o saborizante.</li>
-              <li>1.6 Control de calidad del jarabe.</li>
-              <li>Inspección de polarización, color y humedad.</li>
-              <li>Medición del grado °Brix del jarabe final.</li>
+              <li>1.6 Control de calidad del jarabe (°Brix, polarización, color, humedad).</li>
             </ul>
           </article>
 
@@ -385,8 +255,7 @@
               <li>3.1 Soplado de preformas para fabricar la botella.</li>
               <li>3.2 Proceso térmico de saneamiento.</li>
               <li>3.3 Lavado de botellas.</li>
-              <li>3.4 Inspección de calidad del envase.</li>
-              <li>Integridad, dimensiones y limpieza del envase.</li>
+              <li>3.4 Inspección de calidad del envase (integridad, dimensiones y limpieza).</li>
             </ul>
           </article>
 
@@ -395,8 +264,7 @@
             <ul>
               <li>4.1 Llenado de la bebida en botella.</li>
               <li>4.2 Tapado de la botella.</li>
-              <li>4.3 Inspección de volumen.</li>
-              <li>Verificación de nivel de llenado.</li>
+              <li>4.3 Inspección de volumen y nivel de llenado.</li>
             </ul>
           </article>
 
@@ -406,8 +274,6 @@
               <li>5.1 Soplado de secado del envase.</li>
               <li>5.2 Etiquetado.</li>
               <li>5.3 Inspección final de embotellado.</li>
-              <li>Correcta colocación de etiqueta.</li>
-              <li>Integridad, dimensiones y limpieza del envase.</li>
             </ul>
           </article>
 
@@ -447,45 +313,167 @@
       </div>
     </section>
 
-    <section class="planning-section">
+    <section class="section" id="cronograma">
       <div class="container">
+        <p class="section-kicker">Cronograma</p>
         <div class="section-heading">
-          <h2>Anexos de planeación</h2>
-          <p>Accesos directos a la documentación complementaria asociada al cronograma, EDT y trazabilidad.</p>
+          <h2>Cronograma y anexos de planeación</h2>
+          <p>Programación general, hitos y documentación de soporte del plan de trabajo.</p>
         </div>
-
-        <div class="annex-grid">
+        <div class="card-grid" data-docs="planeacion"></div>
+        <div class="annex-grid" style="margin-top:1.1rem">
           <a href="anexos/Cronograma_Gantt.html" class="annex-card">
-            <span class="card-tag">A1</span>
-            <h3>Cronograma y diagrama Gantt</h3>
-            <p>Consulta la programación general, hitos principales y organización temporal del proyecto.</p>
+            <span class="card-tag">Hoja</span>
+            <h3>Cronograma — diagrama de Gantt</h3>
+            <p>Programación general, hitos principales y organización temporal del proyecto.</p>
           </a>
-
           <a href="anexos/EDT_base.html" class="annex-card">
-            <span class="card-tag">A2</span>
+            <span class="card-tag">Hoja</span>
             <h3>Base del EDT</h3>
-            <p>Revisión del soporte base utilizado para estructurar el desglose del trabajo.</p>
+            <p>Soporte base utilizado para estructurar el desglose del trabajo.</p>
           </a>
-
           <a href="anexos/Trazabilidad_Proceso.html" class="annex-card">
-            <span class="card-tag">A3</span>
+            <span class="card-tag">Hoja</span>
             <h3>Trazabilidad del proceso</h3>
             <p>Seguimiento del flujo productivo y de sus etapas relevantes dentro de la propuesta.</p>
           </a>
         </div>
       </div>
     </section>
+
+    <section class="section section-alt" id="economia">
+      <div class="container">
+        <p class="section-kicker">Viabilidad</p>
+        <div class="section-heading">
+          <h2>Evaluación técnico-económica</h2>
+          <p>Análisis financiero de la celda robótica de paletizado para las líneas Coca-Cola y Monster:
+             inversión, costos operativos, flujo de caja e indicadores de retorno.</p>
+        </div>
+
+        <div class="kpi-strip">
+          <div class="kpi-box k-red">
+            <p class="kpi-label">CAPEX total (con IVA)</p>
+            <p class="kpi-value">$1.460 M</p>
+            <p class="kpi-sub">COP · Inversión inicial</p>
+          </div>
+          <div class="kpi-box k-amber">
+            <p class="kpi-label">Horizonte</p>
+            <p class="kpi-value">10 años</p>
+            <p class="kpi-sub">TRM $3 723,05 COP/USD</p>
+          </div>
+          <div class="kpi-box k-green">
+            <p class="kpi-label">Indicadores</p>
+            <p class="kpi-value">VPN · TIR</p>
+            <p class="kpi-sub">Ver detalle en el informe</p>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <a class="info-card" href="anexos/Portada.html">
+            <span class="card-tag">F1</span>
+            <h3>Resumen ejecutivo</h3>
+            <p>Visión general de la evaluación financiera, conclusiones y recomendaciones.</p>
+            <span class="doc-open">Abrir informe →</span>
+          </a>
+          <a class="info-card" href="anexos/Supuestos.html">
+            <span class="card-tag">F2</span>
+            <h3>Supuestos</h3>
+            <p>Tasas, horizontes de evaluación y criterios base del modelo financiero.</p>
+            <span class="doc-open">Abrir informe →</span>
+          </a>
+          <a class="info-card" href="anexos/CAPEX.html">
+            <span class="card-tag">F3</span>
+            <h3>CAPEX</h3>
+            <p>Inversión en equipos, instalación e integración del sistema automatizado.</p>
+            <span class="doc-open">Abrir informe →</span>
+          </a>
+          <a class="info-card" href="anexos/OPEX_Beneficios.html">
+            <span class="card-tag">F4</span>
+            <h3>OPEX y beneficios</h3>
+            <p>Costos operativos proyectados y beneficios cuantificados de la automatización.</p>
+            <span class="doc-open">Abrir informe →</span>
+          </a>
+          <a class="info-card" href="anexos/Flujo_de_Caja.html">
+            <span class="card-tag">F5</span>
+            <h3>Flujo de caja</h3>
+            <p>Proyección del flujo neto durante el horizonte de evaluación del proyecto.</p>
+            <span class="doc-open">Abrir informe →</span>
+          </a>
+          <a class="info-card" href="anexos/Indicadores.html">
+            <span class="card-tag">F6</span>
+            <h3>Indicadores financieros</h3>
+            <p>VPN, TIR y período de retorno de la inversión para la propuesta presentada.</p>
+            <span class="doc-open">Abrir informe →</span>
+          </a>
+        </div>
+
+        <h3 class="doc-subtitle">Documentos de soporte</h3>
+        <div class="card-grid" data-docs="financiero"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="section-kicker">Evidencia audiovisual</p>
+        <div class="section-heading">
+          <h2>Video del módulo</h2>
+          <p>Registro del entregable del módulo. El enlace se configura en <code>data/site-data.js</code> o desde el panel de administración.</p>
+        </div>
+        <div class="video-slot" data-video="planeacion"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="module-nav">
+          <a href="gestion-evaluacion-produccion.html">
+            <span class="mn-dir">← Módulo anterior</span>
+            <span class="mn-name">02 · Gestión y evaluación de la producción automatizada</span>
+          </a>
+          <a href="celdas-roboticas.html" class="mn-next">
+            <span class="mn-dir">Siguiente módulo →</span>
+            <span class="mn-name">04 · Celda de manufactura robotizada</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">Sincronizados S.A.</p>
+          <p>Propuesta de automatización para una planta de producción de bebidas.
+             Proyecto integrador — Automatización de Procesos de Manufactura,
+             Universidad Nacional de Colombia · 2026-1S.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Módulos</h4>
+          <a href="introduccion-automatizacion.html">01 · Introducción a la automatización de manufactura</a>
+          <a href="gestion-evaluacion-produccion.html">02 · Gestión y evaluación de la producción automatizada</a>
+          <a href="planeacion.html">03 · Planeación y evaluación de proyectos</a>
+          <a href="celdas-roboticas.html">04 · Celda de manufactura robotizada</a>
+          <a href="digital-factory.html">05 · Digital Factory</a>
+          <a href="controladores-industriales.html">06 · Controladores industriales</a>
+          <a href="scada.html">07 · SCADA</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <a href="equipo.html">Equipo</a>
+          <a href="reflexiones-individuales.html">Proceso de aprendizaje</a>
+          <a href="index.html#documentos">Documentos técnicos</a>
+          <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Sincronizados S.A. — Proyecto académico.</span>
+        <span>Automatización de Procesos de Manufactura · UNAL</span>
+      </div>
+    </div>
+  </footer>
 
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      navLinks.classList.toggle('is-open');
-    });
-  </script>
+  <script src="data/site-data.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>

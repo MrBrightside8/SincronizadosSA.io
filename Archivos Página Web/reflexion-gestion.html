@@ -1,117 +1,144 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reflexión de la gestión</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reflexión — Gestión del proyecto | Sincronizados</title>
+  <meta name="description" content="Reflexión grupal sobre la gestión del proyecto: planeación, seguimiento y aprendizajes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-
   <header class="site-header">
     <nav class="nav container">
       <a class="brand" href="index.html">
         <img src="assets/logo-sincronizados.svg" alt="Logo de Sincronizados" class="brand-logo" />
-        <span>Sincronizados</span>
+        <div class="brand-copy">
+          <span class="brand-name">Sincronizados</span>
+          <span class="brand-tag">Consultoría industrial</span>
+        </div>
       </a>
 
-      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
       </button>
 
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="index.html">Inicio</a>
 
         <div class="nav-dropdown">
           <a href="index.html#modulos">Módulos</a>
           <div class="dropdown-menu">
-            <a href="#">Introducción a la automatización de manufactura</a>
-            <a href="gestion-evaluacion-produccion.html">Gestión y evaluación de la producción automatizada</a>
-            <a href="planeacion.html">Planeación y evaluación del proyecto</a>
-            <a href="celdas-roboticas.html">Celdas de manufactura robotizadas</a>
-            <a href="tecnologias-aplicadas.html">Tecnologías modernas aplicadas a la manufactura</a>
-            <a href="plc-scada.html">Automatización discreta: PLC y SCADA</a>
+            <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
+            <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
+            <a href="planeacion.html"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
+            <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
+            <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
+            <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
           </div>
         </div>
 
-        <a href="equipo.html">Equipo</a>
-
         <div class="nav-dropdown">
-          <a href="index.html#reflexiones">Reflexiones</a>
+          <a href="index.html#aprendizaje">Proceso de aprendizaje</a>
           <div class="dropdown-menu">
-            <a href="reflexion-gestion.html" class="is-current">Gestión del proyecto</a>
-            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+            <a href="reflexion-gestion.html" class="is-current">Reflexión — Gestión del proyecto</a>
+            <a href="trabajo-colaborativo.html">Reflexión — Trabajo colaborativo</a>
             <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           </div>
         </div>
 
-        <div class="nav-dropdown">
-          <a href="index.html#anexos">Anexos</a>
-          <div class="dropdown-menu">
-            <a href="anexos/Portada.html">Portada</a>
-            <a href="anexos/Supuestos.html">Supuestos</a>
-            <a href="anexos/Trazabilidad_Proceso.html">Trazabilidad del proceso</a>
-          </div>
-        </div>
+        <a href="equipo.html">Equipo</a>
+        <a href="index.html#documentos">Documentos</a>
 
-        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">
-          Repositorio
-        </a>
+        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
       </div>
     </nav>
   </header>
 
-  <section class="page-hero section">
-    <div class="container">
-      <div class="section-heading">
-        <p class="section-kicker">Reflexión</p>
-        <h1>Reflexiones del equipo sobre la gestión del proyecto</h1>
-        <p>
-          En esta sección se presentan las principales reflexiones del equipo sobre la
-          planeación, organización y seguimiento del proyecto, así como los aprendizajes
-          obtenidos durante el desarrollo de la propuesta.
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="section-kicker">Proceso de aprendizaje</p>
+        <h1>Reflexión grupal — gestión del proyecto</h1>
+        <p class="lead">
+          Principales reflexiones del equipo sobre la planeación, organización y seguimiento del proyecto,
+          y los aprendizajes obtenidos durante el desarrollo de la propuesta.
         </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
+    <section class="section">
+      <div class="container">
+        <div class="card-grid">
+          <article class="reflection-card">
+            <span class="card-tag">Planeación</span>
+            <h3>Estructuración inicial</h3>
+            <p>
+              La definición temprana de objetivos, entregables y responsabilidades permitió
+              orientar mejor el trabajo del equipo y reducir ambigüedades durante el avance del proyecto.
+            </p>
+          </article>
+
+          <article class="reflection-card">
+            <span class="card-tag">Seguimiento</span>
+            <h3>Control del proceso</h3>
+            <p>
+              El monitoreo constante de tareas y tiempos ayudó a identificar retrasos,
+              reorganizar actividades y mantener la coherencia entre la propuesta y los resultados esperados.
+            </p>
+          </article>
+
+          <article class="reflection-card">
+            <span class="card-tag">Aprendizaje</span>
+            <h3>Mejora continua</h3>
+            <p>
+              La gestión del proyecto no solo organizó el trabajo, sino que también permitió
+              fortalecer la toma de decisiones, la comunicación interna y la capacidad de adaptación del equipo.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
     <div class="container">
-      <div class="card-grid">
-
-        <article class="reflection-card">
-          <span class="card-tag">Planeación</span>
-          <h3>Estructuración inicial</h3>
-          <p>
-            La definición temprana de objetivos, entregables y responsabilidades permitió
-            orientar mejor el trabajo del equipo y reducir ambigüedades durante el avance del proyecto.
-          </p>
-        </article>
-
-        <article class="reflection-card">
-          <span class="card-tag">Seguimiento</span>
-          <h3>Control del proceso</h3>
-          <p>
-            El monitoreo constante de tareas y tiempos ayudó a identificar retrasos,
-            reorganizar actividades y mantener la coherencia entre la propuesta y los resultados esperados.
-          </p>
-        </article>
-
-        <article class="reflection-card">
-          <span class="card-tag">Aprendizaje</span>
-          <h3>Mejora continua</h3>
-          <p>
-            La gestión del proyecto no solo organizó el trabajo, sino que también permitió
-            fortalecer la toma de decisiones, la comunicación interna y la capacidad de adaptación del equipo.
-          </p>
-        </article>
-
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">Sincronizados S.A.</p>
+          <p>Propuesta de automatización para una planta de producción de bebidas.
+             Proyecto integrador — Automatización de Procesos de Manufactura,
+             Universidad Nacional de Colombia · 2026-1S.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Módulos</h4>
+          <a href="introduccion-automatizacion.html">01 · Introducción a la automatización de manufactura</a>
+          <a href="gestion-evaluacion-produccion.html">02 · Gestión y evaluación de la producción automatizada</a>
+          <a href="planeacion.html">03 · Planeación y evaluación de proyectos</a>
+          <a href="celdas-roboticas.html">04 · Celda de manufactura robotizada</a>
+          <a href="digital-factory.html">05 · Digital Factory</a>
+          <a href="controladores-industriales.html">06 · Controladores industriales</a>
+          <a href="scada.html">07 · SCADA</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <a href="equipo.html">Equipo</a>
+          <a href="reflexiones-individuales.html">Proceso de aprendizaje</a>
+          <a href="index.html#documentos">Documentos técnicos</a>
+          <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Sincronizados S.A. — Proyecto académico.</span>
+        <span>Automatización de Procesos de Manufactura · UNAL</span>
       </div>
     </div>
-  </section>
+  </footer>
 
+  <script src="data/site-data.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>

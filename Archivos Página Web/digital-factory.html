@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Celda de manufactura robotizada | Sincronizados</title>
-  <meta name="description" content="Justificación de la robotización, diseño de la celda de paletizado, simulación en RobotStudio y análisis de riesgos." />
+  <title>Digital Factory | Sincronizados</title>
+  <meta name="description" content="Gemelo digital de la línea con sensores y actuadores virtuales, integración con Logix Emulate y validación funcional." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,8 +34,8 @@
             <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
             <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
             <a href="planeacion.html"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
-            <a href="celdas-roboticas.html" class="is-current"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
-            <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
+            <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="digital-factory.html" class="is-current"><span class="menu-num">05</span>Digital Factory</a>
             <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
             <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
           </div>
@@ -61,14 +61,14 @@
   <main>
     <section class="module-hero">
       <div class="container">
-        <p class="module-num">Módulo 04 · APM 2026-1S</p>
-        <h1>Celda de manufactura robotizada</h1>
-        <p class="lead">Justificación, diseño técnico, simulación en RobotStudio y análisis de riesgos.</p>
+        <p class="module-num">Módulo 05 · APM 2026-1S</p>
+        <h1>Digital Factory</h1>
+        <p class="lead">Gemelo digital con sensores y actuadores virtuales, integración con Logix Emulate.</p>
         <div class="module-chips">
-          <span class="chip"><strong>RobotStudio</strong> · Simulación</span>
-          <span class="chip">Paletizado</span>
-          <span class="chip">Seguridad industrial</span>
-          <span class="chip">Análisis de riesgos</span>
+          <span class="chip"><strong>Gemelo digital</strong></span>
+          <span class="chip">Factory I/O · NX</span>
+          <span class="chip">Logix Emulate</span>
+          <span class="chip">Validación funcional</span>
         </div>
       </div>
     </section>
@@ -80,43 +80,37 @@
           <h2>Qué evidencia este módulo</h2>
         </div>
         <ul class="rubric-list">
-          <li>Justificación de la robotización de la etapa seleccionada.</li>
-          <li>Diseño técnico de la celda considerando flujo de materiales y seguridad.</li>
-          <li>Simulación funcional en RobotStudio.</li>
-          <li>Análisis de riesgos con medidas de mitigación.</li>
+          <li>Modelado del gemelo digital con integración de sensores y actuadores virtuales.</li>
+          <li>Conexión con Logix Emulate.</li>
+          <li>Validación funcional del sistema mediante simulación.</li>
         </ul>
       </div>
     </section>
 
-    <section class="section" id="justificacion">
+    <section class="section" id="gemelo">
       <div class="container">
-        <p class="section-kicker">Diseño</p>
+        <p class="section-kicker">Gemelo digital</p>
         <div class="section-heading">
-          <h2>Celda robótica de paletizado</h2>
-          <p>La etapa de paletizado de las líneas Coca-Cola y Monster se robotiza para eliminar manipulación
-             manual repetitiva, aumentar el flujo de salida y estandarizar la formación de pallets. La evaluación
-             económica de esta celda sustenta la inversión — ver
-             <a href="planeacion.html#economia">evaluación técnico-económica</a>.</p>
+          <h2>La línea, replicada en digital</h2>
+          <p>El gemelo digital reproduce el comportamiento de la línea con sensores y actuadores virtuales,
+             permitiendo validar la lógica de control antes de cualquier intervención física.</p>
         </div>
 
         <div class="card-grid">
           <article class="info-card">
-            <span class="card-tag">Justificación</span>
-            <h3>Por qué robotizar el paletizado</h3>
-            <p>Alta repetitividad, cargas ergonómicamente críticas y velocidad de línea creciente hacen del
-               paletizado el mejor candidato de robotización con retorno medible.</p>
+            <span class="card-tag">Modelado</span>
+            <h3>Escena virtual de la línea</h3>
+            <p>Transportadores, estaciones y sensores modelados en Factory I/O sobre el layout real de la planta.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Flujo</span>
-            <h3>Flujo de materiales</h3>
-            <p>Entrada de paquetes desde el empaque termoencogido, formación de capa, paletizado por
-               patrón y salida a envolvedora de pallets.</p>
+            <span class="card-tag">E/S virtuales</span>
+            <h3>Sensores y actuadores</h3>
+            <p>Mapeo de entradas y salidas virtuales contra los tags del controlador emulado.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Seguridad</span>
-            <h3>Seguridad de la celda</h3>
-            <p>Perimetraje con vallado, escáneres de área, paros de emergencia y modos de operación
-               segregados según ISO 10218.</p>
+            <span class="card-tag">Integración</span>
+            <h3>Enlace con Logix Emulate</h3>
+            <p>El PLC emulado ejecuta la lógica Ladder real; el gemelo responde en lazo cerrado.</p>
           </article>
         </div>
 
@@ -125,15 +119,15 @@
             <span class="pc-icon">🛠</span>
             <div>
               <span class="pc-tag">En preparación</span>
-              <h3>Simulación en RobotStudio</h3>
+              <h3>Evidencias del gemelo digital</h3>
             </div>
           </div>
-          <p>Evidencia de la simulación funcional de la celda de paletizado.</p>
+          <p>Material que demuestra el modelado y la validación funcional del sistema.</p>
           <ul class="pending-list">
-            <li>Capturas de la estación RobotStudio (layout de la celda, robot y transportadores).</li>
-            <li>Video corto de la simulación ejecutando el ciclo de paletizado.</li>
-            <li>Diagrama del patrón de paletizado por producto (retornable / PET / lata).</li>
-            <li>Matriz de riesgos con medidas de mitigación (mecánicas, eléctricas, operativas).</li>
+            <li>Capturas de la escena Factory I/O (o NX MCD) de la línea completa.</li>
+            <li>Captura de la tabla de mapeo de E/S entre Factory I/O y Logix Emulate.</li>
+            <li>Video de la validación: la línea virtual operando con la lógica real.</li>
+            <li>Si se usa NX: capturas del modelo 3D y de la conexión de señales.</li>
           </ul>
         </div>
       </div>
@@ -146,20 +140,20 @@
           <h2>Video del módulo</h2>
           <p>Registro del entregable del módulo. El enlace se configura en <code>data/site-data.js</code> o desde el panel de administración.</p>
         </div>
-        <div class="video-slot" data-video="celdas"></div>
+        <div class="video-slot" data-video="digital"></div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
         <div class="module-nav">
-          <a href="planeacion.html">
+          <a href="celdas-roboticas.html">
             <span class="mn-dir">← Módulo anterior</span>
-            <span class="mn-name">03 · Planeación y evaluación de proyectos</span>
+            <span class="mn-name">04 · Celda de manufactura robotizada</span>
           </a>
-          <a href="digital-factory.html" class="mn-next">
+          <a href="controladores-industriales.html" class="mn-next">
             <span class="mn-dir">Siguiente módulo →</span>
-            <span class="mn-name">05 · Digital Factory</span>
+            <span class="mn-name">06 · Controladores industriales</span>
           </a>
         </div>
       </div>

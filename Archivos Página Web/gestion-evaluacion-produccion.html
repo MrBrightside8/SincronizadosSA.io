@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gestión y Evaluación de Producción | Sincronizados</title>
-  <meta name="description" content="Análisis del proceso productivo, indicadores de desempeño, VSM, Layout y evaluación financiera." />
+  <title>Gestión y evaluación de la producción | Sincronizados</title>
+  <meta name="description" content="Análisis del proceso productivo: VSM, layout, líneas de producción, indicadores y simulación en Plant Simulation." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="gestionstyle.css" />
 </head>
 <body>
-
-  <!-- ═══ HEADER / NAV ═══ -->
   <header class="site-header">
     <nav class="nav container">
       <a class="brand" href="index.html">
@@ -30,352 +27,315 @@
 
       <div class="nav-links" id="nav-links">
         <a href="index.html">Inicio</a>
+
         <div class="nav-dropdown">
-          <a href="#">Módulos</a>
+          <a href="index.html#modulos">Módulos</a>
           <div class="dropdown-menu">
-            <a href="planeacion.html">Planeación</a>
-            <a href="gestion-evaluacion-produccion.html" class="is-current">Gestión y evaluación</a>
-            <a href="plc-scada.html">PLC y SCADA</a>
-            <a href="tecnologias-aplicadas.html">Tecnologías aplicadas</a>
-            <a href="celdas-roboticas.html">Celdas robóticas</a>
-            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+            <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
+            <a href="gestion-evaluacion-produccion.html" class="is-current"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
+            <a href="planeacion.html"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
+            <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
+            <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
+            <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
           </div>
         </div>
-        <a href="equipo.html">Equipo</a>
+
         <div class="nav-dropdown">
-          <a href="#">Reflexiones</a>
+          <a href="index.html#aprendizaje">Proceso de aprendizaje</a>
           <div class="dropdown-menu">
-            <a href="reflexion-gestion.html">Reflexión de gestión</a>
+            <a href="reflexion-gestion.html">Reflexión — Gestión del proyecto</a>
+            <a href="trabajo-colaborativo.html">Reflexión — Trabajo colaborativo</a>
             <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           </div>
         </div>
-        <div class="nav-dropdown">
-          <a href="#">Anexos</a>
-          <div class="dropdown-menu">
-            <a href="anexos/Portada.html">Portada</a>
-            <a href="anexos/Supuestos.html">Supuestos</a>
-            <a href="anexos/Trazabilidad_Proceso.html">Trazabilidad del proceso</a>
-          </div>
-        </div>
+
+        <a href="equipo.html">Equipo</a>
+        <a href="index.html#documentos">Documentos</a>
+
         <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
       </div>
     </nav>
   </header>
 
-  <!-- ═══ PAGE HERO ═══ -->
-  <section class="g-hero" id="top">
-    <div class="g-hero__bg"></div>
-    <div class="container g-hero__inner">
-      <div class="g-hero__copy">
-        <p class="g-eyebrow">Módulo 02</p>
-        <h1 class="g-hero__title">Gestión y evaluación<br>de la producción</h1>
-        <p class="g-hero__lead">
-          Análisis del proceso productivo, indicadores por línea, mapeo de flujo de valor
-          y evaluación de viabilidad financiera de la automatización propuesta.
-        </p>
-        <div class="g-hero__pills">
-          <a href="#indicadores" class="g-pill">Indicadores</a>
-          <a href="#vsm" class="g-pill">VSM</a>
-          <a href="#layout" class="g-pill">Layout</a>
-          <a href="#lineas" class="g-pill">Líneas</a>
-          <a href="#finanzas" class="g-pill">Finanzas</a>
+  <main>
+    <section class="module-hero">
+      <div class="container">
+        <p class="module-num">Módulo 02 · APM 2026-1S</p>
+        <h1>Gestión y evaluación de la producción automatizada</h1>
+        <p class="lead">Análisis del proceso, VSM, simulación e indicadores productivos (Takt, OEE, MLT).</p>
+        <div class="module-chips">
+          <span class="chip"><strong>VSM</strong> · Antes / después</span>
+          <span class="chip"><strong>OEE</strong> · Takt · MLT</span>
+          <span class="chip">Plant Simulation</span>
+          <span class="chip">3 líneas de producto</span>
+        </div>
+        <div class="quicknav">
+          <a href="#productos">Productos</a>
+          <a href="#indicadores">Indicadores</a>
+          <a href="#vsm">VSM</a>
+          <a href="#layout">Layout</a>
+          <a href="#lineas">Líneas</a>
+          <a href="#simulacion">Simulación</a>
         </div>
       </div>
-      <div class="g-hero__stats">
-        <div class="g-stat">
-          <span class="g-stat__num">3</span>
-          <span class="g-stat__label">Líneas evaluadas</span>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <p class="section-kicker">Rúbrica del curso</p>
+        <div class="section-heading">
+          <h2>Qué evidencia este módulo</h2>
         </div>
-        <div class="g-stat">
-          <span class="g-stat__num">75%</span>
-          <span class="g-stat__label">Eficiencia objetivo</span>
-        </div>
-        <div class="g-stat">
-          <span class="g-stat__num">217'</span>
-          <span class="g-stat__label">MTBF promedio</span>
-        </div>
-        <div class="g-stat">
-          <span class="g-stat__num">VPN</span>
-          <span class="g-stat__label">TIR · Retorno</span>
-        </div>
+        <ul class="rubric-list">
+          <li>Análisis del proceso productivo mediante diagramas y estimación de tiempos.</li>
+          <li>VSM antes y después de automatizar.</li>
+          <li>Simulación del sistema con evaluación de indicadores productivos (Takt, OEE, MLT, entre otros).</li>
+          <li>Análisis comparativo de mejoras.</li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══ BARRA DE PROGRESO DE SCROLL ═══ -->
-  <div class="g-scroll-bar" id="scrollBar"></div>
-
-  <!-- ═══ CONTENIDO PRINCIPAL CON SIDEBAR ═══ -->
-  <div class="g-layout container">
-
-    <!-- SIDEBAR NAVEGACIÓN INTERNA -->
-    <aside class="g-sidebar" id="pageSidebar">
-      <p class="g-sidebar__label">En esta página</p>
-      <nav class="g-sidebar__nav">
-        <a href="#indicadores" class="g-sidebar__link" data-section="indicadores">
-          <span class="g-sidebar__dot"></span>Indicadores
-        </a>
-        <a href="#vsm" class="g-sidebar__link" data-section="vsm">
-          <span class="g-sidebar__dot"></span>VSM
-        </a>
-        <a href="#layout" class="g-sidebar__link" data-section="layout">
-          <span class="g-sidebar__dot"></span>Layout
-        </a>
-        <a href="#lineas" class="g-sidebar__link" data-section="lineas">
-          <span class="g-sidebar__dot"></span>Líneas de producción
-        </a>
-        <a href="#finanzas" class="g-sidebar__link" data-section="finanzas">
-          <span class="g-sidebar__dot"></span>Evaluación financiera
-        </a>
-      </nav>
-      <div class="g-sidebar__module-nav">
-        <a href="planeacion.html" class="g-sidebar__module-link">← Planeación</a>
-        <a href="plc-scada.html" class="g-sidebar__module-link">PLC y SCADA →</a>
-      </div>
-    </aside>
-
-    <!-- CONTENIDO -->
-    <main class="g-main">
-
-      <!-- ── INDICADORES ── -->
-      <section class="g-section" id="indicadores">
-        <div class="g-section__header">
-          <span class="g-kicker">Desempeño operativo</span>
-          <h2>Indicadores de producción</h2>
-          <p>Análisis detallado de eficiencia, calidad y tiempos por línea evaluada.</p>
+    <section class="section" id="productos">
+      <div class="container">
+        <p class="section-kicker">Alcance</p>
+        <div class="section-heading">
+          <h2>Tres productos, tres retos de proceso</h2>
+          <p>La planta fabrica tres presentaciones con secuencias, velocidades y estrategias de calidad
+             diferenciadas, según los requisitos del proyecto.</p>
         </div>
-
-        <div class="g-card-grid">
-          <a class="g-card" href="anexos/Monster.html">
-            <div class="g-card__top">
-              <span class="g-badge">L6</span>
-              <span class="g-card__arrow">↗</span>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-img"><img src="images/cocacolaretornable.png" alt="Botella retornable de vidrio Coca-Cola" /></div>
+            <div class="product-body">
+              <span class="card-tag">Vidrio retornable</span>
+              <h3>Coca-Cola retornable</h3>
+              <p>Lavado con soda cáustica, inspección de envase, llenado isobárico y etiquetado.</p>
             </div>
-            <h3>Monster Energy</h3>
-            <p>Indicadores de la línea de latas: OEE, tiempos de ciclo y análisis de paradas.</p>
-            <span class="g-card__cta">Ver indicadores</span>
-          </a>
-          <a class="g-card" href="anexos/CocacolaRetornable.html">
-            <div class="g-card__top">
-              <span class="g-badge">L1 · L2</span>
-              <span class="g-card__arrow">↗</span>
-            </div>
-            <h3>Coca-Cola Retornable 1.5 L</h3>
-            <p>Eficiencia, lavado, velocidades nominales y causas de descarte en botellas de vidrio.</p>
-            <span class="g-card__cta">Ver indicadores</span>
-          </a>
-          <a class="g-card" href="anexos/CocacolaPlastica.html">
-            <div class="g-card__top">
-              <span class="g-badge">L5</span>
-              <span class="g-card__arrow">↗</span>
-            </div>
-            <h3>Coca-Cola No Retornable 2.5 L</h3>
-            <p>Comportamiento operativo de la línea PET, inspección automática y control de calidad.</p>
-            <span class="g-card__cta">Ver indicadores</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- ── VSM ── -->
-      <section class="g-section" id="vsm">
-        <div class="g-section__header">
-          <span class="g-kicker">Flujo de valor</span>
-          <h2>Value Stream Mapping</h2>
-          <p>Representación del flujo de materiales e información a lo largo del proceso productivo.</p>
-        </div>
-        <div class="g-diagram">
-          <div class="g-diagram__toolbar">
-            <span class="g-diagram__name">VSM — Planta de producción de bebidas</span>
-            <a href="images/VSM.png" target="_blank" class="g-diagram__action">Ver en pantalla completa ↗</a>
           </div>
-          <div class="g-diagram__frame">
+          <div class="product-card">
+            <div class="product-img"><img src="images/cocacolanoretornable.png" alt="Botella PET Coca-Cola" /></div>
+            <div class="product-body">
+              <span class="card-tag">PET no retornable</span>
+              <h3>Coca-Cola PET 2.5 L</h3>
+              <p>Soplado de preformas, inspección automática, llenado y control de calidad en línea.</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img"><img src="images/monster.jpg" alt="Lata Monster Energy" /></div>
+            <div class="product-body">
+              <span class="card-tag">Lata</span>
+              <h3>Monster Energy</h3>
+              <p>Línea de latas: llenado, sellado seamer, codificado y empaque termoencogido.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="indicadores">
+      <div class="container">
+        <p class="section-kicker">Desempeño operativo</p>
+        <div class="section-heading">
+          <h2>Indicadores de producción por línea</h2>
+          <p>Cálculo de disponibilidad, takt time, capacidad y utilización para cada línea evaluada.</p>
+        </div>
+        <div class="card-grid">
+          <a class="info-card" href="anexos/Monster.html">
+            <span class="card-tag">L6 · Lata</span>
+            <h3>Monster Energy</h3>
+            <p>OEE, tiempos de ciclo por estación y análisis de paradas de la línea de latas.</p>
+            <span class="doc-open">Ver hoja de cálculo →</span>
+          </a>
+          <a class="info-card" href="anexos/CocacolaRetornable.html">
+            <span class="card-tag">L1 · L2 · Vidrio</span>
+            <h3>Coca-Cola retornable 1.5 L</h3>
+            <p>Eficiencia, lavado, velocidades nominales y causas de descarte en vidrio retornable.</p>
+            <span class="doc-open">Ver hoja de cálculo →</span>
+          </a>
+          <a class="info-card" href="anexos/CocacolaPlastica.html">
+            <span class="card-tag">L5 · PET</span>
+            <h3>Coca-Cola no retornable 2.5 L</h3>
+            <p>Comportamiento operativo de la línea PET, inspección automática y calidad.</p>
+            <span class="doc-open">Ver hoja de cálculo →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vsm">
+      <div class="container">
+        <p class="section-kicker">Flujo de valor</p>
+        <div class="section-heading">
+          <h2>Value Stream Mapping</h2>
+          <p>Flujo de materiales e información a lo largo del proceso productivo. El comparativo
+             antes/después de automatizar sustenta las mejoras propuestas.</p>
+        </div>
+        <div class="diagram">
+          <div class="diagram-toolbar">
+            <span class="diagram-name">VSM — Planta de producción de bebidas</span>
+            <a href="images/VSM.png" target="_blank" class="diagram-action">Pantalla completa ↗</a>
+          </div>
+          <div class="diagram-frame">
             <img src="images/VSM.png" alt="Value Stream Map de la planta de producción de bebidas" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ── LAYOUT ── -->
-      <section class="g-section" id="layout">
-        <div class="g-section__header">
-          <span class="g-kicker">Distribución en planta</span>
+    <section class="section section-alt" id="layout">
+      <div class="container">
+        <p class="section-kicker">Distribución en planta</p>
+        <div class="section-heading">
           <h2>Layout de líneas FEMSA Coca-Cola</h2>
-          <p>Disposición física de las líneas y el flujo de materiales dentro de la planta.</p>
+          <p>Disposición física de las líneas y flujo de materiales dentro de la planta de referencia.</p>
         </div>
-        <div class="g-diagram">
-          <div class="g-diagram__toolbar">
-            <span class="g-diagram__name">Layout — Líneas FEMSA Coca-Cola</span>
-            <a href="images/Layout_lineas_Femsa_CocaCola.drawio.png" target="_blank" class="g-diagram__action">Ver en pantalla completa ↗</a>
+        <div class="diagram">
+          <div class="diagram-toolbar">
+            <span class="diagram-name">Layout — Líneas FEMSA Coca-Cola</span>
+            <a href="images/Layout_lineas_Femsa_CocaCola.drawio.png" target="_blank" class="diagram-action">Pantalla completa ↗</a>
           </div>
-          <div class="g-diagram__frame">
+          <div class="diagram-frame">
             <img src="images/Layout_lineas_Femsa_CocaCola.drawio.png" alt="Layout de las líneas de producción FEMSA Coca-Cola" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ── LÍNEAS ── -->
-      <section class="g-section" id="lineas">
-        <div class="g-section__header">
-          <span class="g-kicker">Proceso por línea</span>
+    <section class="section" id="lineas">
+      <div class="container">
+        <p class="section-kicker">Proceso por línea</p>
+        <div class="section-heading">
           <h2>Líneas de producción analizadas</h2>
           <p>Flujo productivo, velocidades nominales y características de cada línea incluida en la propuesta.</p>
         </div>
 
-        <div class="g-lineas">
-          <div class="g-linea">
-            <div class="g-linea__meta">
-              <span class="g-badge">Línea 1</span>
-              <div class="g-linea__specs">
-                <span>Vidrio · 237 ml · Retornable</span>
-                <strong>52 000 bot/h</strong>
-              </div>
-            </div>
-            <h3>Botella retornable de vidrio — 237 ml</h3>
-            <p>Proceso de lavado con soda cáustica, inspección visual y automática, llenado isobárico y etiquetado. Opera de 6 a.m. a 2 p.m.</p>
-            <div class="g-diagram g-diagram--sm">
-              <div class="g-diagram__frame">
-                <img src="images/linea1.jpg" alt="Diagrama de proceso Línea 1" />
-              </div>
-            </div>
+        <div class="linea-block">
+          <div class="linea-meta">
+            <span class="card-tag">Línea 1</span>
+            <span class="linea-specs">Vidrio · 237 ml · Retornable <strong>52 000 bot/h</strong></span>
           </div>
-
-          <div class="g-linea">
-            <div class="g-linea__meta">
-              <span class="g-badge">Línea 2</span>
-              <div class="g-linea__specs">
-                <span>Vidrio · 350 ml · Retornable</span>
-                <strong>60 000 bot/h</strong>
-              </div>
-            </div>
-            <h3>Botella retornable de vidrio — 350 ml</h3>
-            <p>Mayor velocidad nominal del conjunto retornable. Igual secuencia de lavado, inspección y llenado. Opera de 6 a.m. a 2 p.m.</p>
-            <div class="g-diagram g-diagram--sm">
-              <div class="g-diagram__frame">
-                <img src="images/linea2.jpg" alt="Diagrama de proceso Línea 2" />
-              </div>
-            </div>
+          <h3>Botella retornable de vidrio — 237 ml</h3>
+          <p>Proceso de lavado con soda cáustica, inspección visual y automática, llenado isobárico y etiquetado. Opera de 6 a.m. a 2 p.m.</p>
+          <div class="diagram">
+            <div class="diagram-frame"><img src="images/linea1.jpg" alt="Diagrama de proceso Línea 1" /></div>
           </div>
         </div>
-      </section>
 
-      <!-- ── FINANZAS ── -->
-      <section class="g-section" id="finanzas">
-        <div class="g-section__header">
-          <span class="g-kicker">Viabilidad económica</span>
-          <h2>Evaluación financiera</h2>
-          <p>Costos, supuestos, flujo de caja e indicadores de retorno de la propuesta de automatización.</p>
+        <div class="linea-block">
+          <div class="linea-meta">
+            <span class="card-tag">Línea 2</span>
+            <span class="linea-specs">Vidrio · 350 ml · Retornable <strong>60 000 bot/h</strong></span>
+          </div>
+          <h3>Botella retornable de vidrio — 350 ml</h3>
+          <p>Mayor velocidad nominal del conjunto retornable. Igual secuencia de lavado, inspección y llenado. Opera de 6 a.m. a 2 p.m.</p>
+          <div class="diagram">
+            <div class="diagram-frame"><img src="images/linea2.jpg" alt="Diagrama de proceso Línea 2" /></div>
+          </div>
         </div>
-
-        <div class="g-finance-grid">
-          <a class="g-finance-card g-finance-card--featured" href="anexos/Portada.html">
-            <span class="g-badge">F1</span>
-            <h3>Resumen ejecutivo</h3>
-            <p>Visión general de la evaluación financiera, conclusiones y recomendaciones principales de la propuesta.</p>
-            <span class="g-card__cta">Ver resumen ↗</span>
-          </a>
-          <a class="g-finance-card" href="anexos/Supuestos.html">
-            <span class="g-badge">F2</span>
-            <h3>Supuestos</h3>
-            <p>Tasas, horizontes de evaluación y criterios base del modelo financiero.</p>
-            <span class="g-card__cta">Ver supuestos ↗</span>
-          </a>
-          <a class="g-finance-card" href="anexos/CAPEX.html">
-            <span class="g-badge">F3</span>
-            <h3>CAPEX</h3>
-            <p>Inversión en equipos, instalación e integración del sistema automatizado.</p>
-            <span class="g-card__cta">Ver CAPEX ↗</span>
-          </a>
-          <a class="g-finance-card" href="anexos/OPEX_Beneficios.html">
-            <span class="g-badge">F4</span>
-            <h3>OPEX y Beneficios</h3>
-            <p>Costos operativos proyectados y beneficios cuantificados de la automatización.</p>
-            <span class="g-card__cta">Ver OPEX ↗</span>
-          </a>
-          <a class="g-finance-card" href="anexos/Flujo_de_Caja.html">
-            <span class="g-badge">F5</span>
-            <h3>Flujo de caja</h3>
-            <p>Proyección del flujo neto durante el horizonte de evaluación del proyecto.</p>
-            <span class="g-card__cta">Ver flujo ↗</span>
-          </a>
-          <a class="g-finance-card" href="anexos/Indicadores.html">
-            <span class="g-badge">F6</span>
-            <h3>Indicadores financieros</h3>
-            <p>VPN, TIR y período de retorno de la inversión para la propuesta presentada.</p>
-            <span class="g-card__cta">Ver indicadores ↗</span>
-          </a>
-        </div>
-      </section>
-
-      <!-- ── NAV ENTRE MÓDULOS ── -->
-      <div class="g-module-nav">
-        <a href="planeacion.html" class="g-module-nav__item">
-          <span class="g-module-nav__dir">← Módulo anterior</span>
-          <span class="g-module-nav__name">Planeación del proyecto</span>
-        </a>
-        <a href="plc-scada.html" class="g-module-nav__item g-module-nav__item--next">
-          <span class="g-module-nav__dir">Siguiente módulo →</span>
-          <span class="g-module-nav__name">PLC y SCADA</span>
-        </a>
       </div>
+    </section>
 
-    </main>
-  </div><!-- /.g-layout -->
+    <section class="section section-alt" id="simulacion">
+      <div class="container">
+        <p class="section-kicker">Simulación de producción</p>
+        <div class="section-heading">
+          <h2>Modelos en Plant Simulation</h2>
+          <p>Modelos Tecnomatix de las líneas para estimar tiempos, validar cambios de producto y calcular el OEE
+             con tiempos de set-up y fallas de equipos.</p>
+        </div>
+        <div class="card-grid" data-docs="simulacion"></div>
 
-  <!-- ═══ FOOTER ═══ -->
+        <div class="pending-card">
+          <div class="pc-head">
+            <span class="pc-icon">🛠</span>
+            <div>
+              <span class="pc-tag">En preparación</span>
+              <h3>Resultados de la simulación (OEE antes / después)</h3>
+            </div>
+          </div>
+          <p>Evidencia del análisis comparativo de la producción basado en simulación.</p>
+          <ul class="pending-list">
+            <li>Capturas del modelo en Plant Simulation (vista 2D/3D de las líneas).</li>
+            <li>Tabla o gráfico de OEE, Takt y MLT antes y después de automatizar.</li>
+            <li>Escenarios de cambio de producto y fallas simuladas.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="documentos-modulo">
+      <div class="container">
+        <p class="section-kicker">Documentación del módulo</p>
+        <div class="section-heading">
+          <h2>Diagramas y cálculos del proceso</h2>
+        </div>
+        <div class="card-grid" data-docs="proceso"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="section-kicker">Evidencia audiovisual</p>
+        <div class="section-heading">
+          <h2>Video del módulo</h2>
+          <p>Registro del entregable del módulo. El enlace se configura en <code>data/site-data.js</code> o desde el panel de administración.</p>
+        </div>
+        <div class="video-slot" data-video="gestion"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="module-nav">
+          <a href="introduccion-automatizacion.html">
+            <span class="mn-dir">← Módulo anterior</span>
+            <span class="mn-name">01 · Introducción a la automatización de manufactura</span>
+          </a>
+          <a href="planeacion.html" class="mn-next">
+            <span class="mn-dir">Siguiente módulo →</span>
+            <span class="mn-name">03 · Planeación y evaluación de proyectos</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <footer class="site-footer">
-    <div class="container footer-content">
-      <div>
-        <p class="footer-title">Sincronizados</p>
-        <p>Proyecto académico de consultoría y automatización industrial.</p>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">Sincronizados S.A.</p>
+          <p>Propuesta de automatización para una planta de producción de bebidas.
+             Proyecto integrador — Automatización de Procesos de Manufactura,
+             Universidad Nacional de Colombia · 2026-1S.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Módulos</h4>
+          <a href="introduccion-automatizacion.html">01 · Introducción a la automatización de manufactura</a>
+          <a href="gestion-evaluacion-produccion.html">02 · Gestión y evaluación de la producción automatizada</a>
+          <a href="planeacion.html">03 · Planeación y evaluación de proyectos</a>
+          <a href="celdas-roboticas.html">04 · Celda de manufactura robotizada</a>
+          <a href="digital-factory.html">05 · Digital Factory</a>
+          <a href="controladores-industriales.html">06 · Controladores industriales</a>
+          <a href="scada.html">07 · SCADA</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <a href="equipo.html">Equipo</a>
+          <a href="reflexiones-individuales.html">Proceso de aprendizaje</a>
+          <a href="index.html#documentos">Documentos técnicos</a>
+          <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+        </div>
       </div>
-      <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Ver repositorio</a>
+      <div class="footer-bottom">
+        <span>© 2026 Sincronizados S.A. — Proyecto académico.</span>
+        <span>Automatización de Procesos de Manufactura · UNAL</span>
+      </div>
     </div>
   </footer>
 
-  <script>
-    /* ── Menú hamburger ── */
-    const toggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      navLinks.classList.toggle('is-open');
-    });
-
-    /* ── Barra de progreso de scroll ── */
-    const scrollBar = document.getElementById('scrollBar');
-    window.addEventListener('scroll', () => {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = (window.scrollY / total) * 100;
-      scrollBar.style.width = pct + '%';
-    });
-
-    /* ── Sidebar: resaltar sección activa ── */
-    const sections = document.querySelectorAll('.g-section');
-    const sideLinks = document.querySelectorAll('.g-sidebar__link');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          sideLinks.forEach(l => l.classList.remove('is-active'));
-          const active = document.querySelector(`.g-sidebar__link[data-section="${entry.target.id}"]`);
-          active?.classList.add('is-active');
-        }
-      });
-    }, { rootMargin: '-20% 0px -60% 0px' });
-
-    sections.forEach(s => observer.observe(s));
-
-    /* ── Scroll suave para pills del hero ── */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-  </script>
-
+  <script src="data/site-data.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>

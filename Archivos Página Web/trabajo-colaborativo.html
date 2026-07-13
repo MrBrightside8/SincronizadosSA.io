@@ -1,49 +1,144 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <title>Trabajo colaborativo</title>
-  <link rel="stylesheet" href="styles.css">
-    
-    </head>
-    
-    <body>
-        
-        <header class=header>
-        <nav class="navbar">
-          <div class="titulo">Sincronizados S.A.</div>
-          <div class="menu">
-            <a href="index.html">Inicio</a>
-            
-            <div class="dropdown">
-              <a href="#">Módulos ▾</a>
-              <div class="dropdown-content">
-                <a href="#">Introducción a la Automatización de manufactura</a>
-                <a href="gestion-evaluacion-produccion.html">Gestión y evaluación de la producción automatizada</a>
-                <a href="planeacion.html">Planeación y Evaluación del proyecto</a>
-                <a href="celdas-roboticas.html"> Celdas de manufactura robotizadas</a>
-                <a href="tecnologias-aplicadas.html">Tecnologías modernas aplicadas a la manufactura</a>
-                <a href="trabajo-colaborativo.html">Automatización discreta: PLC y SCADA</a>           
-              </div>
-                
-            </div>
-    
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reflexión — Trabajo colaborativo | Sincronizados</title>
+  <meta name="description" content="Reflexión grupal sobre el trabajo colaborativo: organización del equipo, herramientas y lecciones aprendidas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-sincronizados.svg" alt="Logo de Sincronizados" class="brand-logo" />
+        <div class="brand-copy">
+          <span class="brand-name">Sincronizados</span>
+          <span class="brand-tag">Consultoría industrial</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Inicio</a>
+
+        <div class="nav-dropdown">
+          <a href="index.html#modulos">Módulos</a>
+          <div class="dropdown-menu">
+            <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
+            <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
+            <a href="planeacion.html"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
+            <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
+            <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
+            <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="index.html#aprendizaje">Proceso de aprendizaje</a>
+          <div class="dropdown-menu">
+            <a href="reflexion-gestion.html">Reflexión — Gestión del proyecto</a>
+            <a href="trabajo-colaborativo.html" class="is-current">Reflexión — Trabajo colaborativo</a>
+            <a href="reflexiones-individuales.html">Reflexiones individuales</a>
+          </div>
+        </div>
+
+        <a href="equipo.html">Equipo</a>
+        <a href="index.html#documentos">Documentos</a>
+
+        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="section-kicker">Proceso de aprendizaje</p>
+        <h1>Reflexión grupal — trabajo colaborativo</h1>
+        <p class="lead">
+          Cómo se organizó el equipo para desarrollar el proyecto: distribución de roles,
+          herramientas de coordinación y lecciones del trabajo conjunto.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card-grid">
+          <article class="reflection-card">
+            <span class="card-tag">Organización</span>
+            <h3>Roles y responsabilidades</h3>
+            <p>
+              El trabajo se distribuyó por módulos técnicos según las fortalezas de cada integrante,
+              con responsables definidos para el proceso, la simulación, el control y la evaluación económica.
+            </p>
+          </article>
+
+          <article class="reflection-card">
+            <span class="card-tag">Herramientas</span>
+            <h3>Coordinación del equipo</h3>
+            <p>
+              GitHub como repositorio central del proyecto, mensajería para la coordinación diaria y
+              sesiones de trabajo conjunto para las integraciones entre módulos.
+            </p>
+          </article>
+
+          <article class="reflection-card">
+            <span class="card-tag">Lecciones</span>
+            <h3>Lo que aprendimos del trabajo conjunto</h3>
+            <p>
+              La integración entre módulos exige acuerdos tempranos: definir interfaces claras
+              (señales, formatos, supuestos) evitó retrabajos en las etapas finales del proyecto.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">Sincronizados S.A.</p>
+          <p>Propuesta de automatización para una planta de producción de bebidas.
+             Proyecto integrador — Automatización de Procesos de Manufactura,
+             Universidad Nacional de Colombia · 2026-1S.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Módulos</h4>
+          <a href="introduccion-automatizacion.html">01 · Introducción a la automatización de manufactura</a>
+          <a href="gestion-evaluacion-produccion.html">02 · Gestión y evaluación de la producción automatizada</a>
+          <a href="planeacion.html">03 · Planeación y evaluación de proyectos</a>
+          <a href="celdas-roboticas.html">04 · Celda de manufactura robotizada</a>
+          <a href="digital-factory.html">05 · Digital Factory</a>
+          <a href="controladores-industriales.html">06 · Controladores industriales</a>
+          <a href="scada.html">07 · SCADA</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
           <a href="equipo.html">Equipo</a>
-          <div class="dropdown">
-             <a href="#">Reflexiones ▾</a>
-             <div class="dropdown-content">
-                <a href="reflexion-gestion.html">Gestión del proyecto</a>
-                <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
-                <a href="reflexiones-individuales.html">Reflexiones individuales</a>
-          </div>
-             
-             
-          </div>
-        
-        </nav>
-         <div class="bottom-line"></div>
-       </header>
-    <h1>Reflexiones sobre el trabajo colaborativo</h1>
-  </body>
-  
+          <a href="reflexiones-individuales.html">Proceso de aprendizaje</a>
+          <a href="index.html#documentos">Documentos técnicos</a>
+          <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Sincronizados S.A. — Proyecto académico.</span>
+        <span>Automatización de Procesos de Manufactura · UNAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/site-data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
 </html>

@@ -1,1 +1,8 @@
+# Archivos Página Web
 
+Sitio del proyecto Sincronizados (GitHub Pages).
+
+- `index.html` — inicio. Módulos en páginas propias (01–07).
+- `data/site-data.js` — contenido editable (equipo, reflexiones, videos, documentos).
+- Panel de administración: botón ⚙ Admin en la esquina inferior derecha.
+- Ver `GUIA-DE-CONTENIDO.md` para el contenido pendiente por módulo.

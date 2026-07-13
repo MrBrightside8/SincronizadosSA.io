@@ -26,15 +26,29 @@ window.SITE_DATA = {
     claveHash: "45ac9bf1c87bebc85eeca0eee24c873599d74e5bb07182307efe2cdbcb1754fe"
   },
 
-  /* Módulos del proyecto. Sirven para clasificar las reflexiones. */
+  /* Módulos del curso (mismo orden del PDF del proyecto integrador).
+     Sirven para clasificar reflexiones y para el editor de videos. */
   modulos: [
-    { id: "planeacion", nombre: "Planeación" },
-    { id: "gestion", nombre: "Gestión y evaluación de producción" },
-    { id: "plc-scada", nombre: "PLC y SCADA" },
-    { id: "tecnologias", nombre: "Tecnologías aplicadas" },
-    { id: "celdas", nombre: "Celdas robóticas" },
-    { id: "colaborativo", nombre: "Trabajo colaborativo" }
+    { id: "introduccion", nombre: "01 · Introducción a la automatización" },
+    { id: "gestion", nombre: "02 · Gestión y evaluación de la producción" },
+    { id: "planeacion", nombre: "03 · Planeación y evaluación de proyectos" },
+    { id: "celdas", nombre: "04 · Celda de manufactura robotizada" },
+    { id: "digital", nombre: "05 · Digital Factory" },
+    { id: "controladores", nombre: "06 · Controladores industriales" },
+    { id: "scada", nombre: "07 · SCADA" }
   ],
+
+  /* Enlaces de YouTube del video de cada módulo (deja "" si aún no hay).
+     Editables también desde el panel: ⚙ Admin → Videos de módulos. */
+  videos: {
+    introduccion: "",
+    gestion: "",
+    planeacion: "",
+    celdas: "",
+    digital: "",
+    controladores: "",
+    scada: ""
+  },
 
   /* Integrantes del equipo. La foto puede ser una ruta (images/...)
      o una imagen incrustada (data:image/...) cargada desde el panel. */
@@ -83,7 +97,7 @@ window.SITE_DATA = {
     {
       id: "r-brayan-1",
       integranteId: "brayan",
-      moduloId: "plc-scada",
+      moduloId: "controladores",
       texto: "Escribe aquí la reflexión de Brayan: su aporte, aprendizajes, dificultades y balance final del proyecto. Puedes editar este texto desde el panel de administración."
     },
     {
@@ -101,7 +115,7 @@ window.SITE_DATA = {
     {
       id: "r-santiago-1",
       integranteId: "santiago",
-      moduloId: "tecnologias",
+      moduloId: "digital",
       texto: "Escribe aquí la reflexión de Santiago sobre las tecnologías aplicadas y su valoración del trabajo colaborativo."
     },
     {
@@ -113,7 +127,7 @@ window.SITE_DATA = {
     {
       id: "r-carlos-1",
       integranteId: "carlos",
-      moduloId: "colaborativo",
+      moduloId: "introduccion",
       texto: "Escribe aquí la reflexión de Carlos sobre el trabajo colaborativo, la organización del equipo y su balance personal."
     }
   ],
