@@ -870,3 +870,141 @@ img {
   color: var(--pine-dark);
   border: 1px solid rgba(36, 64, 76, 0.22);
 }
+
+/* =====================================================================
+   Contenido dinámico: equipo, reflexiones, documentos y panel admin
+   (añadido en la unificación/mejora estética del sitio)
+   ===================================================================== */
+:root {
+  --surface-2: rgba(255, 255, 255, 0.16);
+  --heading-dark: var(--pine-dark);
+  --shadow: var(--shadow-lg);
+}
+
+/* ---------- Equipo: tarjetas de integrantes ---------- */
+.team-members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 1.6rem;
+}
+.member-card {
+  background: #ffffff;
+  border: 1px solid rgba(36, 64, 76, 0.10);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 2rem 1.6rem;
+  text-align: center;
+  color: var(--text-dark);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.member-card:hover { transform: translateY(-4px); box-shadow: 0 26px 52px rgba(0,0,0,0.22); }
+.member-photo,
+.member-placeholder {
+  width: 150px; height: 150px;
+  margin: 0 auto 1.2rem;
+  border-radius: 50%;
+  display: block;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+  box-shadow: 0 12px 28px rgba(36, 64, 76, 0.22);
+  background: linear-gradient(135deg, var(--air-force-light), var(--pine-blue));
+}
+.member-placeholder {
+  display: grid; place-items: center;
+  font-size: 2.1rem; font-weight: 800; color: #ffffff; letter-spacing: 1px;
+}
+.member-card h2 { margin: .2rem 0 .6rem; font-size: 1.3rem; line-height: 1.2; color: var(--text-dark); }
+.member-role { margin: 0; color: var(--text-dark-muted); line-height: 1.55; font-size: .96rem; }
+.member-card.member-add { display: grid; place-items: center; background: rgba(255,255,255,.5); border: 2px dashed rgba(36,64,76,.3); box-shadow: none; }
+@media (max-width: 1100px) { .team-members-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); } }
+@media (max-width: 720px)  { .team-members-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Reflexiones: pestañas + panel ---------- */
+.refl-controls { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
+.refl-filter { display: inline-flex; align-items: center; gap: .6rem; font-size: .92rem; color: var(--text); }
+.refl-filter select, .form-field select, .form-field input, .form-field textarea, .hash-out {
+  font: inherit; padding: .6rem .7rem; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: rgba(255,255,255,.95); color: var(--text-dark);
+}
+.refl-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem; }
+.refl-tab {
+  font: inherit; cursor: pointer; padding: .55rem 1rem;
+  border-radius: 999px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--text); transition: all .2s ease;
+}
+.refl-tab:hover { background: var(--surface-hover); }
+.refl-tab.is-active { background: var(--accent); color: var(--pine-dark); border-color: var(--accent); font-weight: 600; }
+.refl-panel {
+  background: #ffffff; color: var(--text-dark);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  padding: 2rem; border: 1px solid rgba(36,64,76,.08);
+}
+.refl-panel-head { display: flex; align-items: center; gap: 1.1rem; margin-bottom: 1.2rem; }
+.refl-avatar { width: 76px; height: 76px; border-radius: 50%; object-fit: cover; flex: 0 0 auto;
+  box-shadow: 0 8px 20px rgba(36,64,76,.2); background: linear-gradient(135deg, var(--air-force-light), var(--pine-blue)); }
+.refl-avatar-ph { display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 1.4rem; }
+.refl-panel-head h3 { margin: 0 0 .25rem; color: var(--text-dark); font-size: 1.35rem; }
+.refl-role { margin: 0; color: var(--text-dark-muted); font-size: .92rem; }
+.refl-entry { border-top: 1px solid rgba(36,64,76,.1); padding-top: 1.1rem; margin-top: 1.1rem; }
+.refl-badge { display: inline-block; font-size: .78rem; font-weight: 600; letter-spacing: .3px;
+  background: rgba(62,111,126,.12); color: var(--pine-blue); padding: .25rem .7rem; border-radius: 999px; margin-bottom: .7rem; }
+.refl-text { margin: 0; color: var(--text-dark); line-height: 1.7; white-space: pre-wrap; }
+.refl-add { margin-top: 1.4rem; }
+.empty-state { color: var(--text-dark-muted); font-style: italic; margin: .6rem 0; }
+
+/* ---------- Documentos (P&ID / financiero) ---------- */
+.doc-card { display: flex; flex-direction: column; }
+.doc-open { margin-top: auto; padding-top: .8rem; font-weight: 600; color: var(--accent); }
+
+/* ---------- Acciones y chips de administración ---------- */
+.admin-actions { display: flex; gap: .5rem; justify-content: center; margin-top: 1rem; }
+.chip-btn { font: inherit; cursor: pointer; font-size: .82rem; padding: .35rem .8rem; border-radius: 999px;
+  border: 1px solid rgba(36,64,76,.25); background: rgba(36,64,76,.06); color: var(--pine-dark); }
+.chip-btn:hover { background: rgba(36,64,76,.12); }
+.chip-btn.danger { border-color: rgba(176,58,58,.35); color: #b03a3a; background: rgba(176,58,58,.07); }
+.chip-btn.danger:hover { background: rgba(176,58,58,.14); }
+
+/* ---------- Botón flotante admin ---------- */
+.admin-fab {
+  position: fixed; right: 18px; bottom: 18px; z-index: 900;
+  font: inherit; font-weight: 600; cursor: pointer;
+  padding: .7rem 1.1rem; border-radius: 999px; border: none;
+  background: var(--pine-dark); color: #fff; box-shadow: 0 12px 30px rgba(0,0,0,.3);
+  transition: transform .2s ease, background .2s ease;
+}
+.admin-fab:hover { transform: translateY(-2px); background: var(--pine-blue); }
+body.is-admin .admin-fab { background: #2c6e49; }
+
+/* ---------- Modales ---------- */
+.modal-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(20,32,38,.6);
+  display: grid; place-items: center; padding: 1.2rem; backdrop-filter: blur(3px); }
+.modal-box { width: min(560px, 100%); max-height: 90vh; overflow: auto;
+  background: #fff; color: var(--text-dark); border-radius: var(--radius-lg); box-shadow: 0 30px 70px rgba(0,0,0,.4); }
+.modal-head { display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 1.4rem; border-bottom: 1px solid rgba(36,64,76,.12); }
+.modal-head h3 { margin: 0; font-size: 1.2rem; color: var(--pine-dark); }
+.modal-close { border: none; background: none; font-size: 1.6rem; line-height: 1; cursor: pointer; color: var(--text-dark-muted); }
+.modal-body { padding: 1.3rem 1.4rem; }
+.modal-note { margin: 0 0 1rem; font-size: .9rem; color: var(--text-dark-muted); }
+.modal-foot { margin-top: 1.2rem; display: flex; justify-content: flex-end; }
+.form-field { display: block; margin-bottom: 1rem; }
+.form-field > span { display: block; font-size: .88rem; font-weight: 600; margin-bottom: .35rem; color: var(--pine-dark); }
+.form-field input, .form-field textarea, .form-field select, .hash-out { width: 100%; box-sizing: border-box; }
+.form-msg { color: #b03a3a; font-size: .9rem; min-height: 1.1rem; margin: .3rem 0 0; }
+.hash-out { font-family: ui-monospace, monospace; font-size: .82rem; }
+.foto-preview { margin-bottom: .6rem; }
+.foto-preview img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 20px rgba(36,64,76,.2); }
+.foto-preview .member-placeholder { width: 110px; height: 110px; }
+.foto-btns { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; }
+
+/* ---------- Menú del panel admin ---------- */
+.admin-menu { display: grid; gap: .7rem; }
+.admin-menu-item { text-align: left; cursor: pointer; font: inherit; padding: .9rem 1rem;
+  border-radius: var(--radius-md); border: 1px solid rgba(36,64,76,.14); background: rgba(36,64,76,.04); color: var(--text-dark); }
+.admin-menu-item:hover { background: rgba(36,64,76,.09); }
+.admin-menu-item strong { display: block; color: var(--pine-dark); margin-bottom: .2rem; }
+.admin-menu-item span { display: block; font-size: .86rem; color: var(--text-dark-muted); }
+
+/* Subtítulos de la sección de documentos técnicos */
+.doc-subtitle { margin: 2rem 0 1rem; font-size: 1.15rem; color: var(--text); opacity: .95; }
+.doc-subtitle:first-of-type { margin-top: .5rem; }

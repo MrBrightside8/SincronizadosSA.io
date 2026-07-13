@@ -46,75 +46,8 @@
     .team-section .section-heading {
       margin-bottom: 2rem;
     }
-
-    .team-members-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .member-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow);
-      padding: 1.6rem;
-      text-align: center;
-      min-height: 100%;
-    }
-
-    .member-photo,
-    .member-placeholder {
-      width: 160px;
-      height: 160px;
-      margin: 0 auto 1.2rem;
-      border-radius: 50%;
-      display: block;
-      object-fit: cover;
-      border: 4px solid var(--surface-2);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.10);
-      background: linear-gradient(135deg, var(--surface-2), var(--surface));
-    }
-
-    .member-placeholder {
-      display: grid;
-      place-items: center;
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--heading-dark);
-    }
-
-    .member-card h2 {
-      margin: 0 0 0.7rem;
-      font-size: 1.45rem;
-      line-height: 1.18;
-      color: var(--heading-dark);
-    }
-
-    .member-role {
-      margin: 0;
-      color: var(--text-muted);
-      line-height: 1.55;
-      font-size: 0.98rem;
-    }
-
-    @media (max-width: 1100px) {
-      .team-members-grid {
-        grid-template-columns: repeat(2, minmax(240px, 1fr));
-      }
-    }
-
-    @media (max-width: 720px) {
-      .team-members-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .member-photo,
-      .member-placeholder {
-        width: 140px;
-        height: 140px;
-      }
-    }
+    /* Las tarjetas de integrantes se estilizan en styles.css para
+       mantener coherencia en todo el sitio. */
   </style>
 </head>
 
@@ -193,56 +126,15 @@
           <p>Personas que sostienen la propuesta, la estructuración técnica y la presentación del proyecto.</p>
         </div>
 
-        <div class="team-members-grid">
-          <article class="member-card">
-            <img src="images/equipoimg/brayan.jpg" alt="Brayan Yesid Santos Guevara" class="member-photo">
-            <h2>Brayan Yesid Santos Guevara</h2>
-            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
-          </article>
-
-          <article class="member-card">
-            <img src="images/equipoimg/jorge.jpg" alt="Jorge Emilio Melo Guevara" class="member-photo">
-            <h2>Jorge Emilio Melo Guevara</h2>
-            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
-          </article>
-
-          <article class="member-card">
-            <div class="member-placeholder">EE</div>
-            <h2>Edgar Esteban Erazo Lagos</h2>
-            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
-          </article>
-
-          <article class="member-card">
-            <img src="images/equipoimg/santiago.png" alt="Santiago Mariño Cortés" class="member-photo">
-            <h2>Santiago Mariño Cortés</h2>
-            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
-          </article>
-
-          <article class="member-card">
-            <img src="images/equipoimg/juandavid.jpg" alt="Juan David Medina Perez" class="member-photo">
-            <h2>Juan David Medina Perez</h2>
-            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
-          </article>
-
-          <article class="member-card">
-            <img src="images/equipoimg/carlos.jpg" alt="Carlos Quintero Quintero Castillo" class="member-photo">
-            <h2>Carlos Quintero Quintero Castillo</h2>
-            <p class="member-role">Integrante del equipo de desarrollo del proyecto Sincronizados.</p>
-          </article>
-        </div>
+        <div class="team-members-grid" id="equipo-app"></div>
+        <noscript>
+          <p class="empty-state">Activa JavaScript para ver los integrantes del equipo.</p>
+        </noscript>
       </div>
     </section>
   </main>
 
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      navLinks.classList.toggle('is-open');
-    });
-  </script>
+  <script src="data/site-data.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>

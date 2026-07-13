@@ -1,0 +1,43 @@
+/* Estilos base para hojas exportadas desde Google Sheets (ritz/waffle) */
+.ritz .waffle {
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  background: #ffffff;
+}
+.ritz .waffle td,
+.ritz .waffle th {
+  border: 1px solid #d0d7de;
+  padding: 2px 3px;
+  vertical-align: bottom;
+  overflow: hidden;
+}
+.ritz .waffle .row-header,
+.ritz .waffle .column-headers-background,
+.ritz .waffle .row-headers-background {
+  background: #f0f3f4;
+  color: #333;
+  text-align: center;
+  font-weight: normal;
+  border: 1px solid #c9cbcd;
+}
+.ritz .waffle .row-header-wrapper {
+  text-align: center;
+}
+.ritz .waffle .freezebar-origin-ltr {
+  background: #f0f3f4;
+}
+.grid-container {
+  position: relative;
+  overflow: auto;
+  padding: 12px;
+}
+.waffle-embedded-object-overlay {
+  position: relative;
+  margin: 12px 0;
+}
+body {
+  margin: 0;
+  padding: 16px;
+  background: #ffffff;
+}

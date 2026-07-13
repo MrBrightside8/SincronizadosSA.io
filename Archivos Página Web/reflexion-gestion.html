@@ -10,46 +10,58 @@
 <body>
 
   <header class="site-header">
-    <div class="container">
-      <nav class="nav">
-        <a href="index.html" class="brand">
-          <img src="logo.png" alt="Logo Sincronizados" class="brand-logo">
-          <div class="brand-copy">
-            <span class="brand-name">Sincronizados</span>
-            <span class="brand-tag">Consultoría industrial</span>
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-sincronizados.svg" alt="Logo de Sincronizados" class="brand-logo" />
+        <span>Sincronizados</span>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="index.html">Inicio</a>
+
+        <div class="nav-dropdown">
+          <a href="index.html#modulos">Módulos</a>
+          <div class="dropdown-menu">
+            <a href="#">Introducción a la automatización de manufactura</a>
+            <a href="gestion-evaluacion-produccion.html">Gestión y evaluación de la producción automatizada</a>
+            <a href="planeacion.html">Planeación y evaluación del proyecto</a>
+            <a href="celdas-roboticas.html">Celdas de manufactura robotizadas</a>
+            <a href="tecnologias-aplicadas.html">Tecnologías modernas aplicadas a la manufactura</a>
+            <a href="plc-scada.html">Automatización discreta: PLC y SCADA</a>
           </div>
-        </a>
-
-        <div class="nav-links">
-          <a href="index.html">Inicio</a>
-
-          <div class="nav-dropdown">
-            <a href="#">Módulos</a>
-            <div class="dropdown-menu">
-              <a href="introduccion-automatizacion.html">Introducción a la Automatización de manufactura</a>
-              <a href="gestion-evaluacion-produccion.html">Gestión y evaluación de la producción automatizada</a>
-              <a href="planeacion.html">Planeación y Evaluación del proyecto</a>
-              <a href="celdas-roboticas.html">Celdas de manufactura robotizadas</a>
-              <a href="tecnologias-aplicadas.html">Tecnologías modernas aplicadas a la manufactura</a>
-              <a href="automatizacion-discreta.html">Automatización discreta: PLC y SCADA</a>
-            </div>
-          </div>
-
-          <a href="equipo.html">Equipo</a>
-
-          <div class="nav-dropdown">
-            <a href="#">Reflexiones</a>
-            <div class="dropdown-menu">
-              <a href="reflexion-gestion.html" class="is-current">Gestión del proyecto</a>
-              <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
-              <a href="reflexiones-individuales.html">Reflexiones individuales</a>
-            </div>
-          </div>
-
-          <a href="anexos.html" class="nav-button">Repositorio</a>
         </div>
-      </nav>
-    </div>
+
+        <a href="equipo.html">Equipo</a>
+
+        <div class="nav-dropdown">
+          <a href="index.html#reflexiones">Reflexiones</a>
+          <div class="dropdown-menu">
+            <a href="reflexion-gestion.html" class="is-current">Gestión del proyecto</a>
+            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+            <a href="reflexiones-individuales.html">Reflexiones individuales</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="index.html#anexos">Anexos</a>
+          <div class="dropdown-menu">
+            <a href="anexos/Portada.html">Portada</a>
+            <a href="anexos/Supuestos.html">Supuestos</a>
+            <a href="anexos/Trazabilidad_Proceso.html">Trazabilidad del proceso</a>
+          </div>
+        </div>
+
+        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">
+          Repositorio
+        </a>
+      </div>
+    </nav>
   </header>
 
   <section class="page-hero section">

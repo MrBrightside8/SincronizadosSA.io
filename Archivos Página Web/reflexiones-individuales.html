@@ -107,67 +107,15 @@
         <div class="section-heading">
           <h2>Lectura personal del proceso</h2>
           <p>
-            Este apartado reúne reflexiones individuales sobre la experiencia de trabajo,
-            la coordinación del equipo, el uso de herramientas técnicas y los aprendizajes
-            adquiridos a lo largo del proyecto.
+            Selecciona un integrante para ver su reflexión. Cada reflexión se clasifica por
+            módulo del proyecto; usa el filtro para verlas por módulo.
           </p>
         </div>
 
-        <div class="card-grid">
-          <article class="info-card">
-            <span class="card-tag">R1</span>
-            <h3>Integrante 1</h3>
-            <p>
-              Aquí puedes colocar la reflexión individual del primer integrante: su aporte,
-              su proceso de aprendizaje, las dificultades encontradas y su balance final.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <span class="card-tag">R2</span>
-            <h3>Integrante 2</h3>
-            <p>
-              Sustituye este texto con la reflexión personal del segundo integrante, enfocada
-              en su experiencia técnica, organizativa y académica dentro del proyecto.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <span class="card-tag">R3</span>
-            <h3>Integrante 3</h3>
-            <p>
-              Agrega aquí la reflexión del tercer integrante, incluyendo aprendizajes clave,
-              retos enfrentados y valoración del trabajo colaborativo.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <span class="card-tag">R4</span>
-            <h3>Integrante 4</h3>
-            <p>
-              Usa este bloque para la reflexión del cuarto integrante o elimínalo si no lo
-              necesitas. El formato ya queda alineado con el resto del sitio.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <span class="card-tag">R5</span>
-            <h3>Integrante 5</h3>
-            <p>
-              Puedes editar este espacio para añadir otra reflexión individual, manteniendo
-              una redacción breve, clara y coherente con el tono del proyecto.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <span class="card-tag">R6</span>
-            <h3>Integrante 6</h3>
-            <p>
-              Si tu equipo tiene menos integrantes, puedes borrar este bloque; si no, úsalo
-              para completar la última reflexión individual.
-            </p>
-          </article>
-        </div>
+        <div id="reflexiones-app"></div>
+        <noscript>
+          <p class="empty-state">Activa JavaScript para ver las reflexiones individuales.</p>
+        </noscript>
       </div>
     </section>
 
@@ -210,15 +158,7 @@
     </div>
   </footer>
 
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      navLinks.classList.toggle('is-open');
-    });
-  </script>
+  <script src="data/site-data.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>

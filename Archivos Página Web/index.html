@@ -58,6 +58,7 @@
             <a href="anexos/Portada.html">Portada</a>
             <a href="anexos/Supuestos.html">Supuestos</a>
             <a href="anexos/Trazabilidad_Proceso.html">Trazabilidad del proceso</a>
+            <a href="#documentos">Diagramas P&amp;ID y financiero</a>
           </div>
         </div>
 
@@ -254,6 +255,31 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="documentos">
+      <div class="container">
+        <p class="section-kicker">Documentos técnicos</p>
+        <div class="section-heading">
+          <h2>Documentación del proyecto</h2>
+          <p>Planeación, análisis de proceso, diagramas P&amp;ID, simulación y evaluación económica que sustentan la propuesta.</p>
+        </div>
+
+        <h3 class="doc-subtitle">Planeación</h3>
+        <div class="card-grid" id="planeacion-app"></div>
+
+        <h3 class="doc-subtitle">Análisis de proceso</h3>
+        <div class="card-grid" id="proceso-app"></div>
+
+        <h3 class="doc-subtitle">Diagramas P&amp;ID</h3>
+        <div class="card-grid" id="pid-app"></div>
+
+        <h3 class="doc-subtitle">Simulación (Plant Simulation)</h3>
+        <div class="card-grid" id="simulacion-app"></div>
+
+        <h3 class="doc-subtitle">Análisis financiero</h3>
+        <div class="card-grid" id="financiero-app"></div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -266,15 +292,7 @@
     </div>
   </footer>
 
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      navLinks.classList.toggle('is-open');
-    });
-  </script>
+  <script src="data/site-data.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>
