@@ -5,10 +5,11 @@
 
 Este repositorio documenta el desarrollo de un proyecto integrador para la asignatura **Automatización de Procesos de Manufactura**, enfocado en la propuesta de mejoramiento de una planta física de producción de bebidas tipo Coca-Cola mediante herramientas de automatización, simulación, control industrial y evaluación económica.
 
-El proyecto no se limita a describir el proceso productivo, sino que plantea una **solución de automatización estructurada sobre el papel**, con sustento técnico, simulación digital, arquitectura de control, propuesta de celda robotizada, sistema SCADA y análisis económico de viabilidad..
+Dado su proposito de integrar distintos ejes temáticos abordados a los largo de la carrera, el proyecto parte de la descripción del proceso productivo para posteriormente plantear una **solución de automatización estructurada**, con sustento técnico, simulación digital, arquitectura de control, propuesta de celda robotizada, sistema SCADA y análisis económico de viabilidad. 
 
-La propuesta se desarrolla con base en la metodología del curso, integrando herramientas de gestión del proyecto, análisis de proceso, Digital Factory, PLC, SCADA y diseño de celdas robotizadas.
+Bajo dicha premisa, el proyecto es transversal entre distintos niveles de la piramide de automatización establecida por norma **ISA95**; partiendo por el nivel 0, donde se busca compreder y analizar las distintas estaciones de la planta para identificar cuellos de botella y posibles puntos de mejora, buscando determinar aquellos que sean ideoneos de cambio o automatización. Posteriormente, a partir de la  ya mencionada propuesta de mejora, se contempla el desarrollo de la lógica de control necesaria para la implmentación del proceso mejorado en concordancia con el nivel 1 de la piramide, y de la misma manera, se pretende construir de un sistema SCADA corresponiendte al nivel 2 de automatización. 
 
+Adicionalmente, la propuesta se desarrolla con base en la metodología del curso e integra herramientas de gestión del proyecto, análisis de proceso, gemelos digitales, PLC, SCADA y diseño de celdas robotizadas.
 
 ## Objetivo general
 
@@ -21,19 +22,19 @@ Diseñar una propuesta integral de automatización para una planta de producció
 - Definir el alcance del sistema automatizado y sus requerimientos principales.
 - Elaborar la arquitectura de automatización del sistema con base en ISA-95.
 - Diseñar una propuesta de celda robotizada para una etapa de manipulación o paletizado.
-- Desarrollar una representación digital del sistema en **Factory I/O**.
+- Desarrollar una representación digital del sistema en **Siemens NX**.
 - Implementar la lógica de control industrial mediante **Grafcet** y **Ladder**.
-- Diseñar un sistema **SCADA/HMI** para supervisión, alarmas y monitoreo.
+- Diseñar un sistema **SCADA** para supervisión, alarmas y monitoreo.
 - Evaluar económicamente la propuesta mediante costos, flujo de caja e indicadores financieros.
 
 
 ## Alcance del proyecto
 
-Este proyecto aborda una propuesta de automatización para una planta de producción de bebidas, tomando como referencia el flujo industrial típico de:
+En primera instacia, el proyecto considera una planta inicial de referencia con un flujo industrial típico de:
 
 - preparación del jarabe,
 - carbonatación,
-- preparación de envases,
+- preparación y saneamiento de envases,
 - llenado y sellado,
 - post-procesamiento,
 - identificación,
@@ -41,9 +42,11 @@ Este proyecto aborda una propuesta de automatización para una planta de producc
 - paletizado,
 - almacenamiento y despacho.
 
-A partir de este proceso, se plantea una solución de mejora enfocada en automatización, monitoreo, integración digital y análisis económico.
+A partir del análisis y simulación del proceso y sus condiciones iniciales, se plantea una propuesta de mejora en desempeño enfocada en la automatización de los procesos de empaque y paletizado de la planta. Para tal fin, el proyecto contempla la evaluación de inicadores iniciales, el cálculo y propuesta de los indicadores finales esperados y el debido análisis econímico que justifican una implementación hipotética de los desarrollos propuetsos, todo de la mano con simulaciones del proceso mejorado que permitan evaluar la robustez de los ya mencionados desarrollos. 
 
-**Importante:** el proyecto corresponde a una **propuesta de ingeniería académica**, por lo que su desarrollo se realiza mediante diseño, simulación, modelado, arquitectura de control y validación virtual, y no como implementación física real en planta.
+Con base en la propuesta elaborada, una posterior etapa del proyecto se centra en el diseño y programación de la logíca de control industrial en Ladder, que junto con la construcción de un gemelo digital de algunas de las etapas más significativas del proceso mejorado, permiten una simulación ilustrativa del funcionamiento de la planta posterior a su intervención hipotética. 
+
+Por último, los disntintos desarrollos mencionados anteriormente convergen mediante un sistema de monitoreo y supervisión SCADA, el cual, por medio de una arquitectura de comunicaciones desarrollada por el equipo, permite recoger datos de la simulación y proporcionar al usuario información relevante como alertas, historicos y demás variables de proceso.
 
 ## Metodología de desarrollo
 
@@ -54,7 +57,7 @@ El proyecto fue estructurado a partir del **EDT del proyecto**, que organiza el 
 3. Modelado y simulación del sistema  
 4. Identificación de la arquitectura de automatización  
 5. Diseño de la celda robotizada  
-6. Diseño digital en Factory I/O  
+6. Diseño digital en Siemens NX  
 7. Diseño del control industrial  
 8. Diseño del sistema SCADA  
 9. Evaluación económica del proyecto  
@@ -78,8 +81,8 @@ También se propuso la selección de hardware, red industrial e instrumentación
 ### 3. Celda robotizada
 Se incluyó el diseño conceptual de una celda robotizada para apoyar operaciones de manipulación de materiales, considerando criterios de selección del robot, flujo de materiales, seguridad industrial y simulación.
 
-### 4. Digital Factory
-Se planteó el modelado de una sección de la línea en **Factory I/O**, incluyendo:
+### 4. Gemelo Digital
+Se planteó el modelado de una sección de la línea en **Siemens NX**, incluyendo:
 
 - virtualización de sensores y actuadores,
 - mapeo de entradas y salidas,
@@ -97,7 +100,6 @@ Se desarrolló la lógica de automatización mediante:
 ### 6. Sistema SCADA
 Se diseñó una propuesta de supervisión con enfoque en:
 
-- interfaz HMI,
 - monitoreo de variables,
 - visualización de alarmas,
 - seguimiento del estado del proceso,
@@ -115,12 +117,12 @@ La propuesta se complementó con una evaluación de viabilidad, incluyendo:
 
 ## Herramientas y tecnologías utilizadas
 
-- **Factory I/O** – modelado y validación virtual de la línea  
+- **Plant Simulation** – modelado y validación virtual de la línea  
 - **Studio 5000** – programación de control  
 - **Logix Emulate** – emulación del PLC  
 - **Ladder** – lógica de control secuencial  
 - **Grafcet** – modelado funcional de secuencias  
-- **SCADA / HMI** – supervisión del proceso  
+- **SCADA** – supervisión del proceso  
 - **RobotStudio** – simulación de celda robotizada  
 - **Excel / Project** – cronograma, EDT y evaluación económica  
 - **GitHub** – control de versiones y documentación del proyecto  
