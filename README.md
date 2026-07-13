@@ -74,7 +74,7 @@ Se definió una arquitectura jerárquica basada en **ISA-95**, contemplando:
 
 - **Nivel de campo:** sensores y actuadores  
 - **Nivel de control:** PLC  
-- **Nivel de supervisión:** SCADA/HMI  
+- **Nivel de supervisión:** SCADA
 
 También se propuso la selección de hardware, red industrial e instrumentación del proceso.
 
