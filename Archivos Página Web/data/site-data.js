@@ -1,8 +1,11 @@
-/* Sincronizados S.A. — Datos del sitio (generado desde el panel).
-   Reemplaza data/site-data.js con este archivo y súbelo al repositorio
-   para publicar los cambios. */
+/* =====================================================================
+   Sincronizados S.A.S — Datos del sitio
+   Contenido editable (equipo, reflexiones, videos y documentos).
+   Edítalo desde el panel (⚙ Admin) y publica con 'Descargar datos'.
+   Usuario/contraseña por defecto: admin / Sincronizados2026.
+   ===================================================================== */
 
-window.SITE_DATA = {
+window.SITE_DATA = window.SITE_DATA = {
   "admin": {
     "usuario": "admin",
     "claveHash": "45ac9bf1c87bebc85eeca0eee24c873599d74e5bb07182307efe2cdbcb1754fe"
@@ -117,13 +120,12 @@ window.SITE_DATA = {
     "introduccion": "",
     "gestion": "",
     "planeacion": "",
-    "celdas_cocacola": "",
-    "celdas_monster": "",
-    "digital": "",
+    "celdas_cocacola": "https://youtu.be/d12WobVvXkc",
+    "celdas_monster": "https://youtu.be/PlEJZ9tisFw",
+    "digital": "https://youtu.be/u3LJUzyXn2c",
     "controladores": "https://youtu.be/Z9UVPExzM9w",
-    "scada": "https://www.youtube.com/watch?v=OWwp2TOjP5w&feature=youtu.be",
-    "valor_agregado": "",
-    "celdas": "https://youtu.be/PlEJZ9tisFw"
+    "scada": "https://youtu.be/OWwp2TOjP5w",
+    "valor_agregado": ""
   },
   "documentos": {
     "planeacion": [
@@ -259,5 +261,16 @@ window.SITE_DATA = {
         "archivo": "../An%C3%A1lisis%20Financiero/Justificacion_Analisis_Financiero.pdf"
       }
     ]
+  },
+  "videosNombres": {
+    "introduccion": "01 · Introducción a la automatización",
+    "gestion": "02 · Gestión y evaluación",
+    "planeacion": "03 · Planeación",
+    "celdas_cocacola": "04 · Celda robotizada — Coca-Cola",
+    "celdas_monster": "04 · Celda robotizada — Monster",
+    "digital": "05 · Digital Factory",
+    "controladores": "06 · Controladores industriales",
+    "scada": "07 · SCADA — Video del módulo",
+    "valor_agregado": "07 · SCADA — Valor agregado (Node-RED ↔ RobotStudio)"
   }
 };
