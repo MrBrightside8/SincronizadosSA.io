@@ -1,0 +1,332 @@
+[
+    {
+        "id": "a6cd815fdf1c319a",
+        "type": "tab",
+        "label": "Flujo 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "446b4c0e4c169870",
+        "type": "inject",
+        "z": "a6cd815fdf1c319a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 590,
+        "y": 100,
+        "wires": [
+            [
+                "2e4c7887611e804e"
+            ]
+        ]
+    },
+    {
+        "id": "3845646132138d08",
+        "type": "http request",
+        "z": "a6cd815fdf1c319a",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1/rw/iosystem/signals/DO_PalletDone?json=1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "digest",
+        "senderr": false,
+        "headers": [],
+        "x": 990,
+        "y": 100,
+        "wires": [
+            [
+                "f35afdc9f0d86267"
+            ]
+        ]
+    },
+    {
+        "id": "90bf8e76548fb048",
+        "type": "debug",
+        "z": "a6cd815fdf1c319a",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "f35afdc9f0d86267",
+        "type": "function",
+        "z": "a6cd815fdf1c319a",
+        "name": "function 7",
+        "func": "try {\n    let state = msg.payload._embedded._state[0];\n    msg.payload = {\n        signal: \"DO_PalletDone\",\n        value: parseInt(state.lvalue)\n    };\n} catch (e) {\n    node.warn(\"No se pudo extraer lvalue: \" + JSON.stringify(msg.payload));\n    return null;\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 100,
+        "wires": [
+            [
+                "90bf8e76548fb048"
+            ]
+        ]
+    },
+    {
+        "id": "2e4c7887611e804e",
+        "type": "function",
+        "z": "a6cd815fdf1c319a",
+        "name": "Forzar JSON",
+        "func": "msg.headers={\n    \"Accept\": \"application/json\"\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 100,
+        "wires": [
+            [
+                "3845646132138d08"
+            ]
+        ]
+    },
+    {
+        "id": "e808242ea30f97ab",
+        "type": "inject",
+        "z": "a6cd815fdf1c319a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 470,
+        "y": 180,
+        "wires": [
+            [
+                "126dcd5dc7b034be",
+                "f6d0f09e1c31a6ca"
+            ]
+        ]
+    },
+    {
+        "id": "f6d0f09e1c31a6ca",
+        "type": "function",
+        "z": "a6cd815fdf1c319a",
+        "name": "armar request enecendido",
+        "func": "msg.headers = {\n    \"Content-Type\": \"application/x-www-form-urlencoded\",\n    \"Accept\": \"application/json\"\n};\nmsg.payload = \"lvalue=1\"; \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 180,
+        "wires": [
+            [
+                "75da133bdfc398c9"
+            ]
+        ]
+    },
+    {
+        "id": "75da133bdfc398c9",
+        "type": "http request",
+        "z": "a6cd815fdf1c319a",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1/rw/iosystem/signals/DI_StartPallet?action=set",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "digest",
+        "senderr": false,
+        "headers": [],
+        "x": 1090,
+        "y": 180,
+        "wires": [
+            [
+                "667f523d1e1d94c3",
+                "d846d0d2ce37e39c"
+            ]
+        ]
+    },
+    {
+        "id": "c0a359b9a4d1a324",
+        "type": "function",
+        "z": "a6cd815fdf1c319a",
+        "name": "armar request apagado",
+        "func": "msg.headers = {\n    \"Content-Type\": \"application/x-www-form-urlencoded\",\n    \"Accept\": \"application/json\"\n};\nmsg.payload = \"lvalue=0\"; \nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 240,
+        "wires": [
+            [
+                "63bcc3e90aef8e9f"
+            ]
+        ]
+    },
+    {
+        "id": "63bcc3e90aef8e9f",
+        "type": "http request",
+        "z": "a6cd815fdf1c319a",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1/rw/iosystem/signals/DI_StartPallet?action=set",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "digest",
+        "senderr": false,
+        "headers": [],
+        "x": 1090,
+        "y": 240,
+        "wires": [
+            [
+                "f2b8863056d64a16",
+                "bf1fba93178b47b8"
+            ]
+        ]
+    },
+    {
+        "id": "667f523d1e1d94c3",
+        "type": "function",
+        "z": "a6cd815fdf1c319a",
+        "name": "function 8",
+        "func": "if (msg.headers && msg.headers['set-cookie']) {\n    let raw = msg.headers['set-cookie'];\n    let cookieHeader = Array.isArray(raw) ? raw[0] : raw;\n    let cookieValue = cookieHeader.split(';')[0]; // solo \"ABBCX=xxxx\"\n    flow.set('rws_cookie', cookieValue);\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f2b8863056d64a16",
+        "type": "function",
+        "z": "a6cd815fdf1c319a",
+        "name": "function 9",
+        "func": "if (msg.headers && msg.headers['set-cookie']) {\n    let raw = msg.headers['set-cookie'];\n    let cookieHeader = Array.isArray(raw) ? raw[0] : raw;\n    let cookieValue = cookieHeader.split(';')[0]; // solo \"ABBCX=xxxx\"\n    flow.set('rws_cookie', cookieValue);\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "126dcd5dc7b034be",
+        "type": "delay",
+        "z": "a6cd815fdf1c319a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 630,
+        "y": 240,
+        "wires": [
+            [
+                "c0a359b9a4d1a324"
+            ]
+        ]
+    },
+    {
+        "id": "d846d0d2ce37e39c",
+        "type": "debug",
+        "z": "a6cd815fdf1c319a",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1400,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "bf1fba93178b47b8",
+        "type": "debug",
+        "z": "a6cd815fdf1c319a",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1320,
+        "y": 320,
+        "wires": []
+    }
+]
