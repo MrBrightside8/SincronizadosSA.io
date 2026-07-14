@@ -92,7 +92,7 @@ window.SITE_DATA = {
       "id": "r-edgar-1",
       "integranteId": "edgar",
       "moduloId": "celdas",
-      "texto": "Escribe aquí la reflexión de Edgar sobre el diseño de celdas robóticas y su experiencia técnica dentro del proyecto."
+      "texto": "Al reflexionar sobre este gran proyecto que ha dado paso al uso de muchas de las habilidades que he adquirido y entrenado como ingeniero, puedo ver y entender que los desafíos más allá de el modelado de una máquina o el diseño de un proceso, sino en lograr que su comportamiento mecánico, físico y lógico funcione coherentemente, representando las ideas que ahora proyectamos como realidad. \n\nFocalizando lo anterior al trabajo realizado, lo que me resultó más desafiante fue la interacción entre las botellas, las bandas y el interceptor en NX, esto me llevó a probar diferentes alternativas, analizar variables y no quedarme con las paulatinas explicaciones, soluciones y propuestas que no resolvían el inconveniente; todo esto reforzó mi creencia de que la voluntad y la persistencia pueden cambiar todo el panorama, aunque lo que pude observar y aprender es que acompañadas de método, información adecuada y perspicacia pueden resolver hasta el inconveniente más complejo. \n\nLa realidad es que convertir una visión en una propuesta, y una propuesta en una solución requiere de tantos factores como la creación misma: por tanto debo agradecer haber podido tener un equipo con el que a pesar de una desconexión inicial logramos una armonía brillante y funcional.\n\nEn perspectiva, este proceso no solo dejó una máquina virtual ni una propuesta de automatización; dejó una forma más rigurosa de enfrentar la incertidumbre. De este trabajo me queda la certeza que la ingeniería no consiste en tener todas las respuestas desde el inicio, sino en construirlas con criterio, evidencia y colaboración, hasta que una idea sea capaz de sostenerse frente a la realidad."
     },
     {
       "id": "r-santiago-1",
@@ -117,7 +117,7 @@ window.SITE_DATA = {
     "introduccion": "",
     "gestion": "",
     "planeacion": "",
-    "celdas": "",
+    "celdas": "https://youtu.be/PlEJZ9tisFw",
     "digital": "",
     "controladores": "",
     "scada": ""
