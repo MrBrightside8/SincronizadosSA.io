@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planeación y evaluación de proyectos | Sincronizados S.A.S</title>
+  <meta name="description" content="Cómo se organizó el proyecto (EDT y cronograma) y la evaluación económica: CAPEX, flujo de caja, VPN y TIR." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-sincronizados.png" alt="Logo de Sincronizados" class="brand-logo" />
+        <div class="brand-copy">
+          <span class="brand-name">Sincronizados S.A.S</span>
+          <span class="brand-tag">Consultoría industrial</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Inicio</a>
+
+        <div class="nav-dropdown">
+          <a href="index.html#modulos">Módulos</a>
+          <div class="dropdown-menu">
+            <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
+            <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
+            <a href="planeacion.html" class="is-current"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
+            <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
+            <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
+            <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="reflexiones-individuales.html">Reflexiones</a>
+          <div class="dropdown-menu">
+            <a href="reflexion-grupal.html">Reflexión grupal</a>
+            <a href="reflexiones-individuales.html">Reflexiones individuales</a>
+          </div>
+        </div>
+
+        <a href="equipo.html">Equipo</a>
+        <a href="documentos.html">Documentos</a>
+
+        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="module-hero">
+      <div class="container">
+        <p class="module-num">Módulo 03 de 07</p>
+        <h1>Planeación y evaluación de proyectos</h1>
+        <p class="lead">Cómo se organizó el proyecto (EDT y cronograma) y la evaluación económica: CAPEX, honorarios, VPN y TIR.</p>
+        <div class="quicknav">
+          <a href="#organizacion">Cómo lo organizamos</a>
+          <a href="#proceso">El proceso, paso a paso</a>
+          <a href="#cronograma">Cronograma</a>
+          <a href="#economia">¿Es rentable?</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="organizacion">
+      <div class="container">
+        <p class="section-kicker">Organización</p>
+        <div class="section-heading">
+          <h2>Cómo organizamos el proyecto</h2>
+          <p>Dividimos el trabajo en diez frentes (la EDT del proyecto). Cada uno se resume en una
+             línea; despliega el que te interese para ver sus actividades.</p>
+        </div>
+
+        <div class="accordion">
+          <details>
+            <summary><span class="acc-num">1</span> Planeación del proyecto <em>alcance, cronograma y riesgos</em></summary>
+            <ul>
+              <li>Matriz de comunicaciones e identificación de stakeholders.</li>
+              <li>Identificación de necesidades y definición del alcance del sistema automatizado.</li>
+              <li>Desarrollo del cronograma y análisis de riesgos del proyecto.</li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="acc-num">2</span> Análisis del proceso productivo <em>líneas, variables y layout</em></summary>
+            <ul>
+              <li>Investigación del proceso de bebidas y de sus materias primas.</li>
+              <li>Diagramas de operaciones y análisis del proceso por producto.</li>
+              <li>Identificación de variables, sensores y actuadores; layout de planta.</li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="acc-num">3</span> Modelado y simulación <em>tiempos e indicadores</em></summary>
+            <ul>
+              <li>Modelado y simulación del flujo de producción.</li>
+              <li>Análisis de tiempos de ciclo e indicadores: takt time, OEE y lead time.</li>
+              <li>Comparación antes y después de automatizar; estimación de costos.</li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="acc-num">4</span> Arquitectura de automatización <em>ISA-95 y hardware</em></summary>
+            <ul>
+              <li>Definición de los niveles de automatización según ISA-95.</li>
+              <li>Selección de hardware: PLC, sensores, variadores y robot.</li>
+              <li>Diseño de la red industrial y de la instrumentación del proceso.</li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="acc-num">5</span> Celda robotizada <em>paletizado</em></summary>
+            <ul>
+              <li>Justificación de la robotización y selección del robot industrial.</li>
+              <li>Diseño del flujo de materiales y de la seguridad industrial.</li>
+              <li>Simulación en RobotStudio.</li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="acc-num">6</span> Digital Factory <em>gemelo digital</em></summary>
+            <ul>
+              <li>Modelado de la línea en Factory I/O con sensores y actuadores virtuales.</li>
+              <li>Enlace con Studio 5000 / Logix Emulate y mapeo de entradas y salidas.</li>
+              <li>Validación y pruebas de funcionamiento.</li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="acc-num">7</span> Control industrial <em>Grafcet y Ladder</em></summary>
+            <ul>
+              <li>Desarrollo del Grafcet y programación en Ladder.</li>
+              <li>Configuración del PLC e integración con sensores y actuadores.</li>
+              <li>Pruebas de funcionamiento.</li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="acc-num">8</span> Sistema SCADA <em>supervisión</em></summary>
+            <ul>
+              <li>Diseño de la interfaz HMI y comunicación OPC.</li>
+              <li>Supervisión del proceso, alarmas y monitoreo de producción.</li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="acc-num">9</span> Evaluación económica <em>presupuesto y retorno</em></summary>
+            <ul>
+              <li>Estimación de costos de equipos e implementación; presupuesto total.</li>
+              <li>Flujo de caja y evaluación financiera: VPN, TIR y periodo de retorno.</li>
+            </ul>
+          </details>
+          <details>
+            <summary><span class="acc-num">10</span> Documentación y entrega <em>web, video e informe</em></summary>
+            <ul>
+              <li>Repositorio GitHub y página web del proyecto.</li>
+              <li>Video de presentación, informe final y sustentación.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="proceso">
+      <div class="container">
+        <p class="section-kicker">Proceso productivo</p>
+        <div class="section-heading">
+          <h2>El proceso, paso a paso</h2>
+          <p>Así fluye una bebida por la planta, desde el jarabe hasta el despacho.</p>
+        </div>
+
+        <ol class="steps">
+          <li><strong>Preparación del jarabe</strong><span>Disolución del azúcar, tratamiento y control de calidad (°Brix).</span></li>
+          <li><strong>Carbonatación</strong><span>Enfriamiento de la mezcla e inyección de CO₂ a presión controlada.</span></li>
+          <li><strong>Preparación de envases</strong><span>Soplado de preformas o lavado de botellas, con inspección de calidad.</span></li>
+          <li><strong>Llenado y sellado</strong><span>Llenado de la bebida, tapado e inspección del nivel.</span></li>
+          <li><strong>Post-procesamiento</strong><span>Secado, etiquetado e inspección final del envase.</span></li>
+          <li><strong>Identificación</strong><span>Codificado de fecha, lote y producción.</span></li>
+          <li><strong>Empaque</strong><span>Agrupación en bandejas y envoltura con film.</span></li>
+          <li><strong>Paletizado</strong><span>Formación de pallets con robot y envoltura del pallet.</span></li>
+          <li><strong>Almacenamiento y despacho</strong><span>Ingreso a bodega y salida hacia distribución.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="cronograma">
+      <div class="container">
+        <p class="section-kicker">Cronograma</p>
+        <div class="section-heading">
+          <h2>Cronograma y documentos de planeación</h2>
+        </div>
+        <div class="card-grid" data-docs="planeacion"></div>
+        <div class="annex-grid" style="margin-top:1.1rem">
+          <a href="anexos/Cronograma_Gantt.html" class="annex-card">
+            <span class="card-tag">Hoja</span>
+            <h3>Cronograma — diagrama de Gantt</h3>
+            <p>Programación general e hitos principales del proyecto.</p>
+          </a>
+          <a href="anexos/EDT_base.html" class="annex-card">
+            <span class="card-tag">Hoja</span>
+            <h3>Base del EDT</h3>
+            <p>Soporte utilizado para estructurar el desglose del trabajo.</p>
+          </a>
+          <a href="anexos/Trazabilidad_Proceso.html" class="annex-card">
+            <span class="card-tag">Hoja</span>
+            <h3>Trazabilidad del proceso</h3>
+            <p>Seguimiento del flujo productivo y sus etapas.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="economia">
+      <div class="container">
+        <p class="section-kicker">Evaluación económica</p>
+        <div class="section-heading">
+          <h2>¿Es rentable automatizar?</h2>
+          <p>Evaluamos la celda robótica de paletizado para las líneas Coca-Cola y Monster.
+             La respuesta corta: sí — la inversión se recupera en menos de 7 años y el proyecto
+             genera valor. Las cifras clave:</p>
+        </div>
+
+        <div class="kpi-strip">
+          <div class="kpi-box k-red">
+            <p class="kpi-label">Inversión (CAPEX)</p>
+            <p class="kpi-value">$1.904 M</p>
+            <p class="kpi-sub">COP · con IVA</p>
+          </div>
+          <div class="kpi-box k-green">
+            <p class="kpi-label">VPN (WACC 12 %)</p>
+            <p class="kpi-value">$1.176 M</p>
+            <p class="kpi-sub">COP · horizonte 10 años</p>
+          </div>
+          <div class="kpi-box k-amber">
+            <p class="kpi-label">TIR</p>
+            <p class="kpi-value">24,5 %</p>
+            <p class="kpi-sub">Mayor que el WACC (12 %) ✓</p>
+          </div>
+          <div class="kpi-box">
+            <p class="kpi-label">Payback</p>
+            <p class="kpi-value">4,4 años</p>
+            <p class="kpi-sub">ROI 128,9 % a 10 años</p>
+          </div>
+        </div>
+
+        <div class="split-highlight" style="margin-top:2rem">
+          <div class="highlight-copy">
+            <h2>Honorarios del equipo de ingeniería</h2>
+            <p>Como parte de la inversión (CAPEX) se incluyen los honorarios del equipo mecatrónico
+               por el diseño e implementación de la solución: <strong>6 ingenieros</strong> durante
+               <strong>4 meses</strong> a una tarifa de <strong>$5,5 M COP/mes</strong> cada uno.</p>
+            <a class="text-link" href="anexos/CAPEX.html">Ver desglose en el CAPEX</a>
+          </div>
+          <div class="highlight-card">
+            <span class="mini-badge">Servicios de ingeniería</span>
+            <p class="kpi-value" style="font-size:1.9rem;color:var(--teal)">$132 M</p>
+            <p>Honorarios totales del equipo (COP). 6 ingenieros × 4 meses × $5,5 M/mes.</p>
+          </div>
+        </div>
+
+        <p class="section-note">El informe completo, con supuestos, costos y flujo de caja,
+           está dividido en seis secciones:</p>
+
+        <div class="card-grid">
+          <a class="info-card" href="anexos/Portada.html">
+            <span class="card-tag">F1</span>
+            <h3>Resumen ejecutivo</h3>
+            <p>Las conclusiones y recomendaciones, en una página.</p>
+            <span class="doc-open">Abrir →</span>
+          </a>
+          <a class="info-card" href="anexos/Supuestos.html">
+            <span class="card-tag">F2</span>
+            <h3>Supuestos</h3>
+            <p>Tasas, horizonte y criterios base del modelo.</p>
+            <span class="doc-open">Abrir →</span>
+          </a>
+          <a class="info-card" href="anexos/CAPEX.html">
+            <span class="card-tag">F3</span>
+            <h3>CAPEX</h3>
+            <p>Qué compramos y cuánto cuesta implementarlo.</p>
+            <span class="doc-open">Abrir →</span>
+          </a>
+          <a class="info-card" href="anexos/OPEX_Beneficios.html">
+            <span class="card-tag">F4</span>
+            <h3>OPEX y beneficios</h3>
+            <p>Costos de operar la celda y ahorros que genera.</p>
+            <span class="doc-open">Abrir →</span>
+          </a>
+          <a class="info-card" href="anexos/Flujo_de_Caja.html">
+            <span class="card-tag">F5</span>
+            <h3>Flujo de caja</h3>
+            <p>Entradas y salidas de dinero, año a año.</p>
+            <span class="doc-open">Abrir →</span>
+          </a>
+          <a class="info-card" href="anexos/Indicadores.html">
+            <span class="card-tag">F6</span>
+            <h3>Indicadores financieros</h3>
+            <p>VPN, TIR y periodo de retorno, explicados.</p>
+            <span class="doc-open">Abrir →</span>
+          </a>
+        </div>
+
+        <h3 class="doc-subtitle">Documentos de soporte</h3>
+        <div class="card-grid" data-docs="financiero"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="module-nav">
+          <a href="gestion-evaluacion-produccion.html">
+            <span class="mn-dir">← Módulo anterior</span>
+            <span class="mn-name">02 · Gestión y evaluación de la producción automatizada</span>
+          </a>
+          <a href="celdas-roboticas.html" class="mn-next">
+            <span class="mn-dir">Siguiente módulo →</span>
+            <span class="mn-name">04 · Celda de manufactura robotizada</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">Sincronizados S.A.S</p>
+          <p>Propuesta de automatización para una planta de producción de bebidas.
+             Proyecto integrador — Automatización de Procesos de Manufactura,
+             Universidad Nacional de Colombia · 2026-1S.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Módulos</h4>
+          <a href="introduccion-automatizacion.html">01 · Introducción a la automatización de manufactura</a>
+          <a href="gestion-evaluacion-produccion.html">02 · Gestión y evaluación de la producción automatizada</a>
+          <a href="planeacion.html">03 · Planeación y evaluación de proyectos</a>
+          <a href="celdas-roboticas.html">04 · Celda de manufactura robotizada</a>
+          <a href="digital-factory.html">05 · Digital Factory</a>
+          <a href="controladores-industriales.html">06 · Controladores industriales</a>
+          <a href="scada.html">07 · SCADA</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <a href="equipo.html">Equipo</a>
+          <a href="reflexion-grupal.html">Reflexión grupal</a>
+          <a href="reflexiones-individuales.html">Reflexiones individuales</a>
+          <a href="documentos.html">Documentos técnicos</a>
+          <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Sincronizados S.A.S — Proyecto académico.</span>
+        <span>Automatización de Procesos de Manufactura · UNAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/site-data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

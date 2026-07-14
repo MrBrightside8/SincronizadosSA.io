@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAPEX | Análisis Financiero | Sincronizados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="finanzas-shared.css" />
+</head>
+<body>
+<div class="scroll-bar" id="sb"></div>
+
+<header class="fin-header">
+  <nav class="fin-nav container">
+    <a class="fin-nav__brand" href="../index.html"><span>Sincronizados</span><span class="fin-nav__brand-tag">/ Finanzas</span></a>
+    <div class="fin-nav__sep"></div>
+    <div class="fin-nav__links">
+      <a href="Portada.html">Resumen</a>
+      <a href="Supuestos.html">Supuestos</a>
+      <a href="CAPEX.html" class="active">CAPEX</a>
+      <a href="OPEX_Beneficios.html">OPEX</a>
+      <a href="Flujo_de_Caja.html">Flujo de caja</a>
+      <a href="Indicadores.html">Indicadores</a>
+      <a href="../planeacion.html" class="fin-nav__back">← Volver a Planeación</a>
+    </div>
+  </nav>
+</header>
+
+<section class="fin-hero">
+  <div class="container fin-hero__inner">
+    <p class="fin-eyebrow">Análisis Financiero · F3</p>
+    <h1>CAPEX — Inversión inicial</h1>
+    <p class="fin-hero__lead">Desglose completo de la inversión requerida para la celda robótica de paletizado en dos líneas. Precios en COP con arancel + shipping del 10 % sobre equipos importados.</p>
+    <nav class="fin-page-nav">
+      <a href="Portada.html">Resumen</a>
+      <a href="Supuestos.html">Supuestos</a>
+      <a href="CAPEX.html" class="current">CAPEX</a>
+      <a href="OPEX_Beneficios.html">OPEX</a>
+      <a href="Flujo_de_Caja.html">Flujo de caja</a>
+      <a href="Indicadores.html">Indicadores</a>
+    </nav>
+  </div>
+</section>
+
+<div class="fin-body">
+  <div class="container">
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi"><p class="kpi__label">Subtotal equipos</p><p class="kpi__value">$1 168 M</p><p class="kpi__sub">COP · sin contingencia ni IVA</p></div>
+      <div class="kpi"><p class="kpi__label">Contingencia 5%</p><p class="kpi__value">$58 M</p><p class="kpi__sub">COP</p></div>
+      <div class="kpi"><p class="kpi__label">IVA 19%</p><p class="kpi__value">$233 M</p><p class="kpi__sub">COP</p></div>
+      <div class="kpi kpi--red"><p class="kpi__label">CAPEX Total</p><p class="kpi__value">$1 460 M</p><p class="kpi__sub">COP · ~392 286 USD</p></div>
+    </div>
+
+    <!-- Distribución por categoría -->
+    <div class="fin-section">
+      <h2 class="fin-section-title">Distribución por categoría</h2>
+      <div style="margin-bottom:1.5rem;">
+        <div class="bar-row"><span class="bar-label">Robots + Controladores</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="bar-val num">$614 M COP</span></div>
+        <div class="bar-row"><span class="bar-label">EOAT y neumáticos</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><span class="bar-val num">$143 M COP</span></div>
+        <div class="bar-row"><span class="bar-label">Control eléctrico</span><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div><span class="bar-val num">$132 M COP</span></div>
+        <div class="bar-row"><span class="bar-label">Sistemas auxiliares</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val num">$121 M COP</span></div>
+        <div class="bar-row"><span class="bar-label">Ingeniería y puesta en marcha</span><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div><span class="bar-val num">$122 M COP</span></div>
+      </div>
+    </div>
+
+    <!-- Tabla detallada -->
+    <div class="fin-section">
+      <h2 class="fin-section-title">Detalle de ítems de inversión</h2>
+      <div class="fin-table-wrap">
+        <table class="fin-table">
+          <thead>
+            <tr><th>Ítem</th><th>Concepto</th><th>Cant.</th><th>P. Unit. Base</th><th>Total COP</th><th>Ref. USD</th></tr>
+          </thead>
+          <tbody>
+            <tr class="group-header"><td colspan="6">1. Robots industriales y controladores</td></tr>
+            <tr><td><span class="tag-ref">1.1</span></td><td>Robot ABB IRB 660-3.15/250 — paletizador 4 ejes, alcance 3,15 m, 250 kg carga máx.</td><td class="num">2 und</td><td class="num">$230 829 000</td><td class="num">$507 823 800</td><td class="num num-muted">~$62 000</td></tr>
+            <tr><td><span class="tag-ref">1.2</span></td><td>Controlador IRC5 — FlexPendant táctil, módulo de movimiento y armario estándar</td><td class="num">2 und</td><td class="num">$46 538 000</td><td class="num">$102 383 600</td><td class="num num-muted">~$12 500</td></tr>
+
+            <tr class="group-header"><td colspan="6">2. EOAT y sistemas neumáticos — Línea 1 (Coca-Cola)</td></tr>
+            <tr><td><span class="tag-ref">2.1</span></td><td>EOAT L1: Clamp gripper mecánico para cajas de vidrio/PET — accionamiento neumático</td><td class="num">1 und</td><td class="num">$33 507 000</td><td class="num">$36 857 700</td><td class="num num-muted">~$9 000</td></tr>
+            <tr><td><span class="tag-ref">2.2</span></td><td>Unidad FRL (filtro-regulador-lubricador) L1</td><td class="num">1 und</td><td class="num">$6 701 000</td><td class="num">$7 371 100</td><td class="num num-muted">~$1 800</td></tr>
+            <tr><td><span class="tag-ref">2.3</span></td><td>Válvulas distribuidoras 5/2 doble solenoide L1 — Festo</td><td class="num">2 und</td><td class="num">$2 234 000</td><td class="num">$4 914 800</td><td class="num num-muted">~$600 c/u</td></tr>
+            <tr><td><span class="tag-ref">2.4</span></td><td>Tuberías, racores y accesorios neumáticos L1</td><td class="num">1 global</td><td class="num">$4 468 000</td><td class="num">$4 914 800</td><td class="num num-muted">~$1 200</td></tr>
+            <tr><td><span class="tag-ref">2.5</span></td><td>Sensor de presión y caudal neumático L1 — verificación de agarre</td><td class="num">2 und</td><td class="num">$1 489 000</td><td class="num">$3 275 800</td><td class="num num-muted">~$400 c/u</td></tr>
+
+            <tr class="group-header"><td colspan="6">2. EOAT y sistemas neumáticos — Línea 2 (Monster Energy)</td></tr>
+            <tr><td><span class="tag-ref">2.6</span></td><td>EOAT L2: Vacuum plate gripper (placa de ventosas) para cajas de latas</td><td class="num">1 und</td><td class="num">$24 200 000</td><td class="num">$26 620 000</td><td class="num num-muted">~$6 500</td></tr>
+            <tr><td><span class="tag-ref">2.7</span></td><td>Eyector de vacío Venturi L2</td><td class="num">2 und</td><td class="num">$3 351 000</td><td class="num">$7 372 200</td><td class="num num-muted">~$900 c/u</td></tr>
+            <tr><td><span class="tag-ref">2.8</span></td><td>Unidad FRL L2</td><td class="num">1 und</td><td class="num">$4 468 000</td><td class="num">$4 914 800</td><td class="num num-muted">~$1 200</td></tr>
+            <tr><td><span class="tag-ref">2.9</span></td><td>Válvulas de control vacío/escape — activación rápida por zonas</td><td class="num">4 und</td><td class="num">$1 303 000</td><td class="num">$5 733 200</td><td class="num num-muted">~$350 c/u</td></tr>
+            <tr><td><span class="tag-ref">2.10</span></td><td>Sensor de vacío con display L2 — confirmación de agarre por zona</td><td class="num">2 und</td><td class="num">$1 862 000</td><td class="num">$4 096 400</td><td class="num num-muted">~$500 c/u</td></tr>
+            <tr><td><span class="tag-ref">2.11</span></td><td>Tuberías, racores y accesorios neumáticos L2</td><td class="num">1 global</td><td class="num">$2 978 000</td><td class="num">$3 275 800</td><td class="num num-muted">~$800</td></tr>
+
+            <tr class="group-header"><td colspan="6">3. Sistema de control eléctrico e industrial (× 2 líneas)</td></tr>
+            <tr><td><span class="tag-ref">3.1</span></td><td>PLC Allen-Bradley ControlLogix 5580 — chasis 8 ranuras (1756-L83E), 40 ns/instr.</td><td class="num">2 und</td><td class="num">$29 784 400</td><td class="num">$65 525 680</td><td class="num num-muted">~$8 000</td></tr>
+            <tr><td><span class="tag-ref">3.2</span></td><td>Fuente de alimentación 24 VDC – 10 A (1756-PA75R)</td><td class="num">2 und</td><td class="num">$2 047 700</td><td class="num">$4 504 940</td><td class="num num-muted">~$550</td></tr>
+            <tr><td><span class="tag-ref">3.3</span></td><td>Módulo entradas digitales 16 ch – 24 VDC (1756-IB16D)</td><td class="num">4 und</td><td class="num">$1 563 700</td><td class="num">$6 880 280</td><td class="num num-muted">~$420</td></tr>
+            <tr><td><span class="tag-ref">3.4</span></td><td>Módulo salidas digitales 16 ch – 24 VDC (1756-OB16D)</td><td class="num">4 und</td><td class="num">$1 563 700</td><td class="num">$6 880 280</td><td class="num num-muted">~$420</td></tr>
+            <tr><td><span class="tag-ref">3.5</span></td><td>Módulo entradas analógicas 8 ch – ±10 V / 4–20 mA (1756-IF8)</td><td class="num">2 und</td><td class="num">$2 420 000</td><td class="num">$5 324 000</td><td class="num num-muted">~$650</td></tr>
+            <tr><td><span class="tag-ref">3.6</span></td><td>HMI PanelView Plus 7 – 10" touch color (2711P-T10C22D9P)</td><td class="num">2 und</td><td class="num">$13 030 700</td><td class="num">$28 667 540</td><td class="num num-muted">~$3 500</td></tr>
+            <tr><td><span class="tag-ref">3.7</span></td><td>Switch EtherNet/IP industrial 8 puertos (1783-US8T)</td><td class="num">2 und</td><td class="num">$3 350 700</td><td class="num">$7 371 540</td><td class="num num-muted">~$900</td></tr>
+            <tr><td><span class="tag-ref">3.8</span></td><td>Breaker principal trifásico 3P – 60 A (Schneider NSX160B)</td><td class="num">2 und</td><td class="num">$1 303 100</td><td class="num">$2 866 820</td><td class="num num-muted">~$350</td></tr>
+            <tr><td><span class="tag-ref">3.9</span></td><td>Interruptores termomagnéticos 2P – 20 A (ramales internos)</td><td class="num">8 und</td><td class="num">$223 400</td><td class="num">$1 965 920</td><td class="num num-muted">~$60 c/u</td></tr>
+            <tr><td><span class="tag-ref">3.10</span></td><td>Gabinete eléctrico NEMA 4 / IP54 – 1 200×800×300 mm (RAL 7035)</td><td class="num">2 und</td><td class="num">$10 424 500</td><td class="num">$22 933 900</td><td class="num num-muted">~$2 800</td></tr>
+            <tr><td><span class="tag-ref">3.11</span></td><td>Canaleta, riel DIN, borneras y accesorios de montaje</td><td class="num">1 global</td><td class="num">$5 584 600</td><td class="num">$6 143 060</td><td class="num num-muted">~$1 500</td></tr>
+            <tr><td><span class="tag-ref">3.12</span></td><td>Cableado de fuerza y control — cable AWG16, conduit EMT ½" y ¾"</td><td class="num">1 global</td><td class="num">$16 753 700</td><td class="num">$18 429 070</td><td class="num num-muted">~$4 500</td></tr>
+
+            <tr class="group-header"><td colspan="6">4. Sistemas auxiliares y de seguridad</td></tr>
+            <tr><td><span class="tag-ref">4.1</span></td><td>Conveyor rodillos Línea 1 (Coca-Cola) — ~10 m, 0,3 m/s</td><td class="num">1 sistema</td><td class="num">$37 230 000</td><td class="num">$40 953 000</td><td class="num num-muted">~$10 000</td></tr>
+            <tr><td><span class="tag-ref">4.2</span></td><td>Conveyor banda Línea 2 (Monster) — ~10 m, menor carga unitaria</td><td class="num">1 sistema</td><td class="num">$29 784 000</td><td class="num">$32 762 400</td><td class="num num-muted">~$8 000</td></tr>
+            <tr><td><span class="tag-ref">4.3</span></td><td>Mesa de deposición de pallets vacíos — dispensador semi-automático</td><td class="num">2 und</td><td class="num">$13 031 000</td><td class="num">$28 668 200</td><td class="num num-muted">~$3 500 c/u</td></tr>
+            <tr><td><span class="tag-ref">4.4</span></td><td>Seguridad perimetral — cortinas Sick C4000 (PL=d) + vallado H=2 m</td><td class="num">2 sistemas</td><td class="num">$16 754 000</td><td class="num">$36 858 800</td><td class="num num-muted">~$4 500 c/u</td></tr>
+            <tr><td><span class="tag-ref">4.5</span></td><td>Semáforos stack lights — indicación visual de estado de celda</td><td class="num">2 und</td><td class="num">$1 117 000</td><td class="num">$2 457 400</td><td class="num num-muted">~$300 c/u</td></tr>
+            <tr><td><span class="tag-ref">4.6</span></td><td>Fotoceldas de presencia (Keyence PZ2) — detección llegada de caja</td><td class="num">6 und</td><td class="num">$1 042 000</td><td class="num">$6 877 200</td><td class="num num-muted">~$280 c/u</td></tr>
+
+            <tr class="group-header"><td colspan="6">5. Ingeniería, instalación y puesta en marcha</td></tr>
+            <tr><td><span class="tag-ref">5.1</span></td><td>Licencias Studio 5000 Logix Designer v35 — 2 licencias profesionales + soporte 1 año</td><td class="num">1 lic.</td><td class="num">$18 000 000</td><td class="num">$18 000 000</td><td class="num num-muted">~$2 800 c/u</td></tr>
+            <tr><td><span class="tag-ref">5.2</span></td><td>Licencias RobotStudio ABB — programación offline y gemelo digital</td><td class="num">1 lic.</td><td class="num">$9 308 000</td><td class="num">$9 308 000</td><td class="num num-muted">~$2 500</td></tr>
+            <tr><td><span class="tag-ref">5.3</span></td><td>Ingeniería y diseño — P&amp;ID, planos eléctricos, planimetría (80 h × 2 ingenieros)</td><td class="num">1 global</td><td class="num">$22 338 000</td><td class="num">$22 338 000</td><td class="num num-muted">~$6 000</td></tr>
+            <tr><td><span class="tag-ref">5.4</span></td><td>Instalación mecánica y eléctrica — 3 técnicos × 3 semanas</td><td class="num">1 global</td><td class="num">$31 646 000</td><td class="num">$31 646 000</td><td class="num num-muted">~$8 500</td></tr>
+            <tr><td><span class="tag-ref">5.5</span></td><td>Puesta en marcha y comisionamiento ABB Field Service — 5 días c/robot</td><td class="num">1 global</td><td class="num">$20 477 000</td><td class="num">$20 477 000</td><td class="num num-muted">~$5 500</td></tr>
+            <tr><td><span class="tag-ref">5.6</span></td><td>Capacitación técnicos en sitio — 10 días, ABB Training Academy</td><td class="num">1 global</td><td class="num">$3 000 000</td><td class="num">$3 000 000</td><td class="num num-muted">~$3 000</td></tr>
+            <tr><td><span class="tag-ref">5.7</span></td><td>Obra civil — losa reforzada bajo robots, acometida 440 V, iluminación zona</td><td class="num">1 global</td><td class="num">$17 871 000</td><td class="num">$17 871 000</td><td class="num num-muted">~$4 800</td></tr>
+
+            <tr class="group-header"><td colspan="6">6. Imprevistos y contingencia</td></tr>
+            <tr><td><span class="tag-ref">6.1</span></td><td>Contingencia 5% — variaciones de precio, fletes no previstos y ajustes de campo</td><td class="num">1 global</td><td class="num">—</td><td class="num">$58 413 202</td><td class="num num-muted">—</td></tr>
+
+            <tr class="total-row"><td colspan="4"><strong>Subtotal (sin IVA)</strong></td><td class="num"><strong>$1 226 677 232</strong></td><td></td></tr>
+            <tr class="total-row"><td colspan="4">IVA 19%</td><td class="num">$233 068 674</td><td></td></tr>
+            <tr class="grand-total"><td colspan="4"><strong>CAPEX TOTAL (con IVA 19%)</strong></td><td class="num"><strong>$1 459 745 906</strong></td><td class="num">~$392 286 USD</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="fin-note">
+        <strong>Nota:</strong> Precios USD convertidos con TRM = $3 723,05 COP/USD (24/03/2026). Arancel + shipping estimado en <strong>10%</strong> sobre precio base de equipos importados (excluye IVA nacional). Los ítems 5.1 al 5.7 son servicios locales sin arancel. Los valores finales pueden variar según cotización formal con proveedores.
+      </div>
+    </div>
+
+    <div class="fin-footer-nav">
+      <a href="Supuestos.html" class="fin-fnav-item">
+        <span class="fin-fnav-dir">← Anterior</span>
+        <span class="fin-fnav-name">Supuestos del modelo</span>
+      </a>
+      <a href="OPEX_Beneficios.html" class="fin-fnav-item fin-fnav-item--next">
+        <span class="fin-fnav-dir">Siguiente →</span>
+        <span class="fin-fnav-name">OPEX y Beneficios</span>
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+  const sb = document.getElementById('sb');
+  window.addEventListener('scroll', () => { sb.style.width = (window.scrollY / (document.documentElement.scrollHeight - innerHeight) * 100) + '%'; });
+</script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celda de manufactura robotizada | Sincronizados S.A.S</title>
+  <meta name="description" content="Dos celdas robotizadas de paletizado para FEMSA Bogotá: ABB IRB 660 e IRB 460, seguridad ISO y simulación en RobotStudio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="assets/logo-sincronizados.png" alt="Logo de Sincronizados" class="brand-logo" />
+        <div class="brand-copy">
+          <span class="brand-name">Sincronizados S.A.S</span>
+          <span class="brand-tag">Consultoría industrial</span>
+        </div>
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Inicio</a>
+
+        <div class="nav-dropdown">
+          <a href="index.html#modulos">Módulos</a>
+          <div class="dropdown-menu">
+            <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
+            <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
+            <a href="planeacion.html"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
+            <a href="celdas-roboticas.html" class="is-current"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
+            <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
+            <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <a href="reflexiones-individuales.html">Reflexiones</a>
+          <div class="dropdown-menu">
+            <a href="reflexion-grupal.html">Reflexión grupal</a>
+            <a href="reflexiones-individuales.html">Reflexiones individuales</a>
+          </div>
+        </div>
+
+        <a href="equipo.html">Equipo</a>
+        <a href="documentos.html">Documentos</a>
+
+        <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="module-hero">
+      <div class="container">
+        <p class="module-num">Módulo 04 de 07</p>
+        <h1>Celda de manufactura robotizada</h1>
+        <p class="lead">Dos celdas de paletizado con robots ABB (IRB 660 e IRB 460) y PLC ControlLogix 5580, simuladas en RobotStudio.</p>
+        <div class="module-chips">
+          <span class="chip"><strong>ABB IRB 660</strong> · Coca-Cola</span>
+          <span class="chip"><strong>ABB IRB 460</strong> · Monster</span>
+          <span class="chip">ControlLogix 5580</span>
+          <span class="chip">RobotStudio</span>
+        </div>
+        <div class="quicknav">
+          <a href="#propuesta">La propuesta</a>
+          <a href="#celdas">Las dos celdas</a>
+          <a href="#seguridad">Seguridad</a>
+          <a href="#videos-celda">Videos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="propuesta">
+      <div class="container">
+        <p class="section-kicker">Propuesta</p>
+        <div class="section-heading">
+          <h2>Dos celdas de paletizado, una por línea</h2>
+          <p>Proponemos dos celdas robotizadas independientes para el final de las líneas de
+             Coca-Cola y Monster Energy en la planta FEMSA Bogotá, con un PLC ControlLogix 5580
+             común. El caso más exigente —429 pacas/hora en Coca-Cola plástica— define un ciclo
+             de una paca cada 8,4 segundos. Ambas celdas comparten la infraestructura civil:
+             losa de concreto reforzado de 250 mm.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="celdas">
+      <div class="container">
+        <p class="section-kicker">Diseño</p>
+        <div class="section-heading">
+          <h2>Así se ve cada celda</h2>
+        </div>
+        <div class="product-grid celda-grid">
+          <div class="product-card">
+            <div class="product-img"><img src="images/celda/celda-coca-cola.jpg" alt="Celda robotizada de paletizado Coca-Cola en RobotStudio" loading="lazy" /></div>
+            <div class="product-body">
+              <span class="card-tag">Celda Coca-Cola</span>
+              <h3>ABB IRB 660-3.15/250</h3>
+              <p>Paletiza las presentaciones retornable 1,5 L y plástica 2,5 L en un patrón de
+                 3 filas × 3 columnas × 3 niveles, con slip-sheets entre capas.
+                 Gripper: clamp mecánico Schunk. Alcance de 3,15 m y protección IP67
+                 para el ambiente húmedo de la línea.</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img"><img src="images/celda/celda-monster.jpg" alt="Celda robotizada de paletizado Monster en RobotStudio" loading="lazy" /></div>
+            <div class="product-body">
+              <span class="card-tag">Celda Monster</span>
+              <h3>ABB IRB 460-110/2.4</h3>
+              <p>Paletiza las cajas de lata de 500 mL (395 cajas/h) en un patrón de
+                 2 filas × 4 columnas × 4 niveles. Gripper: placa de vacío (Vacuum Plate)
+                 con bomba eléctrica regenerativa. Robot compacto de 4 ejes de alta cadencia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="seguridad">
+      <div class="container">
+        <p class="section-kicker">Seguridad industrial</p>
+        <div class="section-heading">
+          <h2>Seguridad y normativa de las celdas</h2>
+          <p>La arquitectura de seguridad se diseñó bajo las normas ISO de robótica industrial
+             y la reglamentación colombiana de construcción e instalaciones eléctricas.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="info-card">
+            <span class="card-tag">Protecciones</span>
+            <h3>Componentes de seguridad</h3>
+            <p>Cortinas de luz Sick C4000 con función de muting, vallado perimetral Troax ST20,
+               acceso de operadores con enclavamiento Schmersal AZM201, escáner láser perimetral
+               y botones de paro de emergencia.</p>
+          </article>
+          <article class="info-card">
+            <span class="card-tag">Normativa ISO</span>
+            <h3>Diseño bajo estándar</h3>
+            <p>ISO 10218-1/2 (robots industriales e integración), ISO 13849-1 (mandos de
+               seguridad), ISO 13850 (paro de emergencia), ISO 13855/13857 (distancias de
+               seguridad), ISO 14120 (resguardos) e ISO 12100 (evaluación de riesgos).</p>
+          </article>
+          <article class="info-card">
+            <span class="card-tag">Colombia</span>
+            <h3>Reglamentación local</h3>
+            <p>NSR-10 (construcción sismo resistente) para la losa de 250 mm y RETIE para las
+               instalaciones eléctricas de las celdas.</p>
+          </article>
+        </div>
+
+        <div class="accordion" style="margin-top:1.2rem">
+          <details>
+            <summary><span class="acc-num">!</span> Listado de peligros evaluados <em>ISO 14121-1</em></summary>
+            <ul>
+              <li>Mecánicos: caída de objetos, colisión con el brazo, atrapamiento robot-estructura y expulsión de cajas por fallo del agarre.</li>
+              <li>Eléctricos: sobrecarga, cortocircuito, contacto con gabinete y fallo de puesta a tierra.</li>
+              <li>Ruido de motores de bandas y robots (fatiga auditiva).</li>
+              <li>Fallas de control: arranque inesperado del robot y fallas del PLC o de señales de seguridad.</li>
+              <li>Incendio: cortocircuito del tablero y materiales combustibles.</li>
+              <li>Mantenimiento: ingreso con energía aplicada y limpieza de bandas en movimiento.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="videos-celda">
+      <div class="container">
+        <p class="section-kicker">Simulación en RobotStudio</p>
+        <div class="section-heading">
+          <h2>Las celdas en funcionamiento</h2>
+        </div>
+        <div class="video-pair">
+          <div>
+            <h3 class="doc-subtitle" style="text-align:center">Celda Coca-Cola</h3>
+            <div class="video-slot" data-video="celdas_cocacola"></div>
+          </div>
+          <div>
+            <h3 class="doc-subtitle" style="text-align:center">Celda Monster</h3>
+            <div class="video-slot" data-video="celdas_monster"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="documentos-celda">
+      <div class="container">
+        <p class="section-kicker">Documentos</p>
+        <div class="section-heading">
+          <h2>Propuesta técnica y estación de simulación</h2>
+        </div>
+        <div class="card-grid" data-docs="celda"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="module-nav">
+          <a href="planeacion.html">
+            <span class="mn-dir">← Módulo anterior</span>
+            <span class="mn-name">03 · Planeación y evaluación de proyectos</span>
+          </a>
+          <a href="digital-factory.html" class="mn-next">
+            <span class="mn-dir">Siguiente módulo →</span>
+            <span class="mn-name">05 · Digital Factory</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-title">Sincronizados S.A.S</p>
+          <p>Propuesta de automatización para una planta de producción de bebidas.
+             Proyecto integrador — Automatización de Procesos de Manufactura,
+             Universidad Nacional de Colombia · 2026-1S.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Módulos</h4>
+          <a href="introduccion-automatizacion.html">01 · Introducción a la automatización de manufactura</a>
+          <a href="gestion-evaluacion-produccion.html">02 · Gestión y evaluación de la producción automatizada</a>
+          <a href="planeacion.html">03 · Planeación y evaluación de proyectos</a>
+          <a href="celdas-roboticas.html">04 · Celda de manufactura robotizada</a>
+          <a href="digital-factory.html">05 · Digital Factory</a>
+          <a href="controladores-industriales.html">06 · Controladores industriales</a>
+          <a href="scada.html">07 · SCADA</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <a href="equipo.html">Equipo</a>
+          <a href="reflexion-grupal.html">Reflexión grupal</a>
+          <a href="reflexiones-individuales.html">Reflexiones individuales</a>
+          <a href="documentos.html">Documentos técnicos</a>
+          <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Sincronizados S.A.S — Proyecto académico.</span>
+        <span>Automatización de Procesos de Manufactura · UNAL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="data/site-data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

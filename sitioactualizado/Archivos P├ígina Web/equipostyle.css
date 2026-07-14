@@ -1,0 +1,38 @@
+.equipo {
+    padding: 60px 80px;
+    text-align: center;
+    background:white;
+}
+
+.equipo h1 {
+    font-size: 50px;
+    color: #781428;
+}
+
+.linea {
+    width: 600px;
+    height: 3px;
+    background-color: #781428;
+    margin: 10px auto 40px;
+}
+
+.integrantes {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.integrante {
+    background-color:F5D7D7 ;
+    padding: 30px;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.integrante img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
