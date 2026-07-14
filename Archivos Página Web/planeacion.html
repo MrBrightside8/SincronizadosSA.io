@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Planeación y evaluación de proyectos | Sincronizados S.A.</title>
-  <meta name="description" content="EDT, cronograma, análisis económico (CAPEX, OPEX, flujo de caja, VPN y TIR) y propuesta de valor del proyecto." />
+  <meta name="description" content="Cómo se organizó el proyecto (EDT y cronograma) y la evaluación económica: CAPEX, flujo de caja, VPN y TIR." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
         </div>
 
         <div class="nav-dropdown">
-          <a href="index.html#aprendizaje">Reflexiones</a>
+          <a href="reflexiones-individuales.html">Reflexiones</a>
           <div class="dropdown-menu">
             <a href="reflexion-gestion.html">Gestión del proyecto</a>
             <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
@@ -51,7 +51,7 @@
         </div>
 
         <a href="equipo.html">Equipo</a>
-        <a href="index.html#documentos">Documentos</a>
+        <a href="documentos.html">Documentos</a>
 
         <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
       </div>
@@ -63,253 +63,126 @@
       <div class="container">
         <p class="module-num">Módulo 03 de 07</p>
         <h1>Planeación y evaluación de proyectos</h1>
-        <p class="lead">Estructuramos el proyecto con EDT y cronograma, y evaluamos la inversión de la celda robótica de paletizado: CAPEX de $1.460 M COP, flujo de caja a 10 años e indicadores VPN y TIR.</p>
-        <div class="module-chips">
-          <span class="chip"><strong>EDT</strong> · Proyecto y proceso</span>
-          <span class="chip"><strong>Gantt</strong> · Cronograma</span>
-          <span class="chip"><strong>VPN · TIR</strong> · Evaluación</span>
-          <span class="chip">Propuesta de valor</span>
-        </div>
+        <p class="lead">Cómo se organizó el proyecto (EDT y cronograma) y cuánto cuesta y retorna la inversión propuesta.</p>
         <div class="quicknav">
-          <a href="#edt-proyecto">EDT del proyecto</a>
-          <a href="#edt-proceso">EDT del proceso</a>
+          <a href="#organizacion">Cómo lo organizamos</a>
+          <a href="#proceso">El proceso, paso a paso</a>
           <a href="#cronograma">Cronograma</a>
-          <a href="#economia">Evaluación económica</a>
+          <a href="#economia">¿Es rentable?</a>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt">
+    <section class="section" id="organizacion">
       <div class="container">
-        <p class="section-kicker">Rúbrica del curso</p>
+        <p class="section-kicker">Organización</p>
         <div class="section-heading">
-          <h2>Qué evidencia este módulo</h2>
-        </div>
-        <ul class="rubric-list">
-          <li>Planeación estructurada: EDT y cronograma del proyecto.</li>
-          <li>Análisis económico: presupuesto, flujo de caja e indicadores financieros.</li>
-          <li>Propuesta de valor y oferta comercial que sustenta la viabilidad técnica y financiera.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section" id="edt-proyecto">
-      <div class="container">
-        <p class="section-kicker">Estructura de trabajo</p>
-        <div class="section-heading">
-          <h2>EDT del proyecto</h2>
-          <p>Desglose de los componentes técnicos, de gestión y de integración considerados en la planeación general.</p>
+          <h2>Cómo organizamos el proyecto</h2>
+          <p>Dividimos el trabajo en diez frentes (la EDT del proyecto). Cada uno se resume en una
+             línea; despliega el que te interese para ver sus actividades.</p>
         </div>
 
-        <div class="planning-grid">
-          <article class="planning-card">
-            <h3>1. Planeación del proyecto</h3>
+        <div class="accordion">
+          <details>
+            <summary><span class="acc-num">1</span> Planeación del proyecto <em>alcance, cronograma y riesgos</em></summary>
             <ul>
-              <li>1.1 Matriz de comunicaciones.</li>
-              <li>1.2 Identificación de necesidades y requerimientos.</li>
-              <li>1.3 Definición del alcance del sistema automatizado.</li>
-              <li>1.4 Identificación de stakeholders.</li>
-              <li>1.5 Desarrollo de cronograma.</li>
-              <li>1.6 Identificación y análisis de riesgos del proyecto.</li>
+              <li>Matriz de comunicaciones e identificación de stakeholders.</li>
+              <li>Identificación de necesidades y definición del alcance del sistema automatizado.</li>
+              <li>Desarrollo del cronograma y análisis de riesgos del proyecto.</li>
             </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>2. Análisis del proceso productivo</h3>
+          </details>
+          <details>
+            <summary><span class="acc-num">2</span> Análisis del proceso productivo <em>líneas, variables y layout</em></summary>
             <ul>
-              <li>2.1 Investigación del proceso de bebidas.</li>
-              <li>2.2 Identificación de materias primas, de productos y líneas.</li>
-              <li>2.3 Elaboración del diagrama de operaciones del proceso y análisis del proceso.</li>
-              <li>2.4 Identificación de variables de proceso.</li>
-              <li>2.5 Identificación de sensores y actuadores.</li>
-              <li>2.6 Elaboración del layout de planta.</li>
+              <li>Investigación del proceso de bebidas y de sus materias primas.</li>
+              <li>Diagramas de operaciones y análisis del proceso por producto.</li>
+              <li>Identificación de variables, sensores y actuadores; layout de planta.</li>
             </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>3. Modelado y simulación del sistema</h3>
+          </details>
+          <details>
+            <summary><span class="acc-num">3</span> Modelado y simulación <em>tiempos e indicadores</em></summary>
             <ul>
-              <li>3.1 Modelado del proceso productivo.</li>
-              <li>3.2 Simulación del flujo de producción.</li>
-              <li>3.3 Análisis de tiempos de ciclo.</li>
-              <li>3.4 Cálculo de indicadores productivos (Takt time, OEE, Lead time).</li>
-              <li>3.5 Comparación antes y después de automatizar.</li>
-              <li>3.6 Estimación económica del proyecto e identificación de costos.</li>
+              <li>Modelado y simulación del flujo de producción.</li>
+              <li>Análisis de tiempos de ciclo e indicadores: takt time, OEE y lead time.</li>
+              <li>Comparación antes y después de automatizar; estimación de costos.</li>
             </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>4. Arquitectura de automatización</h3>
+          </details>
+          <details>
+            <summary><span class="acc-num">4</span> Arquitectura de automatización <em>ISA-95 y hardware</em></summary>
             <ul>
-              <li>4.1 Análisis de automatización e identificación de arquitectura ISA-95.</li>
-              <li>4.2 Definición de niveles de automatización según ISA-95.</li>
-              <li>4.3 Selección de hardware: PLC, sensores, variadores y robot.</li>
-              <li>4.4 Diseño de red industrial.</li>
-              <li>4.5 Diseño de instrumentación del proceso.</li>
+              <li>Definición de los niveles de automatización según ISA-95.</li>
+              <li>Selección de hardware: PLC, sensores, variadores y robot.</li>
+              <li>Diseño de la red industrial y de la instrumentación del proceso.</li>
             </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>5. Diseño de la celda robotizada</h3>
+          </details>
+          <details>
+            <summary><span class="acc-num">5</span> Celda robotizada <em>paletizado</em></summary>
             <ul>
-              <li>5.1 Justificación de robotización.</li>
-              <li>5.2 Selección del robot industrial.</li>
-              <li>5.3 Diseño del flujo de materiales.</li>
-              <li>5.4 Diseño de seguridad industrial.</li>
-              <li>5.5 Simulación en RobotStudio.</li>
+              <li>Justificación de la robotización y selección del robot industrial.</li>
+              <li>Diseño del flujo de materiales y de la seguridad industrial.</li>
+              <li>Simulación en RobotStudio.</li>
             </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>6. Diseño Digital Factory</h3>
+          </details>
+          <details>
+            <summary><span class="acc-num">6</span> Digital Factory <em>gemelo digital</em></summary>
             <ul>
-              <li>6.1 Modelado de la línea en Factory I/O.</li>
-              <li>6.2 Configuración de sensores y actuadores virtuales.</li>
-              <li>6.3 Programación en Ladder en Studio 5000.</li>
-              <li>6.4 Enlace con Studio 5000 / Logix Emulate.</li>
-              <li>6.5 Mapeo de entradas y salidas.</li>
-              <li>6.6 Validación y pruebas de funcionamiento.</li>
+              <li>Modelado de la línea en Factory I/O con sensores y actuadores virtuales.</li>
+              <li>Enlace con Studio 5000 / Logix Emulate y mapeo de entradas y salidas.</li>
+              <li>Validación y pruebas de funcionamiento.</li>
             </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>7. Diseño del control industrial</h3>
+          </details>
+          <details>
+            <summary><span class="acc-num">7</span> Control industrial <em>Grafcet y Ladder</em></summary>
             <ul>
-              <li>7.1 Desarrollo del Grafcet.</li>
-              <li>7.2 Programación en Ladder.</li>
-              <li>7.3 Configuración de PLC.</li>
-              <li>7.4 Integración con sensores y actuadores.</li>
-              <li>7.5 Pruebas de funcionamiento.</li>
+              <li>Desarrollo del Grafcet y programación en Ladder.</li>
+              <li>Configuración del PLC e integración con sensores y actuadores.</li>
+              <li>Pruebas de funcionamiento.</li>
             </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>8. Diseño del sistema SCADA</h3>
+          </details>
+          <details>
+            <summary><span class="acc-num">8</span> Sistema SCADA <em>supervisión</em></summary>
             <ul>
-              <li>8.1 Diseño de interfaz HMI.</li>
-              <li>8.2 Configuración de comunicación OPC.</li>
-              <li>8.3 Supervisión del proceso.</li>
-              <li>8.4 Visualización de alarmas.</li>
-              <li>8.5 Monitoreo de producción.</li>
+              <li>Diseño de la interfaz HMI y comunicación OPC.</li>
+              <li>Supervisión del proceso, alarmas y monitoreo de producción.</li>
             </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>9. Evaluación económica del proyecto</h3>
+          </details>
+          <details>
+            <summary><span class="acc-num">9</span> Evaluación económica <em>presupuesto y retorno</em></summary>
             <ul>
-              <li>9.1 Estimación de costos de equipos.</li>
-              <li>9.2 Estimación de costos de implementación.</li>
-              <li>9.3 Presupuesto total del proyecto.</li>
-              <li>9.4 Elaboración de flujo de caja.</li>
-              <li>9.5 Evaluación financiera: VPN, TIR y periodo de retorno.</li>
+              <li>Estimación de costos de equipos e implementación; presupuesto total.</li>
+              <li>Flujo de caja y evaluación financiera: VPN, TIR y periodo de retorno.</li>
             </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>10. Documentación y entrega</h3>
+          </details>
+          <details>
+            <summary><span class="acc-num">10</span> Documentación y entrega <em>web, video e informe</em></summary>
             <ul>
-              <li>10.1 Desarrollo del repositorio GitHub.</li>
-              <li>10.2 Desarrollo de la página web.</li>
-              <li>10.3 Elaboración del video de presentación.</li>
-              <li>10.4 Informe final del proyecto.</li>
-              <li>10.5 Preparación de sustentación.</li>
+              <li>Repositorio GitHub y página web del proyecto.</li>
+              <li>Video de presentación, informe final y sustentación.</li>
             </ul>
-          </article>
+          </details>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="edt-proceso">
+    <section class="section section-alt" id="proceso">
       <div class="container">
         <p class="section-kicker">Proceso productivo</p>
         <div class="section-heading">
-          <h2>EDT del proceso</h2>
-          <p>Desglose del flujo productivo considerado para la línea de bebidas y su automatización.</p>
+          <h2>El proceso, paso a paso</h2>
+          <p>Así fluye una bebida por la planta, desde el jarabe hasta el despacho.</p>
         </div>
 
-        <div class="planning-grid">
-          <article class="planning-card">
-            <h3>1. Preparación del jarabe</h3>
-            <ul>
-              <li>1.1 Recepción de azúcar.</li>
-              <li>1.2 Vertido y disolución del azúcar en agua tratada.</li>
-              <li>1.3 Tratamiento de sulfitado.</li>
-              <li>1.4 Tratamiento termoquímico del jarabe.</li>
-              <li>1.5 Adición de concentrado o saborizante.</li>
-              <li>1.6 Control de calidad del jarabe (°Brix, polarización, color, humedad).</li>
-            </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>2. Carbonatación de la bebida</h3>
-            <ul>
-              <li>2.1 Enfriamiento de la mezcla.</li>
-              <li>2.2 Inyección de CO₂.</li>
-              <li>2.3 Control de presión y carbonatación.</li>
-            </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>3. Preparación de envases</h3>
-            <ul>
-              <li>3.1 Soplado de preformas para fabricar la botella.</li>
-              <li>3.2 Proceso térmico de saneamiento.</li>
-              <li>3.3 Lavado de botellas.</li>
-              <li>3.4 Inspección de calidad del envase (integridad, dimensiones y limpieza).</li>
-            </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>4. Llenado y sellado</h3>
-            <ul>
-              <li>4.1 Llenado de la bebida en botella.</li>
-              <li>4.2 Tapado de la botella.</li>
-              <li>4.3 Inspección de volumen y nivel de llenado.</li>
-            </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>5. Post-procesamiento del envase</h3>
-            <ul>
-              <li>5.1 Soplado de secado del envase.</li>
-              <li>5.2 Etiquetado.</li>
-              <li>5.3 Inspección final de embotellado.</li>
-            </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>6. Identificación</h3>
-            <ul>
-              <li>6.1 Codificado de fecha, lote y producción.</li>
-            </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>7. Empaque</h3>
-            <ul>
-              <li>7.1 Agrupación de envases.</li>
-              <li>7.2 Empaque en bandejas.</li>
-              <li>7.3 Envoltura con film.</li>
-            </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>8. Paletizado</h3>
-            <ul>
-              <li>8.1 Formación de pallets.</li>
-              <li>8.2 Robot de paletizado.</li>
-              <li>8.3 Envoltura del pallet.</li>
-            </ul>
-          </article>
-
-          <article class="planning-card">
-            <h3>9. Almacenamiento y despacho</h3>
-            <ul>
-              <li>9.1 Almacenamiento.</li>
-              <li>9.2 Despacho.</li>
-            </ul>
-          </article>
-        </div>
+        <ol class="steps">
+          <li><strong>Preparación del jarabe</strong><span>Disolución del azúcar, tratamiento y control de calidad (°Brix).</span></li>
+          <li><strong>Carbonatación</strong><span>Enfriamiento de la mezcla e inyección de CO₂ a presión controlada.</span></li>
+          <li><strong>Preparación de envases</strong><span>Soplado de preformas o lavado de botellas, con inspección de calidad.</span></li>
+          <li><strong>Llenado y sellado</strong><span>Llenado de la bebida, tapado e inspección del nivel.</span></li>
+          <li><strong>Post-procesamiento</strong><span>Secado, etiquetado e inspección final del envase.</span></li>
+          <li><strong>Identificación</strong><span>Codificado de fecha, lote y producción.</span></li>
+          <li><strong>Empaque</strong><span>Agrupación en bandejas y envoltura con film.</span></li>
+          <li><strong>Paletizado</strong><span>Formación de pallets con robot y envoltura del pallet.</span></li>
+          <li><strong>Almacenamiento y despacho</strong><span>Ingreso a bodega y salida hacia distribución.</span></li>
+        </ol>
       </div>
     </section>
 
@@ -317,25 +190,24 @@
       <div class="container">
         <p class="section-kicker">Cronograma</p>
         <div class="section-heading">
-          <h2>Cronograma y anexos de planeación</h2>
-          <p>Programación general, hitos y documentación de soporte del plan de trabajo.</p>
+          <h2>Cronograma y documentos de planeación</h2>
         </div>
         <div class="card-grid" data-docs="planeacion"></div>
         <div class="annex-grid" style="margin-top:1.1rem">
           <a href="anexos/Cronograma_Gantt.html" class="annex-card">
             <span class="card-tag">Hoja</span>
             <h3>Cronograma — diagrama de Gantt</h3>
-            <p>Programación general, hitos principales y organización temporal del proyecto.</p>
+            <p>Programación general e hitos principales del proyecto.</p>
           </a>
           <a href="anexos/EDT_base.html" class="annex-card">
             <span class="card-tag">Hoja</span>
             <h3>Base del EDT</h3>
-            <p>Soporte base utilizado para estructurar el desglose del trabajo.</p>
+            <p>Soporte utilizado para estructurar el desglose del trabajo.</p>
           </a>
           <a href="anexos/Trazabilidad_Proceso.html" class="annex-card">
             <span class="card-tag">Hoja</span>
             <h3>Trazabilidad del proceso</h3>
-            <p>Seguimiento del flujo productivo y de sus etapas relevantes dentro de la propuesta.</p>
+            <p>Seguimiento del flujo productivo y sus etapas.</p>
           </a>
         </div>
       </div>
@@ -343,18 +215,19 @@
 
     <section class="section section-alt" id="economia">
       <div class="container">
-        <p class="section-kicker">Viabilidad</p>
+        <p class="section-kicker">Evaluación económica</p>
         <div class="section-heading">
-          <h2>Evaluación técnico-económica</h2>
-          <p>Análisis financiero de la celda robótica de paletizado para las líneas Coca-Cola y Monster:
-             inversión, costos operativos, flujo de caja e indicadores de retorno.</p>
+          <h2>¿Es rentable automatizar?</h2>
+          <p>Evaluamos la celda robótica de paletizado para las líneas Coca-Cola y Monster.
+             La respuesta corta: sí — la inversión se recupera en menos de 7 años y el proyecto
+             genera valor. Las cifras clave:</p>
         </div>
 
         <div class="kpi-strip">
           <div class="kpi-box k-red">
-            <p class="kpi-label">CAPEX total (con IVA)</p>
+            <p class="kpi-label">Inversión (CAPEX)</p>
             <p class="kpi-value">$1.460 M</p>
-            <p class="kpi-sub">COP · Inversión inicial</p>
+            <p class="kpi-sub">COP · con IVA</p>
           </div>
           <div class="kpi-box k-green">
             <p class="kpi-label">VPN (WACC 12 %)</p>
@@ -369,62 +242,54 @@
           <div class="kpi-box">
             <p class="kpi-label">Payback</p>
             <p class="kpi-value">6,8 años</p>
-            <p class="kpi-sub">ROI 46,2 % · TRM $3 723,05</p>
+            <p class="kpi-sub">ROI 46,2 % a 10 años</p>
           </div>
         </div>
+
+        <p class="section-note">El informe completo, con supuestos, costos y flujo de caja,
+           está dividido en seis secciones:</p>
 
         <div class="card-grid">
           <a class="info-card" href="anexos/Portada.html">
             <span class="card-tag">F1</span>
             <h3>Resumen ejecutivo</h3>
-            <p>Visión general de la evaluación financiera, conclusiones y recomendaciones.</p>
-            <span class="doc-open">Abrir informe →</span>
+            <p>Las conclusiones y recomendaciones, en una página.</p>
+            <span class="doc-open">Abrir →</span>
           </a>
           <a class="info-card" href="anexos/Supuestos.html">
             <span class="card-tag">F2</span>
             <h3>Supuestos</h3>
-            <p>Tasas, horizontes de evaluación y criterios base del modelo financiero.</p>
-            <span class="doc-open">Abrir informe →</span>
+            <p>Tasas, horizonte y criterios base del modelo.</p>
+            <span class="doc-open">Abrir →</span>
           </a>
           <a class="info-card" href="anexos/CAPEX.html">
             <span class="card-tag">F3</span>
             <h3>CAPEX</h3>
-            <p>Inversión en equipos, instalación e integración del sistema automatizado.</p>
-            <span class="doc-open">Abrir informe →</span>
+            <p>Qué compramos y cuánto cuesta implementarlo.</p>
+            <span class="doc-open">Abrir →</span>
           </a>
           <a class="info-card" href="anexos/OPEX_Beneficios.html">
             <span class="card-tag">F4</span>
             <h3>OPEX y beneficios</h3>
-            <p>Costos operativos proyectados y beneficios cuantificados de la automatización.</p>
-            <span class="doc-open">Abrir informe →</span>
+            <p>Costos de operar la celda y ahorros que genera.</p>
+            <span class="doc-open">Abrir →</span>
           </a>
           <a class="info-card" href="anexos/Flujo_de_Caja.html">
             <span class="card-tag">F5</span>
             <h3>Flujo de caja</h3>
-            <p>Proyección del flujo neto durante el horizonte de evaluación del proyecto.</p>
-            <span class="doc-open">Abrir informe →</span>
+            <p>Entradas y salidas de dinero, año a año.</p>
+            <span class="doc-open">Abrir →</span>
           </a>
           <a class="info-card" href="anexos/Indicadores.html">
             <span class="card-tag">F6</span>
             <h3>Indicadores financieros</h3>
-            <p>VPN, TIR y período de retorno de la inversión para la propuesta presentada.</p>
-            <span class="doc-open">Abrir informe →</span>
+            <p>VPN, TIR y periodo de retorno, explicados.</p>
+            <span class="doc-open">Abrir →</span>
           </a>
         </div>
 
         <h3 class="doc-subtitle">Documentos de soporte</h3>
         <div class="card-grid" data-docs="financiero"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <p class="section-kicker">Evidencia audiovisual</p>
-        <div class="section-heading">
-          <h2>Video del módulo</h2>
-          <p>Registro del entregable del módulo. El enlace se configura en <code>data/site-data.js</code> o desde el panel de administración.</p>
-        </div>
-        <div class="video-slot" data-video="planeacion"></div>
       </div>
     </section>
 
@@ -467,7 +332,7 @@
           <h4>Recursos</h4>
           <a href="equipo.html">Equipo</a>
           <a href="reflexiones-individuales.html">Proceso de aprendizaje</a>
-          <a href="index.html#documentos">Documentos técnicos</a>
+          <a href="documentos.html">Documentos técnicos</a>
           <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
         </div>
       </div>

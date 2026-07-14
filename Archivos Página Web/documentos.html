@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Celda de manufactura robotizada | Sincronizados S.A.</title>
-  <meta name="description" content="Justificación de la robotización, diseño de la celda de paletizado, simulación en RobotStudio y análisis de riesgos." />
+  <title>Documentos | Sincronizados S.A.</title>
+  <meta name="description" content="Repositorio documental del proyecto: planeación, análisis de proceso, P&ID, simulación y análisis financiero." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
             <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
             <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
             <a href="planeacion.html"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
-            <a href="celdas-roboticas.html" class="is-current"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
+            <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
             <a href="digital-factory.html"><span class="menu-num">05</span>Digital Factory</a>
             <a href="controladores-industriales.html"><span class="menu-num">06</span>Controladores industriales</a>
             <a href="scada.html"><span class="menu-num">07</span>SCADA</a>
@@ -51,7 +51,7 @@
         </div>
 
         <a href="equipo.html">Equipo</a>
-        <a href="documentos.html">Documentos</a>
+        <a href="documentos.html" class="is-current">Documentos</a>
 
         <a class="nav-button" href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio</a>
       </div>
@@ -59,96 +59,33 @@
   </header>
 
   <main>
-    <section class="module-hero">
+    <section class="page-hero">
       <div class="container">
-        <p class="module-num">Módulo 04 de 07</p>
-        <h1>Celda de manufactura robotizada</h1>
-        <p class="lead">Robotización del paletizado: diseño de la celda, seguridad y simulación en RobotStudio.</p>
-        <div class="module-chips">
-          <span class="chip"><strong>RobotStudio</strong> · Simulación</span>
-          <span class="chip">Paletizado</span>
-          <span class="chip">Seguridad industrial</span>
-          <span class="chip">Análisis de riesgos</span>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="section" id="justificacion">
-      <div class="container">
-        <p class="section-kicker">Diseño</p>
-        <div class="section-heading">
-          <h2>Celda robótica de paletizado</h2>
-          <p>La etapa de paletizado de las líneas Coca-Cola y Monster se robotiza para eliminar manipulación
-             manual repetitiva, aumentar el flujo de salida y estandarizar la formación de pallets. La evaluación
-             económica de esta celda sustenta la inversión — ver
-             <a href="planeacion.html#economia">evaluación técnico-económica</a>.</p>
-        </div>
-
-        <div class="card-grid">
-          <article class="info-card">
-            <span class="card-tag">Justificación</span>
-            <h3>Por qué robotizar el paletizado</h3>
-            <p>Alta repetitividad, cargas ergonómicamente críticas y velocidad de línea creciente hacen del
-               paletizado el mejor candidato de robotización con retorno medible.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-tag">Flujo</span>
-            <h3>Flujo de materiales</h3>
-            <p>Entrada de paquetes desde el empaque termoencogido, formación de capa, paletizado por
-               patrón y salida a envolvedora de pallets.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-tag">Seguridad</span>
-            <h3>Seguridad de la celda</h3>
-            <p>Perimetraje con vallado, escáneres de área, paros de emergencia y modos de operación
-               segregados según ISO 10218.</p>
-          </article>
-        </div>
-
-        <div class="pending-card">
-          <div class="pc-head">
-            <span class="pc-icon">🛠</span>
-            <div>
-              <span class="pc-tag">En preparación</span>
-              <h3>Simulación en RobotStudio</h3>
-            </div>
-          </div>
-          <p>Evidencia de la simulación funcional de la celda de paletizado.</p>
-          <ul class="pending-list">
-            <li>Capturas de la estación RobotStudio (layout de la celda, robot y transportadores).</li>
-            <li>Video corto de la simulación ejecutando el ciclo de paletizado.</li>
-            <li>Diagrama del patrón de paletizado por producto (retornable / PET / lata).</li>
-            <li>Matriz de riesgos con medidas de mitigación (mecánicas, eléctricas, operativas).</li>
-          </ul>
-        </div>
+        <p class="section-kicker">Repositorio documental</p>
+        <h1>Documentos del proyecto</h1>
+        <p class="lead">
+          La ingeniería de detalle del proyecto, organizada por área. Todos los documentos
+          se abren directamente desde el repositorio.
+        </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <p class="section-kicker">Evidencia audiovisual</p>
-        <div class="section-heading">
-          <h2>Video del módulo</h2>
-          <p>Registro del entregable del módulo. El enlace se configura en <code>data/site-data.js</code> o desde el panel de administración.</p>
-        </div>
-        <div class="video-slot" data-video="celdas"></div>
-      </div>
-    </section>
+        <h3 class="doc-subtitle">Planeación</h3>
+        <div class="card-grid" data-docs="planeacion"></div>
 
-    <section class="section">
-      <div class="container">
-        <div class="module-nav">
-          <a href="planeacion.html">
-            <span class="mn-dir">← Módulo anterior</span>
-            <span class="mn-name">03 · Planeación y evaluación de proyectos</span>
-          </a>
-          <a href="digital-factory.html" class="mn-next">
-            <span class="mn-dir">Siguiente módulo →</span>
-            <span class="mn-name">05 · Digital Factory</span>
-          </a>
-        </div>
+        <h3 class="doc-subtitle">Análisis de proceso</h3>
+        <div class="card-grid" data-docs="proceso"></div>
+
+        <h3 class="doc-subtitle">Diagramas P&amp;ID</h3>
+        <div class="card-grid" data-docs="pid"></div>
+
+        <h3 class="doc-subtitle">Simulación (Plant Simulation)</h3>
+        <div class="card-grid" data-docs="simulacion"></div>
+
+        <h3 class="doc-subtitle">Análisis financiero</h3>
+        <div class="card-grid" data-docs="financiero"></div>
       </div>
     </section>
   </main>
