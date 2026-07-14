@@ -1091,3 +1091,24 @@ body.is-admin .admin-fab { background: var(--teal); color: #fff; border-color: v
 .steps li:last-child::after { display: none; }
 .steps strong { display: block; font-family: var(--font-display); color: var(--teal-dark); font-size: 1.02rem; }
 .steps span { color: var(--muted); font-size: .92rem; }
+
+/* ───────────────────────── Centrado global (pulido) ─────────────────────────
+   Encabezados de sección y bloques principales centrados en la página. */
+.section-kicker { text-align: center; }
+.section-heading { margin-inline: auto; text-align: center; }
+.page-hero .container, .module-hero .container { text-align: center; }
+.module-hero h1, .module-hero .lead, .page-hero .lead { margin-inline: auto; }
+.module-num { justify-content: center; }
+.module-chips, .quicknav { justify-content: center; }
+.isa-pyramid, .accordion, .steps, .rubric-list { margin-inline: auto; }
+.steps { text-align: left; }
+.accordion { text-align: left; }
+.kpi-strip { max-width: 980px; margin-inline: auto; }
+.section-note { margin-inline: auto; text-align: center; }
+.card-grid, .annex-grid, .product-grid { text-align: left; }
+
+/* ───────────────────────── Acordeón de documentos ───────────────────────── */
+.docs-accordion { max-width: 100%; }
+.docs-accordion .acc-body { padding: .3rem 1.2rem 1.3rem; }
+.docs-accordion .doc-subtitle { margin-top: 1.4rem; }
+.docs-accordion summary { font-size: 1.02rem; }

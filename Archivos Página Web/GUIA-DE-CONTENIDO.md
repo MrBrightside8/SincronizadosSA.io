@@ -35,18 +35,14 @@ reemplazas el bloque por el contenido real.
 - **Propuesta de valor / oferta comercial** (1 página PDF).
 - Actualizar el KPI "Tiempos antes/después" del inicio cuando salga de la simulación.
 
-### 04 · Celda de manufactura robotizada
-- **Pantallazos de RobotStudio**: layout de la celda, robot, transportadores.
-- **Video corto** del ciclo de paletizado simulado.
-- **Patrón de paletizado** por producto (esquema).
-- **Matriz de riesgos** con mitigaciones (tabla PDF).
+### 04 · Celda de manufactura robotizada  ✅ casi completo
+- Ya está: propuesta consolidada (PDF) y estación RobotStudio (.rspag).
+- Falta: video del ciclo de paletizado y capturas de la estación.
 
-### 05 · Digital Factory
-- **Pantallazos de la escena Factory I/O** (o NX MCD) de la línea completa.
-- **Tabla de mapeo E/S** entre el gemelo y Logix Emulate (pantallazo o Excel).
-- Video de la validación en lazo cerrado.
-- Si usan NX: capturas del modelo 3D y de la conexión de señales
-  (valor agregado del curso: llevar puntos de RobotStudio a NX).
+### 05 · Digital Factory  ✅ casi completo
+- Ya está: modelos NX (rechazo, llenado y tapado, Shrink Wrapper), mapeo de
+  señales, flujo Node-RED y enlace a los archivos NX en Google Drive.
+- Falta: el video del módulo (añadirlo desde ⚙ Admin → Videos de módulos).
 
 ### 06 · Controladores industriales
 - **Grafcet nivel 1 y nivel 2** en PDF.

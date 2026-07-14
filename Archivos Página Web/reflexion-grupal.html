@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Introducción a la automatización | Sincronizados S.A.</title>
-  <meta name="description" content="Arquitectura de automatización ISA-95, niveles, comunicaciones e instrumentación del proceso de bebidas." />
+  <title>Reflexión grupal | Sincronizados S.A.</title>
+  <meta name="description" content="Reflexión grupal del equipo Sincronizados: gestión del proyecto, trabajo colaborativo y aprendizajes." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
         <div class="nav-dropdown">
           <a href="index.html#modulos">Módulos</a>
           <div class="dropdown-menu">
-            <a href="introduccion-automatizacion.html" class="is-current"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
+            <a href="introduccion-automatizacion.html"><span class="menu-num">01</span>Introducción a la automatización de manufactura</a>
             <a href="gestion-evaluacion-produccion.html"><span class="menu-num">02</span>Gestión y evaluación de la producción automatizada</a>
             <a href="planeacion.html"><span class="menu-num">03</span>Planeación y evaluación de proyectos</a>
             <a href="celdas-roboticas.html"><span class="menu-num">04</span>Celda de manufactura robotizada</a>
@@ -44,7 +44,7 @@
         <div class="nav-dropdown">
           <a href="reflexiones-individuales.html">Reflexiones</a>
           <div class="dropdown-menu">
-            <a href="reflexion-grupal.html">Reflexión grupal</a>
+            <a href="reflexion-grupal.html" class="is-current">Reflexión grupal</a>
             <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           </div>
         </div>
@@ -58,92 +58,73 @@
   </header>
 
   <main>
-    <section class="module-hero">
+    <section class="page-hero">
       <div class="container">
-        <p class="module-num">Módulo 01 de 07</p>
-        <h1>Introducción a la automatización de manufactura</h1>
-        <p class="lead">Cómo se estructura la automatización de la planta: niveles ISA-95 e instrumentación del proceso (P&ID).</p>
-        <div class="module-chips">
-          <span class="chip"><strong>ISA-95</strong> · Arquitectura</span>
-          <span class="chip"><strong>P&amp;ID</strong> · Instrumentación</span>
-          <span class="chip">Sensores y actuadores</span>
-          <span class="chip">Comunicaciones industriales</span>
-        </div>
+        <p class="section-kicker">Proceso de aprendizaje</p>
+        <h1>Reflexión grupal</h1>
+        <p class="lead">
+          Balance del equipo sobre cómo gestionamos el proyecto, cómo trabajamos juntos
+          y qué aprendimos en el camino.
+        </p>
       </div>
     </section>
-
-
-
-    <section class="section" id="isa95">
-      <div class="container">
-        <p class="section-kicker">Arquitectura</p>
-        <div class="section-heading">
-          <h2>Niveles de automatización — ISA-95</h2>
-          <p>La solución se estructura sobre la pirámide de automatización: cada nivel define equipos,
-             funciones y protocolos de comunicación con el nivel superior.</p>
-        </div>
-        <div class="isa-pyramid">
-          <div class="isa-level">
-            <span class="isa-tag">Nivel 4</span>
-            <div><h4>Gestión empresarial (ERP)</h4><p>Planificación de la producción, órdenes y logística de despacho.</p></div>
-          </div>
-          <div class="isa-level">
-            <span class="isa-tag">Nivel 3</span>
-            <div><h4>Gestión de operaciones (MES)</h4><p>Programación de la producción, trazabilidad de lotes e indicadores (OEE).</p></div>
-          </div>
-          <div class="isa-level">
-            <span class="isa-tag">Nivel 2</span>
-            <div><h4>Supervisión (SCADA / HMI)</h4><p>Supervisión del proceso con Ignition, alarmas y registro de variables vía OPC.</p></div>
-          </div>
-          <div class="isa-level">
-            <span class="isa-tag">Nivel 1</span>
-            <div><h4>Control (PLC)</h4><p>Lógica secuencial Grafcet/Ladder ejecutada en controladores Allen-Bradley (Logix).</p></div>
-          </div>
-          <div class="isa-level">
-            <span class="isa-tag">Nivel 0</span>
-            <div><h4>Campo — sensores y actuadores</h4><p>Instrumentación de proceso: caudal, nivel, presión, temperatura, visión y actuadores de línea.</p></div>
-          </div>
-        </div>
-
-        <div class="pending-card">
-          <div class="pc-head">
-            <span class="pc-icon">🛠</span>
-            <div>
-              <span class="pc-tag">En preparación</span>
-              <h3>Diagrama de arquitectura del sistema</h3>
-            </div>
-          </div>
-          <p>Diagrama propio de la arquitectura ISA-95 del proyecto: equipos por nivel, redes y protocolos.</p>
-          <ul class="pending-list">
-            <li>Diagrama de niveles con hardware seleccionado (PLC, HMI, servidores).</li>
-            <li>Redes y protocolos (EtherNet/IP, OPC-UA) entre niveles.</li>
-            <li>Exportar en PNG o PDF y subirlo a la carpeta del módulo.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="instrumentacion">
-      <div class="container">
-        <p class="section-kicker">Instrumentación</p>
-        <div class="section-heading">
-          <h2>Diagramas P&amp;ID del proceso</h2>
-          <p>Diagramas de tuberías e instrumentación de las estaciones críticas, con la identificación
-             de sensores y actuadores según norma ISA-5.1.</p>
-        </div>
-        <div class="card-grid" data-docs="pid"></div>
-      </div>
-    </section>
-
 
     <section class="section">
       <div class="container">
-        <div class="module-nav">
-          <span class="mn-empty"></span>
-          <a href="gestion-evaluacion-produccion.html" class="mn-next">
-            <span class="mn-dir">Siguiente módulo →</span>
-            <span class="mn-name">02 · Gestión y evaluación de la producción automatizada</span>
-          </a>
+        <div class="card-grid">
+          <article class="reflection-card">
+            <span class="card-tag">Planeación</span>
+            <h3>Estructuración inicial</h3>
+            <p>
+              La definición temprana de objetivos, entregables y responsabilidades permitió
+              orientar mejor el trabajo del equipo y reducir ambigüedades durante el avance del proyecto.
+            </p>
+          </article>
+
+          <article class="reflection-card">
+            <span class="card-tag">Seguimiento</span>
+            <h3>Control del proceso</h3>
+            <p>
+              El monitoreo constante de tareas y tiempos ayudó a identificar retrasos,
+              reorganizar actividades y mantener la coherencia entre la propuesta y los resultados esperados.
+            </p>
+          </article>
+
+          <article class="reflection-card">
+            <span class="card-tag">Organización</span>
+            <h3>Roles y responsabilidades</h3>
+            <p>
+              El trabajo se distribuyó por módulos técnicos según las fortalezas de cada integrante,
+              con responsables definidos para el proceso, la simulación, el control y la evaluación económica.
+            </p>
+          </article>
+
+          <article class="reflection-card">
+            <span class="card-tag">Herramientas</span>
+            <h3>Coordinación del equipo</h3>
+            <p>
+              GitHub como repositorio central del proyecto, mensajería para la coordinación diaria y
+              sesiones de trabajo conjunto para las integraciones entre módulos.
+            </p>
+          </article>
+
+          <article class="reflection-card">
+            <span class="card-tag">Lecciones</span>
+            <h3>Lo que aprendimos del trabajo conjunto</h3>
+            <p>
+              La integración entre módulos exige acuerdos tempranos: definir interfaces claras
+              (señales, formatos, supuestos) evitó retrabajos en las etapas finales del proyecto.
+            </p>
+          </article>
+
+          <article class="reflection-card">
+            <span class="card-tag">Mejora continua</span>
+            <h3>Balance</h3>
+            <p>
+              La gestión del proyecto no solo organizó el trabajo: fortaleció la toma de decisiones,
+              la comunicación interna y la capacidad de adaptación del equipo.
+            </p>
+          </article>
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Celda de manufactura robotizada | Sincronizados S.A.</title>
-  <meta name="description" content="Justificación de la robotización, diseño de la celda de paletizado, simulación en RobotStudio y análisis de riesgos." />
+  <meta name="description" content="Dos celdas robotizadas de paletizado para FEMSA Bogotá: ABB IRB 660 e IRB 460, PLC ControlLogix 5580 y simulación en RobotStudio." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -44,8 +44,7 @@
         <div class="nav-dropdown">
           <a href="reflexiones-individuales.html">Reflexiones</a>
           <div class="dropdown-menu">
-            <a href="reflexion-gestion.html">Gestión del proyecto</a>
-            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+            <a href="reflexion-grupal.html">Reflexión grupal</a>
             <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           </div>
         </div>
@@ -63,78 +62,61 @@
       <div class="container">
         <p class="module-num">Módulo 04 de 07</p>
         <h1>Celda de manufactura robotizada</h1>
-        <p class="lead">Robotización del paletizado: diseño de la celda, seguridad y simulación en RobotStudio.</p>
+        <p class="lead">Dos celdas de paletizado con robots ABB (IRB 660 e IRB 460) y PLC ControlLogix 5580, simuladas en RobotStudio.</p>
         <div class="module-chips">
-          <span class="chip"><strong>RobotStudio</strong> · Simulación</span>
-          <span class="chip">Paletizado</span>
-          <span class="chip">Seguridad industrial</span>
-          <span class="chip">Análisis de riesgos</span>
+          <span class="chip"><strong>ABB IRB 660</strong> · Línea Coca-Cola</span>
+          <span class="chip"><strong>ABB IRB 460</strong> · Línea Monster</span>
+          <span class="chip">ControlLogix 5580</span>
+          <span class="chip">RobotStudio</span>
         </div>
       </div>
     </section>
 
-
-
-    <section class="section" id="justificacion">
+    <section class="section" id="propuesta">
       <div class="container">
-        <p class="section-kicker">Diseño</p>
+        <p class="section-kicker">Propuesta</p>
         <div class="section-heading">
-          <h2>Celda robótica de paletizado</h2>
-          <p>La etapa de paletizado de las líneas Coca-Cola y Monster se robotiza para eliminar manipulación
-             manual repetitiva, aumentar el flujo de salida y estandarizar la formación de pallets. La evaluación
-             económica de esta celda sustenta la inversión — ver
-             <a href="planeacion.html#economia">evaluación técnico-económica</a>.</p>
+          <h2>Dos celdas de paletizado, una por línea</h2>
+          <p>Proponemos dos celdas robotizadas independientes para el final de las líneas de
+             Coca-Cola y Monster Energy en la planta FEMSA Bogotá, cada una con el robot adecuado
+             a su ritmo de producción. El caso más exigente —429 pacas/hora en Coca-Cola plástica—
+             exige un ciclo de una paca cada 8,4 segundos.</p>
         </div>
 
         <div class="card-grid">
           <article class="info-card">
-            <span class="card-tag">Justificación</span>
-            <h3>Por qué robotizar el paletizado</h3>
-            <p>Alta repetitividad, cargas ergonómicamente críticas y velocidad de línea creciente hacen del
-               paletizado el mejor candidato de robotización con retorno medible.</p>
+            <span class="card-tag">Celda 1 · Coca-Cola</span>
+            <h3>ABB IRB 660-3.15/250</h3>
+            <p>Paletiza las presentaciones retornable 1,5 L y plástica 2,5 L. Se selecciona por su
+               carga útil con margen real (~93 kg efectivos de 250 kg), alcance de 3,15 m para la capa 8
+               del euro-pallet y protección IP67 para el ambiente húmedo de la línea.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Flujo</span>
-            <h3>Flujo de materiales</h3>
-            <p>Entrada de paquetes desde el empaque termoencogido, formación de capa, paletizado por
-               patrón y salida a envolvedora de pallets.</p>
+            <span class="card-tag">Celda 2 · Monster</span>
+            <h3>ABB IRB 460-110/2.4</h3>
+            <p>Paletiza las cajas de lata de 500 mL (395 cajas/h). Robot compacto de 4 ejes
+               especializado en paletizado de alta cadencia.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Seguridad</span>
-            <h3>Seguridad de la celda</h3>
-            <p>
-            <ol>
-                <li>ISO 10218-1:2011 — Requisitos de seguridad para robots industriales (parte 1).</li>
-                <li>ISO 10218-2:2011 — Integración de sistemas robóticos (parte 2). 5.1. Requerimientos generales de seguridad. 5.3.3. Controles de accionamiento (Indicadores de estado). 5.8.3 Habilitación de dispositivos.</li>
-                <li>ISO 13849-1:2015 — Partes de los sistemas de mando relativas a la seguridad.</li>
-                <li>ISO 13850:2015 — Función de paro de emergencia.</li>
-                <li>ISO 13855:2010 — Posicionamiento de equipos de protección respecto a velocidades de aproximación.</li>
-                <li>ISO 13857:2019 — Distancias de seguridad para impedir alcanzar zonas peligrosas con extremidades.</li>
-                <li>ISO 14120:2015 — Resguardos fijos y móviles.</li>
-                <li>ISO 12100:2010 — Principios generales de diseño y evaluación de riesgos.</li>
-                <li>NSR-10 (Colombia) — Reglamento Colombiano de Construcción Sismo Resistente.</li>
-                <li>RETIE — Reglamento Técnico de Instalaciones Eléctricas (Colombia).</li>
-            </ol>
-.          </p>
+            <span class="card-tag">Control y seguridad</span>
+            <h3>ControlLogix 5580 + perimetraje</h3>
+            <p>Un PLC ControlLogix 5580 coordina ambas celdas. La seguridad se define con vallado
+               perimetral, escáneres de área y paros de emergencia, junto con la infraestructura
+               civil de cada sitio de instalación.</p>
           </article>
         </div>
+      </div>
+    </section>
 
-        <div class="pending-card">
-          <div class="pc-head">
-            <span class="pc-icon">🛠</span>
-            <div>
-              <span class="pc-tag">En preparación</span>
-              <h3>Simulación en RobotStudio</h3>
-            </div>
-          </div>
-          <p>Evidencia de la simulación funcional de la celda de paletizado.</p>
-          <ul class="pending-list">
-            <li>Capturas de la estación RobotStudio (layout de la celda, robot y transportadores).</li>
-            <li>Video corto de la simulación ejecutando el ciclo de paletizado.</li>
-            <li>Diagrama del patrón de paletizado por producto (retornable / PET / lata).</li>
-            <li>Matriz de riesgos con medidas de mitigación (mecánicas, eléctricas, operativas).</li>
-          </ul>
+    <section class="section section-alt" id="documentos-celda">
+      <div class="container">
+        <p class="section-kicker">Evidencias</p>
+        <div class="section-heading">
+          <h2>Propuesta técnica y simulación</h2>
+          <p>El documento consolidado con la justificación completa, y la estación de RobotStudio
+             lista para abrir y ejecutar el ciclo de paletizado.</p>
         </div>
+        <div class="card-grid" data-docs="celda"></div>
       </div>
     </section>
 
@@ -143,7 +125,6 @@
         <p class="section-kicker">Evidencia audiovisual</p>
         <div class="section-heading">
           <h2>Video del módulo</h2>
-          <p>Registro del entregable del módulo. El enlace se configura en <code>data/site-data.js</code> o desde el panel de administración.</p>
         </div>
         <div class="video-slot" data-video="celdas"></div>
       </div>
@@ -187,7 +168,8 @@
         <div class="footer-col">
           <h4>Recursos</h4>
           <a href="equipo.html">Equipo</a>
-          <a href="reflexiones-individuales.html">Proceso de aprendizaje</a>
+          <a href="reflexion-grupal.html">Reflexión grupal</a>
+          <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           <a href="documentos.html">Documentos técnicos</a>
           <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
         </div>

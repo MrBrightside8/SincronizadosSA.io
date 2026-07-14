@@ -213,6 +213,37 @@ window.SITE_DATA = {
         archivo: "../Plant%20Simulation/LineaMonster.spp"
       }
     ],
+    celda: [
+      {
+        titulo: "Propuesta técnica de celdas de paletizado (PDF)",
+        descripcion: "Propuesta consolidada: robots ABB IRB 660 e IRB 460, PLC ControlLogix 5580, seguridad e infraestructura.",
+        archivo: "../Celda%20Rob%C3%B3tica/Propuesta%20Consolidada.pdf"
+      },
+      {
+        titulo: "Estación RobotStudio (Pack & Go)",
+        descripcion: "Estación completa de la celda en RobotStudio (.rspag) para abrir y simular.",
+        archivo: "../Celda%20Rob%C3%B3tica/CeldaRoboticaFinal.rspag"
+      }
+    ],
+    gemelo: [
+      {
+        titulo: "Archivos NX del gemelo digital (Google Drive)",
+        descripcion: "Modelos NX de las estaciones. Por su tamaño (~500 MB) se alojan en Drive, no en el repositorio.",
+        archivo: "https://drive.google.com/drive/folders/1V2Q24mfqQDYrOzbcqltZHIhJQXKyn6Cj?usp=sharing"
+      },
+      {
+        titulo: "Flujo Node-RED — conexión con RobotStudio",
+        descripcion: "Flujo de integración (.json) que enciende y apaga la celda desde Node-RED vía peticiones HTTP.",
+        archivo: "../Node-RED/FlujoConexionRobotStudio.json"
+      }
+    ],
+    control: [
+      {
+        titulo: "Lógica final en Studio 5000 (.ACD)",
+        descripcion: "Proyecto de Studio 5000 con la lógica Ladder completa del sistema.",
+        archivo: "../GRAFCET%20y%20Ladder/LogicaFinal.ACD"
+      }
+    ],
     financiero: [
       {
         titulo: "Análisis Financiero (Excel)",

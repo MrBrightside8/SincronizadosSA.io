@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digital Factory | Sincronizados S.A.</title>
-  <meta name="description" content="Gemelo digital de la línea con sensores y actuadores virtuales, integración con Logix Emulate y validación funcional." />
+  <meta name="description" content="Gemelo digital en NX: estaciones de rechazo, llenado y tapado de botellas, y propuesta de automatización de la Shrink Wrapper." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -44,8 +44,7 @@
         <div class="nav-dropdown">
           <a href="reflexiones-individuales.html">Reflexiones</a>
           <div class="dropdown-menu">
-            <a href="reflexion-gestion.html">Gestión del proyecto</a>
-            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+            <a href="reflexion-grupal.html">Reflexión grupal</a>
             <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           </div>
         </div>
@@ -63,61 +62,87 @@
       <div class="container">
         <p class="module-num">Módulo 05 de 07</p>
         <h1>Digital Factory</h1>
-        <p class="lead">Réplica virtual de la línea conectada a un PLC emulado para probar el control sin tocar la planta.</p>
+        <p class="lead">Representación digital en NX de las estaciones de rechazo, llenado y tapado, y la propuesta de Shrink Wrapper.</p>
         <div class="module-chips">
-          <span class="chip"><strong>Gemelo digital</strong></span>
-          <span class="chip">Factory I/O · NX</span>
-          <span class="chip">Logix Emulate</span>
-          <span class="chip">Validación funcional</span>
+          <span class="chip"><strong>NX</strong> · Modelado 3D</span>
+          <span class="chip">Estación de rechazo</span>
+          <span class="chip">Llenado y tapado</span>
+          <span class="chip">Shrink Wrapper</span>
         </div>
       </div>
     </section>
-
-
 
     <section class="section" id="gemelo">
       <div class="container">
         <p class="section-kicker">Gemelo digital</p>
         <div class="section-heading">
-          <h2>La línea, replicada en digital</h2>
-          <p>El gemelo digital reproduce el comportamiento de la línea con sensores y actuadores virtuales,
-             permitiendo validar la lógica de control antes de cualquier intervención física.</p>
+          <h2>La línea, modelada en NX</h2>
+          <p>Construimos la representación digital de tres estaciones de la línea en Siemens NX:
+             la estación de rechazo de botellas, la estación de llenado y tapado, y nuestra propuesta
+             de automatización para la estación de Shrink Wrapper (empaque termoencogido).</p>
         </div>
 
-        <div class="card-grid">
-          <article class="info-card">
-            <span class="card-tag">Modelado</span>
-            <h3>Escena virtual de la línea</h3>
-            <p>Transportadores, estaciones y sensores modelados en Factory I/O sobre el layout real de la planta.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-tag">E/S virtuales</span>
-            <h3>Sensores y actuadores</h3>
-            <p>Mapeo de entradas y salidas virtuales contra los tags del controlador emulado.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-tag">Integración</span>
-            <h3>Enlace con Logix Emulate</h3>
-            <p>El PLC emulado ejecuta la lógica Ladder real; el gemelo responde en lazo cerrado.</p>
-          </article>
-        </div>
-
-        <div class="pending-card">
-          <div class="pc-head">
-            <span class="pc-icon">🛠</span>
-            <div>
-              <span class="pc-tag">En preparación</span>
-              <h3>Evidencias del gemelo digital</h3>
-            </div>
+        <div class="diagram">
+          <div class="diagram-toolbar">
+            <span class="diagram-name">Estación de llenado y tapado de botellas — modelo NX</span>
+            <a href="images/nx/estacion-llenado-tapado.png" target="_blank" class="diagram-action">Pantalla completa ↗</a>
           </div>
-          <p>Material que demuestra el modelado y la validación funcional del sistema.</p>
-          <ul class="pending-list">
-            <li>Capturas de la escena Factory I/O (o NX MCD) de la línea completa.</li>
-            <li>Captura de la tabla de mapeo de E/S entre Factory I/O y Logix Emulate.</li>
-            <li>Video de la validación: la línea virtual operando con la lógica real.</li>
-            <li>Si se usa NX: capturas del modelo 3D y de la conexión de señales.</li>
-          </ul>
+          <div class="diagram-frame">
+            <img src="images/nx/estacion-llenado-tapado.png" alt="Modelo NX de la estación de llenado y tapado de botellas" loading="lazy" />
+          </div>
         </div>
+
+        <div class="diagram">
+          <div class="diagram-toolbar">
+            <span class="diagram-name">Estación de rechazo de botellas — modelo NX</span>
+            <a href="images/nx/estacion-rechazo.png" target="_blank" class="diagram-action">Pantalla completa ↗</a>
+          </div>
+          <div class="diagram-frame">
+            <img src="images/nx/estacion-rechazo.png" alt="Modelo NX de la estación de rechazo de botellas" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="diagram">
+          <div class="diagram-toolbar">
+            <span class="diagram-name">Propuesta de automatización — Shrink Wrapper</span>
+            <a href="images/nx/shrink-wrapper.png" target="_blank" class="diagram-action">Pantalla completa ↗</a>
+          </div>
+          <div class="diagram-frame">
+            <img src="images/nx/shrink-wrapper.png" alt="Modelo NX de la propuesta de automatización de la estación Shrink Wrapper" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="senales">
+      <div class="container">
+        <p class="section-kicker">Integración</p>
+        <div class="section-heading">
+          <h2>Mapeo de señales</h2>
+          <p>Las señales del gemelo digital se mapean contra el controlador para operar el modelo
+             en lazo cerrado con la lógica real.</p>
+        </div>
+        <div class="diagram">
+          <div class="diagram-toolbar">
+            <span class="diagram-name">Mapeo de señales del gemelo digital</span>
+            <a href="images/nx/mapeo-senales.png" target="_blank" class="diagram-action">Pantalla completa ↗</a>
+          </div>
+          <div class="diagram-frame">
+            <img src="images/nx/mapeo-senales.png" alt="Mapeo de señales entre el gemelo digital y el controlador" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="archivos-nx">
+      <div class="container">
+        <p class="section-kicker">Archivos del módulo</p>
+        <div class="section-heading">
+          <h2>Modelos NX y flujo de integración</h2>
+          <p>Los archivos NX del gemelo digital pesan alrededor de 500 MB, más de lo que admite
+             el repositorio de GitHub, por lo que se alojan en Google Drive.</p>
+        </div>
+        <div class="card-grid" data-docs="gemelo"></div>
       </div>
     </section>
 
@@ -126,7 +151,6 @@
         <p class="section-kicker">Evidencia audiovisual</p>
         <div class="section-heading">
           <h2>Video del módulo</h2>
-          <p>Registro del entregable del módulo. El enlace se configura en <code>data/site-data.js</code> o desde el panel de administración.</p>
         </div>
         <div class="video-slot" data-video="digital"></div>
       </div>
@@ -170,7 +194,8 @@
         <div class="footer-col">
           <h4>Recursos</h4>
           <a href="equipo.html">Equipo</a>
-          <a href="reflexiones-individuales.html">Proceso de aprendizaje</a>
+          <a href="reflexion-grupal.html">Reflexión grupal</a>
+          <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           <a href="documentos.html">Documentos técnicos</a>
           <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
         </div>

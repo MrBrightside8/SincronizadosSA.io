@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Documentos | Sincronizados S.A.</title>
-  <meta name="description" content="Repositorio documental del proyecto: planeación, análisis de proceso, P&ID, simulación y análisis financiero." />
+  <meta name="description" content="Repositorio documental del proyecto, organizado por módulo del curso." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -44,8 +44,7 @@
         <div class="nav-dropdown">
           <a href="reflexiones-individuales.html">Reflexiones</a>
           <div class="dropdown-menu">
-            <a href="reflexion-gestion.html">Gestión del proyecto</a>
-            <a href="trabajo-colaborativo.html">Trabajo colaborativo</a>
+            <a href="reflexion-grupal.html">Reflexión grupal</a>
             <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           </div>
         </div>
@@ -64,28 +63,51 @@
         <p class="section-kicker">Repositorio documental</p>
         <h1>Documentos del proyecto</h1>
         <p class="lead">
-          La ingeniería de detalle del proyecto, organizada por área. Todos los documentos
-          se abren directamente desde el repositorio.
+          La ingeniería de detalle, organizada por módulo. Despliega el módulo que te interese.
         </p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h3 class="doc-subtitle">Planeación</h3>
-        <div class="card-grid" data-docs="planeacion"></div>
-
-        <h3 class="doc-subtitle">Análisis de proceso</h3>
-        <div class="card-grid" data-docs="proceso"></div>
-
-        <h3 class="doc-subtitle">Diagramas P&amp;ID</h3>
-        <div class="card-grid" data-docs="pid"></div>
-
-        <h3 class="doc-subtitle">Simulación (Plant Simulation)</h3>
-        <div class="card-grid" data-docs="simulacion"></div>
-
-        <h3 class="doc-subtitle">Análisis financiero</h3>
-        <div class="card-grid" data-docs="financiero"></div>
+        <div class="accordion docs-accordion">
+          <details open>
+            <summary><span class="acc-num">01</span> Introducción a la automatización <em>diagramas P&amp;ID</em></summary>
+            <div class="acc-body"><div class="card-grid" data-docs="pid"></div></div>
+          </details>
+          <details>
+            <summary><span class="acc-num">02</span> Gestión y evaluación de la producción <em>proceso y simulación</em></summary>
+            <div class="acc-body">
+              <div class="card-grid" data-docs="proceso"></div>
+              <h3 class="doc-subtitle">Modelos de Plant Simulation</h3>
+              <div class="card-grid" data-docs="simulacion"></div>
+            </div>
+          </details>
+          <details>
+            <summary><span class="acc-num">03</span> Planeación y evaluación de proyectos <em>EDT, cronograma y finanzas</em></summary>
+            <div class="acc-body">
+              <div class="card-grid" data-docs="planeacion"></div>
+              <h3 class="doc-subtitle">Análisis financiero</h3>
+              <div class="card-grid" data-docs="financiero"></div>
+            </div>
+          </details>
+          <details>
+            <summary><span class="acc-num">04</span> Celda de manufactura robotizada <em>propuesta y RobotStudio</em></summary>
+            <div class="acc-body"><div class="card-grid" data-docs="celda"></div></div>
+          </details>
+          <details>
+            <summary><span class="acc-num">05</span> Digital Factory <em>modelos NX y Node-RED</em></summary>
+            <div class="acc-body"><div class="card-grid" data-docs="gemelo"></div></div>
+          </details>
+          <details>
+            <summary><span class="acc-num">06</span> Controladores industriales <em>Studio 5000</em></summary>
+            <div class="acc-body"><div class="card-grid" data-docs="control"></div></div>
+          </details>
+          <details>
+            <summary><span class="acc-num">07</span> SCADA <em>en desarrollo</em></summary>
+            <div class="acc-body"><div class="card-grid" data-docs="scadadocs"></div></div>
+          </details>
+        </div>
       </div>
     </section>
   </main>
@@ -112,7 +134,8 @@
         <div class="footer-col">
           <h4>Recursos</h4>
           <a href="equipo.html">Equipo</a>
-          <a href="reflexiones-individuales.html">Proceso de aprendizaje</a>
+          <a href="reflexion-grupal.html">Reflexión grupal</a>
+          <a href="reflexiones-individuales.html">Reflexiones individuales</a>
           <a href="documentos.html">Documentos técnicos</a>
           <a href="https://github.com/MrBrightside8/SincronizadosSA.io" target="_blank" rel="noopener noreferrer">Repositorio GitHub</a>
         </div>

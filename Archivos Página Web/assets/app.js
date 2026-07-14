@@ -77,17 +77,6 @@
       return;
     }
 
-    // Controles: filtro por módulo
-    var controls = el("div", "refl-controls");
-    var filterLabel = el("label", "refl-filter");
-    filterLabel.appendChild(el("span", null, "Filtrar por módulo:"));
-    var sel = el("select");
-    sel.appendChild(new Option("Todos los módulos", ""));
-    (DEFAULTS.modulos || []).forEach(function (m) { sel.appendChild(new Option(m.nombre, m.id)); });
-    filterLabel.appendChild(sel);
-    controls.appendChild(filterLabel);
-    root.appendChild(controls);
-
     // Pestañas por integrante
     var tabs = el("div", "refl-tabs");
     tabs.setAttribute("role", "tablist");
@@ -112,9 +101,8 @@
       // panel del integrante seleccionado
       panel.innerHTML = "";
       var m = integrante(data, current);
-      var mod = sel.value;
       var refs = (data.reflexiones || []).filter(function (r) {
-        return r.integranteId === current && (!mod || r.moduloId === mod);
+        return r.integranteId === current;
       });
 
       var head = el("div", "refl-panel-head");
@@ -129,13 +117,10 @@
       panel.appendChild(head);
 
       if (!refs.length) {
-        panel.appendChild(el("p", "empty-state", mod
-          ? "Este integrante no tiene reflexión para el módulo seleccionado."
-          : "Este integrante todavía no tiene una reflexión."));
+        panel.appendChild(el("p", "empty-state", "Este integrante todavía no tiene una reflexión."));
       }
       refs.forEach(function (r) {
         var card = el("article", "refl-entry");
-        if (r.moduloId) card.appendChild(el("span", "refl-badge", moduloNombre(r.moduloId)));
         card.appendChild(el("p", "refl-text", r.texto));
         if (isAdmin()) {
           var actions = el("div", "admin-actions");
@@ -165,7 +150,6 @@
       }
     }
 
-    sel.addEventListener("change", paint);
     paint();
   }
 
@@ -233,11 +217,11 @@
     });
   }
   function tipoArchivo(archivo) {
-    var m = String(archivo).toLowerCase().match(/\.([a-z0-9]+)(?:\?|#|$)/);
+    var url = String(archivo).toLowerCase();
+    if (url.indexOf("drive.google") !== -1) return "Drive";
+    var m = url.match(/\.([a-z0-9]+)(?:\?|#|$)/);
     var ext = m ? m[1] : "doc";
     if (ext === "xlsx" || ext === "xls") return "XLSX";
-    if (ext === "spp") return "SPP";
-    if (ext === "pdf") return "PDF";
     return ext.toUpperCase();
   }
   function fillDocs(id, list) {
@@ -332,19 +316,11 @@
       if ((refl && refl.integranteId === x.id) || (!refl && integranteId === x.id)) o.selected = true;
       selInt.appendChild(o);
     });
-    var selMod = document.createElement("select");
-    selMod.appendChild(new Option("(Sin módulo)", ""));
-    (DEFAULTS.modulos || []).forEach(function (mod) {
-      var o = new Option(mod.nombre, mod.id);
-      if (refl && refl.moduloId === mod.id) o.selected = true;
-      selMod.appendChild(o);
-    });
     var txt = document.createElement("textarea");
     txt.rows = 6; txt.value = refl ? refl.texto : "";
     txt.placeholder = "Escribe la reflexión…";
 
     m.body.appendChild(field("Integrante", selInt));
-    m.body.appendChild(field("Módulo", selMod));
     m.body.appendChild(field("Reflexión", txt));
 
     var save = el("button", "button button-primary", "Guardar");
@@ -354,11 +330,11 @@
       var d = Store.get();
       if (refl) {
         var r = d.reflexiones.find(function (x) { return x.id === refl.id; });
-        r.integranteId = selInt.value; r.moduloId = selMod.value; r.texto = txt.value.trim();
+        r.integranteId = selInt.value; r.texto = txt.value.trim();
       } else {
         d.reflexiones.push({
           id: "r-" + slug(selInt.value) + "-" + Date.now(),
-          integranteId: selInt.value, moduloId: selMod.value, texto: txt.value.trim()
+          integranteId: selInt.value, texto: txt.value.trim()
         });
       }
       Store.set(d); m.overlay.remove(); renderReflexiones();
