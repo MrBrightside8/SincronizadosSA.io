@@ -1112,3 +1112,13 @@ body.is-admin .admin-fab { background: var(--teal); color: #fff; border-color: v
 .docs-accordion .acc-body { padding: .3rem 1.2rem 1.3rem; }
 .docs-accordion .doc-subtitle { margin-top: 1.4rem; }
 .docs-accordion summary { font-size: 1.02rem; }
+
+/* Par de videos (celdas) y reflexión grupal única */
+.video-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+@media (max-width: 860px) { .video-pair { grid-template-columns: 1fr; } }
+.video-pair .doc-subtitle { margin-top: 0; }
+.refl-single { max-width: 820px; margin-inline: auto; }
+.refl-single .refl-text { margin-bottom: 1rem; }
+.refl-single .refl-text:last-child { margin-bottom: 0; }
+.celda-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.celda-grid .product-img { height: 240px; }

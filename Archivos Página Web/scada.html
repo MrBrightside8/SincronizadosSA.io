@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SCADA | Sincronizados S.A.</title>
-  <meta name="description" content="Interfaz HMI bajo ISA-101, supervisión y control con Ignition, comunicación OPC y validación integrada con el gemelo digital." />
+  <meta name="description" content="Supervisión del proceso con Node-RED e integración con RobotStudio; HMI y comunicación con el controlador." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -62,44 +62,43 @@
       <div class="container">
         <p class="module-num">Módulo 07 de 07</p>
         <h1>SCADA</h1>
-        <p class="lead">Supervisión del proceso: pantallas HMI en Ignition conectadas al controlador por OPC.</p>
+        <p class="lead">Supervisión del proceso con Node-RED, integrada con la simulación de las celdas en RobotStudio.</p>
         <div class="module-chips">
-          <span class="chip"><strong>ISA-101</strong> · Diseño HMI</span>
-          <span class="chip"><strong>Ignition</strong> · Supervisión</span>
-          <span class="chip">OPC</span>
-          <span class="chip">Alarmas y tendencias</span>
+          <span class="chip"><strong>Node-RED</strong> · Supervisión</span>
+          <span class="chip">Integración RobotStudio</span>
+          <span class="chip">HMI</span>
         </div>
       </div>
     </section>
-
-
 
     <section class="section" id="scada-sistema">
       <div class="container">
         <p class="section-kicker">Supervisión</p>
         <div class="section-heading">
-          <h2>Supervisión y operación del proceso</h2>
-          <p>El sistema SCADA centraliza la operación: estados de línea, alarmas, tendencias y la interacción
-             del operador durante los cambios de producto, siguiendo los principios de diseño de ISA-101.</p>
+          <h2>Supervisión del proceso con Node-RED</h2>
+          <p>La capa de supervisión del proyecto se construye sobre Node-RED: flujos que
+             se comunican con el sistema por peticiones HTTP para supervisar y comandar
+             la operación de la línea. Esta sección se irá completando con las pantallas
+             y la validación integrada.</p>
         </div>
 
         <div class="card-grid">
           <article class="info-card">
-            <span class="card-tag">HMI</span>
-            <h3>Interfaz bajo ISA-101</h3>
-            <p>Jerarquía de pantallas, paleta de grises con color reservado para anomalías y navegación
-               consistente para el operador.</p>
+            <span class="card-tag">Flujos</span>
+            <h3>Lógica de supervisión</h3>
+            <p>Flujos Node-RED con funciones que arman las peticiones de encendido y apagado
+               y procesan las respuestas del sistema.</p>
           </article>
           <article class="info-card">
             <span class="card-tag">Comunicación</span>
-            <h3>OPC hacia el controlador</h3>
-            <p>Ignition se conecta por OPC al Logix emulado: los mismos tags del control alimentan la supervisión.</p>
+            <h3>HTTP hacia la celda</h3>
+            <p>La comunicación con RobotStudio se realiza por peticiones HTTP, lo que permite
+               operar la simulación desde la capa de supervisión.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Operación</span>
-            <h3>Alarmas y cambios de producto</h3>
-            <p>Gestión de alarmas, recetas por producto e indicadores simples de desempeño para decisión
-               basada en datos.</p>
+            <span class="card-tag">HMI</span>
+            <h3>Interfaz de operación</h3>
+            <p>Panel de operación para el arranque, paro y monitoreo del estado de la línea.</p>
           </article>
         </div>
 
@@ -108,17 +107,30 @@
             <span class="pc-icon">🛠</span>
             <div>
               <span class="pc-tag">En preparación</span>
-              <h3>Evidencias del sistema SCADA</h3>
+              <h3>Evidencias en preparación</h3>
             </div>
           </div>
-          <p>Material que demuestra el diseño y la validación de la supervisión.</p>
+          <p>Material de SCADA que está por subirse.</p>
           <ul class="pending-list">
-            <li>Capturas de las pantallas HMI en Ignition (overview, línea, alarmas, tendencias).</li>
-            <li>Arquitectura de comunicación OPC (diagrama Ignition ↔ Logix Emulate).</li>
-            <li>Video de la validación integrada con el gemelo digital.</li>
-            <li>Pantalla de recetas / cambio de producto.</li>
+            <li>Pantallas de la interfaz de supervisión.</li>
+            <li>Validación integrada con el gemelo digital.</li>
+            <li>Video del módulo.</li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="valor-agregado">
+      <div class="container">
+        <p class="section-kicker">Valor agregado</p>
+        <div class="section-heading">
+          <h2>Integración Node-RED ↔ RobotStudio</h2>
+          <p>Como valor agregado del proyecto, conectamos la capa de supervisión directamente
+             con la simulación de las celdas robóticas: desde Node-RED se enciende y se apaga
+             la celda de RobotStudio mediante peticiones HTTP, integrando supervisión y
+             simulación en un mismo lazo.</p>
+        </div>
+        <div class="card-grid" data-docs="scadadocs"></div>
       </div>
     </section>
 

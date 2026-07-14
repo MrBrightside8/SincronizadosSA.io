@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Controladores industriales | Sincronizados S.A.</title>
-  <meta name="description" content="Diseño del control secuencial en Grafcet, implementación en lógica Ladder y validación en Logix Emulate." />
+  <meta name="description" content="Control secuencial de las estaciones en Grafcet e implementación en lógica Ladder en Studio 5000." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -62,64 +62,38 @@
       <div class="container">
         <p class="module-num">Módulo 06 de 07</p>
         <h1>Controladores industriales</h1>
-        <p class="lead">La lógica que gobierna la línea: Grafcet e implementación Ladder en Studio 5000.</p>
+        <p class="lead">El control secuencial de las estaciones: GRAFCET e implementación Ladder en Studio 5000.</p>
         <div class="module-chips">
           <span class="chip"><strong>Grafcet</strong> · Diseño secuencial</span>
           <span class="chip"><strong>Ladder</strong> · Studio 5000</span>
-          <span class="chip">Logix Emulate</span>
+          <span class="chip">Logix</span>
         </div>
       </div>
     </section>
-
-
 
     <section class="section" id="control">
       <div class="container">
         <p class="section-kicker">Control secuencial</p>
         <div class="section-heading">
           <h2>Del Grafcet al Ladder</h2>
-          <p>La secuencia lógica de operación de cada producto —qué hace el sistema, en qué orden y bajo qué
-             condiciones— se diseña en Grafcet y se implementa en Ladder sobre la plataforma Logix.</p>
+          <p>La secuencia de operación de cada estación se diseñó en Grafcet y se implementó
+             en lógica Ladder sobre Studio 5000, validándola en ejecución.</p>
         </div>
 
-        <div class="card-grid">
-          <article class="info-card">
-            <span class="card-tag">Diseño</span>
-            <h3>Grafcet del proceso</h3>
-            <p>Etapas, transiciones y receptividades del ciclo de producción, incluyendo cambios de producto
-               y condiciones de fallo.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-tag">Implementación</span>
-            <h3>Lógica Ladder</h3>
-            <p>Traducción sistemática del Grafcet a Ladder en Studio 5000, con rutinas por estación.</p>
-          </article>
-          <article class="info-card">
-            <span class="card-tag">Validación</span>
-            <h3>Ejecución en Logix Emulate</h3>
-            <p>Pruebas del programa en el controlador emulado, conectado al gemelo digital del módulo anterior.</p>
-          </article>
+        <div class="diagram">
+          <div class="diagram-toolbar">
+            <span class="diagram-name">GRAFCET de las estaciones</span>
+            <a href="images/control/grafcet-estaciones.png" target="_blank" class="diagram-action">Pantalla completa ↗</a>
+          </div>
+          <div class="diagram-frame">
+            <img src="images/control/grafcet-estaciones.png" alt="Diagramas GRAFCET de las estaciones de la línea" loading="lazy" />
+          </div>
         </div>
 
         <h3 class="doc-subtitle">Documento del módulo</h3>
         <div class="card-grid" data-docs="control"></div>
-
-        <div class="pending-card">
-          <div class="pc-head">
-            <span class="pc-icon">🛠</span>
-            <div>
-              <span class="pc-tag">En preparación</span>
-              <h3>Evidencias en preparación</h3>
-            </div>
-          </div>
-          <p>Material complementario del control industrial.</p>
-          <ul class="pending-list">
-            <li>Diagramas Grafcet (nivel 1 y 2) exportados en PDF.</li>
-            <li>Capturas de las rutinas Ladder principales en Studio 5000.</li>
-          </ul>
-        </div>
       </div>
-</section>
+    </section>
 
     <section class="section">
       <div class="container">
