@@ -5,7 +5,7 @@
    Usuario/contraseña por defecto: admin / Sincronizados2026.
    ===================================================================== */
 
-window.SITE_DATA = {
+window.SITE_DATA = window.SITE_DATA = {
   "admin": {
     "usuario": "admin",
     "claveHash": "45ac9bf1c87bebc85eeca0eee24c873599d74e5bb07182307efe2cdbcb1754fe"
@@ -231,6 +231,11 @@ window.SITE_DATA = {
       }
     ],
     "scadadocs": [
+      {
+        "titulo": "Flujo Node-RED del SCADA (.json)",
+        "descripcion": "Flujo completo del tablero SCADA en Node-RED: supervisión, comandos, alarmas e históricos.",
+        "archivo": "../Node-RED/SCADA_Node-red.json"
+      },
       {
         "titulo": "Flujo Node-RED — conexión con RobotStudio",
         "descripcion": "Flujo de integración (.json) que enciende y apaga la celda desde Node-RED vía peticiones HTTP.",
