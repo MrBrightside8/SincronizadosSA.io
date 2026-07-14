@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SCADA | Sincronizados S.A.</title>
-  <meta name="description" content="Supervisión del proceso con Node-RED e integración con RobotStudio; HMI y comunicación con el controlador." />
+  <title>SCADA | Sincronizados S.A.S</title>
+  <meta name="description" content="Sistema SCADA en Node-RED con conexión EtherNet/IP al PLC, supervisión, alarmas, históricos y un asistente de IA (watsonx.ai)." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
       <a class="brand" href="index.html">
         <img src="assets/logo-sincronizados.png" alt="Logo de Sincronizados" class="brand-logo" />
         <div class="brand-copy">
-          <span class="brand-name">Sincronizados S.A.</span>
+          <span class="brand-name">Sincronizados S.A.S</span>
           <span class="brand-tag">Consultoría industrial</span>
         </div>
       </a>
@@ -62,83 +62,131 @@
       <div class="container">
         <p class="module-num">Módulo 07 de 07</p>
         <h1>SCADA</h1>
-        <p class="lead">Supervisión del proceso con Node-RED, integrada con la simulación de las celdas en RobotStudio.</p>
+        <p class="lead">SCADA en Node-RED con conexión EtherNet/IP al PLC, y un asistente de IA (watsonx.ai) para operar y consultar la línea.</p>
         <div class="module-chips">
-          <span class="chip"><strong>Node-RED</strong> · Supervisión</span>
-          <span class="chip">Integración RobotStudio</span>
-          <span class="chip">HMI</span>
+          <span class="chip"><strong>Node-RED</strong> · Dashboard</span>
+          <span class="chip">EtherNet/IP</span>
+          <span class="chip">Alarmas e históricos</span>
+          <span class="chip"><strong>IA</strong> · watsonx.ai</span>
+        </div>
+        <div class="quicknav">
+          <a href="#sistema">El sistema</a>
+          <a href="#tablero">Tablero SCADA</a>
+          <a href="#valor-agregado">Valor agregado · IA</a>
+          <a href="#video-scada">Video</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="scada-sistema">
+    <section class="section" id="sistema">
       <div class="container">
-        <p class="section-kicker">Supervisión</p>
+        <p class="section-kicker">El sistema</p>
         <div class="section-heading">
-          <h2>Supervisión del proceso con Node-RED</h2>
-          <p>La capa de supervisión del proyecto se construye sobre Node-RED: flujos que
-             se comunican con el sistema por peticiones HTTP para supervisar y comandar
-             la operación de la línea. Esta sección se irá completando con las pantallas
-             y la validación integrada.</p>
+          <h2>Supervisión y control con Node-RED</h2>
+          <p>La aplicación web es un sistema SCADA basado en Node-RED Dashboard que supervisa y controla
+             la línea de producción desde una interfaz centralizada. Node-RED actúa como capa intermedia
+             entre el PLC y la web: lee variables de proceso, envía comandos de operación y presenta la
+             información al operador. La comunicación con la lógica de control se hace por
+             <strong>EtherNet/IP</strong>, leyendo y escribiendo tags del PLC.</p>
         </div>
 
         <div class="card-grid">
           <article class="info-card">
-            <span class="card-tag">Flujos</span>
-            <h3>Lógica de supervisión</h3>
-            <p>Flujos Node-RED con funciones que arman las peticiones de encendido y apagado
-               y procesan las respuestas del sistema.</p>
+            <span class="card-tag">Supervisión</span>
+            <h3>Estado de la línea</h3>
+            <p>Arranque, parada de emergencia, reset, horno encendido y presencia de paquete en el horno,
+               con indicadores en tiempo real.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">Comunicación</span>
-            <h3>HTTP hacia la celda</h3>
-            <p>La comunicación con RobotStudio se realiza por peticiones HTTP, lo que permite
-               operar la simulación desde la capa de supervisión.</p>
+            <span class="card-tag">Producción</span>
+            <h3>Contadores</h3>
+            <p>Conteo de botellas, botellas rechazadas, paquetes producidos y palets completos.</p>
           </article>
           <article class="info-card">
-            <span class="card-tag">HMI</span>
-            <h3>Interfaz de operación</h3>
-            <p>Panel de operación para el arranque, paro y monitoreo del estado de la línea.</p>
+            <span class="card-tag">Alarmas</span>
+            <h3>Registro e históricos</h3>
+            <p>Alarmas activas e históricas y gráficas de las variables principales; el registro se
+               puede descargar en CSV para analizarlo en Excel.</p>
           </article>
-        </div>
-
-        <div class="pending-card">
-          <div class="pc-head">
-            <span class="pc-icon">🛠</span>
-            <div>
-              <span class="pc-tag">En preparación</span>
-              <h3>Evidencias en preparación</h3>
-            </div>
-          </div>
-          <p>Material de SCADA que está por subirse.</p>
-          <ul class="pending-list">
-            <li>Pantallas de la interfaz de supervisión.</li>
-            <li>Validación integrada con el gemelo digital.</li>
-            <li>Video del módulo.</li>
-          </ul>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="valor-agregado">
+    <section class="section section-alt" id="tablero">
+      <div class="container">
+        <p class="section-kicker">Interfaz</p>
+        <div class="section-heading">
+          <h2>Tablero SCADA</h2>
+          <p>El operador acciona START, RESET y parada de emergencia, y visualiza contadores, alarmas
+             e históricos de botellas procesadas y rechazadas.</p>
+        </div>
+        <div class="diagram">
+          <div class="diagram-toolbar">
+            <span class="diagram-name">Tablero SCADA — Node-RED Dashboard</span>
+            <a href="images/scada/scada-dashboard.jpg" target="_blank" class="diagram-action">Pantalla completa ↗</a>
+          </div>
+          <div class="diagram-frame">
+            <img src="images/scada/scada-dashboard.jpg" alt="Tablero SCADA en Node-RED con control, contadores, alarmas e históricos" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="valor-agregado">
       <div class="container">
         <p class="section-kicker">Valor agregado</p>
         <div class="section-heading">
-          <h2>Integración Node-RED ↔ RobotStudio</h2>
-          <p>Como valor agregado del proyecto, conectamos la capa de supervisión directamente
-             con la simulación de las celdas robóticas: desde Node-RED se enciende y se apaga
-             la celda de RobotStudio mediante peticiones HTTP, integrando supervisión y
-             simulación en un mismo lazo.</p>
+          <h2>Asistente de IA e integración Node-RED ↔ RobotStudio</h2>
+          <p>Integramos un asistente de IA (IBM <strong>watsonx.ai</strong>) dentro del SCADA: el operador
+             escribe o dicta instrucciones en lenguaje natural —iniciar la línea, parada de emergencia,
+             reset, consultar el estado, revisar alarmas o pedir un resumen de producción.</p>
         </div>
+
+        <div class="diagram">
+          <div class="diagram-toolbar">
+            <span class="diagram-name">Asistente IA — control y consultas del SCADA (watsonx.ai)</span>
+            <a href="images/scada/asistente-ia.jpg" target="_blank" class="diagram-action">Pantalla completa ↗</a>
+          </div>
+          <div class="diagram-frame">
+            <img src="images/scada/asistente-ia.jpg" alt="Asistente de IA del SCADA integrado con watsonx.ai" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="card-grid" style="margin-top:1.4rem">
+          <article class="info-card">
+            <span class="card-tag">Comandos críticos</span>
+            <h3>Ejecutados por reglas</h3>
+            <p>START, RESET y parada de emergencia los interpreta Node-RED y los ejecuta mediante reglas
+               definidas, enviando la señal al PLC. La IA no toma decisiones de control sin validación lógica.</p>
+          </article>
+          <article class="info-card">
+            <span class="card-tag">Consultas</span>
+            <h3>Contexto a la IA</h3>
+            <p>Para diagnósticos y resúmenes, Node-RED recopila estado, contadores, alarmas e históricos
+               y los envía a watsonx.ai, que responde con información útil para el operador.</p>
+          </article>
+          <article class="info-card">
+            <span class="card-tag">Interacción</span>
+            <h3>Operación conversacional</h3>
+            <p>Mejora la interacción hombre-máquina: ante una condición anormal, el asistente orienta al
+               operador (verificar estado, revisar alarmas, activar la parada de emergencia si hay riesgo).</p>
+          </article>
+        </div>
+
+        <div class="video-slot" data-video="valor_agregado" style="margin-top:1.4rem"></div>
+
+        <h3 class="doc-subtitle">Flujo de integración</h3>
         <div class="card-grid" data-docs="scadadocs"></div>
+        <p class="section-note" style="margin-top:.6rem">El flujo de Node-RED del tablero SCADA se subirá al
+           repositorio (carpeta Node-RED) como archivo <code>.json</code>.</p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section-alt" id="video-scada">
       <div class="container">
         <p class="section-kicker">Evidencia audiovisual</p>
         <div class="section-heading">
-          <h2>Video del módulo</h2>
+          <h2>Video del módulo SCADA</h2>
         </div>
         <div class="video-slot" data-video="scada"></div>
       </div>
@@ -161,7 +209,7 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <p class="footer-title">Sincronizados S.A.</p>
+          <p class="footer-title">Sincronizados S.A.S</p>
           <p>Propuesta de automatización para una planta de producción de bebidas.
              Proyecto integrador — Automatización de Procesos de Manufactura,
              Universidad Nacional de Colombia · 2026-1S.</p>
@@ -186,7 +234,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 Sincronizados S.A. — Proyecto académico.</span>
+        <span>© 2026 Sincronizados S.A.S — Proyecto académico.</span>
         <span>Automatización de Procesos de Manufactura · UNAL</span>
       </div>
     </div>

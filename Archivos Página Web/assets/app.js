@@ -487,13 +487,17 @@
       "Pega el enlace de YouTube del video de cada módulo (ej. https://youtu.be/XXXXXXXXXXX). Deja vacío el que aún no exista. Recuerda publicar con 'Descargar datos'."));
     var d = Store.get();
     var vids = d.videos || clone(DEFAULTS.videos || {});
+    var nombres = DEFAULTS.videosNombres || {};
+    // Orden: el definido en los datos por defecto, más cualquier clave extra.
+    var claves = Object.keys(DEFAULTS.videos || {});
+    Object.keys(vids).forEach(function (k) { if (claves.indexOf(k) === -1) claves.push(k); });
     var inputs = {};
-    (DEFAULTS.modulos || []).forEach(function (mod) {
+    claves.forEach(function (k) {
       var inp = document.createElement("input");
       inp.type = "url"; inp.placeholder = "https://youtu.be/…";
-      inp.value = vids[mod.id] || "";
-      inputs[mod.id] = inp;
-      m.body.appendChild(field(mod.nombre, inp));
+      inp.value = vids[k] || "";
+      inputs[k] = inp;
+      m.body.appendChild(field(nombres[k] || moduloNombre(k) || k, inp));
     });
     var save = el("button", "button button-primary", "Guardar");
     save.type = "button";

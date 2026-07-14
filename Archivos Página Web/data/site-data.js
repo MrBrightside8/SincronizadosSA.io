@@ -1,6 +1,9 @@
-/* Sincronizados S.A. — Datos del sitio (generado desde el panel).
-   Reemplaza data/site-data.js con este archivo y súbelo al repositorio
-   para publicar los cambios. */
+/* =====================================================================
+   Sincronizados S.A.S — Datos del sitio
+   Contenido editable (equipo, reflexiones, videos y documentos).
+   Edítalo desde el panel (⚙ Admin) y publica con 'Descargar datos'.
+   Usuario/contraseña por defecto: admin / Sincronizados2026.
+   ===================================================================== */
 
 window.SITE_DATA = {
   "admin": {
@@ -117,10 +120,12 @@ window.SITE_DATA = {
     "introduccion": "",
     "gestion": "",
     "planeacion": "",
-    "celdas": "https://youtu.be/PlEJZ9tisFw",
-    "digital": "",
+    "celdas_cocacola": "https://youtu.be/d12WobVvXkc",
+    "celdas_monster": "https://youtu.be/PlEJZ9tisFw",
+    "digital": "https://youtu.be/u3LJUzyXn2c",
     "controladores": "https://youtu.be/Z9UVPExzM9w",
-    "scada": ""
+    "scada": "https://youtu.be/OWwp2TOjP5w",
+    "valor_agregado": ""
   },
   "documentos": {
     "planeacion": [
@@ -133,6 +138,11 @@ window.SITE_DATA = {
         "titulo": "Cronograma",
         "descripcion": "Cronograma general de actividades y tiempos del proyecto.",
         "archivo": "../Planeaci%C3%B3n/Cronograma.pdf"
+      },
+      {
+        "titulo": "Informe de proceso del proyecto (PDF)",
+        "descripcion": "Documento integrador del proceso de desarrollo del proyecto.",
+        "archivo": "../Informe%20de%20Proceso/InformeProceso.pdf"
       }
     ],
     "proceso": [
@@ -246,5 +256,16 @@ window.SITE_DATA = {
         "archivo": "../An%C3%A1lisis%20Financiero/Justificacion_Analisis_Financiero.pdf"
       }
     ]
+  },
+  "videosNombres": {
+    "introduccion": "01 · Introducción a la automatización",
+    "gestion": "02 · Gestión y evaluación",
+    "planeacion": "03 · Planeación",
+    "celdas_cocacola": "04 · Celda robotizada — Coca-Cola",
+    "celdas_monster": "04 · Celda robotizada — Monster",
+    "digital": "05 · Digital Factory",
+    "controladores": "06 · Controladores industriales",
+    "scada": "07 · SCADA — Video del módulo",
+    "valor_agregado": "07 · SCADA — Valor agregado (Node-RED ↔ RobotStudio)"
   }
 };
