@@ -1,0 +1,1479 @@
+[
+    {
+        "id": "ef0ea720cfb9c620",
+        "type": "tab",
+        "label": "SCADA Banda Transportadora",
+        "disabled": false,
+        "info": "Todo el SCADA en un solo flujo:\n- Comunicación PLC + Simulador\n- Dashboard (botones, supervisión, animación)\n- Alarmas\n- Históricos"
+    },
+    {
+        "id": "0109936f6b3ef429",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Arma bus desde tags individuales",
+        "func": "// === Arma bus desde tags individuales (v7 - nueva logica lineas/horno/wrap) ===\nconst incoming = msg.payload || {};\nconst bus = Object.assign({}, flow.get('bus_raw') || {}, incoming);\nflow.set('bus_raw', bus);\n\nconst num = (v, fb) => { const n = Number(v); return Number.isFinite(n) ? n : fb; };\nconst bool = (v) => v === true || v === 1 || v === 'true';\n\nconst numeroBotellas = num(bus.NumeroBotellas_ACC, 0);\nconst numeroBotellasRechazadas = num(bus.NumeroBotellasRechazadas_ACC, 0);\nconst botellasWrapAcc = num(bus.SeisBotellasWrap_ACC, 0);\nconst botellasWrapPre = 6;\nconst paquetesWrapAcc = num(bus.ContadorWrap_ACC, 0);\nconst paquetesWrapPre = 18;\nconst botellasWrapDn = bool(bus.SeisBotellasWrap_DN);\nconst paquetesWrapDn = bool(bus.ContadorWrap_DN);\nconst hornoOn = bool(bus.HornoON);\nconst objetoEnHorno = bool(bus.ObjetoEnHorno);\nconst startCmd = bool(bus.START);\nconst emergencyOk = bus.EmergencyStop === undefined ? true : bool(bus.EmergencyStop);\nconst emergencyActive = !emergencyOk;\n\nlet lineasStarted = flow.get('lineasStarted') || false;\nif (startCmd && emergencyOk) lineasStarted = true;\nif (emergencyActive) lineasStarted = false;\nflow.set('lineasStarted', lineasStarted);\nconst lineasEncendidas = lineasStarted && emergencyOk;\n\nlet t = flow.get('totals') || {\n    botellas: 0,\n    paquetes: 0,\n    palets: 0,\n    lastNumeroBotellas: undefined,\n    lastContadorWrapAcc: undefined,\n    lastContadorWrapDn: false\n};\n\n// NumeroBotellas es el CTU total de botellas que entraron a las lineas.\nt.botellas = numeroBotellas;\n\n// Paquetes producidos: acumulamos incrementos de ContadorWrap.ACC y soportamos reset/wrap.\nif (typeof t.lastContadorWrapAcc === 'number') {\n    if (paquetesWrapAcc > t.lastContadorWrapAcc) {\n        t.paquetes += (paquetesWrapAcc - t.lastContadorWrapAcc);\n    } else if (paquetesWrapAcc < t.lastContadorWrapAcc && paquetesWrapAcc > 0) {\n        t.paquetes += paquetesWrapAcc;\n    }\n}\n\n// Palets completos por flanco de DN del ContadorWrap.\nif (paquetesWrapDn && !t.lastContadorWrapDn) {\n    t.palets += 1;\n}\n\nt.lastNumeroBotellas = numeroBotellas;\nt.lastContadorWrapAcc = paquetesWrapAcc;\nt.lastContadorWrapDn = paquetesWrapDn;\nflow.set('totals', t);\n\nconst data = {\n    START: startCmd,\n    EmergencyStop: emergencyOk,\n    EmergencyActive: emergencyActive,\n    LineasEncendidas: lineasEncendidas,\n    HornoON: hornoOn,\n    ObjetoEnHorno: objetoEnHorno,\n\n    NumeroBotellas_ACC: numeroBotellas,\n    NumeroBotellasRechazadas_ACC: numeroBotellasRechazadas,\n    SeisBotellasWrap_ACC: botellasWrapAcc,\n    SeisBotellasWrap_PRE: botellasWrapPre,\n    SeisBotellasWrap_DN: botellasWrapDn,\n    ContadorWrap_ACC: paquetesWrapAcc,\n    ContadorWrap_PRE: paquetesWrapPre,\n    ContadorWrap_DN: paquetesWrapDn,\n\n    // Alias de compatibilidad para widgets/funciones antiguas.\n    Caja24_ACC: botellasWrapAcc,\n    Caja24_PRE: botellasWrapPre,\n    Caja24_DN: botellasWrapDn,\n    PaletListo_ACC: paquetesWrapAcc,\n    PaletListo_PRE: paquetesWrapPre,\n    PaletListo_DN: paquetesWrapDn,\n    AlarmaCajaLista: botellasWrapDn,\n    AlarmaPaletListo: paquetesWrapDn,\n    CajaCompleta: botellasWrapDn || (botellasWrapPre > 0 && botellasWrapAcc >= botellasWrapPre),\n    PaletCompleto: paquetesWrapDn || (paquetesWrapPre > 0 && paquetesWrapAcc >= paquetesWrapPre),\n\n    totalLatas: t.botellas,\n    totalBotellas: t.botellas,\n    totalBotellasRechazadas: numeroBotellasRechazadas,\n    totalCajas: t.paquetes,\n    totalPaquetes: t.paquetes,\n    totalPalets: t.palets,\n    ts: Date.now(),\n    _updatedTags: Object.keys(incoming)\n};\nflow.set('plcData', data);\nreturn [{ payload: data }, null];\n",
+        "outputs": 2,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2620,
+        "y": 1260,
+        "wires": [
+            [
+                "f0a40cf0c6bb916b",
+                "d6c8c882c01b4ab1"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d6c8c882c01b4ab1",
+        "type": "link out",
+        "z": "ef0ea720cfb9c620",
+        "name": "PLC BUS",
+        "mode": "link",
+        "links": [
+            "c1a2b8f72cf533bf",
+            "bfd1e25729894607",
+            "a0cb0277996b1852"
+        ],
+        "x": 2245,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "ea817ce2d0ccaffe",
+        "type": "eth-ip out",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "variable": "START",
+        "program": "",
+        "name": "→ PLC START",
+        "x": 2420,
+        "y": 2280,
+        "wires": []
+    },
+    {
+        "id": "dc39494d8db7409e",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Detección flanco alarmas",
+        "func": "const cur = msg.payload || {};\nconst updated = Array.isArray(cur._updatedTags) ? cur._updatedTags : [];\nconst now = Date.now();\n\nconst baseline = () => {\n    context.set('alarmLast_SeisBotellasWrap_DN', !!cur.SeisBotellasWrap_DN);\n    context.set('alarmLast_ContadorWrap_DN', !!cur.ContadorWrap_DN);\n    context.set('alarmLast_ContadorWrap_ACC', Number(cur.ContadorWrap_ACC) || 0);\n    context.set('alarmLast_HornoON', !!cur.HornoON);\n    context.set('alarmLast_ObjetoEnHorno', !!cur.ObjetoEnHorno);\n    context.set('alarmLast_EmergencyStop', !!cur.EmergencyStop);\n};\n\nif (flow.get('alarmReset')) {\n    flow.set('alarmReset', false);\n    baseline();\n    flow.set('alarmLog', []);\n    context.set('lastPaqueteListoTs', 0);\n    context.set('lastPaletListoTs', 0);\n    context.set('lastHornoOnTs', 0);\n    context.set('lastObjetoHornoTs', 0);\n    context.set('lastEmergencyStopTs', 0);\n    return [null, { payload: [] }, { payload: false }, { payload: false }];\n}\n\nconst out = [];\nconst log = flow.get('alarmLog') || [];\nlet paqueteLed = null;\nlet paletLed = null;\n\nfunction push(tag, mensaje, sev) {\n    const entry = { ts: new Date().toLocaleString('es-CO'), epoch: now, tag, mensaje, sev, estado: 'ACTIVA' };\n    log.unshift(entry);\n    if (log.length > 50) log.pop();\n    out.push({ payload: entry });\n}\nconst wasUpdated = (name) => updated.includes(name);\nconst rose = (name) => {\n    if (!wasUpdated(name)) return false;\n    const key = 'alarmLast_' + name;\n    const previous = context.get(key);\n    const current = !!cur[name];\n    context.set(key, current);\n    return current && previous !== true;\n};\nconst wentFalse = (name) => {\n    if (!wasUpdated(name)) return false;\n    const key = 'alarmLast_' + name;\n    const previous = context.get(key);\n    const current = !!cur[name];\n    context.set(key, current);\n    return current === false && previous !== false;\n};\nconst increased = (name) => {\n    if (!wasUpdated(name)) return false;\n    const key = 'alarmLast_' + name;\n    const previous = context.get(key);\n    const current = Number(cur[name]) || 0;\n    context.set(key, current);\n    return typeof previous === 'number' && current > previous;\n};\nconst debounce = (key, ms) => {\n    const previous = context.get(key) || 0;\n    if ((now - previous) < ms) return false;\n    context.set(key, now);\n    return true;\n};\n\nconst paquetesEnPaletSubieron = increased('ContadorWrap_ACC');\nconst paqueteListoEvent = rose('SeisBotellasWrap_DN') || paquetesEnPaletSubieron;\nconst paletCompletoPorConteo = cur.ContadorWrap_PRE > 0 && cur.ContadorWrap_ACC >= cur.ContadorWrap_PRE;\nconst paletListoEvent = rose('ContadorWrap_DN') || (paquetesEnPaletSubieron && paletCompletoPorConteo);\n\nif (paqueteListoEvent && debounce('lastPaqueteListoTs', 500)) {\n    const botellasPorPaquete = Number(cur.SeisBotellasWrap_PRE) || 6;\n    push('AlarmaPaqueteListo', 'Paquete completo: ' + botellasPorPaquete + ' botellas listas', 'INFO');\n    paqueteLed = { payload: true };\n}\nif (paletListoEvent && debounce('lastPaletListoTs', 500)) {\n    const paquetesPorPalet = Number(cur.ContadorWrap_PRE) || 18;\n    push('AlarmaPaletListo', 'Palet completo: ' + paquetesPorPalet + ' paquetes listos', 'ADVERTENCIA');\n    paletLed = { payload: true };\n}\nif (rose('HornoON') && debounce('lastHornoOnTs', 500)) {\n    push('AlarmaHornoON', 'Horno encendido', 'INFO');\n}\nif (rose('ObjetoEnHorno') && debounce('lastObjetoHornoTs', 500)) {\n    push('AlarmaPaqueteEnHorno', 'Paquete detectado en el horno', 'ADVERTENCIA');\n}\nif (wentFalse('EmergencyStop') && debounce('lastEmergencyStopTs', 500)) {\n    push('AlarmaEmergencyStop', 'Parada de emergencia activada: circuito abierto', 'CRITICA');\n}\n\nflow.set('alarmLog', log);\nreturn [out.length ? out : null, { payload: log }, paqueteLed, paletLed];\n",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 1660,
+        "y": 1680,
+        "wires": [
+            [],
+            [
+                "c65b42b02409c8e2"
+            ],
+            [
+                "8fb27872e479fdf7"
+            ],
+            [
+                "60cbbebf02b64403"
+            ]
+        ]
+    },
+    {
+        "id": "f44e40b8b7d051a4",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Acumula histórico",
+        "func": "const now = Date.now();\nconst d = msg.payload;\n\n// Buffer rapido (1 h @ 1 Hz) para botellas, rechazadas y paquetes\nlet hist = flow.get('hist') || [];\nconst lastFast = hist[hist.length - 1];\nif (!lastFast || (now - lastFast.ts) >= 1000) {\n    hist.push({\n        ts: now,\n        botellas: d.totalBotellas ?? d.totalLatas ?? d.NumeroBotellas_ACC ?? 0,\n        rechazadas: d.totalBotellasRechazadas ?? d.NumeroBotellasRechazadas_ACC ?? 0,\n        paquetes: d.totalPaquetes ?? d.totalCajas ?? 0\n    });\n    if (hist.length > 3600) hist.shift();   // 1 h * 60 min * 60 seg\n    flow.set('hist', hist);\n}\n\n// Buffer lento (24h muestreando cada 60s) para palets\nlet histPalets = flow.get('histPalets') || [];\nconst lastSlow = histPalets[histPalets.length - 1];\nif (!lastSlow || (now - lastSlow.ts) >= 60000) {\n    histPalets.push({ ts: now, palets: d.totalPalets ?? 0 });\n    if (histPalets.length > 1440) histPalets.shift();   // 24 h * 60 min\n    flow.set('histPalets', histPalets);\n}\n\nconst seriesFast = (name, key, oldKey) => ({\n    payload: [{\n        series: [name],\n        data:   [hist.map(h => ({ x: h.ts, y: h[key] ?? h[oldKey] ?? 0 }))],\n        labels: ['']\n    }]\n});\nconst seriesSlow = (name, key) => ({\n    payload: [{\n        series: [name],\n        data:   [histPalets.map(h => ({ x: h.ts, y: h[key] ?? 0 }))],\n        labels: ['']\n    }]\n});\n\nreturn [\n    seriesFast('Total botellas', 'botellas', 'latas'),\n    seriesFast('Botellas rechazadas', 'rechazadas'),\n    seriesFast('Total paquetes', 'paquetes', 'cajas'),\n    seriesSlow('Total palets', 'palets')\n];\n",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 1930,
+        "y": 1960,
+        "wires": [
+            [
+                "ec705d73672ff201"
+            ],
+            [
+                "a91e2f824847347e"
+            ],
+            [
+                "5dd642901eb3c030"
+            ],
+            [
+                "1bacb6912416cf9b"
+            ]
+        ]
+    },
+    {
+        "id": "ec705d73672ff201",
+        "type": "ui_chart",
+        "z": "ef0ea720cfb9c620",
+        "name": "Tendencia botellas",
+        "group": "d653cdeb8ddf6592",
+        "order": 1,
+        "width": 18,
+        "height": 5,
+        "label": "Total botellas procesadas (última hora)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Esperando datos...",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#00acc1",
+            "#ff9800",
+            "#2196f3",
+            "#f44336",
+            "#9c27b0",
+            "#00bcd4"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 2300,
+        "y": 1880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d1fc4b1f0a45d0ae",
+        "type": "trigger",
+        "z": "ef0ea720cfb9c620",
+        "name": "Pulsador START (true→false 500ms)",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "500",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 2110,
+        "y": 2280,
+        "wires": [
+            [
+                "ea817ce2d0ccaffe",
+                "7eea4859557a633e"
+            ]
+        ]
+    },
+    {
+        "id": "9f622b0e7aebde49",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "NumeroBotellas.ACC",
+        "program": "",
+        "name": "Lee NumeroBotellas.ACC",
+        "x": 1850,
+        "y": 1100,
+        "wires": [
+            [
+                "0dda2690cb32d338"
+            ]
+        ]
+    },
+    {
+        "id": "0dda2690cb32d338",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap NumeroBotellas.ACC",
+        "func": "const tag = 'NumeroBotellas.ACC';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) return value.value;\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst n = Number(getValue(msg.payload));\nmsg.payload = { NumeroBotellas_ACC: Number.isFinite(n) ? n : 0 };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2110,
+        "y": 1100,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "ccb8179829584099",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "SeisBotellasWrap.ACC",
+        "program": "",
+        "name": "Lee SeisBotellasWrap.ACC",
+        "x": 1870,
+        "y": 1160,
+        "wires": [
+            [
+                "020f8fdb030c9144"
+            ]
+        ]
+    },
+    {
+        "id": "020f8fdb030c9144",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap SeisBotellasWrap.ACC",
+        "func": "const tag = 'SeisBotellasWrap.ACC';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) return value.value;\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst n = Number(getValue(msg.payload));\nmsg.payload = { SeisBotellasWrap_ACC: Number.isFinite(n) ? n : 0 };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2130,
+        "y": 1160,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "bc6235f7184374d1",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "ContadorWrap.ACC",
+        "program": "",
+        "name": "Lee ContadorWrap.ACC",
+        "x": 1850,
+        "y": 1280,
+        "wires": [
+            [
+                "965b7c9975de62da"
+            ]
+        ]
+    },
+    {
+        "id": "965b7c9975de62da",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap ContadorWrap.ACC",
+        "func": "const tag = 'ContadorWrap.ACC';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) return value.value;\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst n = Number(getValue(msg.payload));\nmsg.payload = { ContadorWrap_ACC: Number.isFinite(n) ? n : 0 };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2110,
+        "y": 1280,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "9f881660245bf152",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "START",
+        "program": "",
+        "name": "Lee START",
+        "x": 1830,
+        "y": 860,
+        "wires": [
+            [
+                "9ac166a9b67517d7"
+            ]
+        ]
+    },
+    {
+        "id": "9ac166a9b67517d7",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap START",
+        "func": "const tag = 'START';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) return value.value;\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.START !== undefined) return unwrap(payload.START);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst asBool = (value) => {\n    if (typeof value === 'string') {\n        const normalized = value.trim().toLowerCase();\n        return normalized === 'true' || normalized === '1';\n    }\n    return value === true || value === 1;\n};\n\nmsg.payload = { START: asBool(getValue(msg.payload)) };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2070,
+        "y": 860,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "d627ed4474866b94",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "EmergencyStop",
+        "program": "",
+        "name": "Lee EmergencyStop",
+        "x": 1860,
+        "y": 920,
+        "wires": [
+            [
+                "5a4334b375e51ebe"
+            ]
+        ]
+    },
+    {
+        "id": "5a4334b375e51ebe",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap EmergencyStop",
+        "func": "const tag = 'EmergencyStop';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) return value.value;\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.EmergencyStop !== undefined) return unwrap(payload.EmergencyStop);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst asBool = (value) => {\n    if (typeof value === 'string') {\n        const normalized = value.trim().toLowerCase();\n        return normalized === 'true' || normalized === '1';\n    }\n    return value === true || value === 1;\n};\n\nmsg.payload = { EmergencyStop: asBool(getValue(msg.payload)) };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2100,
+        "y": 920,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "1e69f285fbb630be",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Reset alarmas/grafica/totales",
+        "func": "// Reset de estado interno del dashboard\nconst raw = Object.assign({}, flow.get('bus_raw') || {});\nraw.EmergencyStop = true;\nflow.set('bus_raw', raw);\nconst rawNumeroBotellas = Number(raw.NumeroBotellas_ACC) || 0;\nconst rawContadorWrap = Number(raw.ContadorWrap_ACC) || 0;\n\nflow.set('totals', {\n    botellas: 0,\n    paquetes: 0,\n    palets: 0,\n    lastNumeroBotellas: rawNumeroBotellas,\n    lastContadorWrapAcc: rawContadorWrap,\n    lastContadorWrapDn: !!raw.ContadorWrap_DN\n});\nflow.set('hist', []);\nflow.set('histPalets', []);\nflow.set('alarmLog', []);\nflow.set('alarmReset', true);\n\nconst data = {\n    START: !!raw.START,\n    EmergencyStop: true,\n    EmergencyActive: false,\n    LineasEncendidas: !!flow.get('lineasStarted') && raw.EmergencyStop,\n    HornoON: !!raw.HornoON,\n    ObjetoEnHorno: !!raw.ObjetoEnHorno,\n    NumeroBotellas_ACC: 0,\n    NumeroBotellasRechazadas_ACC: 0,\n    SeisBotellasWrap_ACC: 0,\n    SeisBotellasWrap_PRE: 6,\n    SeisBotellasWrap_DN: false,\n    ContadorWrap_ACC: 0,\n    ContadorWrap_PRE: 18,\n    ContadorWrap_DN: false,\n    Caja24_ACC: 0,\n    Caja24_PRE: 6,\n    Caja24_DN: false,\n    PaletListo_ACC: 0,\n    PaletListo_PRE: 18,\n    PaletListo_DN: false,\n    CajaCompleta: false,\n    PaletCompleto: false,\n    totalLatas: 0,\n    totalBotellas: 0,\n    totalBotellasRechazadas: 0,\n    totalCajas: 0,\n    totalPaquetes: 0,\n    totalPalets: 0,\n    ts: Date.now()\n};\nflow.set('plcData', data);\nreturn [\n    { payload: data },\n    { payload: [] },\n    { payload: [] },\n    { payload: false },\n    { payload: false }\n];\n",
+        "outputs": 5,
+        "noerr": 0,
+        "x": 1960,
+        "y": 2060,
+        "wires": [
+            [
+                "d6c8c882c01b4ab1"
+            ],
+            [],
+            [
+                "ec705d73672ff201",
+                "5dd642901eb3c030",
+                "1bacb6912416cf9b",
+                "a91e2f824847347e"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e66caeabc270f4ea",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "SeisBotellasWrap.DN",
+        "program": "",
+        "name": "Lee SeisBotellasWrap.DN",
+        "x": 1860,
+        "y": 1220,
+        "wires": [
+            [
+                "34a86adc91b81169"
+            ]
+        ]
+    },
+    {
+        "id": "34a86adc91b81169",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap SeisBotellasWrap.DN",
+        "func": "const tag = 'SeisBotellasWrap.DN';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) return value.value;\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.SeisBotellasWrap_DN !== undefined) return unwrap(payload.SeisBotellasWrap_DN);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst asBool = (value) => {\n    if (typeof value === 'string') {\n        const normalized = value.trim().toLowerCase();\n        return normalized === 'true' || normalized === '1';\n    }\n    return value === true || value === 1;\n};\n\nmsg.payload = { SeisBotellasWrap_DN: asBool(getValue(msg.payload)) };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2120,
+        "y": 1220,
+        "wires": [
+            [
+                "0109936f6b3ef429",
+                "2b62cb6a2ad8910e"
+            ]
+        ]
+    },
+    {
+        "id": "a85926c141d85de3",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "ContadorWrap.DN",
+        "program": "",
+        "name": "Lee ContadorWrap.DN",
+        "x": 1850,
+        "y": 1340,
+        "wires": [
+            [
+                "5eed9c13336ff9f8"
+            ]
+        ]
+    },
+    {
+        "id": "5eed9c13336ff9f8",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap ContadorWrap.DN",
+        "func": "const tag = 'ContadorWrap.DN';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) return value.value;\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.ContadorWrap_DN !== undefined) return unwrap(payload.ContadorWrap_DN);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst asBool = (value) => {\n    if (typeof value === 'string') {\n        const normalized = value.trim().toLowerCase();\n        return normalized === 'true' || normalized === '1';\n    }\n    return value === true || value === 1;\n};\n\nmsg.payload = { ContadorWrap_DN: asBool(getValue(msg.payload)) };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2110,
+        "y": 1340,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "60cbbebf02b64403",
+        "type": "trigger",
+        "z": "ef0ea720cfb9c620",
+        "name": "Pulso LED palet completo 3s",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "3000",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 2040,
+        "y": 1680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5dd642901eb3c030",
+        "type": "ui_chart",
+        "z": "ef0ea720cfb9c620",
+        "name": "Tendencia paquetes",
+        "group": "f296e1b268e01562",
+        "order": 1,
+        "width": 18,
+        "height": 5,
+        "label": "Total paquetes producidos (última hora)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#4caf50",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 2300,
+        "y": 1920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1bacb6912416cf9b",
+        "type": "ui_chart",
+        "z": "ef0ea720cfb9c620",
+        "name": "Tendencia palets",
+        "group": "aa82674803b96b8b",
+        "order": 1,
+        "width": 18,
+        "height": 5,
+        "label": "Total palets completos (24h)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "dd/MM HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "removeOlder": "24",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ff9800",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "x": 2310,
+        "y": 1960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8fb27872e479fdf7",
+        "type": "trigger",
+        "z": "ef0ea720cfb9c620",
+        "name": "Pulso LED paquete completo 3s",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "3000",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 2040,
+        "y": 1620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1a2b8f72cf533bf",
+        "type": "link in",
+        "z": "ef0ea720cfb9c620",
+        "name": "BUS",
+        "links": [
+            "d6c8c882c01b4ab1"
+        ],
+        "x": 1755,
+        "y": 1960,
+        "wires": [
+            [
+                "f44e40b8b7d051a4"
+            ]
+        ]
+    },
+    {
+        "id": "bfd1e25729894607",
+        "type": "link in",
+        "z": "ef0ea720cfb9c620",
+        "name": "BUS",
+        "links": [
+            "d6c8c882c01b4ab1"
+        ],
+        "x": 1475,
+        "y": 1680,
+        "wires": [
+            [
+                "dc39494d8db7409e"
+            ]
+        ]
+    },
+    {
+        "id": "f0a40cf0c6bb916b",
+        "type": "link out",
+        "z": "ef0ea720cfb9c620",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [],
+        "x": 2895,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "e5474dd8727dabb7",
+        "type": "comment",
+        "z": "ef0ea720cfb9c620",
+        "name": "Activacion Rutina RobotStudio",
+        "info": "",
+        "x": 2640,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "19bd8abac7af09ca",
+        "type": "comment",
+        "z": "ef0ea720cfb9c620",
+        "name": "Procesamiento de eventos, históricos y reset",
+        "info": "",
+        "x": 1930,
+        "y": 1860,
+        "wires": []
+    },
+    {
+        "id": "fcdc8018020c787b",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Toggle graficas historicas",
+        "func": "const groups = {\n    \"botellas\": \"Banda_Transportadora_Hist_Botellas\",\n    \"rechazadas\": \"Banda_Transportadora_Hist_Rechazadas\",\n    \"paquetes\": \"Banda_Transportadora_Hist_Paquetes\",\n    \"palets\": \"Banda_Transportadora_Hist_Palets\"\n};\nconst key = msg.topic || msg.payload;\nconst groupName = groups[key];\nif (!groupName) return null;\n\nconst state = flow.get('histChartsOpen') || {};\nstate[key] = !state[key];\nflow.set('histChartsOpen', state);\n\nmsg.payload = {\n    group: state[key]\n        ? { show: [groupName], focus: false }\n        : { hide: [groupName], focus: false }\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2480,
+        "y": 1560,
+        "wires": [
+            [
+                "cafa928cc2af9e84"
+            ]
+        ]
+    },
+    {
+        "id": "9ef190af46791a40",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Oculta graficas al conectar",
+        "func": "if (msg.payload !== 'connect') return null;\nflow.set('histChartsOpen', { botellas: false, rechazadas: false, paquetes: false, palets: false });\nmsg.payload = {\n    group: {\n        hide: [\n            \"Banda_Transportadora_Hist_Botellas\",\n            \"Banda_Transportadora_Hist_Rechazadas\",\n            \"Banda_Transportadora_Hist_Paquetes\",\n            \"Banda_Transportadora_Hist_Palets\"\n        ],\n        focus: false\n    }\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2790,
+        "y": 1520,
+        "wires": [
+            [
+                "cafa928cc2af9e84"
+            ]
+        ]
+    },
+    {
+        "id": "cafa928cc2af9e84",
+        "type": "ui_ui_control",
+        "z": "ef0ea720cfb9c620",
+        "name": "Control visibilidad graficas",
+        "events": "connect",
+        "x": 2760,
+        "y": 1610,
+        "wires": [
+            [
+                "9ef190af46791a40"
+            ]
+        ]
+    },
+    {
+        "id": "2528b8d78ca8eced",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "HornoON",
+        "program": "",
+        "name": "Lee HornoON",
+        "x": 1830,
+        "y": 980,
+        "wires": [
+            [
+                "47ad1a532e4bf9dc"
+            ]
+        ]
+    },
+    {
+        "id": "47ad1a532e4bf9dc",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap HornoON",
+        "func": "const tag = 'HornoON';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) {\n        return value.value;\n    }\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.HornoON !== undefined) return unwrap(payload.HornoON);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst asBool = (value) => {\n    if (typeof value === 'string') {\n        const normalized = value.trim().toLowerCase();\n        return normalized === 'true' || normalized === '1';\n    }\n    return value === true || value === 1;\n};\n\nmsg.payload = { HornoON: asBool(getValue(msg.payload)) };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2070,
+        "y": 980,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "04c1136cdd7cb3b2",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "ObjetoEnHorno",
+        "program": "",
+        "name": "Lee ObjetoEnHorno",
+        "x": 1850,
+        "y": 1040,
+        "wires": [
+            [
+                "7b325acd60365562"
+            ]
+        ]
+    },
+    {
+        "id": "7b325acd60365562",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap ObjetoEnHorno",
+        "func": "const tag = 'ObjetoEnHorno';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) {\n        return value.value;\n    }\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.ObjetoEnHorno !== undefined) return unwrap(payload.ObjetoEnHorno);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst asBool = (value) => {\n    if (typeof value === 'string') {\n        const normalized = value.trim().toLowerCase();\n        return normalized === 'true' || normalized === '1';\n    }\n    return value === true || value === 1;\n};\n\nmsg.payload = { ObjetoEnHorno: asBool(getValue(msg.payload)) };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2090,
+        "y": 1040,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "7eea4859557a633e",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "START local al bus",
+        "func": "msg.payload = { START: msg.payload === true || msg.payload === 1 || msg.payload === 'true' };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2450,
+        "y": 2200,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "da6c8ed61c498f96",
+        "type": "eth-ip out",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "variable": "EmergencyStop",
+        "program": "",
+        "name": "-> PLC EmergencyStop",
+        "x": 2340,
+        "y": 2380,
+        "wires": []
+    },
+    {
+        "id": "7d26e5267cefef0f",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "EmergencyStop local al bus",
+        "func": "msg.payload = { EmergencyStop: msg.payload === true || msg.payload === 1 || msg.payload === 'true' };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2360,
+        "y": 2440,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "8c5790ea8e96a86a",
+        "type": "trigger",
+        "z": "ef0ea720cfb9c620",
+        "name": "Pulsador Reset (true->false 500ms)",
+        "op1": "true",
+        "op2": "false",
+        "op1type": "bool",
+        "op2type": "bool",
+        "duration": "500",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1840,
+        "y": 2360,
+        "wires": [
+            [
+                "fd4724b004061e37"
+            ]
+        ]
+    },
+    {
+        "id": "fd4724b004061e37",
+        "type": "eth-ip out",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "variable": "Reset",
+        "program": "",
+        "name": "-> PLC Reset",
+        "x": 2100,
+        "y": 2380,
+        "wires": []
+    },
+    {
+        "id": "3e3051b214ea34f1",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Reset restaura EmergencyStop TRUE",
+        "func": "msg.payload = true;\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1830,
+        "y": 2420,
+        "wires": [
+            [
+                "da6c8ed61c498f96",
+                "7d26e5267cefef0f"
+            ]
+        ]
+    },
+    {
+        "id": "d04b574f02ff25f6",
+        "type": "comment",
+        "z": "ef0ea720cfb9c620",
+        "name": "Asistente IA SCADA: comandos, consultas y watsonx.ai",
+        "info": "Integracion adaptada desde flows (16).json. Comandos directos: START, EmergencyStop NC y Reset. Consultas: watsonx.ai con contexto de plcData/alarmLog.",
+        "x": 1260,
+        "y": 2440,
+        "wires": []
+    },
+    {
+        "id": "44c12908a967bbbd",
+        "type": "http in",
+        "z": "ef0ea720cfb9c620",
+        "name": "POST /api/scada/ia",
+        "url": "/api/scada/ia",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 1160,
+        "y": 2520,
+        "wires": [
+            [
+                "ccb3891f3f162858"
+            ]
+        ]
+    },
+    {
+        "id": "ccb3891f3f162858",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "IA router comandos SCADA",
+        "func": "const body = msg.payload || {};\nconst texto = (body.texto || body.text || body.comando || body.command || body).toString().trim();\nconst norm = texto\n    .normalize('NFD')\n    .replace(/[\\u0300-\\u036f]/g, '')\n    .toLowerCase()\n    .replace(/[^a-z0-9?\\s??]/g, ' ')\n    .replace(/\\s+/g, ' ')\n    .trim();\n\nconst reply = (payload, statusCode = 200) => ({\n    payload,\n    statusCode,\n    headers: { 'Content-Type': 'application/json' },\n    req: msg.req,\n    res: msg.res\n});\n\nif (!texto) {\n    return [null, null, null, null, reply({ status: 'error', respuesta: 'Escribe un comando o una pregunta.' }, 400)];\n}\n\nflow.set('ia_ultimo_texto', texto);\n\nconst has = (re) => re.test(norm);\nconst wantsReset = has(/\\b(reset|reinicia\\w*|reiniciar|restablece\\w*|restablecer|libera\\w*|liberar|desbloquea\\w*|desbloquear|limpia\\w*|limpiar)\\b/);\nconst wantsEmergency = has(/\\b(emergencia\\w*|emergency|paro|parada|stop|alto|deten\\w*|detener|detente|frena\\w*|frenar|apaga\\w*|apagar)\\b/);\nconst wantsStart = has(/\\b(start|star|inicia\\w*|iniciar|inicio|arranque|arranca\\w*|arrancar|enciende\\w*|encender|prende\\w*|prender|activa\\w*|activar)\\b/);\nconst wantsInfo = /[??]/.test(texto)\n    || has(/\\b(resumen|estado|cuant\\w*|cual\\w*|dime|muestra|consulta|alarmas?|historico|produccion|descartad\\w*)\\b/)\n    || has(/\\besta\\b.*\\b(linea|horno)\\b/)\n    || has(/\\b(linea|horno)\\b.*\\besta\\b/);\n\nif (wantsReset && !wantsInfo) {\n    return [\n        null,\n        null,\n        { payload: true },\n        null,\n        reply({ status: 'ok', accion: 'reset', respuesta: 'RESET enviado. Emergencia liberada y sistema restablecido.' })\n    ];\n}\n\nif (wantsEmergency && !wantsInfo) {\n    return [\n        null,\n        { payload: false },\n        null,\n        null,\n        reply({ status: 'ok', accion: 'emergencia', respuesta: 'Parada de emergencia activada. La linea queda detenida hasta realizar RESET.' })\n    ];\n}\n\nif (wantsStart && !wantsInfo) {\n    return [\n        { payload: true },\n        null,\n        null,\n        null,\n        reply({ status: 'ok', accion: 'start', respuesta: 'START enviado a la linea.' })\n    ];\n}\n\nmsg.ia_texto = texto;\nreturn [null, null, null, msg, null];",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1420,
+        "y": 2520,
+        "wires": [
+            [
+                "d1fc4b1f0a45d0ae"
+            ],
+            [
+                "da6c8ed61c498f96",
+                "7d26e5267cefef0f"
+            ],
+            [
+                "1e69f285fbb630be",
+                "8c5790ea8e96a86a",
+                "3e3051b214ea34f1"
+            ],
+            [
+                "0f911c3acf107eb4"
+            ],
+            [
+                "de9fea2d8f72c4bb"
+            ]
+        ]
+    },
+    {
+        "id": "de9fea2d8f72c4bb",
+        "type": "http response",
+        "z": "ef0ea720cfb9c620",
+        "name": "Resp IA comando",
+        "statusCode": "",
+        "headers": {},
+        "x": 1960,
+        "y": 2620,
+        "wires": []
+    },
+    {
+        "id": "0f911c3acf107eb4",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "IA prompt SCADA watsonx",
+        "func": "const texto = (msg.ia_texto || (msg.payload && (msg.payload.texto || msg.payload.text)) || msg.payload || '').toString().trim();\nconst plc = flow.get('plcData') || {};\nconst raw = flow.get('bus_raw') || {};\nconst totals = flow.get('totals') || {};\nconst alarmLog = (flow.get('alarmLog') || []).slice(0, 50);\nconst historial = (flow.get('ia_historial') || []).slice(-6);\nconst now = Date.now();\n\nconst boolText = (v, yes, no) => v ? yes : no;\nconst contextData = {\n    ahora_iso: new Date(now).toISOString(),\n    estado: {\n        linea: boolText(!!plc.LineasEncendidas, 'activa', 'desactivada'),\n        start: !!plc.START,\n        emergencyStop: !!plc.EmergencyStop,\n        emergenciaActiva: plc.EmergencyActive === true || plc.EmergencyStop === false,\n        horno: boolText(!!plc.HornoON, 'encendido', 'apagado'),\n        paqueteEnHorno: !!plc.ObjetoEnHorno\n    },\n    contadores: {\n        botellasTotales: Number(plc.totalBotellas ?? plc.NumeroBotellas_ACC ?? totals.botellas ?? 0),\n        botellasEnPaquete: Number(plc.SeisBotellasWrap_ACC ?? 0),\n        botellasPorPaquete: Number(plc.SeisBotellasWrap_PRE ?? 6),\n        paquetesTotales: Number(plc.totalPaquetes ?? totals.paquetes ?? 0),\n        paquetesEnPalet: Number(plc.ContadorWrap_ACC ?? 0),\n        paquetesPorPalet: Number(plc.ContadorWrap_PRE ?? 18),\n        paletsTotales: Number(plc.totalPalets ?? totals.palets ?? 0),\n        botellasRechazadas: Number(plc.totalBotellasRechazadas ?? plc.NumeroBotellasRechazadas_ACC ?? raw.NumeroBotellasRechazadas_ACC ?? 0),\n        botellasDescartadas: Number(plc.totalBotellasRechazadas ?? plc.NumeroBotellasRechazadas_ACC ?? raw.NumeroBotellasRechazadas_ACC ?? 0)\n    },\n    alarmas: alarmLog.map(a => ({\n        ts: a.ts,\n        epoch_ms: a.epoch || a.time || null,\n        tag: a.tag,\n        mensaje: a.mensaje,\n        severidad: a.sev || a.severidad,\n        estado: a.estado || 'ACTIVA'\n    }))\n};\n\nmsg.ia_context = contextData;\nmsg.ia_texto = texto;\nflow.set('ia_ultimo_contexto', contextData);\n\nconst reply = (payload, statusCode = 200) => ({\n    payload,\n    statusCode,\n    headers: { 'Content-Type': 'application/json' },\n    req: msg.req,\n    res: msg.res\n});\n\nconst token = flow.get('iam_token');\nlet projectId = env.get('WATSONX_PROJECT_ID');\nlet watsonxUrl = env.get('WATSONX_URL') || 'https://us-south.ml.cloud.ibm.com';\nconst modelId = env.get('WATSONX_MODEL_ID') || 'meta-llama/llama-4-maverick-17b-128e-instruct-fp8';\nif (projectId) projectId = projectId.toString().trim().replace(/[\\u0000-\\u001F\\u007F-\\u009F\\u200B-\\u200F\\uFEFF\\s'\"]/g, '');\nif (watsonxUrl) watsonxUrl = watsonxUrl.toString().trim().replace(/\\/$/, '');\n\nif (!token || !projectId) {\n    const anomaly = /ruido|raro|vibra|vibracion|falla|atasco|atorad|peligro|humo|olor|calent|suena|sonando/i.test(texto);\n    const fallback = anomaly\n        ? 'IA no disponible aun. Recomendacion operativa: 1) reduce o det?n la alimentacion si aplica. 2) Observa la zona afectada sin exponerte. 3) Si el ruido o riesgo persiste, oprime parada de emergencia. 4) Verifica bandas, rodillos, guias, sensores y acumulacion de botellas o paquetes. 5) Haz reset solo despues de corregir la causa.'\n        : 'IA no disponible aun. Estado local: linea ' + contextData.estado.linea + ', emergencia ' + (contextData.estado.emergenciaActiva ? 'activa' : 'normal') + ', botellas ' + contextData.contadores.botellasTotales + ', rechazadas ' + contextData.contadores.botellasRechazadas + ', paquetes ' + contextData.contadores.paquetesTotales + ', palets ' + contextData.contadores.paletsTotales + '.';\n    return [null, reply({ status: 'sin_ia', respuesta: fallback, contexto: contextData }, 200)];\n}\n\nconst systemPrompt = [\n    'Eres un asistente SCADA industrial para una linea de botellas, paquetes, palets y horno. Tu trabajo principal es ayudar al operador a decidir que hacer.',\n    '',\n    'Reglas de respuesta:',\n    '- Si el operador reporta una anomalia, ruido, vibracion, atasco, falla, algo raro, peligro, olor, calentamiento, banda sonando raro, o pregunta que debe hacer: responde con acciones logicas y pasos operativos.',\n    '- En esos casos NO respondas con una lista cruda de senales ni digas solo linea activa, horno apagado, emergencyStop true, etc. Usa esos datos solo como apoyo secundario.',\n    '- Para una posible falla mecanica o ruido raro recomienda: 1) bajar velocidad o detener alimentacion si aplica, 2) observar zona afectada sin exponerse, 3) si el ruido persiste o hay riesgo, oprimir parada de emergencia, 4) verificar bandas, rodillos, guias, sensores, acumulacion de botellas/paquetes y objetos atorados, 5) revisar alarmas, 6) hacer reset solo despues de corregir la causa.',\n    '- Si hay riesgo para personas, atasco fuerte, ruido anormal persistente, humo, olor a quemado, vibracion fuerte o pieza suelta: prioriza parada de emergencia.',\n    '- Si preguntan por resumen, cantidades o estado normal, responde con datos concretos del contexto.',\n    '- No inventes valores. Si un dato no existe, dilo claramente.',\n    '- Botellas rechazadas/descartadas viene del contador NumeroBotellasRechazadas.ACC.',\n    '- EmergencyStop=true significa circuito de emergencia sano/cerrado. EmergencyStop=false significa parada de emergencia activa/circuito abierto.',\n    '- La linea esta activa solo si estado.linea dice activa.',\n    '- Los comandos START, emergencia y RESET se ejecutan por reglas directas de Node-RED, no por la IA. Si recomiendas una accion, di claramente que el operador debe oprimir el boton correspondiente.',\n    '- Para preguntas de alarmas en ultimos segundos/minutos usa epoch_ms cuando exista. Si no hay epoch_ms, usa la lista como historico reciente.',\n    '- Responde en espanol, breve, directo y en tono de operador asistente. Para diagnostico usa pasos numerados cortos.'\n].join('\\n');\n\nconst messages = [{ role: 'system', content: systemPrompt }];\nhistorial.forEach(h => {\n    messages.push({ role: 'user', content: h.user });\n    messages.push({ role: 'assistant', content: h.bot });\n});\nmessages.push({ role: 'user', content: 'Contexto SCADA actual:\\n' + JSON.stringify(contextData, null, 2) + '\\n\\nPregunta del operador: ' + texto });\n\nreturn [{\n    url: watsonxUrl + '/ml/v1/text/chat?version=2024-05-31',\n    method: 'POST',\n    headers: {\n        'Content-Type': 'application/json',\n        'Authorization': 'Bearer ' + token,\n        'Accept': 'application/json'\n    },\n    payload: {\n        model_id: modelId,\n        project_id: projectId,\n        messages,\n        max_tokens: 700,\n        temperature: 0.1,\n        top_p: 0.9\n    },\n    req: msg.req,\n    res: msg.res,\n    ia_texto: texto,\n    ia_context: contextData\n}, null];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1690,
+        "y": 2520,
+        "wires": [
+            [
+                "b813da21070a015f"
+            ],
+            [
+                "de9fea2d8f72c4bb"
+            ]
+        ]
+    },
+    {
+        "id": "b813da21070a015f",
+        "type": "http request",
+        "z": "ef0ea720cfb9c620",
+        "name": "watsonx.ai SCADA",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "x": 1940,
+        "y": 2500,
+        "wires": [
+            [
+                "99dc9685c3d981c1"
+            ]
+        ]
+    },
+    {
+        "id": "99dc9685c3d981c1",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "IA parse watsonx SCADA",
+        "func": "function reply(payload, statusCode) {\n    msg.payload = payload;\n    msg.statusCode = statusCode || 200;\n    msg.headers = { 'Content-Type': 'application/json' };\n    return msg;\n}\ntry {\n    const body = msg.payload || {};\n    let text = '';\n    if (body.choices && body.choices[0] && body.choices[0].message) text = body.choices[0].message.content || '';\n    else if (body.results && body.results[0]) text = body.results[0].generated_text || body.results[0].text || '';\n    text = String(text || '').trim();\n    if (!text) {\n        node.error('[IA] Respuesta vacia de watsonx');\n        return reply({ status: 'error', respuesta: 'watsonx respondio vacio. Revisa el modelo o las credenciales.' }, 502);\n    }\n    let h = flow.get('ia_historial') || [];\n    h.push({ ts: Date.now(), user: msg.ia_texto || '', bot: text });\n    if (h.length > 12) h = h.slice(-12);\n    flow.set('ia_historial', h);\n    return reply({ status: 'ok', respuesta: text, contexto: msg.ia_context || null }, 200);\n} catch (e) {\n    node.error('[IA parse] ' + e.message);\n    return reply({ status: 'error', respuesta: 'No pude interpretar la respuesta de la IA: ' + e.message }, 500);\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2180,
+        "y": 2500,
+        "wires": [
+            [
+                "de9fea2d8f72c4bb"
+            ]
+        ]
+    },
+    {
+        "id": "275833e9dc654b03",
+        "type": "http in",
+        "z": "ef0ea720cfb9c620",
+        "name": "GET /api/scada/status",
+        "url": "/api/scada/status",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 1170,
+        "y": 2680,
+        "wires": [
+            [
+                "fa499bca0f57d0a1"
+            ]
+        ]
+    },
+    {
+        "id": "fa499bca0f57d0a1",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "IA leer estado SCADA",
+        "func": "const plc = flow.get('plcData') || {};\nconst totals = flow.get('totals') || {};\nconst raw = flow.get('bus_raw') || {};\nmsg.payload = {\n    status: 'ok',\n    estado: {\n        lineaActiva: !!plc.LineasEncendidas,\n        start: !!plc.START,\n        emergencyStop: !!plc.EmergencyStop,\n        emergenciaActiva: plc.EmergencyActive === true || plc.EmergencyStop === false,\n        hornoON: !!plc.HornoON,\n        objetoEnHorno: !!plc.ObjetoEnHorno\n    },\n    contadores: {\n        botellasTotales: Number(plc.totalBotellas ?? plc.NumeroBotellas_ACC ?? totals.botellas ?? 0),\n        botellasEnPaquete: Number(plc.SeisBotellasWrap_ACC ?? 0),\n        botellasPorPaquete: Number(plc.SeisBotellasWrap_PRE ?? 6),\n        paquetesTotales: Number(plc.totalPaquetes ?? totals.paquetes ?? 0),\n        paquetesEnPalet: Number(plc.ContadorWrap_ACC ?? 0),\n        paquetesPorPalet: Number(plc.ContadorWrap_PRE ?? 18),\n        paletsTotales: Number(plc.totalPalets ?? totals.palets ?? 0),\n        botellasRechazadas: Number(plc.totalBotellasRechazadas ?? plc.NumeroBotellasRechazadas_ACC ?? raw.NumeroBotellasRechazadas_ACC ?? 0),\n        botellasDescartadas: Number(plc.totalBotellasRechazadas ?? plc.NumeroBotellasRechazadas_ACC ?? raw.NumeroBotellasRechazadas_ACC ?? 0)\n    },\n    alarmas: flow.get('alarmLog') || [],\n    iaToken: !!flow.get('iam_token')\n};\nmsg.headers = { 'Content-Type': 'application/json' };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1420,
+        "y": 2680,
+        "wires": [
+            [
+                "5817449d68d1d759"
+            ]
+        ]
+    },
+    {
+        "id": "5817449d68d1d759",
+        "type": "http response",
+        "z": "ef0ea720cfb9c620",
+        "name": "Resp estado SCADA",
+        "statusCode": "",
+        "headers": {},
+        "x": 1660,
+        "y": 2680,
+        "wires": []
+    },
+    {
+        "id": "97a66bd118fa52a8",
+        "type": "inject",
+        "z": "ef0ea720cfb9c620",
+        "name": "Init IAM IA (cada 50min)",
+        "repeat": "3000",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 1150,
+        "y": 2780,
+        "wires": [
+            [
+                "221f33c3119799e8"
+            ]
+        ]
+    },
+    {
+        "id": "221f33c3119799e8",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "IA preparar IAM Request",
+        "func": "const apiKey = env.get('IBM_API_KEY');\nif (!apiKey) {\n    node.error('[IAM] IBM_API_KEY no configurada');\n    node.status({ fill: 'red', shape: 'ring', text: 'Sin API Key' });\n    return null;\n}\nnode.status({ fill: 'yellow', shape: 'dot', text: 'Solicitando token...' });\nreturn {\n    url: 'https://iam.cloud.ibm.com/identity/token',\n    method: 'POST',\n    headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },\n    payload: 'grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey=' + encodeURIComponent(apiKey)\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1420,
+        "y": 2780,
+        "wires": [
+            [
+                "fa155e5fbdb17182"
+            ]
+        ]
+    },
+    {
+        "id": "fa155e5fbdb17182",
+        "type": "http request",
+        "z": "ef0ea720cfb9c620",
+        "name": "IA IBM IAM Token",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "x": 1660,
+        "y": 2780,
+        "wires": [
+            [
+                "eb21822224831cbe"
+            ]
+        ]
+    },
+    {
+        "id": "eb21822224831cbe",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "IA guardar token IAM",
+        "func": "const body = msg.payload;\nif (!body || !body.access_token) {\n    node.error('[IAM] Sin access_token');\n    node.status({ fill: 'red', shape: 'ring', text: 'Error IAM' });\n    return null;\n}\nflow.set('iam_token', body.access_token);\nflow.set('iam_token_time', Date.now());\nflow.set('iam_token_expires_in', body.expires_in || 3600);\nnode.status({ fill: 'green', shape: 'dot', text: 'Token OK' });\nreturn null;",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1900,
+        "y": 2780,
+        "wires": []
+    },
+    {
+        "id": "a0cb0277996b1852",
+        "type": "link in",
+        "z": "ef0ea720cfb9c620",
+        "name": "BUS vista unificada",
+        "links": [
+            "d6c8c882c01b4ab1"
+        ],
+        "x": 1695,
+        "y": 1560,
+        "wires": [
+            [
+                "c65b42b02409c8e2"
+            ]
+        ]
+    },
+    {
+        "id": "c65b42b02409c8e2",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Unifica datos SCADA vista",
+        "func": "const incoming = msg.payload;\nconst current = flow.get('vista_unificada') || { data: {}, alarmas: [] };\n\nif (Array.isArray(incoming)) {\n    current.alarmas = incoming;\n} else if (incoming && typeof incoming === 'object' && incoming.tag && incoming.mensaje) {\n    const alarmas = flow.get('alarmLog') || current.alarmas || [];\n    current.alarmas = alarmas;\n} else if (incoming && typeof incoming === 'object') {\n    current.data = Object.assign({}, current.data || {}, incoming);\n}\n\nconst plcData = flow.get('plcData') || {};\nconst alarmLog = flow.get('alarmLog');\ncurrent.data = Object.assign({}, plcData, current.data || {});\nif (Array.isArray(alarmLog)) current.alarmas = alarmLog;\ncurrent.ts = Date.now();\nflow.set('vista_unificada', current);\nmsg.payload = current;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1920,
+        "y": 1560,
+        "wires": [
+            [
+                "c82021251a506d76"
+            ]
+        ]
+    },
+    {
+        "id": "c82021251a506d76",
+        "type": "ui_template",
+        "z": "ef0ea720cfb9c620",
+        "group": "35677924280ed812",
+        "name": "Vista SCADA unificada",
+        "order": 1,
+        "width": 18,
+        "height": 30,
+        "format": "<style>\n.scada-one {\n    font-family: Arial, Helvetica, sans-serif;\n    color: #111;\n    padding: 8px;\n    background: #fff;\n}\n.scada-one * { box-sizing: border-box; }\n.scada-grid {\n    display: grid;\n    grid-template-columns: repeat(3, minmax(240px, 1fr));\n    gap: 12px;\n    align-items: stretch;\n}\n.scada-card {\n    border: 1px solid #eceff1;\n    background: #fff;\n    padding: 12px;\n    min-width: 0;\n}\n.scada-card h3 {\n    margin: 0 0 12px;\n    font-size: 20px;\n    line-height: 1.2;\n}\n.scada-full { grid-column: 1 / -1; }\n.control-buttons {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 8px;\n    margin-bottom: 12px;\n}\n.control-buttons .reset { grid-column: 1 / -1; }\n.scada-btn {\n    border: 0;\n    min-height: 48px;\n    border-radius: 3px;\n    color: #fff;\n    font-weight: 700;\n    cursor: pointer;\n    font-size: 14px;\n}\n.scada-btn.start { background: #2e7d32; }\n.scada-btn.emergency { background: #c62828; }\n.scada-btn.reset { background: #455a64; }\n.btn-symbol { display:inline-block; position:relative; margin-right:8px; vertical-align:-2px; }\n.btn-symbol.play { width:0; height:0; border-top:7px solid transparent; border-bottom:7px solid transparent; border-left:11px solid #fff; }\n.btn-symbol.warn { width:0; height:0; border-left:9px solid transparent; border-right:9px solid transparent; border-bottom:16px solid #fff; vertical-align:-4px; }\n.btn-symbol.warn::after { content:\"!\"; position:absolute; left:-2px; top:4px; color:#c62828; font-size:11px; line-height:1; font-weight:900; }\n.btn-symbol.reset { width:17px; height:17px; border:2px solid #fff; border-right-color:transparent; border-radius:50%; vertical-align:-4px; }\n.btn-symbol.reset::after { content:\"\"; position:absolute; right:-4px; top:0; width:0; height:0; border-left:6px solid #fff; border-top:4px solid transparent; border-bottom:4px solid transparent; transform:rotate(-20deg); }\n.status-grid {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 14px 18px;\n    margin-top: 12px;\n}\n.status-item {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    gap: 12px;\n    font-size: 15px;\n    min-width: 0;\n}\n.status-item.wide { grid-column: 1 / -1; }\n.dot {\n    width: 14px;\n    height: 14px;\n    border-radius: 50%;\n    background: #8a8a8a;\n    box-shadow: 0 0 8px #777;\n    flex: 0 0 auto;\n}\n.dot.on { background: #27ae60; box-shadow: 0 0 12px #27ae60; }\n.dot.warn { background: #ffb300; box-shadow: 0 0 12px #ffb300; }\n.dot.danger { background: #e53935; box-shadow: 0 0 12px #e53935; }\n.oven-stage { display:flex; justify-content:center; align-items:center; min-height:210px; }\n.oven-svg { width:100%; max-width:245px; overflow:visible; }\n.oven-shell,.oven-line,.oven-slot,.oven-door{fill:#fff;stroke:#151515;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;transition:stroke 220ms ease,fill 220ms ease,filter 220ms ease;}\n.oven-knob{fill:#151515;stroke:#151515;stroke-width:4;transition:stroke 220ms ease,fill 220ms ease,filter 220ms ease;}\n.oven-firebox,.oven-object-shape{opacity:0;transition:opacity 220ms ease,fill 220ms ease,stroke 220ms ease;}\n.oven-hot .oven-shell,.oven-hot .oven-line,.oven-hot .oven-slot,.oven-hot .oven-door{stroke:#e53935;filter:url(#ovenGlowUnified);}\n.oven-hot .oven-knob{fill:#ff7043;stroke:#ff7043;filter:url(#ovenGlowUnified);}\n.oven-hot .oven-firebox{opacity:1;fill:#4a0000;stroke:#ff7043;}\n.oven-object .oven-object-shape{opacity:1;fill:#ffb300;stroke:#5d3b00;}\n.oven-hot.oven-object .oven-object-shape{fill:#ffd54f;stroke:#ffecb3;filter:url(#ovenGlowUnified);}\n.oven-status{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px;}\n.oven-pill{display:flex;align-items:center;gap:8px;min-width:0;}\n.counter-row {\n    display: grid;\n    grid-template-columns: minmax(0, 1fr) auto;\n    gap: 12px;\n    align-items: center;\n    min-height: 42px;\n    border-bottom: 1px solid #f2f2f2;\n    font-size: 15px;\n}\n.counter-row strong { font-size: 18px; }\n.counter-row.clickable { cursor: pointer; }\n.counter-row.clickable:hover { background: #f7fbff; }\n.chart-icon { position:relative; display:inline-block; width:16px; height:16px; margin-right:7px; border:2px solid currentColor; border-radius:2px; vertical-align:-3px; }\n.chart-icon::before { content:\"\"; position:absolute; left:2px; right:2px; bottom:3px; height:7px; border-left:2px solid currentColor; border-bottom:2px solid currentColor; transform:skew(-28deg); }\n.drop-arrow { display:inline-block; margin-left:6px; width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:6px solid currentColor; vertical-align:middle; }\n.blue { color: #00a6c8; } .green { color:#43a047; } .orange { color:#fb8c00; } .red { color:#c62828; }\n.alarm-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:8px; }\n.alarm-head h3 { margin:0; }\n.alarm-download { display:inline-flex; align-items:center; gap:7px; border:1px solid #b0bec5; background:#fff; color:#263238; border-radius:4px; padding:6px 10px; font-size:12px; font-weight:700; text-decoration:none; }\n.alarm-download:hover { background:#eceff1; text-decoration:none; color:#111; }\n.alarm-download-icon { position:relative; width:14px; height:14px; border:2px solid currentColor; border-top:0; display:inline-block; }\n.alarm-download-icon::before { content:\"\"; position:absolute; left:5px; top:-5px; width:2px; height:9px; background:currentColor; }\n.alarm-download-icon::after { content:\"\"; position:absolute; left:2px; top:2px; width:7px; height:7px; border-left:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(-45deg); }\n.alarm-table-wrap { overflow-x:auto; border:1px solid #eceff1; min-height:190px; }\n.alarm-table { width:100%; border-collapse:collapse; font-size:13px; }\n.alarm-table th { background:#37474f; color:#fff; padding:7px; text-align:left; }\n.alarm-table td { padding:7px; border-bottom:1px solid #edf1f3; }\n.alarm-table tr.warn { background:#fff8e1; }\n.alarm-table tr.crit { background:#ffebee; }\n.empty-row { text-align:center; color:#777; padding:22px !important; }\n.ia-scada{border:1px solid #eceff1;background:#fff;color:#111;padding:10px;min-height:540px;}\n.ia-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}.ia-title{font-size:20px;font-weight:700;margin:0}.ia-sub{font-size:12px;color:#607d8b}.ia-status{font-size:12px;color:#607d8b}\n.ia-log{height:300px;overflow:auto;border:1px solid #e0e0e0;background:#fafafa;padding:8px;margin-bottom:8px}.ia-msg{margin:6px 0;display:flex}.ia-msg.user{justify-content:flex-end}.ia-bubble{max-width:82%;padding:8px 10px;border-radius:6px;line-height:1.35;white-space:pre-wrap}.ia-msg.user .ia-bubble{background:#1565c0;color:#fff}.ia-msg.bot .ia-bubble{background:#eef3f7;color:#111;border:1px solid #dbe3e8}.ia-msg.err .ia-bubble{background:#ffebee;color:#b71c1c;border:1px solid #ffcdd2}.ia-msg.note .ia-bubble{background:#fffde7;color:#5d4037;border:1px solid #ffe082}\n.ia-input-row{display:flex;gap:6px;align-items:stretch}.ia-input{flex:1;min-width:0;min-height:46px;border:1px solid #b0bec5;border-radius:4px;padding:8px;font-size:14px}.ia-btn{border:0;border-radius:4px;padding:0 12px;min-width:72px;font-weight:700;cursor:pointer;color:#fff;background:#1565c0}.ia-btn:disabled{opacity:.55;cursor:wait}.ia-btn.mic{background:#455a64}.ia-btn.mic.listening{background:#b71c1c}.ia-btn.stop-voice{background:#6d4c41;min-width:72px}.ia-chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.ia-chip{border:1px solid #cfd8dc;background:#fff;color:#263238;border-radius:4px;padding:5px 8px;cursor:pointer;font-size:12px}.ia-chip:hover{background:#eceff1}.ia-options{display:flex;align-items:center;gap:10px;margin-top:6px;font-size:12px;color:#455a64}\n@media (max-width: 1100px) { .scada-grid { grid-template-columns: 1fr; } .scada-full { grid-column: auto; } }\n</style>\n\n<div id=\"scada-one-panel\" class=\"scada-one\" >\n    <div class=\"scada-grid\">\n        <section class=\"scada-card\">\n            <h3>Control SCADA</h3>\n            <div class=\"control-buttons\">\n                <button class=\"scada-btn start\" data-scada-command=\"Genera un START\"><span class=\"btn-symbol play\" aria-hidden=\"true\"></span>START</button>\n                <button class=\"scada-btn emergency\" data-scada-command=\"Enviar parada de emergencia\"><span class=\"btn-symbol warn\" aria-hidden=\"true\"></span>EMERGENCIA</button>\n                <button class=\"scada-btn reset\" data-scada-command=\"Realiza un reset\"><span class=\"btn-symbol reset\" aria-hidden=\"true\"></span>RESET</button>\n            </div>\n            <div class=\"status-grid\">\n                <div class=\"status-item wide\"><span>Lineas encendidas</span><span class=\"dot\" ng-class=\"{'on': msg.payload.data.LineasEncendidas}\"></span></div>\n                <div class=\"status-item\"><span>Paquete completo</span><span class=\"dot\" ng-class=\"{'warn': msg.payload.data.CajaCompleta || msg.payload.data.SeisBotellasWrap_DN}\"></span></div>\n                <div class=\"status-item\"><span>Palet completo</span><span class=\"dot\" ng-class=\"{'warn': msg.payload.data.PaletCompleto || msg.payload.data.ContadorWrap_DN}\"></span></div>\n            </div>\n        </section>\n\n        <section class=\"scada-card\">\n            <h3>Horno</h3>\n            <div class=\"oven-widget\" ng-class=\"{'oven-hot': msg.payload.data.HornoON, 'oven-object': msg.payload.data.ObjetoEnHorno}\">\n                <div class=\"oven-stage\">\n                    <svg class=\"oven-svg\" viewBox=\"0 0 220 220\" role=\"img\" aria-label=\"Estado horno\">\n                        <defs><filter id=\"ovenGlowUnified\" x=\"-45%\" y=\"-45%\" width=\"190%\" height=\"190%\"><feGaussianBlur stdDeviation=\"4\" result=\"blur\"></feGaussianBlur><feMerge><feMergeNode in=\"blur\"></feMergeNode><feMergeNode in=\"SourceGraphic\"></feMergeNode></feMerge></filter></defs>\n                        <rect class=\"oven-shell\" x=\"24\" y=\"24\" width=\"172\" height=\"172\" rx=\"10\"></rect><line class=\"oven-line\" x1=\"25\" y1=\"69\" x2=\"195\" y2=\"69\"></line><rect class=\"oven-slot\" x=\"42\" y=\"40\" width=\"70\" height=\"15\" rx=\"4\"></rect><circle class=\"oven-knob\" cx=\"135\" cy=\"48\" r=\"7\"></circle><circle class=\"oven-knob\" cx=\"158\" cy=\"48\" r=\"7\"></circle><circle class=\"oven-knob\" cx=\"181\" cy=\"48\" r=\"7\"></circle><path class=\"oven-line\" d=\"M82 72 L82 82 Q82 90 92 90 L128 90 Q138 90 138 82 L138 72\"></path><rect class=\"oven-firebox\" x=\"44\" y=\"102\" width=\"132\" height=\"72\" rx=\"5\"></rect><rect class=\"oven-door\" x=\"44\" y=\"102\" width=\"132\" height=\"72\" rx=\"5\"></rect><g class=\"oven-object-shape\"><rect x=\"81\" y=\"109\" width=\"58\" height=\"58\" rx=\"7\" stroke-width=\"3\" vector-effect=\"non-scaling-stroke\"></rect><line x1=\"92\" y1=\"138\" x2=\"128\" y2=\"138\" stroke-width=\"4\" stroke-linecap=\"round\" vector-effect=\"non-scaling-stroke\"></line></g>\n                    </svg>\n                </div>\n                <div class=\"oven-status\"><div class=\"oven-pill\"><span class=\"dot\" ng-class=\"{'danger': msg.payload.data.HornoON}\"></span><span>{{msg.payload.data.HornoON ? 'Horno ON' : 'Horno OFF'}}</span></div><div class=\"oven-pill\"><span class=\"dot\" ng-class=\"{'warn': msg.payload.data.ObjetoEnHorno}\"></span><span>{{msg.payload.data.ObjetoEnHorno ? 'Paquete en horno' : 'Sin paquete'}}</span></div></div>\n            </div>\n        </section>\n\n        <section class=\"scada-card\">\n            <h3>Contadores</h3>\n            <div class=\"counter-row\"><span>Botellas en paquete:</span><strong>{{msg.payload.data.SeisBotellasWrap_ACC || 0}} / {{msg.payload.data.SeisBotellasWrap_PRE || 6}}</strong></div>\n            <div class=\"counter-row\"><span>Paquetes en palet:</span><strong>{{msg.payload.data.ContadorWrap_ACC || 0}} / {{msg.payload.data.ContadorWrap_PRE || 18}}</strong></div>\n            <div class=\"counter-row\"><span>Total botellas:</span><strong>{{msg.payload.data.totalBotellas || msg.payload.data.NumeroBotellas_ACC || 0}}</strong></div>\n            <div class=\"counter-row clickable\" data-chart=\"rechazadas\"><span><span class=\"chart-icon red\" aria-hidden=\"true\"></span>Botellas rechazadas:</span><strong class=\"red\">{{msg.payload.data.totalBotellasRechazadas || msg.payload.data.NumeroBotellasRechazadas_ACC || 0}}<span class=\"drop-arrow\" aria-hidden=\"true\"></span></strong></div>\n            <div class=\"counter-row clickable\" data-chart=\"botellas\"><span><span class=\"chart-icon blue\" aria-hidden=\"true\"></span>Total botellas procesadas:</span><strong class=\"blue\">{{msg.payload.data.totalBotellas || msg.payload.data.NumeroBotellas_ACC || 0}}<span class=\"drop-arrow\" aria-hidden=\"true\"></span></strong></div>\n            <div class=\"counter-row clickable\" data-chart=\"paquetes\"><span><span class=\"chart-icon green\" aria-hidden=\"true\"></span>Total paquetes producidos:</span><strong class=\"green\">{{msg.payload.data.totalPaquetes || 0}}<span class=\"drop-arrow\" aria-hidden=\"true\"></span></strong></div>\n            <div class=\"counter-row clickable\" data-chart=\"palets\"><span><span class=\"chart-icon orange\" aria-hidden=\"true\"></span>Total palets completos:</span><strong class=\"orange\">{{msg.payload.data.totalPalets || 0}}<span class=\"drop-arrow\" aria-hidden=\"true\"></span></strong></div>\n        </section>\n\n        <section class=\"scada-card scada-full\">\n            <div class=\"alarm-head\"><h3>Historico de Alarmas</h3><a class=\"alarm-download\" href=\"/api/scada/alarmas.csv\" target=\"_blank\" download><span class=\"alarm-download-icon\" aria-hidden=\"true\"></span>Descargar CSV</a></div>\n            <div class=\"alarm-table-wrap\">\n                <table class=\"alarm-table\">\n                    <thead><tr><th>Timestamp</th><th>Tag</th><th>Mensaje</th><th>Severidad</th></tr></thead>\n                    <tbody>\n                        <tr ng-repeat=\"a in msg.payload.alarmas track by $index\" ng-class=\"{'warn': a.sev==='ADVERTENCIA', 'crit': a.sev==='CRITICA'}\"><td>{{a.ts}}</td><td>{{a.tag}}</td><td>{{a.mensaje}}</td><td>{{a.sev}}</td></tr>\n                        <tr ng-if=\"!msg.payload.alarmas || msg.payload.alarmas.length===0\"><td colspan=\"4\" class=\"empty-row\">Sin alarmas registradas</td></tr>\n                    </tbody>\n                </table>\n            </div>\n        </section>\n\n        <section class=\"scada-card scada-full\">\n            <div class=\"ia-scada\">\n                <div class=\"ia-head\"><div><h3 class=\"ia-title\">Asistente IA</h3><div class=\"ia-sub\">Control y consultas del SCADA</div></div><div class=\"ia-status\">watsonx.ai</div></div>\n                <div class=\"ia-log\" aria-live=\"polite\"></div>\n                <div class=\"ia-chips\"><button class=\"ia-chip\" data-text=\"Genera un START\">START</button><button class=\"ia-chip\" data-text=\"Enviar parada de emergencia\">Emergencia</button><button class=\"ia-chip\" data-text=\"Realiza un reset\">Reset</button><button class=\"ia-chip\" data-text=\"Dame un resumen de produccion\">Resumen</button><button class=\"ia-chip\" data-text=\"Cuales fueron las ultimas alarmas en los ultimos 20 minutos\">Ultimas alarmas</button><button class=\"ia-chip\" data-text=\"La linea esta activa o desactivada\">Estado linea</button></div>\n                <div class=\"ia-input-row\"><input class=\"ia-input\" type=\"text\" placeholder=\"Escribe o dicta una orden: start, emergencia, reset, resumen...\"><button class=\"ia-btn send\">Enviar</button><button class=\"ia-btn mic\">Mic</button><button class=\"ia-btn stop-voice\" title=\"Interrumpir voz\">Callar</button></div>\n                <div class=\"ia-options\"><label><input class=\"ia-speak\" type=\"checkbox\" checked> Leer respuestas en voz alta</label></div>\n            </div>\n        </section>\n    </div>\n</div>\n\n<script>\n(function(scope){\n  setTimeout(function(){\n    var root=document.getElementById('scada-one-panel');\n    if(!root || root.dataset.ready==='1') return;\n    root.dataset.ready='1';\n    var log=root.querySelector('.ia-log'); var input=root.querySelector('.ia-input'); var sendBtn=root.querySelector('.ia-btn.send'); var micBtn=root.querySelector('.ia-btn.mic'); var speakBox=root.querySelector('.ia-speak'); var stopVoiceBtn=root.querySelector('.ia-btn.stop-voice'); var recognition=null;\n    function add(kind,text){var row=document.createElement('div');row.className='ia-msg '+kind;var b=document.createElement('div');b.className='ia-bubble';b.textContent=text;row.appendChild(b);log.appendChild(row);log.scrollTop=log.scrollHeight;return b;}\n    function stopVoice(){if(window.speechSynthesis) window.speechSynthesis.cancel();}\n    function preferredVoice(){if(!window.speechSynthesis)return null;var voices=window.speechSynthesis.getVoices()||[];return voices.find(function(v){return /^es[-_]/i.test(v.lang)&&/female|laura|sabina|helena|maria|paulina/i.test(v.name);})||voices.find(function(v){return /^es[-_]/i.test(v.lang);})||null;}\n    function speak(text){if(!speakBox.checked||!window.speechSynthesis)return;var clean=String(text||'').replace(/\\s+/g,' ').trim();if(!clean)return;var u=new SpeechSynthesisUtterance(clean);u.lang='es-ES';var v=preferredVoice();if(v)u.voice=v;u.rate=1;u.pitch=1;stopVoice();window.speechSynthesis.speak(u);}\n    async function sendCommand(text, showUser){stopVoice();text=(text||input.value||'').trim();if(!text)return;input.value='';if(showUser!==false)add('user',text);sendBtn.disabled=true;try{var r=await fetch('/api/scada/ia',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({texto:text})});var data=await r.json();var answer=data.respuesta||data.message||data.mensaje||'Sin respuesta';add(r.ok?'bot':'err',answer);speak(answer);}catch(e){var err='No pude comunicarme con Node-RED: '+e.message;add('err',err);speak(err);}sendBtn.disabled=false;input.focus();}\n    sendBtn.addEventListener('click',function(){sendCommand();}); input.addEventListener('keydown',function(e){if(e.key==='Enter')sendCommand();}); stopVoiceBtn.addEventListener('click',function(){stopVoice();add('note','Voz interrumpida.');});\n    root.querySelectorAll('.ia-chip').forEach(function(b){b.addEventListener('click',function(){sendCommand(b.dataset.text);});});\n    root.querySelectorAll('[data-scada-command]').forEach(function(b){b.addEventListener('click',function(){sendCommand(b.dataset.scadaCommand,false);});});\n    root.querySelectorAll('[data-chart]').forEach(function(el){el.addEventListener('click',function(){scope.send({topic:el.dataset.chart,payload:el.dataset.chart});});});\n    micBtn.addEventListener('click',function(){stopVoice();var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){add('err','Este navegador no soporta reconocimiento de voz.');return;}if(recognition){recognition.stop();return;}var finalText='';var note=add('note','Escuchando... habla ahora.');recognition=new SR();recognition.lang='es-ES';recognition.interimResults=true;recognition.continuous=false;recognition.maxAlternatives=1;micBtn.classList.add('listening');micBtn.textContent='Oyendo';recognition.onresult=function(e){var interim='';for(var i=e.resultIndex;i<e.results.length;i++){var part=e.results[i][0].transcript;if(e.results[i].isFinal)finalText+=part+' ';else interim+=part;}input.value=(finalText+interim).trim();note.textContent='Escuchado: '+(input.value||'...');};recognition.onerror=function(e){add('err','No pude escuchar: '+(e.error||'error'));};recognition.onend=function(){micBtn.classList.remove('listening');micBtn.textContent='Mic';recognition=null;var text=input.value.trim();if(text)sendCommand(text);};recognition.start();});\n    add('bot','Listo. Todo el SCADA esta en una sola celda. Puedes pedirme START, emergencia, RESET, resumen de produccion, estado de linea o ultimas alarmas.');\n  },100);\n})(scope);\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 2170,
+        "y": 1560,
+        "wires": [
+            [
+                "fcdc8018020c787b"
+            ]
+        ]
+    },
+    {
+        "id": "74a62962f5cf5cf3",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Wrap NumeroBotellasRechazadas.ACC",
+        "func": "const tag = 'NumeroBotellasRechazadas.ACC';\n\nconst unwrap = (value) => {\n    if (value && typeof value === 'object' && value.value !== undefined) return value.value;\n    return value;\n};\n\nconst getValue = (payload) => {\n    if (payload && typeof payload === 'object') {\n        if (payload[tag] !== undefined) return unwrap(payload[tag]);\n        if (payload.value !== undefined) return payload.value;\n        if (payload.payload !== undefined) return unwrap(payload.payload);\n    }\n    return payload;\n};\n\nconst n = Number(getValue(msg.payload));\nmsg.payload = { NumeroBotellasRechazadas_ACC: Number.isFinite(n) ? n : 0 };\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2160,
+        "y": 1420,
+        "wires": [
+            [
+                "0109936f6b3ef429"
+            ]
+        ]
+    },
+    {
+        "id": "883d0e45d23b0ec8",
+        "type": "eth-ip in",
+        "z": "ef0ea720cfb9c620",
+        "endpoint": "1a750a50890bd082",
+        "mode": "single",
+        "variable": "NumeroBotellasRechazadas.ACC",
+        "program": "",
+        "name": "Lee NumeroBotellasRechazadas.ACC",
+        "x": 1810,
+        "y": 1420,
+        "wires": [
+            [
+                "74a62962f5cf5cf3"
+            ]
+        ]
+    },
+    {
+        "id": "a91e2f824847347e",
+        "type": "ui_chart",
+        "z": "ef0ea720cfb9c620",
+        "name": "Tendencia rechazadas",
+        "group": "264521f9392409c3",
+        "order": 1,
+        "width": 18,
+        "height": 5,
+        "label": "Total botellas rechazadas (ultima hora)",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Esperando datos...",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#c62828",
+            "#ef5350",
+            "#ff9800",
+            "#9c27b0",
+            "#00bcd4",
+            "#4caf50"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 2320,
+        "y": 2000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce8c2e48465994e1",
+        "type": "http in",
+        "z": "ef0ea720cfb9c620",
+        "name": "GET /api/scada/alarmas.csv",
+        "url": "/api/scada/alarmas.csv",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 1100,
+        "wires": [
+            [
+                "776acf6567648b46"
+            ]
+        ]
+    },
+    {
+        "id": "776acf6567648b46",
+        "type": "function",
+        "z": "ef0ea720cfb9c620",
+        "name": "Exportar alarmas CSV",
+        "func": "const alarmas = flow.get('alarmLog') || [];\nconst delimiter = ';';\nconst headers = ['Timestamp', 'Epoch', 'Tag', 'Mensaje', 'Severidad', 'Estado'];\n\nconst clean = (value) => {\n    if (value === null || value === undefined) return '';\n    return String(value).replace(/\\r?\\n/g, ' ').trim();\n};\n\nconst csvCell = (value) => {\n    const text = clean(value);\n    const escaped = text.replace(/\"/g, '\"\"');\n    return /[\";\\r\\n]/.test(escaped) ? '\"' + escaped + '\"' : escaped;\n};\n\nconst rows = alarmas.map(a => [\n    a.ts || '',\n    a.epoch || a.time || '',\n    a.tag || '',\n    a.mensaje || '',\n    a.sev || a.severidad || '',\n    a.estado || 'ACTIVA'\n]);\n\nconst lines = [headers, ...rows].map(row => row.map(csvCell).join(delimiter));\nconst stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');\n\nmsg.headers = {\n    'Content-Type': 'text/csv; charset=utf-8',\n    'Content-Disposition': 'attachment; filename=\"alarmas_scada_' + stamp + '.csv\"',\n    'Cache-Control': 'no-store'\n};\nmsg.payload = '\\ufeff' + lines.join('\\r\\n');\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 1100,
+        "wires": [
+            [
+                "e0076a211f2ac6ea"
+            ]
+        ]
+    },
+    {
+        "id": "e0076a211f2ac6ea",
+        "type": "http response",
+        "z": "ef0ea720cfb9c620",
+        "name": "Resp alarmas CSV",
+        "statusCode": "",
+        "headers": {},
+        "x": 690,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "2b62cb6a2ad8910e",
+        "type": "mqtt out",
+        "z": "ef0ea720cfb9c620",
+        "name": "DI_StartPallet",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "fdb13d4b20a5c631",
+        "x": 2660,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "1a750a50890bd082",
+        "type": "eth-ip endpoint",
+        "address": "127.0.0.1",
+        "slot": "2",
+        "cycletime": 500,
+        "name": "SCADA",
+        "vartable": {
+            "": {
+                "START": {
+                    "type": "BOOL"
+                },
+                "EmergencyStop": {
+                    "type": "BOOL"
+                },
+                "Reset": {
+                    "type": "BOOL"
+                },
+                "NumeroBotellas.ACC": {
+                    "type": "DINT"
+                },
+                "SeisBotellasWrap.ACC": {
+                    "type": "DINT"
+                },
+                "SeisBotellasWrap.DN": {
+                    "type": "BOOL"
+                },
+                "ContadorWrap.ACC": {
+                    "type": "DINT"
+                },
+                "ContadorWrap.DN": {
+                    "type": "BOOL"
+                },
+                "HornoON": {
+                    "type": "BOOL"
+                },
+                "ObjetoEnHorno": {
+                    "type": "BOOL"
+                },
+                "NumeroBotellasRechazadas.ACC": {
+                    "type": "DINT"
+                }
+            }
+        }
+    },
+    {
+        "id": "d653cdeb8ddf6592",
+        "type": "ui_group",
+        "name": "Hist Botellas",
+        "tab": "ui_tab_scada",
+        "order": 8,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "hidden": true,
+        "className": ""
+    },
+    {
+        "id": "f296e1b268e01562",
+        "type": "ui_group",
+        "name": "Hist Paquetes",
+        "tab": "ui_tab_scada",
+        "order": 9,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "hidden": true,
+        "className": ""
+    },
+    {
+        "id": "aa82674803b96b8b",
+        "type": "ui_group",
+        "name": "Hist Palets",
+        "tab": "ui_tab_scada",
+        "order": 10,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "hidden": true,
+        "className": ""
+    },
+    {
+        "id": "35677924280ed812",
+        "type": "ui_group",
+        "name": "SCADA",
+        "tab": "ui_tab_scada",
+        "order": 1,
+        "disp": true,
+        "width": 18,
+        "collapse": false,
+        "hidden": false,
+        "className": ""
+    },
+    {
+        "id": "264521f9392409c3",
+        "type": "ui_group",
+        "name": "Hist Rechazadas",
+        "tab": "ui_tab_scada",
+        "order": 11,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "hidden": true,
+        "className": ""
+    },
+    {
+        "id": "fdb13d4b20a5c631",
+        "type": "mqtt-broker",
+        "name": "HiveMQ_Public",
+        "broker": "mqtt-dashboard.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ui_tab_scada",
+        "type": "ui_tab",
+        "name": "Banda Transportadora",
+        "icon": "view_module",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "9d0a40cd38d4b229",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-cip-ethernet-ip": "1.1.3",
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
