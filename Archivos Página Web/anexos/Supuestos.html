@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Supuestos | Análisis Financiero | Sincronizados</title>
+  <title>Supuestos y parámetros del modelo | Análisis Financiero | Sincronizados S.A.S</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -32,8 +32,8 @@
 <section class="fin-hero">
   <div class="container fin-hero__inner">
     <p class="fin-eyebrow">Análisis Financiero · F2</p>
-    <h1>Supuestos del modelo</h1>
-    <p class="fin-hero__lead">Parámetros base de producción, económicos, de mano de obra, energía y paletizado que sustentan todos los cálculos del análisis.</p>
+    <h1>Supuestos y parámetros del modelo</h1>
+    <p class="fin-hero__lead">Bases de cálculo del análisis: producción, parámetros económicos, mano de obra, energía, paletizado, empaque y honorarios.</p>
     <nav class="fin-page-nav">
       <a href="Portada.html">Resumen</a>
       <a href="Supuestos.html" class="current">Supuestos</a>
@@ -47,125 +47,45 @@
 
 <div class="fin-body">
   <div class="container">
-
-    <!-- Producción -->
     <div class="fin-section">
-      <h2 class="fin-section-title">Producción diaria (base de simulación)</h2>
-      <div class="fin-table-wrap">
-        <table class="fin-table">
-          <thead>
-            <tr><th>Producto</th><th>Capacidad / día</th><th>Turnos</th><th>Fuente / Nota</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Coca-Cola Retornable 1.5 L</td><td class="num">19 800 un/día</td><td>1 turno</td><td><span class="tag-ref">Visita planta</span></td></tr>
-            <tr><td>Coca-Cola Plástica 2.5 L</td><td class="num">115 184 un/día</td><td>2 turnos</td><td><span class="tag-ref">Visita planta</span></td></tr>
-            <tr><td>Monster Energy 500 mL</td><td class="num">129 550 un/día</td><td>3 turnos</td><td><span class="tag-ref">Visita planta</span></td></tr>
-            <tr class="total-row"><td>Días laborables / año</td><td class="num">365 días</td><td colspan="2">Operación continua</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <h2 class="fin-section-title">PRODUCCIÓN DIARIA (Base Simulación)</h2>
+      <div class="fin-table-wrap"><table class="fin-table "><thead><tr><th>Parámetro</th><th>Valor</th><th>Unidad</th><th>Nota / Fuente</th></tr></thead><tbody><tr><td>Coca-Cola Retornable 1.5 L</td><td class="num">$ 19.800</td><td>un/día</td><td>1 turno/día</td></tr><tr><td>Coca-Cola Plástica 2.5 L</td><td class="num">$ 115.184</td><td>un/día</td><td>2 turnos/día</td></tr><tr><td>Monster Energy 500 mL</td><td class="num">$ 129.550</td><td>un/día</td><td>3 turnos/día</td></tr><tr><td>Días laborables / año</td><td class="num">365</td><td>días</td><td>Operación continua</td></tr></tbody></table></div>
     </div>
-
-    <!-- Económicos -->
     <div class="fin-section">
-      <h2 class="fin-section-title">Parámetros económicos</h2>
-      <div class="info-row">
-        <div class="info-card">
-          <p class="info-card__label">TRM referencia</p>
-          <p class="info-card__val">$3 723,05 COP/USD</p>
-          <p class="info-card__note">24 de marzo de 2026</p>
-        </div>
-        <div class="info-card">
-          <p class="info-card__label">Tasa de descuento (WACC)</p>
-          <p class="info-card__val">12 %</p>
-          <p class="info-card__note">Incluye prima de riesgo Colombia</p>
-        </div>
-        <div class="info-card">
-          <p class="info-card__label">Inflación anual esperada</p>
-          <p class="info-card__val">5 %</p>
-          <p class="info-card__note">Meta BanRep promedio</p>
-        </div>
-        <div class="info-card">
-          <p class="info-card__label">Crecimiento demanda bebidas</p>
-          <p class="info-card__val">3 % anual</p>
-          <p class="info-card__note">Proyección sector bebidas Colombia</p>
-        </div>
-      </div>
+      <h2 class="fin-section-title">PARÁMETROS ECONÓMICOS</h2>
+      <div class="fin-table-wrap"><table class="fin-table "><thead><tr><th>Parámetro</th><th>Valor</th><th>Unidad</th><th>Nota / Fuente</th></tr></thead><tbody><tr><td>TRM referencia</td><td class="num">$ 3.723</td><td>COP/USD</td><td> 24/03/2026</td></tr><tr><td>Tasa de descuento (WACC)</td><td class="num">0,12</td><td></td><td>Incluye prima de riesgo Colombia</td></tr><tr><td>Inflación anual esperada</td><td class="num">0,05</td><td></td><td>Meta BanRep promedio</td></tr><tr><td>Crecimiento demanda bebidas/año</td><td class="num">0,03</td><td></td><td>Proyección sector bebidas Colombia</td></tr></tbody></table></div>
     </div>
-
-    <!-- Mano de obra -->
     <div class="fin-section">
-      <h2 class="fin-section-title">Parámetros de mano de obra</h2>
-      <div class="fin-table-wrap">
-        <table class="fin-table">
-          <thead>
-            <tr><th>Parámetro</th><th>Valor</th><th>Fuente / Nota</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Salario mensual operador base</td><td class="num">$1 750 905 COP/mes</td><td>SMV 2026 — Decreto 2671 de 2025</td></tr>
-            <tr><td>Factor prestaciones sociales</td><td class="num">1,52×</td><td>Vacaciones, cesantías, EPS, ARL, etc.</td></tr>
-            <tr><td>Salario + prestaciones / operador</td><td class="num">$2 661 376 COP/mes</td><td>Costo real por trabajador</td></tr>
-            <tr><td>Operadores paletizado <em>antes</em></td><td class="num">10 operadores</td><td>2 por celda × 2 líneas × ~2,5 turnos</td></tr>
-            <tr><td>Operadores remanentes <em>después</em></td><td class="num">2 operadores</td><td>Supervisores / apoyo</td></tr>
-            <tr class="total-row"><td><strong>Operadores suprimidos</strong></td><td class="num num-green"><strong>8 operadores</strong></td><td>Principal driver de ahorro</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <h2 class="fin-section-title">PARÁMETROS DE MANO DE OBRA</h2>
+      <div class="fin-table-wrap"><table class="fin-table "><thead><tr><th>Parámetro</th><th>Valor</th><th>Unidad</th><th>Nota / Fuente</th></tr></thead><tbody><tr><td>Salario mensual operador base</td><td class="num">$ 1.750.905</td><td>COP/mes</td><td>SMV 2026 — Decreto 2671 de 2025</td></tr><tr><td>Factor prestaciones sociales</td><td class="num">1,52</td><td></td><td>Vacaciones, cesantías, EPS, ARL, etc.</td></tr><tr><td>Salario + prestaciones operador</td><td class="num">$ 2.661.376</td><td>COP/mes</td><td>Costo real por trabajador</td></tr><tr><td>Operadores paletizado (antes)</td><td class="num">10</td><td>operadores</td><td>2 por celda × 2 líneas × ~2.5 turnos</td></tr><tr><td>Operadores remanentes (después)</td><td class="num">2</td><td>operadores</td><td>Supervisores / apoyo</td></tr><tr><td>Operadores suprimidos</td><td class="num">8</td><td>operadores</td><td></td></tr></tbody></table></div>
     </div>
-
-    <!-- Energía -->
     <div class="fin-section">
-      <h2 class="fin-section-title">Parámetros de energía</h2>
-      <div class="fin-table-wrap">
-        <table class="fin-table">
-          <thead>
-            <tr><th>Parámetro</th><th>Valor</th><th>Fuente / Nota</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Potencia robot Línea 1 (Coca-Cola) — ABB IRB 660</td><td class="num">3,5 kW</td><td>Dato técnico fabricante</td></tr>
-            <tr><td>Potencia robot Línea 2 (Monster) — ABB IRB 660</td><td class="num">3,5 kW</td><td>Dato técnico fabricante</td></tr>
-            <tr><td>Potencia conveyors y auxiliares</td><td class="num">2,5 kW</td><td>Transportadores + actuadores</td></tr>
-            <tr><td>Horas de operación promedio / día</td><td class="num">20 h/día</td><td>Promedio ponderado 3 líneas</td></tr>
-            <tr><td>Tarifa energía eléctrica industrial</td><td class="num">600 COP/kWh</td><td>Tarifa industrial media Colombia 2026</td></tr>
-            <tr class="total-row"><td><strong>Consumo energético anual estimado</strong></td><td class="num"><strong>$41 610 000 COP/año</strong></td><td>(3,5+3,5+2,5) kW × 20 h × 365 días × 600</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <h2 class="fin-section-title">PARÁMETROS DE ENERGÍA</h2>
+      <div class="fin-table-wrap"><table class="fin-table "><thead><tr><th>Parámetro</th><th>Valor</th><th>Unidad</th><th>Nota / Fuente</th></tr></thead><tbody><tr><td>Potencia robot Línea 1 (Coca-Cola)</td><td class="num">3,5</td><td>kW</td><td>ABB IRB 660 — dato técnico </td></tr><tr><td>Potencia robot Línea 2 (Monster)</td><td class="num">2</td><td>kW</td><td>ABB IRB 460 — menor consumo que IRB 660</td></tr><tr><td>Potencia conveyors y auxiliares</td><td class="num">2,5</td><td>kW</td><td>Transportadores + actuadores</td></tr><tr><td>Horas operación promedio / día</td><td class="num">20</td><td>h</td><td>Promedio ponderado 3 líneas</td></tr><tr><td>Tarifa energía eléctrica industrial</td><td class="num">600</td><td>COP/kWh</td><td>Tarifa industrial media Colombia 2026</td></tr><tr><td>Potencia adicional Clearpack + Stretch wrapper</td><td class="num">13,5</td><td>kW</td><td>Clearpack EFK250L: ~12 kW (sealer+túnel) + Robopac: ~1,5 kW</td></tr></tbody></table></div>
     </div>
-
-    <!-- Paletizado -->
     <div class="fin-section">
-      <h2 class="fin-section-title">Parámetros de paletizado</h2>
-      <div class="fin-table-wrap">
-        <table class="fin-table">
-          <thead>
-            <tr><th>Parámetro</th><th>Coca-Cola Ret.</th><th>Coca-Cola Plás.</th><th>Monster Energy</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Unidades / paca o caja</td><td class="num">6 un/caja</td><td class="num">6 un/caja</td><td class="num">24 un/caja</td></tr>
-            <tr><td>Capas / pallet</td><td class="num">8 capas</td><td class="num">8 capas</td><td class="num">10 capas</td></tr>
-            <tr><td>Pacas / capa</td><td class="num">9 cajas</td><td class="num">9 cajas</td><td class="num">12 cajas</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <h2 class="fin-section-title">PARÁMETROS DE PALETIZADO</h2>
+      <div class="fin-table-wrap"><table class="fin-table "><thead><tr><th>Parámetro</th><th>Valor</th><th>Unidad</th><th>Nota / Fuente</th></tr></thead><tbody><tr><td>Unidades / paca Coca-Cola Ret.</td><td class="num">6</td><td>un/caja</td><td> paca retornable estándar</td></tr><tr><td>Unidades / paca Coca-Cola Plás.</td><td class="num">6</td><td>un/caja</td><td>paca 6×2.5 L</td></tr><tr><td>Unidades / caja Monster</td><td class="num">24</td><td>un/caja</td><td>Caja estándar latas</td></tr><tr><td>Capas / pallet Coca-Cola</td><td class="num">8</td><td>capas</td><td></td></tr><tr><td>Capas / pallet Monster</td><td class="num">10</td><td>capas</td><td></td></tr><tr><td>Pacas / capa Coca-Cola</td><td class="num">9</td><td>cajas</td><td></td></tr><tr><td>Pacas / capa Monster</td><td class="num">12</td><td>cajas</td><td></td></tr></tbody></table></div>
+    </div>
+    <div class="fin-section">
+      <h2 class="fin-section-title">PARÁMETROS DE EMPAQUE  (Línea Monster — Clearpack EFK250L)</h2>
+      <div class="fin-table-wrap"><table class="fin-table "><thead><tr><th>Parámetro</th><th>Valor</th><th>Unidad</th><th>Nota / Fuente</th></tr></thead><tbody><tr><td>Operadores empaque suprimidos por turno</td><td class="num">3</td><td>operadores</td><td>Línea Monster — empaque manual → automático</td></tr><tr><td>Turnos línea Monster</td><td class="num">3</td><td>turnos</td><td>Operación continua 24 h</td></tr><tr><td>Operadores empaque suprimidos (total)</td><td class="num">9</td><td>operadores</td><td>Cálculo: op/turno × turnos</td></tr><tr><td>Total operadores suprimidos (paletizado + empaque)</td><td class="num">17</td><td>operadores</td><td>Suma de C24 (paletizado) + C48 (empaque)</td></tr></tbody></table></div>
+    </div>
+    <div class="fin-section">
+      <h2 class="fin-section-title">HONORARIOS EQUIPO MECATRÓNICO  (Servicios de Ingeniería)</h2>
+      <div class="fin-table-wrap"><table class="fin-table "><thead><tr><th>Parámetro</th><th>Valor</th><th>Unidad</th><th>Nota / Fuente</th></tr></thead><tbody><tr><td>Número de ingenieros</td><td class="num">6</td><td>personas</td><td>Equipo mecatrónico del proyecto</td></tr><tr><td>Honorarios totales del equipo</td><td class="num">$ 132.000.000</td><td>COP</td><td>Cálculo: nº ingenieros × meses × sueldo mensual</td></tr><tr><td>Duración del proyecto</td><td class="num">4</td><td>meses</td><td>Cronograma estimado del proyecto</td></tr><tr><td>Sueldo mensual por ingeniero</td><td class="num">$ 5.500.000</td><td>COP/mes</td><td>Tarifa promedio mecatrónico junior calificado Colombia 2026</td></tr></tbody></table></div>
     </div>
 
     <div class="fin-footer-nav">
-      <a href="Portada.html" class="fin-fnav-item">
-        <span class="fin-fnav-dir">← Anterior</span>
-        <span class="fin-fnav-name">Resumen ejecutivo</span>
-      </a>
-      <a href="CAPEX.html" class="fin-fnav-item fin-fnav-item--next">
-        <span class="fin-fnav-dir">Siguiente →</span>
-        <span class="fin-fnav-name">CAPEX — Inversión inicial</span>
-      </a>
+      <a href="Portada.html" class="fin-fnav-item"><span class="fin-fnav-dir">← Anterior</span><span class="fin-fnav-name">Resumen</span></a>
+      <a href="CAPEX.html" class="fin-fnav-item fin-fnav-item--next"><span class="fin-fnav-dir">Siguiente →</span><span class="fin-fnav-name">CAPEX</span></a>
     </div>
-
   </div>
 </div>
+
 <script>
-  const sb = document.getElementById('sb');
-  window.addEventListener('scroll', () => { sb.style.width = (window.scrollY / (document.documentElement.scrollHeight - innerHeight) * 100) + '%'; });
+  var sb=document.getElementById('sb');
+  addEventListener('scroll',function(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;sb.style.width=p+'%';});
 </script>
 </body>
 </html>

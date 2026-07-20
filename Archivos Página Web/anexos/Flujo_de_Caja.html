@@ -3,29 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flujo de Caja | Análisis Financiero | Sincronizados</title>
+  <title>Flujo de caja | Análisis Financiero | Sincronizados S.A.S</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700;9..40,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="finanzas-shared.css" />
-  <style>
-    .fc-chart { display: flex; align-items: flex-end; gap: .5rem; height: 180px; margin: 1.5rem 0; }
-    .fc-bar-wrap { display: flex; flex-direction: column; align-items: center; gap: .35rem; flex: 1; }
-    .fc-bar { width: 100%; border-radius: 4px 4px 0 0; transition: opacity .2s; cursor: default; }
-    .fc-bar:hover { opacity: .8; }
-    .fc-bar--pos { background: linear-gradient(180deg, #3d8ef0, #1a6fd4); }
-    .fc-bar--neg { background: linear-gradient(0deg, #f43f5e, #be123c); border-radius: 0 0 4px 4px; align-self: flex-start; }
-    .fc-bar-label { font-size: .65rem; color: var(--muted); font-weight: 600; white-space: nowrap; }
-    .fc-bar-val   { font-size: .6rem; color: var(--muted); font-variant-numeric: tabular-nums; }
-    .acum-line { display: flex; align-items: center; gap: .6rem; padding: .5rem .8rem; border-radius: var(--radius); margin-bottom: .4rem; }
-    .acum-line:nth-child(even) { background: var(--navy-2); }
-    .acum-yr { font-weight: 700; font-family: 'DM Sans', sans-serif; width: 55px; font-size: .85rem; }
-    .acum-bar-track { flex: 1; height: 8px; background: var(--navy-3); border-radius: 4px; overflow: hidden; position: relative; }
-    .acum-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--blue), var(--blue-lt)); }
-    .acum-bar-fill--neg { background: linear-gradient(90deg, var(--red), #fb7185); }
-    .acum-val { font-size: .8rem; font-weight: 600; width: 155px; text-align: right; font-variant-numeric: tabular-nums; }
-  </style>
 </head>
 <body>
 <div class="scroll-bar" id="sb"></div>
@@ -49,8 +32,8 @@
 <section class="fin-hero">
   <div class="container fin-hero__inner">
     <p class="fin-eyebrow">Análisis Financiero · F5</p>
-    <h1>Flujo de caja — 10 años</h1>
-    <p class="fin-hero__lead">Proyección del flujo neto y acumulado del proyecto. OPEX y beneficios crecen con inflación (5%) y demanda (3%) respectivamente. WACC base: 12%.</p>
+    <h1>Flujo de caja</h1>
+    <p class="fin-hero__lead">Proyección del flujo neto, acumulado y descontado durante el horizonte de evaluación de 10 años.</p>
     <nav class="fin-page-nav">
       <a href="Portada.html">Resumen</a>
       <a href="Supuestos.html">Supuestos</a>
@@ -64,149 +47,24 @@
 
 <div class="fin-body">
   <div class="container">
-
     <div class="kpi-grid">
-      <div class="kpi kpi--red"><p class="kpi__label">Inversión Año 0</p><p class="kpi__value">−$1 460 M</p><p class="kpi__sub">COP · CAPEX total</p></div>
-      <div class="kpi kpi--green"><p class="kpi__label">Flujo neto Año 1</p><p class="kpi__value">$223 M</p><p class="kpi__sub">COP</p></div>
-      <div class="kpi kpi--green"><p class="kpi__label">Flujo neto Año 10</p><p class="kpi__value">$335 M</p><p class="kpi__sub">COP · crecimiento acumulado</p></div>
-      <div class="kpi kpi--amber"><p class="kpi__label">Acumulado Año 10</p><p class="kpi__value">+$1 498 M</p><p class="kpi__sub">COP netos acumulados</p></div>
+<div class="kpi kpi--red"><p class="kpi__label">CAPEX inicial</p><p class="kpi__value">$1.904 M</p><p class="kpi__sub">Año 0</p></div><div class="kpi kpi--green"><p class="kpi__label">VPN (10 años)</p><p class="kpi__value">$1.176 M</p><p class="kpi__sub">WACC 12%</p></div><div class="kpi "><p class="kpi__label">Payback</p><p class="kpi__value">4,4 años</p><p class="kpi__sub">Recuperación</p></div>
     </div>
-
-    <!-- Gráfico de barras -->
     <div class="fin-section">
-      <h2 class="fin-section-title">Flujo neto por período</h2>
-      <div class="fc-chart" id="fcChart">
-        <!-- Se renderiza por JS -->
-      </div>
-    </div>
-
-    <!-- Tabla detallada -->
-    <div class="fin-section">
-      <h2 class="fin-section-title">Tabla de flujos (COP)</h2>
-      <div class="fin-table-wrap">
-        <table class="fin-table">
-          <thead>
-            <tr><th>Período</th><th>CAPEX</th><th>OPEX</th><th>Beneficios</th><th>Flujo neto</th><th>Acumulado</th><th>Desc. (12%)</th></tr>
-          </thead>
-          <tbody id="fcTable"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Acumulado visual -->
-    <div class="fin-section">
-      <h2 class="fin-section-title">Flujo acumulado por año</h2>
-      <div id="acumViz"></div>
-      <div class="fin-note" style="margin-top:1rem;">
-        El flujo acumulado se vuelve positivo entre el <strong>Año 6 y 7</strong> (payback simple ~6,8 años), señalando el punto de recuperación de la inversión sin descontar.
-      </div>
+      <h2 class="fin-section-title">Flujo de caja proyectado (COP · horizonte 10 años)</h2>
+      <div class="fin-table-wrap"><table class="fin-table fin-table--flujo"><thead><tr><th>Concepto</th><th>Año 0</th><th>Año 1</th><th>Año 2</th><th>Año 3</th><th>Año 4</th><th>Año 5</th><th>Año 6</th><th>Año 7</th><th>Año 8</th><th>Año 9</th><th>Año 10</th></tr></thead><tbody><tr><td class="">CAPEX (con IVA)</td><td class="num">$ -1.904.144.320</td><td class="num">$ 0</td><td class="num">$ 0</td><td class="num">$ 0</td><td class="num">$ 0</td><td class="num">$ 0</td><td class="num">$ 0</td><td class="num">$ 0</td><td class="num">$ 0</td><td class="num">$ 0</td><td class="num">$ 0</td></tr><tr><td class="">Total OPEX</td><td class="num">$ 0</td><td class="num">$ 179.676.881</td><td class="num">$ 188.660.725</td><td class="num">$ 198.093.761</td><td class="num">$ 207.998.449</td><td class="num">$ 218.398.372</td><td class="num">$ 229.318.290</td><td class="num">$ 240.784.205</td><td class="num">$ 252.823.415</td><td class="num">$ 265.464.586</td><td class="num">$ 278.737.815</td></tr><tr><td class="">Total beneficios</td><td class="num">$ 0</td><td class="num">$ 636.366.654</td><td class="num">$ 667.257.986</td><td class="num">$ 699.666.076</td><td class="num">$ 733.665.925</td><td class="num">$ 769.336.263</td><td class="num">$ 806.759.730</td><td class="num">$ 846.023.069</td><td class="num">$ 887.217.336</td><td class="num">$ 930.438.110</td><td class="num">$ 975.785.720</td></tr><tr><td class="cat"><strong>Flujo neto del período</strong></td><td class="num">$ -1.904.144.320</td><td class="num">$ 456.689.773</td><td class="num">$ 478.597.261</td><td class="num">$ 501.572.314</td><td class="num">$ 525.667.476</td><td class="num">$ 550.937.892</td><td class="num">$ 577.441.439</td><td class="num">$ 605.238.864</td><td class="num">$ 634.393.921</td><td class="num">$ 664.973.524</td><td class="num">$ 697.047.904</td></tr><tr><td class="cat"><strong>Flujo acumulado</strong></td><td class="num">$ -1.904.144.320</td><td class="num">$ -1.447.454.547</td><td class="num">$ -968.857.286</td><td class="num">$ -467.284.972</td><td class="num">$ 58.382.504</td><td class="num">$ 609.320.396</td><td class="num">$ 1.186.761.835</td><td class="num">$ 1.792.000.699</td><td class="num">$ 2.426.394.620</td><td class="num">$ 3.091.368.145</td><td class="num">$ 3.788.416.049</td></tr><tr><td class="cat"><strong>Flujo descontado (WACC 12%)</strong></td><td class="num">$ -1.904.144.320</td><td class="num">$ 407.758.726</td><td class="num">$ 381.534.806</td><td class="num">$ 357.009.266</td><td class="num">$ 334.071.184</td><td class="num">$ 312.616.955</td><td class="num">$ 292.549.804</td><td class="num">$ 273.779.325</td><td class="num">$ 256.221.065</td><td class="num">$ 239.796.119</td><td class="num">$ 224.430.770</td></tr></tbody></table></div>
     </div>
 
     <div class="fin-footer-nav">
-      <a href="OPEX_Beneficios.html" class="fin-fnav-item">
-        <span class="fin-fnav-dir">← Anterior</span>
-        <span class="fin-fnav-name">OPEX y Beneficios</span>
-      </a>
-      <a href="Indicadores.html" class="fin-fnav-item fin-fnav-item--next">
-        <span class="fin-fnav-dir">Siguiente →</span>
-        <span class="fin-fnav-name">Indicadores financieros</span>
-      </a>
+      <a href="OPEX_Beneficios.html" class="fin-fnav-item"><span class="fin-fnav-dir">← Anterior</span><span class="fin-fnav-name">OPEX</span></a>
+      <a href="Indicadores.html" class="fin-fnav-item fin-fnav-item--next"><span class="fin-fnav-dir">Siguiente →</span><span class="fin-fnav-name">Indicadores</span></a>
     </div>
   </div>
 </div>
 
 <script>
-  // Datos calculados del Excel
-  const WACC = 0.12;
-  const capex = -1459745906;
-  const opexBase = 106110000;
-  const benBase  = 319492058;
-  const inf  = 0.05;
-  const dem  = 0.03;
-
-  // Flujos reales del cálculo Python
-  const flujos = [
-    { yr: 0,  capex: capex, opex: 0, ben: 0,          neto: capex,       acum: capex },
-    { yr: 1,  capex: 0, opex: 111415500, ben: 334566661, neto: 223151161,  acum: -1236594745 },
-    { yr: 2,  capex: 0, opex: 116986275, ben: 350368594, neto: 233381719,  acum: -1003213026 },
-    { yr: 3,  capex: 0, opex: 122835589, ben: 366931584, neto: 244095995,  acum: -759117031  },
-    { yr: 4,  capex: 0, opex: 128977368, ben: 384294708, neto: 255317340,  acum: -503799691  },
-    { yr: 5,  capex: 0, opex: 135426236, ben: 402496485, neto: 267070249,  acum: -236729442  },
-    { yr: 6,  capex: 0, opex: 142197548, ben: 421577963, neto: 279380415,  acum: 42650973    },
-    { yr: 7,  capex: 0, opex: 149307425, ben: 441585198, neto: 292277773,  acum: 334928746   },
-    { yr: 8,  capex: 0, opex: 156772796, ben: 462557258, neto: 305784462,  acum: 640713208   },
-    { yr: 9,  capex: 0, opex: 164611436, ben: 484542254, neto: 319930818,  acum: 960644026   },
-    { yr: 10, capex: 0, opex: 172842008, ben: 507594841, neto: 334752833,  acum: 1295396859  },
-  ];
-
-  const fmt = v => {
-    const sign = v < 0 ? '−' : '+';
-    const abs = Math.abs(v);
-    if (abs >= 1e9) return sign + '$' + (abs/1e9).toFixed(2) + ' B';
-    if (abs >= 1e6) return sign + '$' + Math.round(abs/1e6) + ' M';
-    return sign + '$' + abs.toLocaleString('es-CO');
-  };
-
-  // Tabla
-  const tbody = document.getElementById('fcTable');
-  flujos.forEach(f => {
-    const desc = f.yr === 0 ? f.neto : f.neto / Math.pow(1+WACC, f.yr);
-    const tr = document.createElement('tr');
-    if (f.yr === 0) tr.classList.add('total-row');
-    tr.innerHTML = `
-      <td><strong>Año ${f.yr}</strong></td>
-      <td class="num ${f.capex < 0 ? 'num-red' : 'num-muted'}">${f.capex < 0 ? fmt(f.capex) : '—'}</td>
-      <td class="num num-red">${f.opex > 0 ? '−$' + f.opex.toLocaleString('es-CO') : '—'}</td>
-      <td class="num num-green">${f.ben > 0 ? '+$' + f.ben.toLocaleString('es-CO') : '—'}</td>
-      <td class="num ${f.neto >= 0 ? 'num-green' : 'num-red'}">${fmt(f.neto)}</td>
-      <td class="num ${f.acum >= 0 ? 'num-green' : 'num-red'}">${fmt(f.acum)}</td>
-      <td class="num num-muted">${fmt(Math.round(desc))}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-
-  // Gráfico de barras
-  const chart = document.getElementById('fcChart');
-  const maxAbs = Math.max(...flujos.map(f => Math.abs(f.neto)));
-  const H = 160;
-  flujos.forEach(f => {
-    const pct = Math.min(100, (Math.abs(f.neto) / maxAbs) * 100);
-    const h = Math.round((pct / 100) * H);
-    const isNeg = f.neto < 0;
-    const wrap = document.createElement('div');
-    wrap.className = 'fc-bar-wrap';
-    const valM = Math.abs(f.neto) >= 1e9
-      ? (f.neto/1e9).toFixed(1)+'B'
-      : Math.round(Math.abs(f.neto)/1e6)+'M';
-    wrap.innerHTML = `
-      <div class="fc-bar-val">${isNeg ? '−' : '+'}${valM}</div>
-      <div class="fc-bar ${isNeg ? 'fc-bar--neg' : 'fc-bar--pos'}" style="height:${h}px" title="Año ${f.yr}: ${fmt(f.neto)} COP"></div>
-      <div class="fc-bar-label">A${f.yr}</div>
-    `;
-    chart.appendChild(wrap);
-  });
-
-  // Acumulado visual
-  const acumDiv = document.getElementById('acumViz');
-  const maxAcum = Math.max(...flujos.map(f => Math.abs(f.acum)));
-  flujos.forEach(f => {
-    const pct = Math.min(98, (Math.abs(f.acum) / maxAcum) * 100);
-    const isNeg = f.acum < 0;
-    const row = document.createElement('div');
-    row.className = 'acum-line';
-    row.innerHTML = `
-      <span class="acum-yr">Año ${f.yr}</span>
-      <div class="acum-bar-track">
-        <div class="acum-bar-fill ${isNeg ? 'acum-bar-fill--neg' : ''}" style="width:${pct}%"></div>
-      </div>
-      <span class="acum-val ${isNeg ? 'num-red' : 'num-green'}">${fmt(f.acum)} COP</span>
-    `;
-    acumDiv.appendChild(row);
-  });
-
-  // Scroll bar
-  const sb = document.getElementById('sb');
-  window.addEventListener('scroll', () => { sb.style.width = (window.scrollY / (document.documentElement.scrollHeight - innerHeight) * 100) + '%'; });
+  var sb=document.getElementById('sb');
+  addEventListener('scroll',function(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;sb.style.width=p+'%';});
 </script>
 </body>
 </html>
