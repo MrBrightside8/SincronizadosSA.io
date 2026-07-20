@@ -60,6 +60,5 @@ Listado de peligros ISO 14121-1:2007
 6.1.	Ingreso a la celda con energía aplicada: Aplastamiento.
 6.2.	Limpieza de bandas en movimiento: Atrapamiento
 
-EN ESTA MISMA CARPETA HAY IMÁGENES DE LAS CELDAS PARA AÑADIRLAS
 
 
